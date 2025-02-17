@@ -17,13 +17,15 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     vertical-align: baseline;
-    line-height: 2;
+    line-height: 1;
     font-size: 100%;
+    box-sizing: border-box;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     margin: 0;
     padding: 0;
 }
