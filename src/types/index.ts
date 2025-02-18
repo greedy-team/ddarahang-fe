@@ -1,3 +1,10 @@
+export interface SelectOptionType {
+  isCountryOption: boolean;
+  imgUrl: string;
+  locationLabel: string;
+  locationType: string;
+}
+
 export interface TravelVideoInfo {
   creator: string;
   title: string;
