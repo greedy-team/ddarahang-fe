@@ -10,7 +10,7 @@ function App() {
         regionName: '부산',
       };
 
-      const response = await axios.get('/api/v1/hello', { params: requestBody });
+      const response = await axios.get('/api/v1/travelcourses', { params: requestBody });
 
       if (response) {
         console.log('API Response:', response.data);

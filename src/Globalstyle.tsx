@@ -8,12 +8,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    margin: 0;  
+    margin: 0;
     font-family: 'Pretendard-Regular', sans-serif;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     vertical-align: baseline;
     line-height: 1;
     font-size: 100%;

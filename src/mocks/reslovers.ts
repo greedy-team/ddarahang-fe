@@ -9,6 +9,7 @@ export const travleListResolver = ({ request }: { request: Request }) => {
     const region = url.searchParams.get('regionName');
     console.log(countryName, region);
     const response = mockTravelList;
+
     return HttpResponse.json(response, {
       status: 200,
       headers: {
