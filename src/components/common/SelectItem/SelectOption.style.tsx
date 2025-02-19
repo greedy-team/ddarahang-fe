@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { size, colors } from '../../../styles/Theme';
 
-export const Option = styled.li<{ isCountryOption: boolean }>`
+export const Option = styled.li`
   list-style: none;
   display: flex;
   flex-direction: row;
-  width: ${({ isCountryOption }) => (isCountryOption ? '18.75rem' : '23rem')};
+  width: 22rem;
   height: 3.75rem;
   padding-left: ${size.SIZE_002};
   border-radius: 0.625rem;
