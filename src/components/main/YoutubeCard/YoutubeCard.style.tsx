@@ -1,41 +1,46 @@
 import styled from 'styled-components';
+import { colors } from '../../../styles/Theme';
 
 export const YoutubeCardContainer = styled.div`
   display: flex;
-  max-width: 342px;
-  max-height: 315px;
+  flex-direction: column;
+  width: 342px;
+  height: 315px;
   margin: 12px;
-  padding-top: 17px;
-  padding-left: 13px;
-  padding-right: 13px;
-  padding-bottom: 14px;
+  padding: 17px 13px 14px 13px;
   border-radius: 15px;
-  border: 1px solid #f5f5f5;
+  border: 1px solid ${colors.GRAY_200};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.51);
-  background: #fff;
+  background: ${colors.WHITE};
 `;
 
 export const YoutubeThumbnail = styled.img`
   width: 100%;
-  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
   border-radius: 10px;
 `;
 
 export const YoutubeTitle = styled.h2`
-  width: 100%;
   font-size: 18px;
-  margin: 16.5px 13px 6px 13px;
-  color: #000;
+  margin-top: 16.5px;
+  margin-bottom: 6px;
+  word-wrap: break-word;
+  overflow: hidden;
+  color: ${colors.BLACK};
 `;
 
-export const YoutubeChannelName = styled.p`
+export const YoutubeChannelName = styled.div`
   font-size: 14px;
   margin: 4px 0;
-  color: #757575;
+  color: ${colors.GREY_500};
 `;
 
-export const MetaData = styled.p`
+export const MetaData = styled.div`
+  display: flex;
+  width: 100%;
   font-size: 14px;
   margin: 4px 0;
-  color: #757575;
+  color: ${colors.GREY_500};
+  gap: 10px;
 `;
