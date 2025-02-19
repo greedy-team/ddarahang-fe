@@ -9,14 +9,17 @@ interface SelectProps {
 
 export const SelectOptionList = ({ options, isCountryOption }: SelectProps) => {
   return (
-    <SelectOptionListContainer role='listbox'>
+    <SelectOptionListContainer
+      role='listbox '
+      isCountryOption={isCountryOption}
+    >
       {options.map((option) => (
         <SelectOption
-          key={option.locationlabel}
+          key={option.locationLabel}
           imgUrl={option.imgUrl}
-          locationLabel={option.locationlabel}
-          locationType={option.locationtype}
-          isCountryOption={isCountryOption}
+          locationLabel={option.locationLabel}
+          locationType={option.locationType}
+          isCountryOption={option.isCountryOption}
         />
       ))}
     </SelectOptionListContainer>

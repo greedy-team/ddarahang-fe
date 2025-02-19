@@ -8,16 +8,12 @@ interface SelectOptionProps {
 }
 
 const SelectOption = ({
-  isCountryOption = true,
   imgUrl = './image/korea.jpg',
   locationLabel = '대한민국',
   locationType = '국가',
 }: SelectOptionProps) => {
   return (
-    <Option
-      isCountryOption={isCountryOption}
-      role='option'
-    >
+    <Option role='option'>
       <Image
         width={40}
         height={38}

@@ -10,8 +10,8 @@ export const SelectTriggerButton = styled.button`
   width: 20rem;
   height: 70px;
   background-color: ${colors.WHITE};
-  border: ${size.SIZE_001} solid ${colors.GRAY_200};
   border-radius: ${size.SIZE_006};
+  border: none;
 `;
 
 export const SelectLabel = styled.span`

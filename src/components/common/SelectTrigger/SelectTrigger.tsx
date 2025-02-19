@@ -1,11 +1,11 @@
-import { SelectTriggerButton, SelectLabel, SelectOption } from './selectTrigger.style';
+import { SelectTriggerButton, SelectLabel, SelectOption } from './SelectTrigger.style';
 
 interface SelectTriggerType {
-  selectedOption: string;
   selectLabel: string;
+  selectedOption: string;
 }
 
-const SelectTrigger = ({ selectedOption, selectLabel }: SelectTriggerType) => {
+const SelectTrigger = ({ selectLabel, selectedOption }: SelectTriggerType) => {
   return (
     <SelectTriggerButton>
       <SelectLabel>{selectLabel}</SelectLabel>

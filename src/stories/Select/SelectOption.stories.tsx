@@ -40,7 +40,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     imgUrl: './image/korea.jpg',
-    locationLabel: '대한민국',
+    locationLabel: '일본',
     locationType: '국가',
     isCountryOption: true,
   },

@@ -18,8 +18,8 @@ const meta = {
     },
     isCountryOption: {
       control: 'boolean',
-      description: '나라혹은 지역의 이름',
-      defaultValue: '대한민국',
+      description: '나라 옵션인지 지역 옵션인지',
+      defaultValue: true,
     },
   },
 } satisfies Meta<typeof SelectOptionList>;
