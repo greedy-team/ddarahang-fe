@@ -7,15 +7,20 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Pretendard-Regular', sans-serif;
+    box-sizing: border-box;
+}
+
   body {
     margin: 0;
-    font-family: 'Pretendard-Regular', sans-serif;
     padding: 0;
     display: flex;
     vertical-align: baseline;
     line-height: 1;
     font-size: 100%;
-    box-sizing: border-box;
 }
 
 h1,
