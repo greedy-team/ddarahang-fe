@@ -10,7 +10,7 @@ const GlobalHeader = () => {
       <CircleButton
         color={colors.WHITE}
         iconAlt='로그인 아이콘'
-        iconPath='./LoginIcon.svg'
+        iconPath='./icon/LoginIcon.svg'
         onClick={() => {}}
       />
     </GlobalHeaderWrapper>
