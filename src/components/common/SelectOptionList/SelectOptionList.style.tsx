@@ -3,7 +3,7 @@ import { size, colors } from '../../../styles/Theme';
 
 export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean }>`
   position: absolute;
-  top: 20%;
+  top: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
