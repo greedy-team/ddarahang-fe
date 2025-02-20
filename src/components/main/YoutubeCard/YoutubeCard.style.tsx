@@ -11,7 +11,6 @@ export const YoutubeCardContainer = styled.div`
   border-radius: 15px;
   border: 1px solid ${colors.GRAY_200};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.51);
-  background: ${colors.WHITE};
 `;
 
 export const YoutubeThumbnail = styled.img`
@@ -25,7 +24,10 @@ export const YoutubeTitle = styled.h2`
   font-size: 18px;
   margin-top: 16.5px;
   margin-bottom: 6px;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   color: ${colors.BLACK};
 `;
