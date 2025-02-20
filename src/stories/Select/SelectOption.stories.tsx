@@ -17,7 +17,7 @@ const meta = {
     },
     locationLabel: {
       control: 'text',
-      description: '나라혹은 지역의 이름',
+      description: '나라 혹은 지역의 이름',
       defaultValue: '대한민국',
     },
     locationType: {
