@@ -7,23 +7,23 @@ import {
 } from './YoutubeCard.style';
 
 interface YoutubeCardProps {
-  thumbnailUrl: string;
+  imgUrl: string;
   title: string;
-  channelName: string;
+  creator: string;
   uploadDate: string;
   viewCount: string;
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const YoutubeCard = ({ thumbnailUrl, title, channelName, uploadDate, viewCount, onClick }: YoutubeCardProps) => {
+const YoutubeCard = ({ imgUrl, title, creator, uploadDate, viewCount, onClick }: YoutubeCardProps) => {
   return (
     <YoutubeCardContainer onClick={onClick}>
       <YoutubeThumbnail
-        src={thumbnailUrl}
+        src={imgUrl}
         alt={title}
       />
       <YoutubeTitle>{title}</YoutubeTitle>
-      <YoutubeChannelName>{channelName}</YoutubeChannelName>
+      <YoutubeChannelName>{creator}</YoutubeChannelName>
       <MetaData>
         <span>{uploadDate}</span>
         <span>{viewCount}</span>

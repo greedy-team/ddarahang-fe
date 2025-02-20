@@ -12,7 +12,7 @@ const meta = {
   tags: ['autodocs'],
 
   argTypes: {
-    thumbnailUrl: {
+    imgUrl: {
       control: 'text',
       description: '썸네일 이미지 URL',
       defaultValue: '',
@@ -22,7 +22,7 @@ const meta = {
       description: '영상 제목',
       defaultValue: '부산 먹방 여행 3편 : 이 정도면 부산을 다 먹고 간다고 할 수 있쥐😎 해운대 요트...',
     },
-    channelName: {
+    creator: {
       control: 'text',
       description: '채널 이름',
       defaultValue: '핫도시락HDSR',
@@ -54,10 +54,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    thumbnailUrl: 'https://img.youtube.com/vi/NbEL5uoJxUE/maxresdefault.jpg',
+    imgUrl: 'https://img.youtube.com/vi/NbEL5uoJxUE/maxresdefault.jpg',
     title:
       '[vlog] 나 혼자 오사카여행🍥 ‘인생맛집’의 향연 | 3박4일 코스와 경비📝 (난바역 가성비 호텔, 난바&우메다 맛집과 쇼핑, 편의점 추천간식, 크리스마스 마켓・・)',
-    channelName: 'Daily Joy조이',
+    creator: 'Daily Joy조이',
     uploadDate: '2023-12-21',
     viewCount: '57만회',
   },
