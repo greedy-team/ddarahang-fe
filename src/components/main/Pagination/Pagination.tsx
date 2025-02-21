@@ -32,7 +32,7 @@ const Pagination = ({ color, onClick, pageSize }: Pagination) => {
       <NextPageButton
         color={colors.WHITE}
         size={size.SIZE_011}
-        iconPath='./image/next.svg'
+        iconPath='./icon/next.svg'
         iconAlt='다음 넘어가기 아이콘'
         onClick={() => {}}
       ></NextPageButton>
