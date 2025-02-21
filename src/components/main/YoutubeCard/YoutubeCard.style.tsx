@@ -5,9 +5,9 @@ export const YoutubeCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: ${size.SIZE_023};
-  height: ${size.SIZE_020};
+  height: ${size.SIZE_022};
   margin: ${size.SIZE_007};
-  padding: ${size.SIZE_021} ${size.SIZE_021} ${size.SIZE_008} ${size.SIZE_007};
+  padding: ${size.SIZE_007} ${size.SIZE_007} ${size.SIZE_008} ${size.SIZE_007};
   border-radius: ${size.SIZE_008};
   border: 1px solid ${colors.GRAY_200};
   box-shadow: ${size.SIZE_001} ${size.SIZE_005} ${size.SIZE_005} rgba(0, 0, 0, 0.51);
