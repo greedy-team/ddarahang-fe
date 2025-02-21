@@ -3,7 +3,7 @@ import { colors, size } from '../../styles/Theme';
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column; /* 요소들을 세로 정렬 */
+  flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
