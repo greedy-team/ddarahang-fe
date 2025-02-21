@@ -24,9 +24,9 @@ const Pagination = ({ color, onClick, pageSize }: Pagination) => {
         <PageButton
           key={index}
           color={color}
-          onClick={() => handleClick(index)}
-          text={`${index}`}
-          isActive={activeIndex === index}
+          onClick={() => handleClick(index + 1)}
+          text={`${index + 1}`}
+          isActive={activeIndex === index + 1}
         />
       ))}
       <NextPageButton
