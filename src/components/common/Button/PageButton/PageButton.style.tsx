@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../../styles/Theme';
 
-export const StyledCircleButton = styled.button<{ color: string }>`
-  width: ${size.SIZE_016};
-  height: ${size.SIZE_016};
+export const StyledPageButton = styled.button<{ size: string; color: string }>`
+  width: ${size.SIZE_011}; // ${(props) => props.size};
+  height: ${size.SIZE_011}; // ${(props) => props.size};
   border-radius: ${size.SIZE_018};
   background: ${(props) => props.color};
   color: ${colors.WHITE};
