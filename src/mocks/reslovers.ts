@@ -2,14 +2,9 @@ import { HttpResponse } from 'msw';
 import { mockTravelList } from './data/travelListMockData';
 import { mockTravelCourseDetails } from './data/travelCourseDetailMockData';
 
-export const travleListResolver = ({ request }: { request: Request }) => {
+export const travleListResolver = () => {
   try {
-    const url = new URL(request.url);
-    const countryName = url.searchParams.get('countryName');
-    const region = url.searchParams.get('regionName');
-    console.log(countryName, region);
     const response = mockTravelList;
-
     return HttpResponse.json(response, {
       status: 200,
       headers: {
