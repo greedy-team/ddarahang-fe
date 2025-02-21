@@ -5,6 +5,7 @@ const SortDropdown = () => {
     <Dropdown>
       <Dropdown.Trigger onClick={() => {}}>
         <span>정렬 기준</span>
+        {/** 이미지 아이콘을 클릭했을 때 180도 회전하도록 추후 구현 */}
         <img
           width={24}
           height={24}
