@@ -1,4 +1,4 @@
-import { colors } from '../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 import SearchButton from '../Button/CircleButton/CircleButton';
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer } from './SelectTab.style';
@@ -16,6 +16,7 @@ const SelectTab = () => {
       />
       <SearchButton
         color={colors.PRIMARY}
+        size={size.SIZE_016}
         iconPath='./image/search.svg'
         iconAlt='검색 아이콘'
         onClick={() => {}}

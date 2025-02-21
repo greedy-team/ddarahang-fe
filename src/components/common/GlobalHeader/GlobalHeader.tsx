@@ -1,14 +1,19 @@
-import { colors } from '../../../styles/Theme';
 import CircleButton from '../Button/CircleButton/CircleButton';
 import Logo from '../Logo/Logo';
 import { GlobalHeaderWrapper } from './GlobalHeader.style';
+import { size } from '../../../styles/Theme';
 
-const GlobalHeader = () => {
+interface GlobalHeaderPorps {
+  color: string;
+}
+
+const GlobalHeader = ({ color }: GlobalHeaderPorps) => {
   return (
     <GlobalHeaderWrapper>
       <Logo />
       <CircleButton
-        color={colors.WHITE}
+        color={color}
+        size={size.SIZE_016}
         iconAlt='로그인 아이콘'
         iconPath='./icon/LoginIcon.svg'
         onClick={() => {}}
