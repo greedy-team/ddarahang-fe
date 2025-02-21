@@ -3,11 +3,11 @@ import Logo from '../Logo/Logo';
 import { GlobalHeaderWrapper } from './GlobalHeader.style';
 import { size } from '../../../styles/Theme';
 
-interface GlobalHeaderPorps {
+interface GlobalHeaderProps {
   color: string;
 }
 
-const GlobalHeader = ({ color }: GlobalHeaderPorps) => {
+const GlobalHeader = ({ color }: GlobalHeaderProps) => {
   return (
     <GlobalHeaderWrapper>
       <Logo />
