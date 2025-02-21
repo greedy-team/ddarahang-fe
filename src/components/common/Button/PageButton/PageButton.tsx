@@ -2,16 +2,16 @@ import { StyledPageButton } from './PageButton.style';
 
 interface PageButtonProps {
   color: string;
-  size: string;
   text?: string | null;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  isActive: boolean;
+  onClick: () => void;
 }
 
-const PageButton = ({ text, color, size, onClick }: PageButtonProps) => {
+const PageButton = ({ text, color, isActive, onClick }: PageButtonProps) => {
   return (
     <StyledPageButton
+      isActive={isActive}
       color={color}
-      size={size}
       onClick={onClick}
     >
       <p>{text}</p>
