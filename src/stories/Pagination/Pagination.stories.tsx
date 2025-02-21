@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action as fn } from '@storybook/addon-actions';
-import { colors, size } from '../../styles/Theme';
+import { colors } from '../../styles/Theme';
 import Pagination from '../../components/main/Pagination/Pagination';
 
 const meta = {
@@ -36,7 +36,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     pageSize: 5,
-    size: size.SIZE_008,
     color: colors.WHITE,
     onClick: () => {},
   },

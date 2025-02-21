@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PageButton from '../../common/Button/PageButton/PageButton';
 import { PaginationContainer } from './Pagination.style';
+import NextPageButton from '../../common/Button/CircleButton/CircleButton';
+import { colors, size } from '../../../styles/Theme';
 
 interface Pagination {
   color: string;
@@ -27,6 +29,13 @@ const Pagination = ({ color, onClick, pageSize }: Pagination) => {
           isActive={activeIndex === index}
         />
       ))}
+      <NextPageButton
+        color={colors.WHITE}
+        size={size.SIZE_011}
+        iconPath='./image/next.svg'
+        iconAlt='다음 넘어가기 아이콘'
+        onClick={() => {}}
+      ></NextPageButton>
     </PaginationContainer>
   );
 };
