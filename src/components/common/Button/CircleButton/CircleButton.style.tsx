@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../../styles/Theme';
 
-export const StyledCircleButton = styled.button<{ color: string }>`
-  width: ${size.SIZE_016};
-  height: ${size.SIZE_016};
+export const StyledCircleButton = styled.button<{ size: string; color: string }>`
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
   border-radius: ${size.SIZE_018};
   background: ${(props) => props.color};
   color: ${colors.WHITE};
@@ -11,4 +11,10 @@ export const StyledCircleButton = styled.button<{ color: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  cursor: pointer;
+
+  &:hover {
+    background: ${colors.GRAY_200};
+  }
 `;

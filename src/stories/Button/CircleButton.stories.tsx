@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action as fn } from '@storybook/addon-actions';
-import { colors } from '../../styles/Theme';
+import { colors, size } from '../../styles/Theme';
 import CircleButton from '../../components/common/Button/CircleButton/CircleButton';
 
 const meta = {
@@ -27,6 +27,11 @@ const meta = {
       description: '원형 버튼의 색상',
       defaultValue: colors.PRIMARY,
     },
+    size: {
+      control: 'text',
+      description: '원형 버튼의 크기',
+      defaultValue: size.SIZE_016,
+    },
     text: {
       control: 'text',
       description: '원형 버튼의 텍스트',
@@ -48,6 +53,7 @@ export const Default: Story = {
     iconAlt: '검색 아이콘',
     iconPath: './image/search.svg',
     color: colors.PRIMARY,
+    size: size.SIZE_016,
     onClick: () => {},
   },
 };

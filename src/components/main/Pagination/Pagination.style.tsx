@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { size } from '../../../styles/Theme';
 
-export const HeaderWrapper = styled.header`
+export const PaginationContainer = styled.header`
   width: 100vw;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  font-family: 'Pretendard-SemiBold', sans-serif;
+  gap: ${size.SIZE_014};
+  justify-content: center;
+  align-items: center;
 `;
