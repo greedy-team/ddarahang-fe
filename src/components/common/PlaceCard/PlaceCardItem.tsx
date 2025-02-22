@@ -1,5 +1,5 @@
 import { TravelCourses } from '../../../types';
-import { PlaceCardContainer, PlaceCardWrapper, PlaceStep } from './PlaceCardItem.style';
+import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep } from './PlaceCardItem.style';
 
 interface PlaceCardProps {
   travelCources: Omit<TravelCourses, 'day'>;
@@ -9,7 +9,7 @@ interface PlaceCardProps {
 const PlaceCardItem = ({ travelCources }: PlaceCardProps) => {
   return (
     <PlaceCardWrapper>
-      <PlaceStep>{travelCources.orderInDay}</PlaceStep>
+      <PlaceCircleStep>{travelCources.orderInDay}</PlaceCircleStep>
       <PlaceCardContainer>
         <span>{travelCources.placeName}</span>
       </PlaceCardContainer>
