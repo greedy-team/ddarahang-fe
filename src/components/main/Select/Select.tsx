@@ -1,6 +1,6 @@
 import { SelectContainer } from './Select.style';
 import { SelectOptionList } from '../../common/SelectOptionList/SelectOptionList';
-import { REGIONOPTION, COUNTRYOPTION } from '../../../constants';
+import { JAPANREGIONOPTION, COUNTRYOPTION, KOREAREGIONOPTION } from '../../../constants';
 import SelectTab from '../../common/SelectTab/SelectTab';
 
 const Select = () => {
@@ -12,7 +12,11 @@ const Select = () => {
         isCountryOption={true}
       />
       <SelectOptionList
-        options={REGIONOPTION}
+        options={KOREAREGIONOPTION}
+        isCountryOption={false}
+      />
+      <SelectOptionList
+        options={JAPANREGIONOPTION}
         isCountryOption={false}
       />
     </SelectContainer>
