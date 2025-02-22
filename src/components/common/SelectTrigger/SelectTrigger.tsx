@@ -1,6 +1,6 @@
 import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './SelectTrigger.style';
 import CircleButton from '../Button/CircleButton/CircleButton';
-import { colors } from '../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 
 interface SelectTriggerType {
   selectLabel: string;
@@ -16,6 +16,7 @@ const SelectTrigger = ({ selectLabel, selectedOption }: SelectTriggerType) => {
       </SelectTextWrapper>
       {selectLabel === '여행 지역' && (
         <CircleButton
+          size={size.SIZE_016}
           color={colors.PRIMARY}
           iconPath='./image/search.svg'
           iconAlt='검색 아이콘'
