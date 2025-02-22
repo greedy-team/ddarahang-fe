@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { colors, size } from '../../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 
 export const PlaceCardContainer = styled.li`
-  width: ${size.SIZE_025};
+  width: 100%;
   height: ${size.SIZE_016};
   padding: ${size.SIZE_010};
   display: flex;
@@ -29,6 +29,7 @@ export const PlaceCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 80%;
   gap: ${size.SIZE_010};
 `;
 

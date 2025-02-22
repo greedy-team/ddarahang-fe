@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { size } from '../../../../styles/Theme';
 
-export const PlaceCardListContainer = styled.div`
-  width: ${size.SIZE_026};
-  height: 400px; //height 임의 지정했습니다.
+export const Panels = styled.div`
+  width: 100%;
+  height: 400px;
   overflow-y: auto;
   padding: ${size.SIZE_008};
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: ${size.SIZE_011};
 `;

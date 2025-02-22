@@ -1,4 +1,4 @@
-import { TravelCourses } from '../../../../types';
+import { TravelCourses } from '../../../types';
 import { PlaceCardContainer, PlaceCardWrapper, PlaceStep } from './PlaceCardItem.style';
 
 interface PlaceCardProps {

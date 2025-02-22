@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { action as fn } from '@storybook/addon-actions';
 
-import PlaceCard from '../../components/common/PlaceCard/PlaceCardItem/PlaceCardItem';
+import PlaceCard from '../../components/common/PlaceCard/PlaceCardItem';
 
 const meta = {
   title: 'Card/PlaceCard',

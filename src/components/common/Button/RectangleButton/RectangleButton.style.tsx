@@ -9,7 +9,8 @@ export const StyledRectangleButton = styled.button`
   border-radius: ${size.SIZE_005};
   transition: all 0.3s ease;
   cursor: pointer;
-
+  font-size: ${size.SIZE_009};
+  font-family: 'Pretendard-SemiBold', sans-serif;
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 
   &:hover {

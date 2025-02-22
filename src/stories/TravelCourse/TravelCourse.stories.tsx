@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Tab from '../../components/common/Tabs/Tab/Tab';
+import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
 
 const meta = {
-  title: 'Tab/Tab',
-  component: Tab,
+  title: 'TravelCourse/TravelCourse',
+  component: TravelCourse,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Tab>;
+} satisfies Meta<typeof TravelCourse>;
 
 export default meta;
 
