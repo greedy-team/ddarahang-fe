@@ -32,6 +32,7 @@ export const SelectOption = styled.span`
 
 export const SelectTextWrapper = styled.div`
   display: flex;
+  min-width: 200px;
   flex-direction: column;
   align-items: flex-start;
 `;
