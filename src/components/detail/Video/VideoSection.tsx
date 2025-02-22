@@ -12,18 +12,15 @@ import {
   VideoMeta,
 } from './VideoSection.style';
 import { size, colors } from '../../../styles/Theme';
+import { TravelCourseDetail } from '../../../types';
 
-interface YoutubeVideoProps {
+interface VideoProps extends Pick<TravelCourseDetail, 'creator' | 'title' | 'viewCount' | 'uploadDate'> {
   videoId: string;
   country: string;
   region: string;
-  creator: string;
-  title: string;
-  viewCount: number;
-  uploadDate: string;
 }
 
-const Video = ({ videoId, country, region, creator, title, viewCount, uploadDate }: YoutubeVideoProps) => {
+const Video = ({ videoId, country, region, creator, title, viewCount, uploadDate }: VideoProps) => {
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
