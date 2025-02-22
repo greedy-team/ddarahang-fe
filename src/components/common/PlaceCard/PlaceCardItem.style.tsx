@@ -29,7 +29,7 @@ export const PlaceCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  width: 80%;
   gap: ${size.SIZE_010};
 `;
 
