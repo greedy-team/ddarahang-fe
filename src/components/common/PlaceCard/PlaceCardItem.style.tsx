@@ -29,14 +29,15 @@ export const PlaceCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 80%;
+  width: 100%;
   gap: ${size.SIZE_010};
 `;
 
-export const PlaceStep = styled.div`
+export const PlaceCircleStep = styled.div`
   width: ${size.SIZE_011};
   height: ${size.SIZE_011};
   font-size: ${size.SIZE_007};
+  padding: ${size.SIZE_006};
   color: ${colors.WHITE};
   background-color: ${colors.LIGHT_BLUE};
   display: flex;
