@@ -77,7 +77,7 @@ a {
   }
 
   &::-webkit-scrollbar-corner {
-    background-color: transparent;  /* 스크롤 코너 색상 */
+    background-color: transparent;  
   }
 
 /**Firefox 브라우저 
