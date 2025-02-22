@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { size } from '../../../styles/Theme';
 
 export const SelectContainer = styled.div`
-  height: 300px;
+  height: ${size.SIZE_025};
   display: flex;
   flex-direction: row;
   position: relative;
@@ -9,7 +10,7 @@ export const SelectContainer = styled.div`
 
 export const SelectWrapper = styled.div`
   width: 20rem;
-  height: 300px;
+  height: ${size.SIZE_025};
   display: flex;
   flex-direction: column;
   position: relative;

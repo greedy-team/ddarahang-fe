@@ -1,5 +1,5 @@
 import SelectOption from '../SelectItem/SelectOption';
-import { SelectOptionType } from '../../../type';
+import { SelectOptionType } from '../../../types';
 import { SelectOptionListContainer } from './SelectOptionList.style';
 
 interface SelectProps {
