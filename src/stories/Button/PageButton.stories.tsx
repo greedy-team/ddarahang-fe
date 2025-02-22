@@ -22,6 +22,10 @@ const meta = {
       description: '페이지 버튼의 텍스트',
       defaultValue: '버튼입니다.',
     },
+    isActive: {
+      control: 'boolean',
+      description: '페이지 버튼 활성화',
+    },
     onClick: { action: 'clicked', description: '버튼 클릭 이벤트' },
   },
   args: {
@@ -35,8 +39,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: size.SIZE_008,
+    text: '1',
     color: colors.WHITE,
+    isActive: false,
     onClick: () => {},
   },
 };
