@@ -71,10 +71,12 @@ export const VideoTitle = styled.h2`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  line-height: 1.3;
 `;
 
 export const VideoMeta = styled.p`
   font-size: ${size.SIZE_009};
+  word-spacing: 3px;
   color: ${colors.GREY_500};
 
   & > span {
