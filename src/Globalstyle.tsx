@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { colors, size } from './styles/Theme';
 
 const GlobalStyle = createGlobalStyle`
   /* @font-face {
@@ -64,6 +65,23 @@ a {
     display: inline-block;
 }
 
+  &::-webkit-scrollbar {
+    width: ${size.SIZE_006};
+    height: auto;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${colors.GRAY_200};
+    border-radius: 15px;
+   width:${size.SIZE_006};;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;  /* 스크롤 코너 색상 */
+  }
+
+/**Firefox 브라우저 
+스크롤바도 추가 해야함 */
 `;
 
 export default GlobalStyle;
