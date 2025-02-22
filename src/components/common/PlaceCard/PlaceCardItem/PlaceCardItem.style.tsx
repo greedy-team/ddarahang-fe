@@ -35,7 +35,7 @@ export const PlaceCardWrapper = styled.div`
 export const PlaceStep = styled.div`
   width: ${size.SIZE_011};
   height: ${size.SIZE_011};
-  font-size: ${size.SIZE_008};
+  font-size: ${size.SIZE_007};
   color: ${colors.WHITE};
   background-color: ${colors.LIGHT_BLUE};
   display: flex;
