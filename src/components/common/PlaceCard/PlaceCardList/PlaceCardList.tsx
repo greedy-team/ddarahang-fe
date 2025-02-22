@@ -18,6 +18,7 @@ const TRAVELCOURSES = [
     placeAddress: '',
   },
   {
+    orderInDay: 4,
     placeName: '광안리 해수욕장',
     placeAddress: '',
   },
