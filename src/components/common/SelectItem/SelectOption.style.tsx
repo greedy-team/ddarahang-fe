@@ -5,13 +5,19 @@ export const Option = styled.li`
   list-style: none;
   display: flex;
   flex-direction: row;
-  width: ${size.SIZE_023};
-  height: 3.75rem;
-  padding-left: ${size.SIZE_003};
+  width: 95%;
+  padding: ${size.SIZE_007};
   border-radius: ${size.SIZE_006};
   background-color: ${colors.WHITE};
   gap: ${size.SIZE_006};
   align-items: center;
+  margin-left: 10px;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: ${colors.SECONDARY};
+    cursor: pointer;
+  }
 `;
 
 export const Image = styled.img`
@@ -23,9 +29,11 @@ export const LocationLabelWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: ${size.SIZE_003};
+  font-family: 'Pretendard-SemiBold', sans-serif;
 `;
 
 export const LocationTypeText = styled.span`
   color: ${colors.GREY_500};
   font-size: ${size.SIZE_007};
+  font-family: 'Pretendard-Regular', sans-serif;
 `;

@@ -1,5 +1,4 @@
-import { colors, size } from '../../../styles/Theme';
-import SearchButton from '../Button/CircleButton/CircleButton';
+
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer } from './SelectTab.style';
 
@@ -13,13 +12,6 @@ const SelectTab = () => {
       <SelectTrigger
         selectLabel='여행 지역'
         selectedOption='부산'
-      />
-      <SearchButton
-        color={colors.PRIMARY}
-        size={size.SIZE_016}
-        iconPath='./image/search.svg'
-        iconAlt='검색 아이콘'
-        onClick={() => {}}
       />
     </SelectTabContainer>
   );

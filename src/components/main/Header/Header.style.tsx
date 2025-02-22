@@ -6,5 +6,6 @@ export const HeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${size.SIZE_006}
+  gap: 10px;
+  font-family: 'Pretendard-SemiBold', sans-serif;
 `;

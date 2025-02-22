@@ -13,11 +13,17 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     font-style: normal;
   }
+  
+  @font-face {
+  font-family: 'Pretendard-SemiBold';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
 
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Pretendard-Regular', sans-serif;
     box-sizing: border-box;
 }
 
@@ -25,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     display: flex;
+    font-family: 'Pretendard-Regular', sans-serif;
     vertical-align: baseline;
     line-height: 1;
     font-size: 100%;

@@ -3,15 +3,21 @@ import { colors, size } from '../../../styles/Theme';
 
 export const SelectTriggerButton = styled.button`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-left: ${size.SIZE_010};
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${size.SIZE_010};
   gap: ${size.SIZE_002};
-  width: ${size.SIZE_022};
-  height: ${size.SIZE_016};
+  width: 50%;
+  height: 100%;
   background-color: ${colors.WHITE};
   border-radius: ${size.SIZE_008};
   border: none;
+  transition: background-color 0.5s ease;
+
+  &:hover {
+    background-color: ${colors.GRAY_200};
+  }
 `;
 
 export const SelectLabel = styled.span`
@@ -22,4 +28,11 @@ export const SelectLabel = styled.span`
 export const SelectOption = styled.span`
   color: ${colors.GREY_800};
   font-size: ${size.SIZE_009};
+`;
+
+export const SelectTextWrapper = styled.div`
+  display: flex;
+  min-width: 200px;
+  flex-direction: column;
+  align-items: flex-start;
 `;
