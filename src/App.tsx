@@ -22,6 +22,7 @@ function App() {
       <Wrapper
         apiKey={apiKey}
         render={render}
+        libraries={['marker']}
       />
     </>
   );
