@@ -22,4 +22,9 @@ export const Circle = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 2;
+  transition: 0.3s all;
+
+  &:hover {
+    background-color: ${colors.LIGHT_BLUE};
+  }
 `;
