@@ -1,30 +1,39 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TravelMapWrapper } from './TravelMap.style';
 
 const TravelMap = () => {
-  const ref = useRef<HTMLDivElement>(null);
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
 
   useEffect(() => {
-    if (ref.current) {
-      const initialMap = new window.google.maps.Map(ref.current, {
-        center: {
-          lat: 37.5,
-          lng: 127.0,
-        },
-        zoom: 16,
-      });
-      setTravelMap(initialMap);
-    }
+    const container = document.createElement('div');
+
+    container.id = 'map';
+    container.style.position = 'absolute';
+    container.style.top = '0';
+    container.style.right = '0';
+    container.style.height = '100vh';
+    container.style.width = '50vw';
+
+    document.body.appendChild(container);
+
+    const instance = new window.google.maps.Map(container, {
+      center: {
+        lat: 33.4996,
+        lng: 126.5312,
+      },
+
+      zoom: 11,
+      mapId: '404836e1d93e11d',
+    });
+
+    setTravelMap(instance);
+
+    return () => {
+      document.body.removeChild(container);
+    };
   }, []);
 
-  return (
-    <TravelMapWrapper
-      ref={ref}
-      id='map'
-      style={{ minHeight: '100vh' }}
-    ></TravelMapWrapper>
-  );
+  return <></>;
 };
 
 export default TravelMap;
