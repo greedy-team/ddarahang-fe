@@ -21,7 +21,7 @@ const TravelMap = () => {
         lng: 126.5312,
       },
       zoom: 10,
-      mapId: '404836e1d93e11d',
+      mapId: '54070c16532231ab',
       disableDefaultUI: true,
       clickableIcons: false,
       minZoom: 10,
