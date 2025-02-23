@@ -1,17 +1,29 @@
 import GlobalStyle from './Globalstyle';
-import { useEffect } from 'react';
-import Header from './components/main/Header/Header';
-import { getTravelVideoList } from './apis/getTravelVideoList';
+import { Status, Wrapper } from '@googlemaps/react-wrapper';
+import TravelMap from './components/common/TravelMap/TravelMap';
+
+const render = (status: Status) => {
+  switch (status) {
+    case Status.LOADING:
+      return <>로딩중...</>;
+    case Status.FAILURE:
+      return <>에러 발생...</>;
+    case Status.SUCCESS:
+      return <TravelMap />;
+  }
+};
 
 function App() {
-  useEffect(() => {
-    getTravelVideoList();
-  }, []);
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
 
   return (
     <>
       <GlobalStyle />
-      <Header />
+      <Wrapper
+        apiKey={apiKey}
+        render={render}
+        libraries={['marker']}
+      />
     </>
   );
 }
