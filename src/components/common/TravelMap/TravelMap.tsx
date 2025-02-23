@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { TravelMapWrapper } from './TravelMap.style';
 
 const TravelMap = () => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
