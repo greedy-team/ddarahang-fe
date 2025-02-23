@@ -11,11 +11,13 @@ const Tab = () => {
         {['DAY1', 'DAY2', 'DAY3'].map((tab) => {
           return <TabItem>{tab}</TabItem>;
         })}
-        <RectangleButton
-          text='DAY4'
-          color={colors.WHITE}
-          onClick={() => {}}
-        />
+        <TabItem>
+          <RectangleButton
+            text='DAY4'
+            color={colors.WHITE}
+            onClick={() => {}}
+          />
+        </TabItem>
       </TabList>
     </TabContainer>
   );

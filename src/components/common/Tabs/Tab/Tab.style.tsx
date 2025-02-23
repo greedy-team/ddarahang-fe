@@ -14,20 +14,23 @@ export const TabContainer = styled.div`
 export const TabList = styled.ul`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  padding: ${size.SIZE_006} ${size.SIZE_009}; //패딩 값 수정 필요
+
+  :last-child {
+    border-right: none;
+  }
 `;
 
 export const TabItem = styled.li`
   list-style: none;
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: center;
   cursor: pointer;
   font-size: ${size.SIZE_009};
-  width: 100px;
   font-family: 'Pretendard-SemiBold', sans-serif;
   border-right: 2px solid ${colors.GRAY_300};
   transition: all 0.3s ease;
