@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
 export const PlaceCardContainer = styled.li`
+  min-width: ${size.SIZE_021};
   width: 100%;
   height: ${size.SIZE_016};
   padding: ${size.SIZE_010};
