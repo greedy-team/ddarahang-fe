@@ -23,9 +23,3 @@ export const Circle = styled.div`
   justify-content: center;
   z-index: 2;
 `;
-
-export const IconWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  z-index: 1;
-`;

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { createRoot } from 'react-dom/client';
 import TravelMapMarker from '../TravelMapMarker/TravelMapMarker';
 
 const TravelMap = () => {
@@ -16,7 +15,6 @@ const TravelMap = () => {
     container.style.width = '50vw';
 
     document.body.appendChild(container);
-
     const instance = new window.google.maps.Map(container, {
       center: {
         lat: 33.4996,
@@ -24,21 +22,10 @@ const TravelMap = () => {
       },
       zoom: 10,
       mapId: '404836e1d93e11d',
-
       disableDefaultUI: true,
       clickableIcons: false,
       minZoom: 10,
       maxZoom: 18,
-      gestureHandling: 'greedy',
-      restriction: {
-        latLngBounds: {
-          north: 39,
-          south: 32,
-          east: 132,
-          west: 124,
-        },
-        strictBounds: true,
-      },
     });
 
     setTravelMap(instance);
@@ -48,28 +35,17 @@ const TravelMap = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const markerContainer = document.createElement('div');
-    const markerInstance = new google.maps.marker.AdvancedMarkerElement({
-      position: {
-        lat: 33.354,
-        lng: 126.5312,
-      },
-      map: travelMap,
-      title: '마커',
-      content: markerContainer,
-    });
-    createRoot(markerContainer).render(<TravelMapMarker number={1} />);
-    markerInstance.addListener('click', () => {
-      alert('마커 클릭');
-    });
-
-    return () => {
-      markerInstance.map = null;
-    };
-  }, [travelMap]);
-
-  return <></>;
+  return (
+    <>
+      {travelMap && (
+        <TravelMapMarker
+          number={1}
+          travelMap={travelMap}
+          position={{ lat: 33.354, lng: 126.5312 }}
+        />
+      )}
+    </>
+  );
 };
 
 export default TravelMap;
