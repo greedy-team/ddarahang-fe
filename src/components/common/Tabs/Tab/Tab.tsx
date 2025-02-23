@@ -9,7 +9,7 @@ const Tab = () => {
     <TabContainer>
       <TabList>
         {['DAY1', 'DAY2', 'DAY3'].map((tab) => {
-          return <TabItem>{tab}</TabItem>;
+          return <TabItem key={tab}>{tab}</TabItem>;
         })}
         <TabItem>
           <RectangleButton
