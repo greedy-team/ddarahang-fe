@@ -1,4 +1,4 @@
-import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './SelectTrigger.style';
+import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './selectTrigger.style';
 import CircleButton from '../Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
 

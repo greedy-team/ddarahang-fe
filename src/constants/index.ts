@@ -134,3 +134,46 @@ export const JAPANREGIONOPTION = [
     isCountryOption: false,
   },
 ];
+
+export const TRAVELCOURSES = [
+  {
+    orderInDay: 1,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+  {
+    orderInDay: 2,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+  {
+    orderInDay: 3,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+  {
+    orderInDay: 4,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+  {
+    orderInDay: 5,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+  {
+    orderInDay: 6,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+  {
+    orderInDay: 7,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+  {
+    orderInDay: 8,
+    placeName: '광안리 해수욕장',
+    placeAddress: '',
+  },
+];

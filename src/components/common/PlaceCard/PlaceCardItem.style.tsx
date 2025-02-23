@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { colors, size } from '../../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 
 export const PlaceCardContainer = styled.li`
-  width: ${size.SIZE_025};
+  min-width: ${size.SIZE_021};
+  width: 100%;
   height: ${size.SIZE_016};
   padding: ${size.SIZE_010};
   display: flex;
@@ -29,13 +30,15 @@ export const PlaceCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 80%;
   gap: ${size.SIZE_010};
 `;
 
-export const PlaceStep = styled.div`
+export const PlaceCircleStep = styled.div`
   width: ${size.SIZE_011};
   height: ${size.SIZE_011};
   font-size: ${size.SIZE_007};
+  padding: ${size.SIZE_006};
   color: ${colors.WHITE};
   background-color: ${colors.LIGHT_BLUE};
   display: flex;
