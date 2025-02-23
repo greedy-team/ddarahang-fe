@@ -17,13 +17,14 @@ export const TabList = styled.ul`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: ${size.SIZE_006} ${size.SIZE_012};
+  padding: ${size.SIZE_006} ${size.SIZE_009}; //패딩 값 수정 필요
 `;
 
 export const TabItem = styled.li`
   list-style: none;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   cursor: pointer;
   font-size: ${size.SIZE_009};
   width: 100px;
