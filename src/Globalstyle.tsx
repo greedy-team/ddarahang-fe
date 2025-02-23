@@ -66,14 +66,19 @@ a {
 }
 
   &::-webkit-scrollbar {
-    width: ${size.SIZE_006};
-    height: auto;
+    width: ${size.SIZE_005};
+    height: ${size.SIZE_005};
+    background-color:   transparent;  
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${colors.GRAY_200};
-    border-radius: 15px;
-   width:${size.SIZE_006};;
+    background: ${colors.GRAY_300};
+    border-radius: ${size.SIZE_009};
+   width:${size.SIZE_006};
+
+   &:hover{
+     background: ${colors.GREY_400};
+   }
   }
 
   &::-webkit-scrollbar-corner {
