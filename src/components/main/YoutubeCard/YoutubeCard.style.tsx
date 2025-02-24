@@ -4,14 +4,18 @@ import { colors, size } from '../../../styles/Theme';
 export const YoutubeCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: ${size.SIZE_023};
-  height: ${size.SIZE_022};
+  max-width: 400px;
   margin: ${size.SIZE_007};
   padding: ${size.SIZE_007} ${size.SIZE_007} ${size.SIZE_008} ${size.SIZE_007};
   border-radius: ${size.SIZE_008};
   border: 1px solid ${colors.GRAY_200};
-  box-shadow: ${size.SIZE_001} ${size.SIZE_005} ${size.SIZE_005} rgba(0, 0, 0, 0.51);
-  justify-content: center;
+  box-shadow: ${size.SIZE_001} ${size.SIZE_005} ${size.SIZE_005} rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-15px);
+  }
 `;
 
 export const YoutubeThumbnail = styled.img`
@@ -26,6 +30,7 @@ export const YoutubeTitle = styled.h2`
   margin-top: ${size.SIZE_010};
   margin-bottom: ${size.SIZE_004};
   overflow-wrap: break-word;
+  line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
