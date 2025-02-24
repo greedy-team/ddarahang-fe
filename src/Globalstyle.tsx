@@ -2,31 +2,31 @@ import { createGlobalStyle } from 'styled-components';
 import { colors, size } from './styles/Theme';
 
 const GlobalStyle = createGlobalStyle`
-  /* @font-face {
+  @font-face {
     font-family: 'Pretendard-Regular';
     src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-style: normal;
-  } */
+  } 
 
-  @font-face {
-    font-family: 'Pretendard-SemiBold';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-    font-weight: 600;
-    font-style: normal;
-  }
-  
   @font-face {
   font-family: 'Pretendard-SemiBold';
   src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
-}
+  }
+
+  @font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+  }
 
   body {
     margin: 0;
@@ -36,7 +36,8 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     line-height: 1;
     font-size: 100%;
-}
+      overflow-x: hidden;
+  } 
 
 h1,
 h2,
@@ -74,7 +75,7 @@ a {
   &::-webkit-scrollbar-thumb {
     background: ${colors.GRAY_300};
     border-radius: ${size.SIZE_009};
-   width:${size.SIZE_006};
+    width:${size.SIZE_006};
 
    &:hover{
      background: ${colors.GREY_400};

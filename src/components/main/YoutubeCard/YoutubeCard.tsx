@@ -11,7 +11,7 @@ interface YoutubeCardProps {
   title: string;
   creator: string;
   uploadDate: string;
-  viewCount: string;
+  viewCount: number;
   onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
