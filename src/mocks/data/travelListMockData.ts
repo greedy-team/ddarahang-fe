@@ -66,4 +66,40 @@ export const mockTravelList: TravelList[] = [
     uploadDate: '2024-03-05',
     thumbnailUrl: 'https://img.youtube.com/vi/F--e7MGRkyU/maxresdefault.jpg',
   },
+  {
+    travelCourseId: 9,
+    creator: '맛집 탐방러',
+    title:
+      '(sub) 나 혼자 후쿠오카 2박3일 vlog | 총경비45 | 이 코스로만 가면 성공 | 유명 호텔에서 거미 | 현지인 맛집 | 후쿠오카 웨이팅 | 맛집 | 텐진 다이묘 쇼핑',
+    viewCount: 720000,
+    uploadDate: '2024-03-05',
+    thumbnailUrl: 'https://img.youtube.com/vi/F--e7MGRkyU/maxresdefault.jpg',
+  },
+  {
+    travelCourseId: 10,
+    creator: '맛집 탐방러',
+    title:
+      '(sub) 나 혼자 후쿠오카 2박3일 vlog | 총경비45 | 이 코스로만 가면 성공 | 유명 호텔에서 거미 | 현지인 맛집 | 후쿠오카 웨이팅 | 맛집 | 텐진 다이묘 쇼핑',
+    viewCount: 720000,
+    uploadDate: '2024-03-05',
+    thumbnailUrl: 'https://img.youtube.com/vi/F--e7MGRkyU/maxresdefault.jpg',
+  },
+  {
+    travelCourseId: 11,
+    creator: '맛집 탐방러',
+    title:
+      '(sub) 나 혼자 후쿠오카 2박3일 vlog | 총경비45 | 이 코스로만 가면 성공 | 유명 호텔에서 거미 | 현지인 맛집 | 후쿠오카 웨이팅 | 맛집 | 텐진 다이묘 쇼핑',
+    viewCount: 720000,
+    uploadDate: '2024-03-05',
+    thumbnailUrl: 'https://img.youtube.com/vi/F--e7MGRkyU/maxresdefault.jpg',
+  },
+  {
+    travelCourseId: 12,
+    creator: '맛집 탐방러',
+    title:
+      '(sub) 나 혼자 후쿠오카 2박3일 vlog | 총경비45 | 이 코스로만 가면 성공 | 유명 호텔에서 거미 | 현지인 맛집 | 후쿠오카 웨이팅 | 맛집 | 텐진 다이묘 쇼핑',
+    viewCount: 720000,
+    uploadDate: '2024-03-05',
+    thumbnailUrl: 'https://img.youtube.com/vi/F--e7MGRkyU/maxresdefault.jpg',
+  },
 ];

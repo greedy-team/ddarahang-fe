@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { size } from '../../styles/Theme';
 
-export const MainPageLayout = styled.div`
+export const StyledMainPageLayout = styled.div`
   min-height: 100vh;
   width: 100vw;
   height: auto;
@@ -12,7 +12,7 @@ export const MainPageLayout = styled.div`
   gap: ${size.SIZE_006};
 `;
 
-export const ContentsWrapper = styled.div`
+export const StyledContentsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_006};
