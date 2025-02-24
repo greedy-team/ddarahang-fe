@@ -10,14 +10,14 @@ import useGetTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
 import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 
-import { ITEMS_PER_PAGE } from '../../constants';
+import { VIDEO_NUMBERS_IN_PAGE } from '../../constants';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
 
   const { loading, error, videoList } = useGetTravelVideoList();
 
-  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / ITEMS_PER_PAGE), [videoList]);
+  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
 
   const handleCurrentPage = (currentPage: number) => {
     setCurrentPageNumber(currentPage);
