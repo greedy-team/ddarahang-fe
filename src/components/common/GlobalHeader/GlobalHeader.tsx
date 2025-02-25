@@ -5,19 +5,22 @@ import { size } from '../../../styles/Theme';
 
 interface GlobalHeaderProps {
   color: string;
+  isIconVisible: boolean;
 }
 
-const GlobalHeader = ({ color }: GlobalHeaderProps) => {
+const GlobalHeader = ({ color, isIconVisible }: GlobalHeaderProps) => {
   return (
-    <GlobalHeaderWrapper>
+    <GlobalHeaderWrapper isIconVisible={isIconVisible}>
       <Logo />
-      <CircleButton
-        color={color}
-        size={size.SIZE_016}
-        iconAlt='로그인 아이콘'
-        iconPath='./icon/LoginIcon.svg'
-        onClick={() => {}}
-      />
+      {isIconVisible && (
+        <CircleButton
+          color={color}
+          size={size.SIZE_016}
+          iconAlt='로그인 아이콘'
+          iconPath='./icon/LoginIcon.svg'
+          onClick={() => {}}
+        />
+      )}
     </GlobalHeaderWrapper>
   );
 };

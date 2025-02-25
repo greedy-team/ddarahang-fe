@@ -20,7 +20,7 @@ interface VideoProps extends Pick<TravelCourseDetail, 'creator' | 'title' | 'vie
   region: string;
 }
 
-const Video = ({ videoId, country, region, creator, title, viewCount, uploadDate }: VideoProps) => {
+const VideoSection = ({ videoId, country, region, creator, title, viewCount, uploadDate }: VideoProps) => {
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
@@ -58,4 +58,4 @@ const Video = ({ videoId, country, region, creator, title, viewCount, uploadDate
   );
 };
 
-export default Video;
+export default VideoSection;

@@ -7,6 +7,8 @@ export const TravelCourseContainer = styled.div`
   gap: ${size.SIZE_006};
 
   h3 {
-    padding-left: ${size.SIZE_006};
+    font-size: ${size.SIZE_010};
+    padding-left: ${size.SIZE_010};
+    font-family: 'Pretendard-SemiBold';
   }
 `;
