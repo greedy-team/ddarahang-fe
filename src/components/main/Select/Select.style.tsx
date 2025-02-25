@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { size } from '../../../styles/Theme';
 
 export const SelectContainer = styled.div`
-  height: ${size.SIZE_025};
   display: flex;
   flex-direction: row;
   position: relative;

@@ -34,6 +34,7 @@ const MainPage = () => {
   return (
     <StyledMainPageLayout>
       <Header color={colors.WHITE} />
+      <SortDropdown />
       <StyledContentsWrapper>
         <TravelVideoList
           currentPageNumber={currentPageNumber}

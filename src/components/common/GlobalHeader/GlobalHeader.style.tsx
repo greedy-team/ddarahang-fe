@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { size } from '../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 
 export const GlobalHeaderWrapper = styled.div`
   width: 100%;
@@ -8,4 +8,6 @@ export const GlobalHeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  background-color: ${colors.WHITE};
 `;

@@ -22,12 +22,13 @@ export const SelectTriggerButton = styled.button`
 
 export const SelectLabel = styled.span`
   color: ${colors.GREY_400};
-  font-size: ${size.SIZE_007};
+  font-size: ${size.SIZE_008};
 `;
 
 export const SelectOption = styled.span`
   color: ${colors.GREY_800};
   font-size: ${size.SIZE_009};
+  font-family: 'Pretendard-SemiBold', sans-serif;
 `;
 
 export const SelectTextWrapper = styled.div`
