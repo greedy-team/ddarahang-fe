@@ -70,6 +70,7 @@ export const VideoTitle = styled.h2`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow: hidden;
   line-height: 1.3;
 `;
 
