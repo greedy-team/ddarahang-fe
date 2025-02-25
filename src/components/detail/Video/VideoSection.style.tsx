@@ -7,7 +7,7 @@ export const VideoSectionContainer = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 800px;
-  padding: 20px 0;
+  padding: 0 0;
 `;
 
 export const VideoSectionHeader = styled.div`
@@ -34,8 +34,7 @@ export const VideoContainer = styled.div`
 
 export const VideoWrapper = styled.div`
   position: relative;
-  width: 100%;
-  max-width: 720px;
+  width: 90%;
   aspect-ratio: 16/9;
 `;
 
@@ -51,7 +50,7 @@ export const VideoInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  width: 90%;
   max-width: 720px;
   gap: 5px;
   padding: 10px;
