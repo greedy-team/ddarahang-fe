@@ -1,11 +1,22 @@
 import styled from 'styled-components';
-import { size } from '../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 
 export const HeaderWrapper = styled.header`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${size.SIZE_006};
+  gap: ${size.SIZE_010};
+  padding: ${size.SIZE_012};
   font-family: 'Pretendard-SemiBold', sans-serif;
+  border-bottom: 2px solid ${colors.GRAY_200};
+
+  h1 {
+    font-family: 'Pretendard-Bold', sans-serif;
+  }
+
+  p {
+    font-family: 'Pretendard-Regular', sans-serif;
+    color: ${colors.GREY_400};
+  }
 `;
