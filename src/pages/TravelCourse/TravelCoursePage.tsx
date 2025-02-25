@@ -39,11 +39,11 @@ const TravelCoursePage = () => {
         />
         <TravelCourse />
       </TravelCourseContainer>
-      {/* <Wrapper
+      <Wrapper
         apiKey={apiKey}
         render={render}
         libraries={['marker']}
-      /> */}
+      />
     </PageContainer>
   );
 };
