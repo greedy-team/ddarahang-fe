@@ -1,22 +1,25 @@
+import { CountryType } from '../../../types';
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer } from './SelectTab.style';
 
 interface SelectTabProps {
-  onTriggerClick: (isCountryOption: boolean) => void;
+  setSelectedOption: React.Dispatch<
+    React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
+  >;
 }
 
-const SelectTab = ({ onTriggerClick }: SelectTabProps) => {
+const SelectTab = ({ setSelectedOption }: SelectTabProps) => {
   return (
     <SelectTabContainer>
       <SelectTrigger
         selectLabel='여행 국가'
         selectedOption='대한민국'
-        onTriggerClick={onTriggerClick}
+        setSelectedOption={setSelectedOption}
       />
       <SelectTrigger
         selectLabel='여행 지역'
         selectedOption='부산'
-        onTriggerClick={onTriggerClick}
+        setSelectedOption={setSelectedOption}
       />
     </SelectTabContainer>
   );

@@ -6,7 +6,7 @@ export const SelectTabContainer = styled.div`
   flex-direction: row;
   align-items: center;
   gap: ${size.SIZE_002};
-  width: 55rem;
+  width: 60rem;
   height: ${size.SIZE_017};
   background-color: ${colors.WHITE};
   border: 2px solid ${colors.GRAY_200};

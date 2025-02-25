@@ -1,32 +1,48 @@
+import { CountryType, SelectOptionType } from '../../../types';
 import { Image, LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.style';
 
 interface SelectOptionProps {
-  isCountryOption: boolean;
-  imgUrl: string;
-  locationLabel: string;
-  locationType: string;
+  option: SelectOptionType;
+  setSelectedOption: React.Dispatch<
+    React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
+  >;
 }
 
-const SelectOption = ({
-  imgUrl = './image/korea.jpg',
-  locationLabel = '대한민국',
-  locationType = '국가',
-}: SelectOptionProps) => {
+const SelectOption = ({ option, setSelectedOption }: SelectOptionProps) => {
+  const handleSelectedItem = () => {
+    if (option.locationType === '국가') {
+      setSelectedOption((prev) => ({
+        ...prev,
+        countryName: option.countryLabel,
+        selectedOptionLabel: '',
+      }));
+    }
+
+    if (option.locationType !== '국가') {
+      setSelectedOption((prev) => ({
+        ...prev,
+        selectedOptionLabel: option.locationLabel,
+      }));
+    }
+
+    console.log(option.locationLabel);
+  };
+
   return (
     <Option
       role='option'
-      data-value={locationLabel}
-      onClick={() => {}}
+      data-value={option.locationLabel}
+      onClick={() => handleSelectedItem()}
     >
       <Image
         width={40}
         height={38}
-        src={imgUrl}
+        src={option.imgUrl}
         alt='지역 대표 사진'
       />
       <LocationLabelWrapper>
-        <h4>{locationLabel}</h4>
-        <LocationTypeText>{locationType}</LocationTypeText>
+        <h4>{option.locationLabel}</h4>
+        <LocationTypeText>{option.locationType}</LocationTypeText>
       </LocationLabelWrapper>
     </Option>
   );

@@ -18,6 +18,7 @@ export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean }>
   overflow-x: hidden;
   box-sizing: border-box;
   z-index: 3;
+  transition: all 0.5s;
 
   ${(props) =>
     props.isCountryOption

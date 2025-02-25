@@ -1,31 +1,29 @@
 import { SelectContainer } from './Select.style';
 import { SelectOptionList } from '../../common/SelectOptionList/SelectOptionList';
-import { JAPANREGIONOPTION, COUNTRYOPTION, KOREAREGIONOPTION } from '../../../constants';
 import SelectTab from '../../common/SelectTab/SelectTab';
-import { useState } from 'react';
-import { LocationType } from '../../../types';
+import { useEffect, useState } from 'react';
+import { CountryType } from '../../../types';
 
 const Select = () => {
-  const [selectedOption, setSelectedOption] = useState({
+  const [selectedOption, setSelectedOption] = useState<{
+    isCountryOption: boolean;
+    countryName: CountryType;
+    selectedOptionLabel: string;
+  }>({
     isCountryOption: true,
+    countryName: '대한민국',
     selectedOptionLabel: '',
-    countryName: '',
   });
 
-  const handleTriggerClick = (isCountryOption: boolean) => {
-    setSelectedOption((prev) => ({
-      ...prev,
-      isCountryOption: isCountryOption,
-    }));
-  };
-
+  useEffect(() => {
+    console.log(selectedOption);
+  }, [selectedOption]);
   return (
     <SelectContainer>
-      <SelectTab onTriggerClick={(isCountryOption) => handleTriggerClick(isCountryOption)} />
-
+      <SelectTab setSelectedOption={setSelectedOption} />
       <SelectOptionList
-        countryName='대한민국'
-        isCountryOption={true}
+        setSelectedOption={setSelectedOption}
+        selectedOption={selectedOption}
       />
     </SelectContainer>
   );

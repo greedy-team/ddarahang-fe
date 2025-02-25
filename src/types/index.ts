@@ -1,6 +1,7 @@
 export interface SelectOptionType {
   isCountryOption: boolean;
   imgUrl: string;
+  countryLabel: CountryType;
   locationLabel: string;
   locationType: string;
 }

@@ -1,26 +1,35 @@
 import SelectOption from '../SelectItem/SelectOption';
-import { CountryType, SelectOptionType } from '../../../types';
+import { CountryType, JapaneseRegionType, KoreanRegionType } from '../../../types';
 import { SelectOptionListContainer } from './SelectOptionList.style';
 import { COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION } from '../../../constants';
 
 interface SelectProps {
-  countryName: CountryType;
-  isCountryOption: boolean;
+  selectedOption: {
+    isCountryOption: boolean;
+    countryName: CountryType;
+    selectedOptionLabel: string;
+  };
+  setSelectedOption: React.Dispatch<
+    React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
+  >;
 }
 
-export const SelectOptionList = ({ isCountryOption, countryName }: SelectProps) => {
-  const getOptionList = ({ isCountryOption, countryName }: SelectProps) => {
-    if (isCountryOption) {
+export const SelectOptionList = ({ selectedOption, setSelectedOption }: SelectProps) => {
+  const getOptionList = (selectedOption: {
+    isCountryOption: boolean;
+    countryName: CountryType;
+    selectedOptionLabel: string;
+  }) => {
+    if (selectedOption.isCountryOption) {
       return COUNTRYOPTION;
-    } else if (countryName === '대한민국') {
+    } else if (selectedOption.countryName === '대한민국') {
       return KOREAREGIONOPTION;
-    } else if (countryName === '일본') {
+    } else if (selectedOption.countryName === '일본') {
       return JAPANREGIONOPTION;
     }
-    return '';
+    return null;
   };
-
-  const options = getOptionList({ isCountryOption, countryName });
+  const options = getOptionList(selectedOption);
 
   if (!options) {
     return <></>;
@@ -28,15 +37,13 @@ export const SelectOptionList = ({ isCountryOption, countryName }: SelectProps) 
   return (
     <SelectOptionListContainer
       role='listbox '
-      isCountryOption={isCountryOption}
+      isCountryOption={selectedOption.isCountryOption}
     >
       {options.map((option) => (
         <SelectOption
           key={option.locationLabel}
-          imgUrl={option.imgUrl}
-          locationLabel={option.locationLabel}
-          locationType={option.locationType}
-          isCountryOption={option.isCountryOption}
+          option={option}
+          setSelectedOption={setSelectedOption}
         />
       ))}
     </SelectOptionListContainer>
