@@ -13,7 +13,11 @@ const SelectOption = ({
   locationType = '국가',
 }: SelectOptionProps) => {
   return (
-    <Option role='option'>
+    <Option
+      role='option'
+      data-value={locationLabel}
+      onClick={() => {}}
+    >
       <Image
         width={40}
         height={38}

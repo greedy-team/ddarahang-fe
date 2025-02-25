@@ -30,6 +30,25 @@ export interface TravelCourseDetail extends TravelVideoInfo {
   travelCourses: TravelCourses[];
 }
 
-export type Country = '대한민국' | '일본';
-export type KoreanRegion = '';
-export type JapaneseRegion = '도쿄' | '오사카' | '후쿠오카';
+export type CountryType = '대한민국' | '일본';
+export type KoreanRegionType =
+  | '서울'
+  | '제주도'
+  | '부산'
+  | '인천'
+  | '강원도'
+  | '대전'
+  | '대구'
+  | '경기도'
+  | '울산'
+  | '광주'
+  | '충청북도'
+  | '충청남도'
+  | '경상북도'
+  | '경상남도'
+  | '전라북도'
+  | '전라남도';
+
+export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카';
+
+export type LocationType = '국가' | '지역';
