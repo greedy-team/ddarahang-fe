@@ -6,8 +6,7 @@ export const VideoSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  max-width: 800px;
-  padding: 0 0;
+  padding: 0;
 `;
 
 export const VideoSectionHeader = styled.div`
@@ -21,7 +20,7 @@ export const VideoSectionHeader = styled.div`
 export const HeaderTitle = styled.p`
   font-size: ${size.SIZE_010};
   color: ${colors.BLACK};
-  font-weight: bold;
+  font-family: 'Pretendard-SemiBold';
 `;
 
 export const VideoContainer = styled.div`
@@ -51,9 +50,8 @@ export const VideoInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 90%;
-  max-width: 720px;
   gap: 5px;
-  padding: 10px;
+  padding-top: 20px;
 `;
 
 export const ChannelName = styled.p`
@@ -62,9 +60,9 @@ export const ChannelName = styled.p`
   color: ${colors.GREY_600};
 `;
 
-export const VideoTitle = styled.h2`
-  font-size: ${size.SIZE_010};
-  font-weight: bold;
+export const VideoTitle = styled.h3`
+  font-size: 18px;
+  font-family: 'Pretendard-SemiBold';
   color: ${colors.BLACK};
   display: -webkit-box;
   -webkit-line-clamp: 2;

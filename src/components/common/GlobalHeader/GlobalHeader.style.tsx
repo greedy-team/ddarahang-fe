@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const GlobalHeaderWrapper = styled.div`
+export const GlobalHeaderWrapper = styled.div<{ isIconVisible: boolean }>`
   width: 100%;
   height: ${size.SIZE_017};
   padding: ${size.SIZE_001} ${size.SIZE_016};
@@ -10,4 +10,10 @@ export const GlobalHeaderWrapper = styled.div`
   justify-content: space-between;
 
   background-color: ${colors.WHITE};
+
+  ${({ isIconVisible }) =>
+    !isIconVisible &&
+    `
+      border-bottom: 2px solid  ${colors.GRAY_200};  
+    `}
 `;

@@ -1,21 +1,20 @@
 import { styled } from 'styled-components';
-import { size, colors } from '../../styles/Theme';
 
-export const PageContainer = styled.div`
-  min-height: 100vh;
+export const TravelCoursePageLayout = styled.div`
+  display: flex;
   width: 100vw;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 `;
 
 export const TravelCourseContainer = styled.div`
-  width: 50vw;
-  height: auto;
+  flex: 1 1 0%;
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  border-top: ${size.SIZE_002} solid ${colors.GRAY_200};
+  gap: 50px;
+`;
+
+export const MapContainer = styled.div`
+  flex: 1 1 0%;
+  display: flex;
 `;

@@ -3,8 +3,9 @@ import { size } from '../../../../styles/Theme';
 
 export const Panels = styled.div`
   width: 100%;
-  height: 200px;
-  overflow-y: auto;
+  max-height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   padding: ${size.SIZE_008};
   display: flex;
   flex-direction: column;

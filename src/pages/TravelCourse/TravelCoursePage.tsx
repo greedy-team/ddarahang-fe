@@ -1,6 +1,6 @@
 import { Status, Wrapper } from '@googlemaps/react-wrapper';
 import TravelMap from '../../components/common/TravelMap/TravelMap';
-import { PageContainer, TravelCourseContainer } from './TravelCoursePage.style';
+import { MapContainer, TravelCourseContainer, TravelCoursePageLayout } from './TravelCoursePage.style';
 import GlobalHeader from '../../components/common/GlobalHeader/GlobalHeader';
 
 import { colors } from '../../styles/Theme';
@@ -22,29 +22,33 @@ const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
 
   return (
-    <PageContainer>
+    <>
       <GlobalHeader
         color={colors.WHITE}
         isIconVisible={false}
       />
-      <TravelCourseContainer>
-        <Video
-          videoId='yT7y8xyNHHs'
-          country='대한민국'
-          region='부산'
-          creator='림리니'
-          title='[Vlog] 찐 부산 & 대구 맛집 다 있는 브이로그 | 출국 전 마지막 부산 여행 😭 | ana luisa 마직막 겨울 홀리데이 세일 🩵 | 다음 주'
-          viewCount={18334}
-          uploadDate='2024.05.12'
-        />
-        <TravelCourse />
-      </TravelCourseContainer>
-      <Wrapper
-        apiKey={apiKey}
-        render={render}
-        libraries={['marker']}
-      />
-    </PageContainer>
+      <TravelCoursePageLayout>
+        <TravelCourseContainer>
+          <Video
+            videoId='yT7y8xyNHHs'
+            country='대한민국'
+            region='부산'
+            creator='림리니'
+            title='[Vlog] 찐 부산 & 대구 맛집 다 있는 브이로그 | 출국 전 마지막 부산 여행 😭 | ana luisa 마직막 겨울 홀리데이 세일 🩵 | 다음 주'
+            viewCount={18334}
+            uploadDate='2024.05.12'
+          />
+          <TravelCourse />
+        </TravelCourseContainer>
+        <MapContainer>
+          <Wrapper
+            apiKey={apiKey}
+            render={render}
+            libraries={['marker']}
+          />
+        </MapContainer>
+      </TravelCoursePageLayout>
+    </>
   );
 };
 

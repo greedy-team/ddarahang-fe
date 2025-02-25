@@ -10,7 +10,7 @@ interface GlobalHeaderProps {
 
 const GlobalHeader = ({ color, isIconVisible }: GlobalHeaderProps) => {
   return (
-    <GlobalHeaderWrapper>
+    <GlobalHeaderWrapper isIconVisible={isIconVisible}>
       <Logo />
       {isIconVisible && (
         <CircleButton

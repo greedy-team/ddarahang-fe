@@ -1,21 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TravelMapMarker from '../TravelMapMarker/TravelMapMarker';
+import { MapWrapper, MapContainer } from './TravelMap.style';
 
 const TravelMap = () => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
+  const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const container = document.createElement('div');
+    if (!mapRef.current) return;
 
-    container.id = 'map';
-    container.style.position = 'absolute';
-    container.style.top = '0';
-    container.style.right = '0';
-    container.style.height = '100vh';
-    container.style.width = '50vw';
-
-    document.body.appendChild(container);
-    const instance = new window.google.maps.Map(container, {
+    const instance = new window.google.maps.Map(mapRef.current, {
       center: {
         lat: 33.4996,
         lng: 126.5312,
@@ -29,14 +23,11 @@ const TravelMap = () => {
     });
 
     setTravelMap(instance);
-
-    return () => {
-      document.body.removeChild(container);
-    };
   }, []);
 
   return (
-    <>
+    <MapWrapper>
+      <MapContainer ref={mapRef} />
       {travelMap && (
         <TravelMapMarker
           number={1}
@@ -44,7 +35,7 @@ const TravelMap = () => {
           position={{ lat: 33.354, lng: 126.5312 }}
         />
       )}
-    </>
+    </MapWrapper>
   );
 };
 
