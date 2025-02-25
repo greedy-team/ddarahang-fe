@@ -5,7 +5,7 @@ export const StyledLogo = styled.button`
   color: ${colors.PRIMARY};
   font-size: ${size.SIZE_010};
   font-weight: 700;
-  background-color: ${colors.WHITE};
+  background-color: transparent;
   border: none;
 
   span {

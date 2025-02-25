@@ -8,11 +8,14 @@ interface HeaderProps {
 
 const Header = ({ color }: HeaderProps) => {
   return (
-    <HeaderWrapper>
+    <>
       <GlobalHeader color={color} />
-      <h3>✈️ 여행 따라갈래? </h3>
-      <Select />
-    </HeaderWrapper>
+      <HeaderWrapper>
+        <h1>어디로 여행을 떠나시나요?</h1>
+        <p>따라만 하면 준비 끝! 인기 여행 영상으로 코스를 둘러보세요.</p>
+        <Select />
+      </HeaderWrapper>
+    </>
   );
 };
 

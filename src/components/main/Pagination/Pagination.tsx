@@ -1,41 +1,34 @@
-import { useState } from 'react';
 import PageButton from '../../common/Button/PageButton/PageButton';
 import { PaginationContainer } from './Pagination.style';
 import NextPageButton from '../../common/Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
 
-interface Pagination {
+interface PaginationProps {
   color: string;
-  pageSize: number;
-  onClick: (page: number) => void;
+  totalPageNumber: number;
+  currentPageNumber: number;
+  onPageClick: (currentPage: number) => void;
 }
 
-const Pagination = ({ color, onClick, pageSize }: Pagination) => {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null); // 클릭된 버튼의 인덱스 관리
-
-  const handleClick = (index: number) => {
-    setActiveIndex(index);
-    onClick(index);
-  };
-
+const Pagination = ({ color, onPageClick, totalPageNumber, currentPageNumber }: PaginationProps) => {
   return (
     <PaginationContainer>
-      {Array.from({ length: pageSize }, (_, index) => (
+      {Array.from({ length: totalPageNumber }, (_, index) => (
         <PageButton
           key={index}
           color={color}
-          onClick={() => handleClick(index + 1)}
+          onClick={() => onPageClick(index + 1)}
           text={`${index + 1}`}
-          isActive={activeIndex === index + 1}
+          isActive={currentPageNumber === index + 1}
         />
       ))}
       <NextPageButton
         color={colors.WHITE}
-        size={size.SIZE_011}
+        size={size.SIZE_013}
         iconPath='./icon/next.svg'
-        iconAlt='다음 넘어가기 아이콘'
+        iconAlt='다음 페이지 넘어가기 아이콘'
         onClick={() => {}}
-      ></NextPageButton>
+      />
     </PaginationContainer>
   );
 };
