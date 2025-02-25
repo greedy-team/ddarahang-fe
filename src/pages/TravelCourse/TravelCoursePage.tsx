@@ -1,5 +1,9 @@
 import { Status, Wrapper } from '@googlemaps/react-wrapper';
-import TravelMap from '../components/common/TravelMap/TravelMap';
+import TravelMap from '../../components/common/TravelMap/TravelMap';
+import { TravelCourseContainer } from './TravelCoursePage.style';
+import GlobalHeader from '../../components/common/GlobalHeader/GlobalHeader';
+
+import { colors } from '../../styles/Theme';
 
 const render = (status: Status) => {
   switch (status) {
@@ -16,13 +20,17 @@ const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
 
   return (
-    <>
+    <TravelCourseContainer>
+      <GlobalHeader
+        color={colors.WHITE}
+        isIconVisible={false}
+      />
       <Wrapper
         apiKey={apiKey}
         render={render}
         libraries={['marker']}
       />
-    </>
+    </TravelCourseContainer>
   );
 };
 
