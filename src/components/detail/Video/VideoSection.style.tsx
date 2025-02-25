@@ -7,7 +7,6 @@ export const VideoSectionContainer = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 800px;
-  min-height: 100vh;
   padding: 20px 0;
 `;
 
