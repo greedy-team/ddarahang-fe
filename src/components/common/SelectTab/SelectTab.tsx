@@ -3,7 +3,11 @@ import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer } from './SelectTab.style';
 import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 
-const SelectTab = () => {
+interface SelectTabProps {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const SelectTab = ({ setIsOpen }: SelectTabProps) => {
   const { selectedOption, setSelectedOption } = useSelectOptionContext();
 
   useEffect(() => {
@@ -25,14 +29,14 @@ const SelectTab = () => {
   return (
     <SelectTabContainer>
       <SelectTrigger
+        setIsOpen={setIsOpen}
         selectLabel='여행 국가'
         selectedOption={selectedOption.countryName}
-        setSelectedOption={setSelectedOption}
       />
       <SelectTrigger
+        setIsOpen={setIsOpen}
         selectLabel='여행 지역'
         selectedOption={selectedOption.selectedOptionLabel}
-        setSelectedOption={setSelectedOption}
       />
     </SelectTabContainer>
   );

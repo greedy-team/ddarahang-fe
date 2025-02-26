@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { size, colors } from '../../../styles/Theme';
 
-export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean }>`
+export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean; isOpen: boolean }>`
   position: absolute;
   top: 120%;
   display: block;
@@ -18,7 +18,9 @@ export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean }>
   overflow-x: hidden;
   box-sizing: border-box;
   z-index: 3;
-  transition: all 0.5s;
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
 
   ${(props) =>
     props.isCountryOption
@@ -26,4 +28,15 @@ export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean }>
       : `
         right: 0;
     `}
+
+  ${(props) =>
+    props.isOpen
+      ? `
+        opacity: 1;
+        transform: translateY(0);
+      `
+      : `
+        opacity: 0;
+        transform: translateY(-10px);
+      `}
 `;

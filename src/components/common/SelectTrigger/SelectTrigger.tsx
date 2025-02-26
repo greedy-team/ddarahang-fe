@@ -1,18 +1,20 @@
 import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './selectTrigger.style';
 import CircleButton from '../Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
-import { CountryType } from '../../../types';
+import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 
 interface SelectTriggerType {
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectLabel: string;
   selectedOption: string;
-  setSelectedOption: React.Dispatch<
-    React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
-  >;
 }
 
-const SelectTrigger = ({ selectLabel, selectedOption, setSelectedOption }: SelectTriggerType) => {
+const SelectTrigger = ({ setIsOpen, selectLabel, selectedOption }: SelectTriggerType) => {
+  const { setSelectedOption } = useSelectOptionContext();
+
   const handleTriggerClick = () => {
+    setIsOpen(true);
+
     if (selectLabel === '여행 국가') {
       setSelectedOption((prev) => ({
         ...prev,

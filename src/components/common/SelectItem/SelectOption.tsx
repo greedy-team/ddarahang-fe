@@ -4,9 +4,10 @@ import { Image, LocationLabelWrapper, LocationTypeText, Option } from './SelectO
 
 interface SelectOptionProps {
   option: SelectOptionType;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SelectOption = ({ option }: SelectOptionProps) => {
+const SelectOption = ({ option, setIsOpen }: SelectOptionProps) => {
   const { setSelectedOption } = useSelectOptionContext();
 
   const handleSelectedItem = () => {
@@ -25,7 +26,7 @@ const SelectOption = ({ option }: SelectOptionProps) => {
       }));
     }
 
-    console.log(option.locationLabel);
+    setIsOpen(false);
   };
 
   return (
