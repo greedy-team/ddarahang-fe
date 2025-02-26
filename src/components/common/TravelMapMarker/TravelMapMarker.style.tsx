@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
 export const MarkerWrapper = styled.div`
-  width: ${size.SIZE_015};
-  height: ${size.SIZE_016};
   position: relative;
   display: flex;
   flex-direction: column;

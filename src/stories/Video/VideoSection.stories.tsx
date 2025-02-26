@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Video from '../../components/detail/Video/VideoSection';
+import VideoSection from '../../components/detail/Video/VideoSection';
 
 const meta = {
-  title: 'Video/Video',
-  component: Video,
+  title: 'Video/VideoSection',
+  component: VideoSection,
   parameters: {
     layout: 'fullscreen',
   },
@@ -47,7 +47,7 @@ const meta = {
       defaultValue: '2024-08-02',
     },
   },
-} satisfies Meta<typeof Video>;
+} satisfies Meta<typeof VideoSection>;
 
 export default meta;
 

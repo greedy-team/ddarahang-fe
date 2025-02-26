@@ -3,7 +3,7 @@ import { colors, size } from '../../../../styles/Theme';
 
 export const TabContainer = styled.div`
   width: 50vw;
-  height: 70px;
+  height: 55px;
   display: flex;
   flex-direction: row;
   background-color: ${colors.GRAY_200};
