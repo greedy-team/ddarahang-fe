@@ -1,23 +1,12 @@
 import SelectOption from '../SelectItem/SelectOption';
-import { CountryType, JapaneseRegionType, KoreanRegionType } from '../../../types';
+import { CountryType } from '../../../types';
 import { SelectOptionListContainer } from './SelectOptionList.style';
 import { COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION } from '../../../constants';
+import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 
-interface SelectProps {
-  selectedOption: {
-    isCountryOption: boolean;
-    countryName: CountryType;
-    selectedOptionLabel: string;
-  };
-  setSelectedOption: React.Dispatch<
-    React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
-  >;
+export const SelectOptionList = () => {
+  const { selectedOption } = useSelectOptionContext();
 
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const SelectOptionList = ({ isOpen, setIsOpen, selectedOption, setSelectedOption }: SelectProps) => {
   const getOptionList = (selectedOption: {
     isCountryOption: boolean;
     countryName: CountryType;
@@ -39,21 +28,16 @@ export const SelectOptionList = ({ isOpen, setIsOpen, selectedOption, setSelecte
     return <></>;
   }
   return (
-    isOpen && (
-      <SelectOptionListContainer
-        role='listbox '
-        isCountryOption={selectedOption.isCountryOption}
-      >
-        {options.map((option) => (
-          <SelectOption
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            key={option.locationLabel}
-            option={option}
-            setSelectedOption={setSelectedOption}
-          />
-        ))}
-      </SelectOptionListContainer>
-    )
+    <SelectOptionListContainer
+      role='listbox '
+      isCountryOption={selectedOption.isCountryOption}
+    >
+      {options.map((option) => (
+        <SelectOption
+          key={option.locationLabel}
+          option={option}
+        />
+      ))}
+    </SelectOptionListContainer>
   );
 };

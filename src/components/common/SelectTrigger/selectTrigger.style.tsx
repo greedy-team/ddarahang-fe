@@ -13,6 +13,7 @@ export const SelectTriggerButton = styled.button`
   background-color: ${colors.WHITE};
   border-radius: ${size.SIZE_008};
   border: none;
+
   transition: background-color 0.5s ease;
 
   &:hover {

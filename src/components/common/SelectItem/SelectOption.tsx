@@ -1,16 +1,14 @@
-import { CountryType, SelectOptionType } from '../../../types';
+import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
+import { SelectOptionType } from '../../../types';
 import { Image, LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.style';
 
 interface SelectOptionProps {
   option: SelectOptionType;
-  setSelectedOption: React.Dispatch<
-    React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
-  >;
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SelectOption = ({ isOpen, option, setSelectedOption, setIsOpen }: SelectOptionProps) => {
+const SelectOption = ({ option }: SelectOptionProps) => {
+  const { setSelectedOption } = useSelectOptionContext();
+
   const handleSelectedItem = () => {
     if (option.locationType === '국가') {
       setSelectedOption((prev) => ({
@@ -27,8 +25,6 @@ const SelectOption = ({ isOpen, option, setSelectedOption, setIsOpen }: SelectOp
       }));
     }
 
-    setIsOpen(false);
-    console.log(isOpen);
     console.log(option.locationLabel);
   };
 

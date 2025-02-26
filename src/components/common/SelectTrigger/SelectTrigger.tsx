@@ -9,11 +9,9 @@ interface SelectTriggerType {
   setSelectedOption: React.Dispatch<
     React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
   >;
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SelectTrigger = ({ isOpen, setIsOpen, selectLabel, selectedOption, setSelectedOption }: SelectTriggerType) => {
+const SelectTrigger = ({ selectLabel, selectedOption, setSelectedOption }: SelectTriggerType) => {
   const handleTriggerClick = () => {
     if (selectLabel === '여행 국가') {
       setSelectedOption((prev) => ({
@@ -27,8 +25,6 @@ const SelectTrigger = ({ isOpen, setIsOpen, selectLabel, selectedOption, setSele
         isCountryOption: false,
       }));
     }
-
-    setIsOpen(!isOpen);
   };
 
   return (
