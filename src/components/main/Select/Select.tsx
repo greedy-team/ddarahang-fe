@@ -4,13 +4,20 @@ import SelectTab from '../../common/SelectTab/SelectTab';
 import { useRef } from 'react';
 import useDetectClose from '../../../hooks/select/useDetectClose';
 
-const Select = () => {
+interface SelectProps {
+  onSubmitOption: () => void;
+}
+
+const Select = ({ onSubmitOption }: SelectProps) => {
   const optionListRef = useRef<HTMLUListElement>(null);
   const [isOpen, setIsOpen] = useDetectClose({ elem: optionListRef, initialState: false });
 
   return (
     <SelectContainer>
-      <SelectTab setIsOpen={setIsOpen} />
+      <SelectTab
+        setIsOpen={setIsOpen}
+        onSubmitOption={onSubmitOption}
+      />
       <SelectOptionList
         isOpen={isOpen}
         setIsOpen={setIsOpen}

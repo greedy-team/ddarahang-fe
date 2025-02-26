@@ -1,13 +1,14 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer } from './SelectTab.style';
 import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 
 interface SelectTabProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onSubmitOption: () => void;
 }
 
-const SelectTab = ({ setIsOpen }: SelectTabProps) => {
+const SelectTab = ({ setIsOpen, onSubmitOption }: SelectTabProps) => {
   const tabRef = useRef<HTMLButtonElement>(null);
   const { selectedOption, setSelectedOption } = useSelectOptionContext();
   const [isFocus, setIsFocus] = useState({
@@ -39,7 +40,8 @@ const SelectTab = ({ setIsOpen }: SelectTabProps) => {
         setIsFocus={setIsFocus}
         setIsOpen={setIsOpen}
         selectLabel='여행 국가'
-        selectedOption={selectedOption.countryName}
+        selectOption={selectedOption.countryName}
+        onSubmitOption={onSubmitOption}
       />
       <SelectTrigger
         isFocus={isFocus.region}
@@ -47,7 +49,8 @@ const SelectTab = ({ setIsOpen }: SelectTabProps) => {
         setIsFocus={setIsFocus}
         setIsOpen={setIsOpen}
         selectLabel='여행 지역'
-        selectedOption={selectedOption.selectedOptionLabel}
+        selectOption={selectedOption.selectedOptionLabel}
+        onSubmitOption={onSubmitOption}
       />
     </SelectTabContainer>
   );

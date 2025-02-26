@@ -15,11 +15,20 @@ interface SelectTriggerType {
     }>
   >;
   selectLabel: string;
-  selectedOption: string;
+  selectOption: string;
+  onSubmitOption: () => void;
 }
 
-const SelectTrigger = ({ tabRef, setIsOpen, isFocus, setIsFocus, selectLabel, selectedOption }: SelectTriggerType) => {
-  const { setSelectedOption } = useSelectOptionContext();
+const SelectTrigger = ({
+  tabRef,
+  selectOption,
+  setIsOpen,
+  isFocus,
+  setIsFocus,
+  selectLabel,
+  onSubmitOption,
+}: SelectTriggerType) => {
+  const { selectedOption, setSelectedOption } = useSelectOptionContext();
 
   const handleTriggerClick = () => {
     setIsOpen(true);
@@ -56,7 +65,7 @@ const SelectTrigger = ({ tabRef, setIsOpen, isFocus, setIsFocus, selectLabel, se
     >
       <SelectTextWrapper isFocus={isFocus}>
         <SelectLabel>{selectLabel}</SelectLabel>
-        <SelectOption>{selectedOption}</SelectOption>
+        <SelectOption>{selectOption}</SelectOption>
       </SelectTextWrapper>
       {selectLabel === '여행 지역' && (
         <CircleButton
@@ -64,7 +73,7 @@ const SelectTrigger = ({ tabRef, setIsOpen, isFocus, setIsFocus, selectLabel, se
           color={colors.PRIMARY}
           iconPath='./image/search.svg'
           iconAlt='검색 아이콘'
-          onClick={() => {}}
+          onClick={() => onSubmitOption()}
         />
       )}
     </SelectTriggerButton>
