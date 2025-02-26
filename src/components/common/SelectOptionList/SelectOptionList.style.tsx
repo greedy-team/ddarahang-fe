@@ -12,12 +12,11 @@ export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean; i
   border-radius: ${size.SIZE_008};
   box-shadow: ${size.SIZE_002} ${size.SIZE_002} ${size.SIZE_002} rgba(0, 0, 0, 0.1);
   width: 480px;
-  max-height: ${(props) => (props.isCountryOption ? size.SIZE_020 : size.SIZE_022)};
+  max-height: ${(props) => (props.isCountryOption ? size.SIZE_020 : size.SIZE_025)};
   padding: ${size.SIZE_006} ${size.SIZE_001};
   overflow-y: scroll;
   overflow-x: hidden;
   box-sizing: border-box;
-  z-index: 3;
   transition:
     opacity 0.5s,
     transform 0.5s;
@@ -34,9 +33,12 @@ export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean; i
       ? `
         opacity: 1;
         transform: translateY(0);
+        z-index: 11; 
+        pointer-events: auto;
       `
       : `
         opacity: 0;
         transform: translateY(-10px);
+        pointer-events: none;
       `}
 `;

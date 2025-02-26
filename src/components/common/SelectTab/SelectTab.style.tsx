@@ -15,4 +15,5 @@ export const SelectTabContainer = styled.div`
   box-shadow:
     inset 0 0 0 1px ${colors.GRAY_200},
     ${size.SIZE_003} ${size.SIZE_003} ${size.SIZE_004} rgba(0, 0, 0, 0.1);
+  z-index: 5;
 `;
