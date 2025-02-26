@@ -1,7 +1,7 @@
 import SelectOption from '../SelectItem/SelectOption';
 import { CountryType } from '../../../types';
 import { SelectOptionListContainer } from './SelectOptionList.style';
-import { COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION } from '../../../constants';
+import { COUNTRIES, COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION } from '../../../constants';
 import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 import { RefObject } from 'react';
 
@@ -21,9 +21,9 @@ export const SelectOptionList = ({ isOpen, setIsOpen, optionListRef }: SelectOpt
   }) => {
     if (selectedOption.isCountryOption) {
       return COUNTRYOPTION;
-    } else if (selectedOption.countryName === '대한민국') {
+    } else if (selectedOption.countryName === COUNTRIES[0]) {
       return KOREAREGIONOPTION;
-    } else if (selectedOption.countryName === '일본') {
+    } else if (selectedOption.countryName === COUNTRIES[1]) {
       return JAPANREGIONOPTION;
     }
     return [];

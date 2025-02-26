@@ -4,6 +4,11 @@ export const VIDEO_NUMBERS_IN_PAGE = 8;
 
 export const COUNTRIES = ['대한민국', '일본'];
 
+export const TRAVEL_LABEL = {
+  COUNTRY: '여행 국가',
+  REGION: '여행 지역',
+};
+
 export const COUNTRYOPTION: SelectOptionType[] = [
   {
     imgUrl: './image/korea.jpg',

@@ -15,17 +15,15 @@ import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
-
   const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
     countryName: '대한민국',
     regionName: '',
   });
-
-  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
   const { selectedOption } = useSelectOptionContext();
+  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
 
   const handleSubmitOption = () => {
-    if (selectedOption.selectedOptionLabel === '여행지역 검색') {
+    if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
       getTravelVideoList({ countryName: selectedOption.countryName, regionName: '' });
     } else {
       getTravelVideoList({ countryName: selectedOption.countryName, regionName: selectedOption.selectedOptionLabel });

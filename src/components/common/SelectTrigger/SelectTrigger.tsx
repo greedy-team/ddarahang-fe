@@ -3,6 +3,7 @@ import CircleButton from '../Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
 import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 import { RefObject } from 'react';
+import { TRAVEL_LABEL } from '../../../constants';
 
 interface SelectTriggerType {
   tabRef: RefObject<HTMLButtonElement | null>;
@@ -28,12 +29,12 @@ const SelectTrigger = ({
   selectLabel,
   onSubmitOption,
 }: SelectTriggerType) => {
-  const { selectedOption, setSelectedOption } = useSelectOptionContext();
+  const { setSelectedOption } = useSelectOptionContext();
 
   const handleTriggerClick = () => {
     setIsOpen(true);
 
-    if (selectLabel === '여행 국가') {
+    if (selectLabel === TRAVEL_LABEL.COUNTRY) {
       setSelectedOption((prev) => ({
         ...prev,
         isCountryOption: true,
@@ -44,7 +45,7 @@ const SelectTrigger = ({
         country: true,
       }));
     }
-    if (selectLabel === '여행 지역') {
+    if (selectLabel === TRAVEL_LABEL.REGION) {
       setSelectedOption((prev) => ({
         ...prev,
         isCountryOption: false,
@@ -67,7 +68,7 @@ const SelectTrigger = ({
         <SelectLabel>{selectLabel}</SelectLabel>
         <SelectOption>{selectOption}</SelectOption>
       </SelectTextWrapper>
-      {selectLabel === '여행 지역' && (
+      {selectLabel === TRAVEL_LABEL.REGION && (
         <CircleButton
           size={size.SIZE_016}
           color={colors.PRIMARY}
