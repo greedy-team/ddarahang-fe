@@ -5,19 +5,30 @@ import Header from '../../components/main/Header/Header';
 import Pagination from '../../components/main/Pagination/Pagination';
 import SortDropdown from '../../components/main/SortDropdown/SortDropdown';
 import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoList';
-import useGetTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
 
 import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 
 import { VIDEO_NUMBERS_IN_PAGE } from '../../constants';
+import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
+import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
-
-  const { loading, error, videoList } = useGetTravelVideoList();
-
+  const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
+    countryName: '대한민국',
+    regionName: '',
+  });
+  const { selectedOption } = useSelectOptionContext();
   const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
+
+  const handleSubmitOption = () => {
+    if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
+      getTravelVideoList({ countryName: selectedOption.countryName, regionName: '' });
+    } else {
+      getTravelVideoList({ countryName: selectedOption.countryName, regionName: selectedOption.selectedOptionLabel });
+    }
+  };
 
   const handleCurrentPage = (currentPage: number) => {
     setCurrentPageNumber(currentPage);
@@ -33,7 +44,10 @@ const MainPage = () => {
 
   return (
     <StyledMainPageLayout>
-      <Header color={colors.WHITE} />
+      <Header
+        color={colors.WHITE}
+        onSubmitOption={handleSubmitOption}
+      />
       <SortDropdown />
       <StyledContentsWrapper>
         <TravelVideoList

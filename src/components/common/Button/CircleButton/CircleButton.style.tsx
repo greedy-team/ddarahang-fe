@@ -14,7 +14,16 @@ export const StyledCircleButton = styled.button<{ size: string; color: string }>
 
   cursor: pointer;
 
-  &:hover {
-    background: ${colors.GRAY_200};
-  }
+  ${(props) =>
+    props.color === `${colors.PRIMARY}`
+      ? `
+      &:hover {
+        background: ${colors.LIGHT_BLUE};
+      } 
+      `
+      : `
+      &:hover {
+        background: ${colors.GRAY_200};
+      } 
+      `}
 `;

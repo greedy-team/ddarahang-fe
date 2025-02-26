@@ -1,31 +1,38 @@
 import { SelectContainer } from './Select.style';
 import { SelectOptionList } from '../../common/SelectOptionList/SelectOptionList';
-import { JAPANREGIONOPTION, COUNTRYOPTION, KOREAREGIONOPTION } from '../../../constants';
 import SelectTab from '../../common/SelectTab/SelectTab';
-import { useState } from 'react';
+import { useRef } from 'react';
+import useDetectClose from '../../../hooks/select/useDetectClose';
 
-const Select = () => {
-  const [isOpen, setIsOpen] = useState(false);
+interface SelectProps {
+  onSubmitOption: () => void;
+}
+
+const Select = ({ onSubmitOption }: SelectProps) => {
+  const optionListRef = useRef<HTMLUListElement>(null);
+  const countryTabRef = useRef<HTMLButtonElement>(null);
+  const regionTabRef = useRef<HTMLButtonElement>(null);
+
+  const [isOpen, setIsOpen] = useDetectClose({
+    elem: optionListRef,
+    tabRefs: [countryTabRef, regionTabRef],
+    initialState: false,
+  });
 
   return (
-    <SelectContainer>
-      <SelectTab />
-      {isOpen && (
-        <>
-          <SelectOptionList
-            options={COUNTRYOPTION}
-            isCountryOption={true}
-          />
-          <SelectOptionList
-            options={KOREAREGIONOPTION}
-            isCountryOption={false}
-          />
-          <SelectOptionList
-            options={JAPANREGIONOPTION}
-            isCountryOption={false}
-          />
-        </>
-      )}
+    <SelectContainer isOpen={isOpen}>
+      <SelectTab
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        onSubmitOption={onSubmitOption}
+        countryTabRef={countryTabRef}
+        regionTabRef={regionTabRef}
+      />
+      <SelectOptionList
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        optionListRef={optionListRef}
+      />
     </SelectContainer>
   );
 };

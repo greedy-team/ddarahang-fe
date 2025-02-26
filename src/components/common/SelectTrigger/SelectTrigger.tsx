@@ -1,26 +1,80 @@
 import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './selectTrigger.style';
 import CircleButton from '../Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
+import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
+import { RefObject } from 'react';
+import { TRAVEL_LABEL } from '../../../constants';
 
 interface SelectTriggerType {
+  tabRef: RefObject<HTMLButtonElement | null>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isFocus: boolean;
+  setIsFocus: React.Dispatch<
+    React.SetStateAction<{
+      country: boolean;
+      region: boolean;
+    }>
+  >;
   selectLabel: string;
-  selectedOption: string;
+  selectOption: string;
+  onSubmitOption: () => void;
 }
 
-const SelectTrigger = ({ selectLabel, selectedOption }: SelectTriggerType) => {
+const SelectTrigger = ({
+  tabRef,
+  selectOption,
+  setIsOpen,
+  isFocus,
+  setIsFocus,
+  selectLabel,
+  onSubmitOption,
+}: SelectTriggerType) => {
+  const { setSelectedOption } = useSelectOptionContext();
+
+  const handleTriggerClick = () => {
+    setIsOpen(true);
+
+    if (selectLabel === TRAVEL_LABEL.COUNTRY) {
+      setSelectedOption((prev) => ({
+        ...prev,
+        isCountryOption: true,
+      }));
+      setIsFocus((prev) => ({
+        ...prev,
+        region: false,
+        country: true,
+      }));
+    }
+    if (selectLabel === TRAVEL_LABEL.REGION) {
+      setSelectedOption((prev) => ({
+        ...prev,
+        isCountryOption: false,
+      }));
+      setIsFocus((prev) => ({
+        ...prev,
+        country: false,
+        region: true,
+      }));
+    }
+  };
+
   return (
-    <SelectTriggerButton>
-      <SelectTextWrapper>
+    <SelectTriggerButton
+      ref={tabRef}
+      isFocus={isFocus}
+      onClick={() => handleTriggerClick()}
+    >
+      <SelectTextWrapper isFocus={isFocus}>
         <SelectLabel>{selectLabel}</SelectLabel>
-        <SelectOption>{selectedOption}</SelectOption>
+        <SelectOption>{selectOption}</SelectOption>
       </SelectTextWrapper>
-      {selectLabel === '여행 지역' && (
+      {selectLabel === TRAVEL_LABEL.REGION && (
         <CircleButton
           size={size.SIZE_016}
           color={colors.PRIMARY}
           iconPath='./image/search.svg'
           iconAlt='검색 아이콘'
-          onClick={() => {}}
+          onClick={() => onSubmitOption()}
         />
       )}
     </SelectTriggerButton>

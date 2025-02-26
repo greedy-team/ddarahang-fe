@@ -1,38 +1,43 @@
-import { useEffect, useState } from 'react';
-import { TravelList } from '../../types';
+import { useState, useEffect } from 'react';
+import { CountryType, TravelList } from '../../types';
 import axios from 'axios';
 
-const useGetTravelVideoList = () => {
+interface useTravelVideoListProps {
+  countryName: CountryType;
+  regionName: string;
+}
+
+const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [videoList, setVideoList] = useState<TravelList[]>([]);
 
-  useEffect(() => {
-    const getTravelVideoList = async () => {
-      const requestBody = {
-        countryName: '대한민국',
-        regionName: '부산',
-      };
-      setLoading(true);
-      setVideoList([]);
-
-      try {
-        const response = await axios.get('/api/v1/travelcourses', { params: requestBody });
-
-        if (response) {
-          setVideoList(response.data);
-        }
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
+  const getTravelVideoList = async ({ countryName, regionName }: useTravelVideoListProps) => {
+    const requestBody = {
+      countryName,
+      regionName,
     };
+    setLoading(true);
+    setVideoList([]);
 
-    getTravelVideoList();
-  }, []);
+    try {
+      const response = await axios.get('/api/v1/travelcourses', { params: requestBody });
 
-  return { videoList, loading, error };
+      if (response) {
+        setVideoList(response.data);
+      }
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getTravelVideoList({ countryName, regionName });
+  }, [countryName, regionName]);
+
+  return { videoList, loading, error, getTravelVideoList };
 };
 
-export default useGetTravelVideoList;
+export default useTravelVideoList;

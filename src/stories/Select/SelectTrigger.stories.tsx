@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import SelectTrigger from '../../components/common/SelectTrigger/SelectTrigger';
+import { fn } from '@storybook/test';
 
 const meta = {
   title: 'Select/SelectTrigger',
@@ -20,6 +21,9 @@ const meta = {
       description: '선택된 라벨 텍스트',
       defaultValue: '대한민국',
     },
+  },
+  args: {
+    onTriggerClick: () => fn(),
   },
 } satisfies Meta<typeof SelectTrigger>;
 

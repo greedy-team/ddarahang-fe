@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const SelectTriggerButton = styled.button`
+export const SelectTriggerButton = styled.button<{ isFocus: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -11,13 +11,26 @@ export const SelectTriggerButton = styled.button`
   width: 50%;
   height: 100%;
   background-color: ${colors.WHITE};
-  border-radius: ${size.SIZE_008};
+  border-radius: ${size.SIZE_007};
   border: none;
   transition: background-color 0.5s ease;
 
   &:hover {
     background-color: ${colors.GRAY_200};
   }
+
+  ${(props) =>
+    props.isFocus
+      ? `
+        border: 1px solid ${colors.PRIMARY};
+        background: ${colors.SECONDARY};
+        &:hover {
+            background-color: ${colors.SECONDARY}
+        }
+      `
+      : `
+      border: none;
+      `}
 `;
 
 export const SelectLabel = styled.span`
@@ -31,7 +44,7 @@ export const SelectOption = styled.span`
   font-family: 'Pretendard-SemiBold', sans-serif;
 `;
 
-export const SelectTextWrapper = styled.div`
+export const SelectTextWrapper = styled.div<{ isFocus: boolean }>`
   display: flex;
   min-width: 200px;
   flex-direction: column;

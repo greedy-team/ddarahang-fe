@@ -1,25 +1,36 @@
 import SelectOption from '../SelectItem/SelectOption';
-import { SelectOptionType } from '../../../types';
 import { SelectOptionListContainer } from './SelectOptionList.style';
+import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
+import { RefObject } from 'react';
+import { getOptionList } from '../../../utils';
 
-interface SelectProps {
-  options: SelectOptionType[];
-  isCountryOption: boolean;
+interface SelectOptionListProps {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  optionListRef: RefObject<HTMLUListElement | null>;
 }
 
-export const SelectOptionList = ({ options, isCountryOption }: SelectProps) => {
+export const SelectOptionList = ({ isOpen, setIsOpen, optionListRef }: SelectOptionListProps) => {
+  const { selectedOption } = useSelectOptionContext();
+
+  const options = getOptionList(selectedOption);
+
+  if (!options.length) {
+    return null;
+  }
+
   return (
     <SelectOptionListContainer
-      role='listbox '
-      isCountryOption={isCountryOption}
+      role='listbox'
+      isCountryOption={selectedOption.isCountryOption}
+      ref={optionListRef}
+      isOpen={isOpen}
     >
       {options.map((option) => (
         <SelectOption
+          setIsOpen={setIsOpen}
           key={option.locationLabel}
-          imgUrl={option.imgUrl}
-          locationLabel={option.locationLabel}
-          locationType={option.locationType}
-          isCountryOption={option.isCountryOption}
+          option={option}
         />
       ))}
     </SelectOptionListContainer>
