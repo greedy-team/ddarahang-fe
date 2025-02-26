@@ -12,9 +12,12 @@ interface SelectProps {
   setSelectedOption: React.Dispatch<
     React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
   >;
+
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SelectOptionList = ({ selectedOption, setSelectedOption }: SelectProps) => {
+export const SelectOptionList = ({ isOpen, setIsOpen, selectedOption, setSelectedOption }: SelectProps) => {
   const getOptionList = (selectedOption: {
     isCountryOption: boolean;
     countryName: CountryType;
@@ -29,23 +32,28 @@ export const SelectOptionList = ({ selectedOption, setSelectedOption }: SelectPr
     }
     return null;
   };
+
   const options = getOptionList(selectedOption);
 
   if (!options) {
     return <></>;
   }
   return (
-    <SelectOptionListContainer
-      role='listbox '
-      isCountryOption={selectedOption.isCountryOption}
-    >
-      {options.map((option) => (
-        <SelectOption
-          key={option.locationLabel}
-          option={option}
-          setSelectedOption={setSelectedOption}
-        />
-      ))}
-    </SelectOptionListContainer>
+    isOpen && (
+      <SelectOptionListContainer
+        role='listbox '
+        isCountryOption={selectedOption.isCountryOption}
+      >
+        {options.map((option) => (
+          <SelectOption
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            key={option.locationLabel}
+            option={option}
+            setSelectedOption={setSelectedOption}
+          />
+        ))}
+      </SelectOptionListContainer>
+    )
   );
 };

@@ -14,14 +14,23 @@ const Select = () => {
     countryName: '대한민국',
     selectedOptionLabel: '',
   });
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     console.log(selectedOption);
   }, [selectedOption]);
+
   return (
     <SelectContainer>
-      <SelectTab setSelectedOption={setSelectedOption} />
+      <SelectTab
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+      />
       <SelectOptionList
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
         setSelectedOption={setSelectedOption}
         selectedOption={selectedOption}
       />

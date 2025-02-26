@@ -6,9 +6,11 @@ interface SelectOptionProps {
   setSelectedOption: React.Dispatch<
     React.SetStateAction<{ selectedOptionLabel: string; countryName: CountryType; isCountryOption: boolean }>
   >;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SelectOption = ({ option, setSelectedOption }: SelectOptionProps) => {
+const SelectOption = ({ isOpen, option, setSelectedOption, setIsOpen }: SelectOptionProps) => {
   const handleSelectedItem = () => {
     if (option.locationType === '국가') {
       setSelectedOption((prev) => ({
@@ -25,6 +27,8 @@ const SelectOption = ({ option, setSelectedOption }: SelectOptionProps) => {
       }));
     }
 
+    setIsOpen(false);
+    console.log(isOpen);
     console.log(option.locationLabel);
   };
 
