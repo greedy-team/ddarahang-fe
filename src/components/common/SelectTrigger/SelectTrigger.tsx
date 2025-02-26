@@ -2,14 +2,23 @@ import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } fro
 import CircleButton from '../Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
 import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
+import { RefObject } from 'react';
 
 interface SelectTriggerType {
+  tabRef: RefObject<HTMLButtonElement | null>;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isFocus: boolean;
+  setIsFocus: React.Dispatch<
+    React.SetStateAction<{
+      country: boolean;
+      region: boolean;
+    }>
+  >;
   selectLabel: string;
   selectedOption: string;
 }
 
-const SelectTrigger = ({ setIsOpen, selectLabel, selectedOption }: SelectTriggerType) => {
+const SelectTrigger = ({ tabRef, setIsOpen, isFocus, setIsFocus, selectLabel, selectedOption }: SelectTriggerType) => {
   const { setSelectedOption } = useSelectOptionContext();
 
   const handleTriggerClick = () => {
@@ -20,18 +29,32 @@ const SelectTrigger = ({ setIsOpen, selectLabel, selectedOption }: SelectTrigger
         ...prev,
         isCountryOption: true,
       }));
+      setIsFocus((prev) => ({
+        ...prev,
+        region: false,
+        country: true,
+      }));
     }
     if (selectLabel === '여행 지역') {
       setSelectedOption((prev) => ({
         ...prev,
         isCountryOption: false,
       }));
+      setIsFocus((prev) => ({
+        ...prev,
+        country: false,
+        region: true,
+      }));
     }
   };
 
   return (
-    <SelectTriggerButton onClick={() => handleTriggerClick()}>
-      <SelectTextWrapper>
+    <SelectTriggerButton
+      ref={tabRef}
+      isFocus={isFocus}
+      onClick={() => handleTriggerClick()}
+    >
+      <SelectTextWrapper isFocus={isFocus}>
         <SelectLabel>{selectLabel}</SelectLabel>
         <SelectOption>{selectedOption}</SelectOption>
       </SelectTextWrapper>
