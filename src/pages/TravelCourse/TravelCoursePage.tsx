@@ -44,7 +44,10 @@ const TravelCoursePage = () => {
             region={selectedOption.selectedOptionLabel}
             travelCourseDetail={travelCourse}
           />
-          <TravelCourse travelCourses={travelCourse.travelCourses} />
+          <TravelCourse
+            travelCourses={travelCourse.travelCourses}
+            travelDays={travelCourse.travelDays}
+          />
         </TravelCourseContainer>
         <MapContainer>
           <Wrapper

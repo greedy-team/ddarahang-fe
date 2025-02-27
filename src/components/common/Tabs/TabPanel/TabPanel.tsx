@@ -3,7 +3,7 @@ import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
 import { TravelCourses } from '../../../../types';
 
 interface TabPanelProps {
-  travelCourses: TravelCourses[];
+  travelCourses: Omit<TravelCourses, 'day'>[];
 }
 
 const TabPanel = ({ travelCourses }: TabPanelProps) => {

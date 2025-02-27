@@ -4,15 +4,15 @@ import TabPanel from '../../common/Tabs/TabPanel/TabPanel';
 import { TravelCourseContainer } from './TravelCourse.style';
 
 interface TravelCourseProps {
-  travelCourses: TravelCourses[];
-  // travelCourses: Omit<TravelCourses, 'day'>[];
+  travelCourses: Omit<TravelCourses, 'day'>[];
+  travelDays: number;
 }
 
-const TravelCourse = ({ travelCourses }: TravelCourseProps) => {
+const TravelCourse = ({ travelCourses, travelDays }: TravelCourseProps) => {
   return (
     <TravelCourseContainer>
       <h3>여행 코스</h3>
-      <Tab />
+      <Tab travelDays={travelDays} />
       <TabPanel travelCourses={travelCourses} />
     </TravelCourseContainer>
   );

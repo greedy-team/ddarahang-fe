@@ -28,6 +28,7 @@ export interface TravelCourses {
 export interface TravelCourseDetail extends TravelVideoInfo {
   videoUrl: string;
   travelCourseId: number;
+  travelDays: number;
   travelCourses: TravelCourses[];
 }
 
