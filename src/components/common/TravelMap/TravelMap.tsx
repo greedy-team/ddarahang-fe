@@ -1,9 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import TravelMapMarker from '../TravelMapMarker/TravelMapMarker';
 import { MapWrapper, MapContainer } from './TravelMap.style';
+import { Position } from '../../../types';
 
-const TravelMap = () => {
+interface TravelMapProps {
+  courses: { place: string; position: Position }[];
+}
+
+const TravelMap = ({ courses }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
+  const [markers, setMarkers] = useState<{ position: Position; place: string }[]>(courses);
+
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,18 +30,21 @@ const TravelMap = () => {
     });
 
     setTravelMap(instance);
-  }, []);
+  }, [markers]);
 
   return (
     <MapWrapper>
       <MapContainer ref={mapRef} />
-      {travelMap && (
-        <TravelMapMarker
-          number={1}
-          travelMap={travelMap}
-          position={{ lat: 33.354, lng: 126.5312 }}
-        />
-      )}
+      {travelMap &&
+        markers.map((marker, index) => (
+          <TravelMapMarker
+            key={index}
+            number={index + 1}
+            place={marker.place}
+            travelMap={travelMap}
+            position={marker.position}
+          />
+        ))}
     </MapWrapper>
   );
 };

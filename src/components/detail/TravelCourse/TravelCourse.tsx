@@ -7,15 +7,11 @@ import { TravelCourseContainer } from './TravelCourse.style';
 interface TravelCourseProps {
   travelCourses: TravelCourses[];
   travelDays: number;
+  selectedTab: number;
+  onClickTab: (day: number) => void;
 }
 
-const TravelCourse = ({ travelCourses, travelDays }: TravelCourseProps) => {
-  const [selectedTab, setSelectedTab] = useState(1);
-
-  const onClickTab = (day: number) => {
-    setSelectedTab(day);
-  };
-
+const TravelCourse = ({ travelCourses, travelDays, selectedTab, onClickTab }: TravelCourseProps) => {
   return (
     <TravelCourseContainer>
       <h3>여행 코스</h3>

@@ -18,11 +18,16 @@ export interface TravelList extends TravelVideoInfo {
   thumbnailUrl: string;
 }
 
-export interface TravelCourses {
+export interface TravelCourses extends Position {
   day: number;
   orderInDay: number;
   placeName: string;
   placeAddress: string | null;
+}
+
+export interface Position {
+  lat: number;
+  lng: number;
 }
 
 export interface TravelCourseDetail extends TravelVideoInfo {

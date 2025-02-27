@@ -8,22 +8,40 @@ import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
 import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
+import { Position } from '../../types';
+import { useMemo, useState } from 'react';
 
-const render = (status: Status) => {
+const render = (status: Status, courses: { place: string; position: Position }[]) => {
   switch (status) {
     case Status.LOADING:
       return <>로딩중...</>;
     case Status.FAILURE:
       return <>에러 발생...</>;
     case Status.SUCCESS:
-      return <TravelMap />;
+      return <TravelMap courses={courses} />;
   }
 };
 
 const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
+  const [selectedTab, setSelectedTab] = useState(1);
   const { travelCourse, loading, error } = useGetTravelCourse();
   const { selectedOption } = useSelectOptionContext();
+
+  const onClickTab = (day: number) => {
+    setSelectedTab(day);
+  };
+
+  const courses = useMemo(() => {
+    if (!travelCourse) return [];
+    console.log(`selectedTab이 변경됨: ${selectedTab}`);
+    return travelCourse.travelCourses
+      .filter((course) => course.day === selectedTab)
+      .map((course) => ({
+        place: course.placeName,
+        position: { lat: course.lat, lng: course.lng },
+      }));
+  }, [selectedTab, travelCourse]);
 
   if (!travelCourse) return <></>;
 
@@ -45,6 +63,8 @@ const TravelCoursePage = () => {
             travelCourseDetail={travelCourse}
           />
           <TravelCourse
+            selectedTab={selectedTab}
+            onClickTab={onClickTab}
             travelCourses={travelCourse.travelCourses}
             travelDays={travelCourse.travelDays}
           />
@@ -52,7 +72,8 @@ const TravelCoursePage = () => {
         <MapContainer>
           <Wrapper
             apiKey={apiKey}
-            render={render}
+            key={selectedTab}
+            render={(status) => render(status, courses)}
             libraries={['marker']}
           />
         </MapContainer>
