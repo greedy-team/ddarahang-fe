@@ -5,7 +5,8 @@ import GlobalHeader from '../../components/common/GlobalHeader/GlobalHeader';
 
 import { colors } from '../../styles/Theme';
 import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
-import Video from '../../components/detail/Video/VideoSection';
+import VideoSection from '../../components/detail/Video/VideoSection';
+import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 
 const render = (status: Status) => {
   switch (status) {
@@ -20,6 +21,10 @@ const render = (status: Status) => {
 
 const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
+  const { travelCourse, loading, error } = useGetTravelCourse();
+
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
 
   return (
     <>
@@ -29,14 +34,11 @@ const TravelCoursePage = () => {
       />
       <TravelCoursePageLayout>
         <TravelCourseContainer>
-          <Video
+          <VideoSection
             videoId='yT7y8xyNHHs'
             country='대한민국'
             region='부산'
-            creator='림리니'
-            title='[Vlog] 찐 부산 & 대구 맛집 다 있는 브이로그 | 출국 전 마지막 부산 여행 😭 | ana luisa 마직막 겨울 홀리데이 세일 🩵 | 다음 주'
-            viewCount={18334}
-            uploadDate='2024.05.12'
+            travelCourseDetail={travelCourse}
           />
           <TravelCourse />
         </TravelCourseContainer>

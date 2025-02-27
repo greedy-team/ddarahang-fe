@@ -14,13 +14,15 @@ import {
 import { size, colors } from '../../../styles/Theme';
 import { TravelCourseDetail } from '../../../types';
 
-interface VideoProps extends Pick<TravelCourseDetail, 'creator' | 'title' | 'viewCount' | 'uploadDate'> {
+interface VideoProps {
   videoId: string;
   country: string;
   region: string;
+  travelCourseDetail: TravelCourseDetail | null;
 }
 
-const VideoSection = ({ videoId, country, region, creator, title, viewCount, uploadDate }: VideoProps) => {
+const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoProps) => {
+  if (!travelCourseDetail) return <></>;
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
@@ -46,11 +48,11 @@ const VideoSection = ({ videoId, country, region, creator, title, viewCount, upl
         </VideoWrapper>
 
         <VideoInfo>
-          <ChannelName>{creator}</ChannelName>
-          <VideoTitle>{title}</VideoTitle>
+          <ChannelName>{travelCourseDetail.creator}</ChannelName>
+          <VideoTitle>{travelCourseDetail.title}</VideoTitle>
           <VideoMeta>
-            <span>업로드 날짜 {uploadDate}</span>
-            <span>조회수 {viewCount}회</span>
+            <span>업로드 날짜 {travelCourseDetail.uploadDate}</span>
+            <span>조회수 {travelCourseDetail.viewCount}회</span>
           </VideoMeta>
         </VideoInfo>
       </VideoContainer>
