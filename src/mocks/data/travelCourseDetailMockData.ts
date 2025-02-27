@@ -23,6 +23,42 @@ export const mockTravelCourseDetails: TravelCourseDetail[] = [
         placeAddress: '5 Chome-2-1 Tsukiji, Chuo City, Tokyo, Japan',
       },
       {
+        day: 1,
+        orderInDay: 3,
+        placeName: '츠키지 시장',
+        placeAddress: '5 Chome-2-1 Tsukiji, Chuo City, Tokyo, Japan',
+      },
+      {
+        day: 1,
+        orderInDay: 4,
+        placeName: '츠키지 시장',
+        placeAddress: '5 Chome-2-1 Tsukiji, Chuo City, Tokyo, Japan',
+      },
+      {
+        day: 1,
+        orderInDay: 5,
+        placeName: '츠키지 시장',
+        placeAddress: '5 Chome-2-1 Tsukiji, Chuo City, Tokyo, Japan',
+      },
+      {
+        day: 1,
+        orderInDay: 6,
+        placeName: '츠키지 시장',
+        placeAddress: '5 Chome-2-1 Tsukiji, Chuo City, Tokyo, Japan',
+      },
+      {
+        day: 1,
+        orderInDay: 7,
+        placeName: '츠키지 시장',
+        placeAddress: '5 Chome-2-1 Tsukiji, Chuo City, Tokyo, Japan',
+      },
+      {
+        day: 1,
+        orderInDay: 8,
+        placeName: '츠키지 시장',
+        placeAddress: '5 Chome-2-1 Tsukiji, Chuo City, Tokyo, Japan',
+      },
+      {
         day: 2,
         orderInDay: 1,
         placeName: '아사쿠사 센소지',

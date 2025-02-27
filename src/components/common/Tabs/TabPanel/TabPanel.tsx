@@ -3,20 +3,23 @@ import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
 import { TravelCourses } from '../../../../types';
 
 interface TabPanelProps {
-  travelCourses: Omit<TravelCourses, 'day'>[];
+  travelCourses: TravelCourses[];
+  selectedTab: number;
 }
 
-const TabPanel = ({ travelCourses }: TabPanelProps) => {
+const TabPanel = ({ travelCourses, selectedTab }: TabPanelProps) => {
   return (
     <Panels>
       {travelCourses.map((course) => {
-        return (
-          <PlaceCardItem
-            key={course.orderInDay}
-            travelCources={course}
-            onClick={() => {}}
-          />
-        );
+        if (course.day === selectedTab) {
+          return (
+            <PlaceCardItem
+              key={course.orderInDay}
+              travelCources={course}
+              onClick={() => {}}
+            />
+          );
+        }
       })}
     </Panels>
   );

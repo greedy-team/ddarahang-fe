@@ -3,12 +3,11 @@ import { styled } from 'styled-components';
 export const TravelCoursePageLayout = styled.div`
   display: flex;
   width: 100vw;
-  height: auto;
+  min-height: 925px;
 `;
 
 export const TravelCourseContainer = styled.div`
-  flex: 1 1 0%;
-  height: 100%;
+  width: 600px;
   display: flex;
   flex-direction: column;
   gap: 50px;
