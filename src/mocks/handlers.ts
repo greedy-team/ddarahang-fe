@@ -9,7 +9,7 @@ import {
 export const handlers = [
   http.get('/api/v1/travelcourses', travleListResolver),
 
-  http.get('/api/v1/travelcourses/:travelCourseId', travelCourseDetailResolver),
+  http.get('/api/v1/travelcourses/1', travelCourseDetailResolver),
 
   http.get('/api/v1/travelcourses/uploaddate', sortTravelListByUploadDate),
 

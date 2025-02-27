@@ -16,10 +16,9 @@ export const travleListResolver = () => {
   }
 };
 
-export const travelCourseDetailResolver = async ({ params }: { params: { travelCourseId: string } }) => {
+export const travelCourseDetailResolver = async () => {
   try {
-    const travelCourseId = params;
-    const response = mockTravelCourseDetails.filter((data) => data.travelCourseId === Number(travelCourseId));
+    const response = mockTravelCourseDetails[0];
     return HttpResponse.json(response, { status: 200 });
   } catch (error: unknown) {
     return HttpResponse.json({ message: 'Internal Server Error', error: error }, { status: 304 });
