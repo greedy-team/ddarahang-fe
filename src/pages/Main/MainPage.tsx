@@ -12,27 +12,45 @@ import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 import { VIDEO_NUMBERS_IN_PAGE } from '../../constants';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
 import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
+import { SortByType } from '../../types';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
+  const [sortOption, setSortOption] = useState<SortByType>('default');
+
   const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
+    filter: 'default',
     countryName: '대한민국',
     regionName: '',
   });
+
   const { selectedOption } = useSelectOptionContext();
   const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
 
   const handleSubmitOption = () => {
     if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
-      getTravelVideoList({ countryName: selectedOption.countryName, regionName: '' });
+      getTravelVideoList({ filter: 'default', countryName: selectedOption.countryName, regionName: '' });
     } else {
-      getTravelVideoList({ countryName: selectedOption.countryName, regionName: selectedOption.selectedOptionLabel });
+      getTravelVideoList({
+        filter: 'default',
+        countryName: selectedOption.countryName,
+        regionName: selectedOption.selectedOptionLabel,
+      });
     }
+  };
+
+  const handleSubmitDropdown = (sortBy: SortByType) => {
+    getTravelVideoList({
+      filter: sortBy,
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+    });
+
+    setSortOption(sortBy);
   };
 
   const handleCurrentPage = (currentPage: number) => {
     setCurrentPageNumber(currentPage);
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -48,7 +66,10 @@ const MainPage = () => {
         color={colors.WHITE}
         onSubmitOption={handleSubmitOption}
       />
-      <SortDropdown />
+      <SortDropdown
+        sortOption={sortOption}
+        onSubmitDropdown={(sortBy: SortByType) => handleSubmitDropdown(sortBy)}
+      />
       <StyledContentsWrapper>
         <TravelVideoList
           currentPageNumber={currentPageNumber}

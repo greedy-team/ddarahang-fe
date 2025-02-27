@@ -16,7 +16,7 @@ export const SelectContainer = styled.div<{ isOpen: boolean }>`
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.3); 
+      background: rgba(0, 0, 0, 0.2); 
       z-index: 10; 
     }
   `}

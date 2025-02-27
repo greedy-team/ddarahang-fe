@@ -1,5 +1,5 @@
 import { COUNTRIES, COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION } from '../constants';
-import { CountryType } from '../types';
+import { CountryType, SortByType } from '../types';
 
 export const getOptionList = (selectedOption: {
   isCountryOption: boolean;
@@ -14,4 +14,14 @@ export const getOptionList = (selectedOption: {
     return JAPANREGIONOPTION;
   }
   return [];
+};
+
+export const getSortedOption = (sortOption: SortByType) => {
+  if (sortOption === 'uploadDate') {
+    return '최신 순';
+  }
+  if (sortOption === 'viewCount') {
+    return '조회수 순';
+  }
+  return '정렬 옵션';
 };

@@ -1,19 +1,21 @@
 import { useState, useEffect } from 'react';
-import { CountryType, TravelList } from '../../types';
+import { CountryType, SortByType, TravelList } from '../../types';
 import axios from 'axios';
 
 interface useTravelVideoListProps {
+  filter: SortByType;
   countryName: CountryType;
   regionName: string;
 }
 
-const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps) => {
+const useTravelVideoList = ({ filter, countryName, regionName }: useTravelVideoListProps) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [videoList, setVideoList] = useState<TravelList[]>([]);
 
-  const getTravelVideoList = async ({ countryName, regionName }: useTravelVideoListProps) => {
+  const getTravelVideoList = async ({ filter, countryName, regionName }: useTravelVideoListProps) => {
     const requestBody = {
+      filter,
       countryName,
       regionName,
     };
@@ -34,7 +36,7 @@ const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps
   };
 
   useEffect(() => {
-    getTravelVideoList({ countryName, regionName });
+    getTravelVideoList({ filter, countryName, regionName });
   }, [countryName, regionName]);
 
   return { videoList, loading, error, getTravelVideoList };

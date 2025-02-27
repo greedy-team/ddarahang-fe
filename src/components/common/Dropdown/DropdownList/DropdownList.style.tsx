@@ -9,9 +9,11 @@ export const DropdownListUl = styled.ul`
   padding-left: ${size.SIZE_003};
   border-radius: ${size.SIZE_004};
   border: 1px solid ${colors.GRAY_300};
+  background-color: ${colors.WHITE};
   gap: ${size.SIZE_002};
   width: ${size.SIZE_019};
   height: 5rem;
   position: absolute;
-  top: 30%;
+  top: 120%;
+  z-index: 10;
 `;
