@@ -3,13 +3,13 @@ import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
 import { TravelCourses } from '../../../../types';
 
 interface TabPanelProps {
-  travelCources: Omit<TravelCourses, 'day'>[];
+  travelCourses: TravelCourses[];
 }
 
-const TabPanel = ({ travelCources }: TabPanelProps) => {
+const TabPanel = ({ travelCourses }: TabPanelProps) => {
   return (
     <Panels>
-      {travelCources.map((course) => {
+      {travelCourses.map((course) => {
         return (
           <PlaceCardItem
             key={course.orderInDay}

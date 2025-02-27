@@ -25,6 +25,8 @@ const TravelCoursePage = () => {
   const { travelCourse, loading, error } = useGetTravelCourse();
   const { selectedOption } = useSelectOptionContext();
 
+  if (!travelCourse) return <></>;
+
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
 
@@ -42,7 +44,7 @@ const TravelCoursePage = () => {
             region={selectedOption.selectedOptionLabel}
             travelCourseDetail={travelCourse}
           />
-          <TravelCourse />
+          <TravelCourse travelCourses={travelCourse.travelCourses} />
         </TravelCourseContainer>
         <MapContainer>
           <Wrapper
