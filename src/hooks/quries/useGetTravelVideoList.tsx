@@ -23,7 +23,9 @@ const useTravelVideoList = ({ filter, countryName, regionName }: useTravelVideoL
     setVideoList([]);
 
     try {
-      const response = await axios.get('/api/v1/travelcourses', { params: requestBody });
+      const response = await axios.get(
+        'https://22840bf7-f697-4901-98a8-36683378e553.mock.pstmn.io/api/v1/travelcourses?filter&countryName=대한민국&regionName=부산',
+      );
 
       if (response) {
         setVideoList(response.data);

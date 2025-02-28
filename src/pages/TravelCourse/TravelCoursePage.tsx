@@ -9,7 +9,7 @@ import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
 import { OneDayCourseType } from '../../types';
-import {  useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
 
 const render = (status: Status, courses: OneDayCourseType[]) => {
