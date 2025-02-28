@@ -1,21 +1,31 @@
-import { TravelCourses } from '../../../types';
+import { useEffect, useState } from 'react';
+import { OneDayCourseType } from '../../../types';
 import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep } from './PlaceCardItem.style';
 
 interface PlaceCardProps {
-  travelCources: Omit<TravelCourses, 'day'>;
-  color: string;
+  ondayCourse: OneDayCourseType;
+  number: number;
   onClickPanel: (placeName: string) => void;
+  selectedPanel: string | null;
 }
 
-const PlaceCardItem = ({ travelCources, onClickPanel, color }: PlaceCardProps) => {
+const PlaceCardItem = ({ selectedPanel, ondayCourse, number, onClickPanel }: PlaceCardProps) => {
+  const [isSelected, setIsSelected] = useState(false);
+
+  useEffect(() => {
+    if (selectedPanel === ondayCourse.place) {
+      setIsSelected(!isSelected);
+    }
+  }, [selectedPanel]);
+
   return (
     <PlaceCardWrapper>
-      <PlaceCircleStep>{travelCources.orderInDay}</PlaceCircleStep>
+      <PlaceCircleStep>{number + 1}</PlaceCircleStep>
       <PlaceCardContainer
-        color={color}
-        onClick={() => onClickPanel(travelCources.placeName)}
+        isSelected={isSelected}
+        onClick={() => onClickPanel(ondayCourse.place)}
       >
-        <span>{travelCources.placeName}</span>
+        <span>{ondayCourse.place}</span>
       </PlaceCardContainer>
     </PlaceCardWrapper>
   );

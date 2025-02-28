@@ -9,7 +9,8 @@ import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
 import { Position } from '../../types';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
 
 const render = (status: Status, selectedPanel: string | null, courses: { place: string; position: Position }[]) => {
   switch (status) {
@@ -18,19 +19,14 @@ const render = (status: Status, selectedPanel: string | null, courses: { place: 
     case Status.FAILURE:
       return <>에러 발생...</>;
     case Status.SUCCESS:
-      return (
-        <TravelMap
-          courses={courses}
-          selectedPanel={selectedPanel}
-        />
-      );
+      return <TravelMap courses={courses} />;
   }
 };
 
 const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
   const [selectedTab, setSelectedTab] = useState(1);
-  const [selectedPanel, setSelectedPanel] = useState<string | null>(null);
+  const { selectedPanel, setSelectedPanel } = useSelectedPanel();
   const { travelCourse, loading, error } = useGetTravelCourse();
   const { selectedOption } = useSelectOptionContext();
 
@@ -41,6 +37,10 @@ const TravelCoursePage = () => {
   const onClickPanel = (placeName: string) => {
     setSelectedPanel(placeName);
   };
+
+  useEffect(() => {
+    console.log('변경', selectedPanel);
+  }, [selectedPanel]);
 
   const courses = useMemo(() => {
     if (!travelCourse) return [];
@@ -74,10 +74,9 @@ const TravelCoursePage = () => {
           />
           <TravelCourse
             selectedTab={selectedTab}
-            selectedPanel={selectedPanel}
             onClickTab={onClickTab}
             onClickPanel={onClickPanel}
-            travelCourses={travelCourse.travelCourses}
+            ondayCourse={courses}
             travelDays={travelCourse.travelDays}
           />
         </TravelCourseContainer>

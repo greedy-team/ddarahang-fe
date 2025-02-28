@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MarkerWrapper, Circle } from './TravelMapMarker.style';
 import { createRoot } from 'react-dom/client';
 import { Position } from '../../../types';
+import { useSelectedPanel } from '../../../hooks/select/useSelectedPanel';
 
 const TravelMapMarker = ({
   number,
@@ -14,6 +15,16 @@ const TravelMapMarker = ({
   position: Position;
   place: string;
 }) => {
+  const [isSelected, setIsSelected] = useState(false);
+  const { selectedPanel } = useSelectedPanel();
+
+  useEffect(() => {
+    if (String(selectedPanel) === place) {
+      console.log('여기도', selectedPanel);
+      setIsSelected(!isSelected);
+    }
+  }, [selectedPanel]);
+
   const handleMapSearch = (place: string) => {
     if (!place) return;
     const query = encodeURIComponent(place);
@@ -30,7 +41,7 @@ const TravelMapMarker = ({
       content: markerContainer,
     });
 
-    createRoot(markerContainer).render(<Circle>{number}</Circle>);
+    createRoot(markerContainer).render(<Circle isSelected={isSelected}>{number}</Circle>);
 
     markerInstance.addListener('click', () => {
       handleMapSearch(place);
@@ -39,7 +50,7 @@ const TravelMapMarker = ({
     return () => {
       markerInstance.map = null;
     };
-  }, []);
+  }, [isSelected]);
 
   return <MarkerWrapper />;
 };

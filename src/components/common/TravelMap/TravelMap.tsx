@@ -5,10 +5,9 @@ import { Position } from '../../../types';
 
 interface TravelMapProps {
   courses: { place: string; position: Position }[];
-  selectedPanel: string | null;
 }
 
-const TravelMap = ({ courses, selectedPanel }: TravelMapProps) => {
+const TravelMap = ({ courses }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
   const [markers, setMarkers] = useState<{ position: Position; place: string }[]>(courses);
 
