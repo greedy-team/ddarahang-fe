@@ -29,7 +29,7 @@ const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoPro
         <BackButton
           color={colors.WHITE}
           size={size.SIZE_011}
-          iconPath='./image/back.svg'
+          iconPath='/icon/back.svg'
           iconAlt='뒤로가기 아이콘'
           onClick={() => {}}
         />
