@@ -14,6 +14,11 @@ const SortDropdown = ({ sortOption, onSubmitDropdown }: SortDropdownProps) => {
 
   const sortedOptionText = getSortedOption(sortOption);
 
+  const handleDropdownItemClick = (sortBy: SortByType) => {
+    onSubmitDropdown(sortBy);
+    setIsOpen(false);
+  };
+
   return (
     <DropdownWrapper>
       <Dropdown>
@@ -27,12 +32,10 @@ const SortDropdown = ({ sortOption, onSubmitDropdown }: SortDropdownProps) => {
             alt='아래 화살표'
           />
         </Dropdown.Trigger>
-        {isOpen && (
-          <Dropdown.List>
-            <Dropdown.Item onClick={() => onSubmitDropdown('viewCount')}>조회수 순</Dropdown.Item>
-            <Dropdown.Item onClick={() => onSubmitDropdown('uploadDate')}>최신 순</Dropdown.Item>
-          </Dropdown.List>
-        )}
+        <Dropdown.List isOpen={isOpen}>
+          <Dropdown.Item onClick={() => handleDropdownItemClick('viewCount')}>조회수 순</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleDropdownItemClick('uploadDate')}>최신 순</Dropdown.Item>
+        </Dropdown.List>
       </Dropdown>
     </DropdownWrapper>
   );

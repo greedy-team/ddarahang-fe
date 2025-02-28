@@ -33,7 +33,7 @@ export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean; i
       ? `
         opacity: 1;
         transform: translateY(0);
-        z-index: 11; 
+        z-index: 12; 
         pointer-events: auto;
       `
       : `
