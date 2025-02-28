@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const PlaceCardContainer = styled.li`
+export const PlaceCardContainer = styled.li<{ color: string }>`
   min-width: ${size.SIZE_021};
   width: 100%;
   height: ${size.SIZE_016};
@@ -9,7 +9,7 @@ export const PlaceCardContainer = styled.li`
   display: flex;
   align-items: center;
   border-radius: ${size.SIZE_006};
-  border: 1px solid ${colors.GRAY_200};
+  border: 1px solid ${(props) => props.color};
   box-shadow: ${size.SIZE_003} ${size.SIZE_003} ${size.SIZE_003} rgba(0, 0, 0, 0.1);
 
   &:hover {

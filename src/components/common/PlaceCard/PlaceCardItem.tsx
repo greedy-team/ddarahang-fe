@@ -3,14 +3,18 @@ import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep } from './PlaceCa
 
 interface PlaceCardProps {
   travelCources: Omit<TravelCourses, 'day'>;
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  color: string;
+  onClickPanel: (placeName: string) => void;
 }
 
-const PlaceCardItem = ({ travelCources }: PlaceCardProps) => {
+const PlaceCardItem = ({ travelCources, onClickPanel, color }: PlaceCardProps) => {
   return (
     <PlaceCardWrapper>
       <PlaceCircleStep>{travelCources.orderInDay}</PlaceCircleStep>
-      <PlaceCardContainer>
+      <PlaceCardContainer
+        color={color}
+        onClick={() => onClickPanel(travelCources.placeName)}
+      >
         <span>{travelCources.placeName}</span>
       </PlaceCardContainer>
     </PlaceCardWrapper>

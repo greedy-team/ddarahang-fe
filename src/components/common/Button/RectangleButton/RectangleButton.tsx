@@ -1,17 +1,13 @@
 import { StyledRectangleButton } from './RectangleButton.style';
 
 interface RectangleButtonProps {
-  color: string;
   text?: string | null;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const RectangleButton = ({ text, color, onClick }: RectangleButtonProps) => {
+const RectangleButton = ({ text, onClick }: RectangleButtonProps) => {
   return (
-    <StyledRectangleButton
-      color={color}
-      onClick={onClick}
-    >
+    <StyledRectangleButton onClick={onClick}>
       <p>{text}</p>
     </StyledRectangleButton>
   );

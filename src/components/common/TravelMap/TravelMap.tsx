@@ -5,9 +5,10 @@ import { Position } from '../../../types';
 
 interface TravelMapProps {
   courses: { place: string; position: Position }[];
+  selectedPanel: string | null;
 }
 
-const TravelMap = ({ courses }: TravelMapProps) => {
+const TravelMap = ({ courses, selectedPanel }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
   const [markers, setMarkers] = useState<{ position: Position; place: string }[]>(courses);
 
@@ -18,19 +19,23 @@ const TravelMap = ({ courses }: TravelMapProps) => {
 
     const instance = new window.google.maps.Map(mapRef.current, {
       center: {
-        lat: 33.4996,
-        lng: 126.5312,
+        lat: markers[Math.floor(markers.length / 2)].position.lat,
+        lng: markers[Math.floor(markers.length / 2)].position.lng,
       },
       zoom: 10,
       mapId: '54070c16532231ab',
       disableDefaultUI: true,
       clickableIcons: false,
-      minZoom: 10,
-      maxZoom: 18,
+      minZoom: 1,
+      maxZoom: 30,
     });
 
     setTravelMap(instance);
-  }, [markers]);
+  }, []);
+
+  useEffect(() => {
+    setMarkers(courses);
+  }, [courses]);
 
   return (
     <MapWrapper>

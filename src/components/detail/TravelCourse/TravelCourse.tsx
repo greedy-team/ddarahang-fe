@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { TravelCourses } from '../../../types';
 import Tab from '../../common/Tabs/Tab/Tab';
 import TabPanel from '../../common/Tabs/TabPanel/TabPanel';
@@ -8,10 +7,19 @@ interface TravelCourseProps {
   travelCourses: TravelCourses[];
   travelDays: number;
   selectedTab: number;
+  selectedPanel: string | null;
   onClickTab: (day: number) => void;
+  onClickPanel: (placeName: string) => void;
 }
 
-const TravelCourse = ({ travelCourses, travelDays, selectedTab, onClickTab }: TravelCourseProps) => {
+const TravelCourse = ({
+  travelCourses,
+  travelDays,
+  selectedTab,
+  selectedPanel,
+  onClickTab,
+  onClickPanel,
+}: TravelCourseProps) => {
   return (
     <TravelCourseContainer>
       <h3>여행 코스</h3>
@@ -23,6 +31,8 @@ const TravelCourse = ({ travelCourses, travelDays, selectedTab, onClickTab }: Tr
       <TabPanel
         travelCourses={travelCourses}
         selectedTab={selectedTab}
+        selectedPanel={selectedPanel}
+        onClickPanel={onClickPanel}
       />
     </TravelCourseContainer>
   );

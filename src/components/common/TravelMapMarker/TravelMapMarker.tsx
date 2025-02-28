@@ -39,7 +39,7 @@ const TravelMapMarker = ({
     return () => {
       markerInstance.map = null;
     };
-  }, [travelMap, position, place]);
+  }, []);
 
   return <MarkerWrapper />;
 };

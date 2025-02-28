@@ -11,20 +11,26 @@ import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContex
 import { Position } from '../../types';
 import { useMemo, useState } from 'react';
 
-const render = (status: Status, courses: { place: string; position: Position }[]) => {
+const render = (status: Status, selectedPanel: string | null, courses: { place: string; position: Position }[]) => {
   switch (status) {
     case Status.LOADING:
       return <>로딩중...</>;
     case Status.FAILURE:
       return <>에러 발생...</>;
     case Status.SUCCESS:
-      return <TravelMap courses={courses} />;
+      return (
+        <TravelMap
+          courses={courses}
+          selectedPanel={selectedPanel}
+        />
+      );
   }
 };
 
 const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
   const [selectedTab, setSelectedTab] = useState(1);
+  const [selectedPanel, setSelectedPanel] = useState<string | null>(null);
   const { travelCourse, loading, error } = useGetTravelCourse();
   const { selectedOption } = useSelectOptionContext();
 
@@ -32,9 +38,13 @@ const TravelCoursePage = () => {
     setSelectedTab(day);
   };
 
+  const onClickPanel = (placeName: string) => {
+    setSelectedPanel(placeName);
+  };
+
   const courses = useMemo(() => {
     if (!travelCourse) return [];
-    console.log(`selectedTab이 변경됨: ${selectedTab}`);
+
     return travelCourse.travelCourses
       .filter((course) => course.day === selectedTab)
       .map((course) => ({
@@ -43,7 +53,7 @@ const TravelCoursePage = () => {
       }));
   }, [selectedTab, travelCourse]);
 
-  if (!travelCourse) return <></>;
+  if (!travelCourse) return <>1234</>;
 
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
@@ -64,7 +74,9 @@ const TravelCoursePage = () => {
           />
           <TravelCourse
             selectedTab={selectedTab}
+            selectedPanel={selectedPanel}
             onClickTab={onClickTab}
+            onClickPanel={onClickPanel}
             travelCourses={travelCourse.travelCourses}
             travelDays={travelCourse.travelDays}
           />
@@ -73,7 +85,7 @@ const TravelCoursePage = () => {
           <Wrapper
             apiKey={apiKey}
             key={selectedTab}
-            render={(status) => render(status, courses)}
+            render={(status) => render(status, selectedPanel, courses)}
             libraries={['marker']}
           />
         </MapContainer>

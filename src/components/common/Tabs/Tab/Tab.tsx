@@ -1,4 +1,3 @@
-import { colors } from '../../../../styles/Theme';
 import RectangleButton from '../../Button/RectangleButton/RectangleButton';
 import { TabContainer, TabItem, TabList } from './Tab.style';
 
@@ -25,7 +24,6 @@ const Tab = ({ travelDays, selectedTab, onClickTab }: TabProps) => {
               <TabItem key={tab}>
                 <RectangleButton
                   text={tab}
-                  color={colors.WHITE}
                   onClick={() => {}}
                 />
               </TabItem>
