@@ -6,4 +6,6 @@ export const DropdownContainer = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
+
+  transition: all 0.5s;
 `;

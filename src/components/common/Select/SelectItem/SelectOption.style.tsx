@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { size, colors } from '../../../styles/Theme';
+import { size, colors } from '../../../../styles/Theme';
 
 export const Option = styled.li`
   list-style: none;

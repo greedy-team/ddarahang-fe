@@ -9,37 +9,36 @@ import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoLi
 import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 
-import { VIDEO_NUMBERS_IN_PAGE } from '../../constants';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
-import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
+import { SortByType } from '../../types';
+import Loading from '../../components/common/Loading/Loading';
+import useSubmitOption from '../../hooks/select/useSubmitOption';
+import useMediaScreen from '../../hooks/screen/useMediaScreen';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
-  const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
-    countryName: '대한민국',
-    regionName: '',
-  });
+  const [sortOption, setSortOption] = useState<SortByType>('default');
+
+  const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
   const { selectedOption } = useSelectOptionContext();
-  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
+  const { videoNumberInPage } = useMediaScreen();
 
-  const handleSubmitOption = () => {
-    if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
-      getTravelVideoList({ countryName: selectedOption.countryName, regionName: '' });
-    } else {
-      getTravelVideoList({ countryName: selectedOption.countryName, regionName: selectedOption.selectedOptionLabel });
-    }
-  };
+  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / videoNumberInPage), [videoList]);
 
-  const handleCurrentPage = (currentPage: number) => {
-    setCurrentPageNumber(currentPage);
+  const handleSubmitDropdown = (sortBy: SortByType) => {
+    getTravelVideoList({
+      filter: sortBy,
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+    });
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setSortOption(sortBy);
   };
 
   /**추후 에러, 로딩 공통컴포넌트
    * 만들 방법 생각해볼 예정
    */
-  if (loading) return <p>로딩 중...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
 
   return (
@@ -48,17 +47,23 @@ const MainPage = () => {
         color={colors.WHITE}
         onSubmitOption={handleSubmitOption}
       />
-      <SortDropdown />
+
+      <SortDropdown
+        sortOption={sortOption}
+        onSubmitDropdown={(sortBy: SortByType) => handleSubmitDropdown(sortBy)}
+      />
+
       <StyledContentsWrapper>
         <TravelVideoList
+          videoNumberInPage={videoNumberInPage}
           currentPageNumber={currentPageNumber}
           videoList={videoList}
         />
         <Pagination
           color={colors.WHITE}
-          totalPageNumber={totalPageNumber}
           currentPageNumber={currentPageNumber}
-          onPageClick={handleCurrentPage}
+          totalPageNumber={totalPageNumber}
+          onPageClick={setCurrentPageNumber}
         />
       </StyledContentsWrapper>
       <Footer />
