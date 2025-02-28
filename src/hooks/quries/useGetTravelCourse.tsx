@@ -12,7 +12,9 @@ const useGetTravelCourse = () => {
       setLoading(true);
 
       try {
-        const response = await axios.get('/api/v1/travelcourses/1');
+        const response = await axios.get(
+          'https://22840bf7-f697-4901-98a8-36683378e553.mock.pstmn.io/api/v1/travelcourses/1',
+        );
 
         if (response) {
           setTravelCourse(response.data);
