@@ -30,7 +30,7 @@ export const PlaceCardWrapper = styled.div`
   gap: ${size.SIZE_010};
 `;
 
-export const PlaceCircleStep = styled.div`
+export const PlaceCircleStep = styled.div<{ isSelected: boolean }>`
   width: ${size.SIZE_011};
   height: ${size.SIZE_011};
   font-size: ${size.SIZE_007};

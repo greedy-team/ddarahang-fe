@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { TravelCourseDetail, TravelList } from '../../types';
+import { TravelCourseDetail } from '../../types';
 import axios from 'axios';
 
 const useGetTravelCourse = () => {

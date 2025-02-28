@@ -13,6 +13,7 @@ import {
 } from './VideoSection.style';
 import { size, colors } from '../../../styles/Theme';
 import { TravelCourseDetail } from '../../../types';
+import { useNavigate } from 'react-router-dom';
 
 interface VideoProps {
   videoId: string;
@@ -23,15 +24,19 @@ interface VideoProps {
 
 const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoProps) => {
   if (!travelCourseDetail) return <></>;
+
+  const route = useNavigate();
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
         <BackButton
           color={colors.WHITE}
           size={size.SIZE_011}
-          iconPath='./image/back.svg'
+          iconPath='/icon/back.svg'
           iconAlt='뒤로가기 아이콘'
-          onClick={() => {}}
+          onClick={() => {
+            route('/');
+          }}
         />
         <HeaderTitle>
           {country} {region}
