@@ -34,11 +34,6 @@ const MainPage = () => {
     setSortOption(sortBy);
   };
 
-  const handleCurrentPage = (currentPage: number) => {
-    setCurrentPageNumber(currentPage);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   /**추후 에러, 로딩 공통컴포넌트
    * 만들 방법 생각해볼 예정
    */
@@ -63,9 +58,9 @@ const MainPage = () => {
         />
         <Pagination
           color={colors.WHITE}
-          totalPageNumber={totalPageNumber}
           currentPageNumber={currentPageNumber}
-          onPageClick={handleCurrentPage}
+          totalPageNumber={totalPageNumber}
+          onPageClick={setCurrentPageNumber}
         />
       </StyledContentsWrapper>
       <Footer />
