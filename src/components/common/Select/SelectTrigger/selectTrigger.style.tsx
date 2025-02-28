@@ -31,6 +31,10 @@ export const SelectTriggerButton = styled.button<{ isFocus: boolean }>`
       : `
       border: none;
       `}
+
+  @media screen and (max-width: 1080px) {
+    justify-content: center;
+  }
 `;
 
 export const SelectLabel = styled.span`
@@ -46,7 +50,7 @@ export const SelectOption = styled.span`
 
 export const SelectTextWrapper = styled.div<{ isFocus: boolean }>`
   display: flex;
-  min-width: 200px;
+  width: 70%;
   flex-direction: column;
   align-items: flex-start;
 `;
