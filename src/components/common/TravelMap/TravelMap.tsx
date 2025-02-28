@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import TravelMapMarker from '../TravelMapMarker/TravelMapMarker';
 import { MapWrapper, MapContainer } from './TravelMap.style';
-import { Position } from '../../../types';
+import { OneDayCourseType } from '../../../types';
 
 interface TravelMapProps {
-  courses: { place: string; position: Position }[];
+  oneDayCourse: OneDayCourseType[];
 }
 
-const TravelMap = ({ courses }: TravelMapProps) => {
+const TravelMap = ({ oneDayCourse }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
-  const [markers, setMarkers] = useState<{ position: Position; place: string }[]>(courses);
+  const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourse);
 
   const mapRef = useRef<HTMLDivElement>(null);
 
@@ -33,8 +33,8 @@ const TravelMap = ({ courses }: TravelMapProps) => {
   }, []);
 
   useEffect(() => {
-    setMarkers(courses);
-  }, [courses]);
+    setMarkers(oneDayCourse);
+  }, [oneDayCourse]);
 
   return (
     <MapWrapper>
@@ -43,7 +43,7 @@ const TravelMap = ({ courses }: TravelMapProps) => {
         markers.map((marker, index) => (
           <TravelMapMarker
             key={index}
-            number={index + 1}
+            orderInday={marker.orderInday} //여기 수정
             place={marker.place}
             travelMap={travelMap}
             position={marker.position}

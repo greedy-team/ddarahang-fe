@@ -1,26 +1,22 @@
 import { Panels } from './TabPanel.style';
 import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
 import { OneDayCourseType } from '../../../../types';
-import { useSelectedPanel } from '../../../../hooks/select/useSelectedPanel';
 
 interface TabPanelProps {
-  ondayCourse: OneDayCourseType[];
+  oneDayCourse: OneDayCourseType[];
   onClickPanel: (placeName: string) => void;
 }
 
-const TabPanel = ({ ondayCourse, onClickPanel }: TabPanelProps) => {
-  const { selectedPanel } = useSelectedPanel();
-
+const TabPanel = ({ oneDayCourse, onClickPanel }: TabPanelProps) => {
   return (
     <Panels>
-      {ondayCourse.map((course, index) => {
+      {oneDayCourse.map((course) => {
         return (
           <PlaceCardItem
-            key={index}
-            number={index}
-            ondayCourse={course}
+            key={course.orderInday}
+            orderInDay={course.orderInday}
+            oneDayCourse={course}
             onClickPanel={onClickPanel}
-            selectedPanel={selectedPanel}
           />
         );
       })}

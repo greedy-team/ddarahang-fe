@@ -61,6 +61,8 @@ export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카';
 export type LocationType = '국가' | '지역';
 
 export interface OneDayCourseType {
+  day: number;
+  orderInday: number;
   place: string;
   position: {
     lat: number;

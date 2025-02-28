@@ -1,31 +1,34 @@
 import { useEffect, useState } from 'react';
 import { OneDayCourseType } from '../../../types';
 import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep } from './PlaceCardItem.style';
+import { useSelectedPanel } from '../../../hooks/select/useSelectedPanel';
 
 interface PlaceCardProps {
-  ondayCourse: OneDayCourseType;
-  number: number;
+  oneDayCourse: OneDayCourseType;
+  orderInDay: number;
   onClickPanel: (placeName: string) => void;
-  selectedPanel: string | null;
 }
 
-const PlaceCardItem = ({ selectedPanel, ondayCourse, number, onClickPanel }: PlaceCardProps) => {
+const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
+  const { selectedPanel } = useSelectedPanel();
 
   useEffect(() => {
-    if (selectedPanel === ondayCourse.place) {
+    if (selectedPanel === oneDayCourse.place) {
       setIsSelected(!isSelected);
+    } else {
+      setIsSelected(false);
     }
   }, [selectedPanel]);
 
   return (
     <PlaceCardWrapper>
-      <PlaceCircleStep>{number + 1}</PlaceCircleStep>
+      <PlaceCircleStep>{orderInDay}</PlaceCircleStep>
       <PlaceCardContainer
         isSelected={isSelected}
-        onClick={() => onClickPanel(ondayCourse.place)}
+        onClick={() => onClickPanel(oneDayCourse.place)}
       >
-        <span>{ondayCourse.place}</span>
+        <span>{oneDayCourse.place}</span>
       </PlaceCardContainer>
     </PlaceCardWrapper>
   );

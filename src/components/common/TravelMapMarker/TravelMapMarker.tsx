@@ -5,12 +5,12 @@ import { Position } from '../../../types';
 import { useSelectedPanel } from '../../../hooks/select/useSelectedPanel';
 
 const TravelMapMarker = ({
-  number,
+  orderInday,
   travelMap,
   position,
   place,
 }: {
-  number: number;
+  orderInday: number;
   travelMap: google.maps.Map | null;
   position: Position;
   place: string;
@@ -20,8 +20,9 @@ const TravelMapMarker = ({
 
   useEffect(() => {
     if (String(selectedPanel) === place) {
-      console.log('여기도', selectedPanel);
       setIsSelected(!isSelected);
+    } else {
+      setIsSelected(false);
     }
   }, [selectedPanel]);
 
@@ -41,7 +42,7 @@ const TravelMapMarker = ({
       content: markerContainer,
     });
 
-    createRoot(markerContainer).render(<Circle isSelected={isSelected}>{number}</Circle>);
+    createRoot(markerContainer).render(<Circle isSelected={isSelected}>{orderInday}</Circle>);
 
     markerInstance.addListener('click', () => {
       handleMapSearch(place);

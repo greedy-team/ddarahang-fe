@@ -7,10 +7,6 @@ interface TabProps {
   onClickTab: (day: number) => void;
 }
 
-/**
- * 추후 탭 기능 구현할 때, 선택 된 탭은
- * RectangleButton으로 조건부 렌더링 할 예정.
- */
 const Tab = ({ travelDays, selectedTab, onClickTab }: TabProps) => {
   const arr = Array.from({ length: travelDays }, (_, i) => `DAY${i + 1}`);
 

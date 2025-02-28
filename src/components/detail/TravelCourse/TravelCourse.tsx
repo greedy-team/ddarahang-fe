@@ -4,14 +4,15 @@ import TabPanel from '../../common/Tabs/TabPanel/TabPanel';
 import { TravelCourseContainer } from './TravelCourse.style';
 
 interface TravelCourseProps {
-  ondayCourse: OneDayCourseType[];
+  oneDayCourse: OneDayCourseType[];
   travelDays: number;
   selectedTab: number;
   onClickTab: (day: number) => void;
   onClickPanel: (placeName: string) => void;
 }
 
-const TravelCourse = ({ ondayCourse, travelDays, selectedTab, onClickTab, onClickPanel }: TravelCourseProps) => {
+const TravelCourse = ({ oneDayCourse, travelDays, selectedTab, onClickTab, onClickPanel }: TravelCourseProps) => {
+
   return (
     <TravelCourseContainer>
       <h3>여행 코스</h3>
@@ -21,7 +22,7 @@ const TravelCourse = ({ ondayCourse, travelDays, selectedTab, onClickTab, onClic
         onClickTab={onClickTab}
       />
       <TabPanel
-        ondayCourse={ondayCourse}
+        oneDayCourse={oneDayCourse}
         onClickPanel={onClickPanel}
       />
     </TravelCourseContainer>
