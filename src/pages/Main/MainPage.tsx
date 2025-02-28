@@ -11,33 +11,18 @@ import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 
 import { VIDEO_NUMBERS_IN_PAGE } from '../../constants';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
-import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
 import { SortByType } from '../../types';
+import Loading from '../../components/common/Loading/Loading';
+import useSubmitOption from '../../hooks/select/useSubmitOption';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const [sortOption, setSortOption] = useState<SortByType>('default');
 
-  const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
-    filter: 'default',
-    countryName: '대한민국',
-    regionName: '',
-  });
-
+  const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
   const { selectedOption } = useSelectOptionContext();
-  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
 
-  const handleSubmitOption = () => {
-    if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
-      getTravelVideoList({ filter: 'default', countryName: selectedOption.countryName, regionName: '' });
-    } else {
-      getTravelVideoList({
-        filter: 'default',
-        countryName: selectedOption.countryName,
-        regionName: selectedOption.selectedOptionLabel,
-      });
-    }
-  };
+  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
 
   const handleSubmitDropdown = (sortBy: SortByType) => {
     getTravelVideoList({
@@ -57,7 +42,7 @@ const MainPage = () => {
   /**추후 에러, 로딩 공통컴포넌트
    * 만들 방법 생각해볼 예정
    */
-  if (loading) return <p>로딩 중...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
 
   return (
@@ -66,6 +51,7 @@ const MainPage = () => {
         color={colors.WHITE}
         onSubmitOption={handleSubmitOption}
       />
+
       <SortDropdown
         sortOption={sortOption}
         onSubmitDropdown={(sortBy: SortByType) => handleSubmitDropdown(sortBy)}
