@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { size, colors } from '../../../styles/Theme';
+import { colors, size } from '../../../../styles/Theme';
 
 export const SelectOptionListContainer = styled.ul<{ isCountryOption: boolean; isOpen: boolean }>`
   position: absolute;

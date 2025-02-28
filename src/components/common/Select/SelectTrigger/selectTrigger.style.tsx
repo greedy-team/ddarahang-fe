@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, size } from '../../../styles/Theme';
+import { colors, size } from '../../../../styles/Theme';
 
 export const SelectTriggerButton = styled.button<{ isFocus: boolean }>`
   display: flex;

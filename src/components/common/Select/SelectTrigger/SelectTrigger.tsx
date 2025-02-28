@@ -1,9 +1,9 @@
-import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './selectTrigger.style';
-import CircleButton from '../Button/CircleButton/CircleButton';
-import { colors, size } from '../../../styles/Theme';
-import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 import { RefObject } from 'react';
-import { TRAVEL_LABEL } from '../../../constants';
+import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './selectTrigger.style';
+import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { TRAVEL_LABEL } from '../../../../constants';
+import { colors, size } from '../../../../styles/Theme';
+import CircleButton from '../../Button/CircleButton/CircleButton';
 
 interface SelectTriggerType {
   tabRef: RefObject<HTMLButtonElement | null>;

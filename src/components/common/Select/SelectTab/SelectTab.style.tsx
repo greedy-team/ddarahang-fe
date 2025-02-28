@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { colors, size } from '../../../styles/Theme';
+import { colors, size } from '../../../../styles/Theme';
 
 export const SelectTabContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: ${size.SIZE_002};
-  width: 60rem;
+  width: 100%;
   height: ${size.SIZE_017};
   background-color: ${colors.WHITE};
   border: 1px solid ${colors.GRAY_200};
