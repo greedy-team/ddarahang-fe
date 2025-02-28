@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../../styles/Theme';
 
-export const DropdownListUl = styled.ul`
+export const DropdownListUl = styled.ul<{ isOpen: boolean }>`
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -16,4 +16,20 @@ export const DropdownListUl = styled.ul`
   position: absolute;
   top: 120%;
   z-index: 10;
+
+  transition: all 1s;
+
+  ${(props) =>
+    props.isOpen
+      ? `
+        opacity: 1;
+        transform: translateY(0);
+        z-index: 11; 
+        pointer-events: auto;
+      `
+      : `
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+      `}
 `;
