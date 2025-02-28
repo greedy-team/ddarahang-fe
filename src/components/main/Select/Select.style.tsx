@@ -5,6 +5,7 @@ export const SelectContainer = styled.div<{ isOpen: boolean }>`
   flex-direction: row;
   position: relative;
   transition: all 0.8s;
+  width: 60%;
 
   ${({ isOpen }) =>
     isOpen &&

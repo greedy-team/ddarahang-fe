@@ -28,8 +28,8 @@ export const YoutubeThumbnail = styled.img`
 
 export const YoutubeTitle = styled.h2`
   font-size: 1.125rem;
-  margin-top: ${size.SIZE_010};
-  margin-bottom: ${size.SIZE_004};
+  padding-top: ${size.SIZE_006};
+  padding-bottom: ${size.SIZE_003};
   overflow-wrap: break-word;
   line-height: 1.4;
   display: -webkit-box;

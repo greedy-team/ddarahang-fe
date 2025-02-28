@@ -5,7 +5,7 @@ import MaintenancePage from '../pages/Maintenance/MaintenancePage';
 
 export const router = createBrowserRouter([
   {
-    path: '/travelcourse',
+    path: '/travelcourse/:id',
     element: <TravelCoursePage />,
   },
   {

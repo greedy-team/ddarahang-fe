@@ -9,11 +9,11 @@ import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoLi
 import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 
-import { VIDEO_NUMBERS_IN_PAGE } from '../../constants';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
 import { SortByType } from '../../types';
 import Loading from '../../components/common/Loading/Loading';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
+import useMediaScreen from '../../hooks/screen/useMediaScreen';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
@@ -21,8 +21,9 @@ const MainPage = () => {
 
   const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
   const { selectedOption } = useSelectOptionContext();
+  const { videoNumberInPage } = useMediaScreen();
 
-  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / VIDEO_NUMBERS_IN_PAGE), [videoList]);
+  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / videoNumberInPage), [videoList]);
 
   const handleSubmitDropdown = (sortBy: SortByType) => {
     getTravelVideoList({
@@ -51,8 +52,10 @@ const MainPage = () => {
         sortOption={sortOption}
         onSubmitDropdown={(sortBy: SortByType) => handleSubmitDropdown(sortBy)}
       />
+
       <StyledContentsWrapper>
         <TravelVideoList
+          videoNumberInPage={videoNumberInPage}
           currentPageNumber={currentPageNumber}
           videoList={videoList}
         />
