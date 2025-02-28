@@ -1,37 +1,57 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { MarkerWrapper, Circle } from './TravelMapMarker.style';
 import { createRoot } from 'react-dom/client';
+import { Position } from '../../../types';
+import { useSelectedPanel } from '../../../hooks/select/useSelectedPanel';
 
 const TravelMapMarker = ({
-  number,
+  orderInday,
   travelMap,
   position,
+  place,
 }: {
-  number: number;
+  orderInday: number;
   travelMap: google.maps.Map | null;
-  position: { lat: number; lng: number };
+  position: Position;
+  place: string;
 }) => {
+  const [isSelected, setIsSelected] = useState(false);
+  const { selectedPanel } = useSelectedPanel();
+
   useEffect(() => {
+    if (String(selectedPanel) === place) {
+      setIsSelected(!isSelected);
+    } else {
+      setIsSelected(false);
+    }
+  }, [selectedPanel]);
+
+  const handleMapSearch = (place: string) => {
+    if (!place) return;
+    const query = encodeURIComponent(place);
+    window.open(`https://www.google.com/maps/search/?q=${query}`, '_blank');
+  };
+
+  useEffect(() => {
+    if (!travelMap) return;
     const markerContainer = document.createElement('div');
     const markerInstance = new google.maps.marker.AdvancedMarkerElement({
-      position: {
-        lat: 33.354,
-        lng: 126.5312,
-      },
+      position,
       map: travelMap,
-      title: '마커',
+      title: place || '마커',
       content: markerContainer,
     });
 
-    createRoot(markerContainer).render(<Circle>{number}</Circle>);
+    createRoot(markerContainer).render(<Circle isSelected={isSelected}>{orderInday}</Circle>);
+
     markerInstance.addListener('click', () => {
-      alert('마커 클릭');
+      handleMapSearch(place);
     });
 
     return () => {
       markerInstance.map = null;
     };
-  }, [travelMap]);
+  }, [isSelected]);
 
   return <MarkerWrapper />;
 };

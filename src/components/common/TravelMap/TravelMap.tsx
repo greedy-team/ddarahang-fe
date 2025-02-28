@@ -1,9 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import TravelMapMarker from '../TravelMapMarker/TravelMapMarker';
 import { MapWrapper, MapContainer } from './TravelMap.style';
+import { OneDayCourseType } from '../../../types';
 
-const TravelMap = () => {
+interface TravelMapProps {
+  oneDayCourse: OneDayCourseType[];
+}
+
+const TravelMap = ({ oneDayCourse }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
+  const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourse);
+
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -11,30 +18,37 @@ const TravelMap = () => {
 
     const instance = new window.google.maps.Map(mapRef.current, {
       center: {
-        lat: 33.4996,
-        lng: 126.5312,
+        lat: markers[Math.floor(markers.length / 2)].position.lat,
+        lng: markers[Math.floor(markers.length / 2)].position.lng,
       },
       zoom: 10,
       mapId: '54070c16532231ab',
       disableDefaultUI: true,
       clickableIcons: false,
-      minZoom: 10,
-      maxZoom: 18,
+      minZoom: 1,
+      maxZoom: 30,
     });
 
     setTravelMap(instance);
   }, []);
 
+  useEffect(() => {
+    setMarkers(oneDayCourse);
+  }, [oneDayCourse]);
+
   return (
     <MapWrapper>
       <MapContainer ref={mapRef} />
-      {travelMap && (
-        <TravelMapMarker
-          number={1}
-          travelMap={travelMap}
-          position={{ lat: 33.354, lng: 126.5312 }}
-        />
-      )}
+      {travelMap &&
+        markers.map((marker, index) => (
+          <TravelMapMarker
+            key={index}
+            orderInday={marker.orderInday} //여기 수정
+            place={marker.place}
+            travelMap={travelMap}
+            position={marker.position}
+          />
+        ))}
     </MapWrapper>
   );
 };

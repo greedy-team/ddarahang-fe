@@ -8,12 +8,12 @@ export const MarkerWrapper = styled.div`
   align-items: center;
 `;
 
-export const Circle = styled.div`
+export const Circle = styled.div<{ isSelected: boolean }>`
   color: ${colors.WHITE};
   width: ${size.SIZE_013};
   height: ${size.SIZE_013};
   font-size: 15px;
-  background-color: ${colors.PRIMARY};
+  background: ${(props) => (props.isSelected ? '#FF7989' : colors.PRIMARY)};
   border-radius: 100px;
   border: 2px solid ${colors.WHITE};
   display: flex;

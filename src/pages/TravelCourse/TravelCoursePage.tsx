@@ -8,23 +8,51 @@ import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
 import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
+import { OneDayCourseType } from '../../types';
+import {  useMemo, useState } from 'react';
+import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
 
-const render = (status: Status) => {
+const render = (status: Status, courses: OneDayCourseType[]) => {
   switch (status) {
     case Status.LOADING:
       return <>로딩중...</>;
     case Status.FAILURE:
       return <>에러 발생...</>;
     case Status.SUCCESS:
-      return <TravelMap />;
+      return <TravelMap oneDayCourse={courses} />;
   }
 };
 
 const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
+  const [selectedTab, setSelectedTab] = useState(1);
+  const { setSelectedPanel } = useSelectedPanel();
   const { travelCourse, loading, error } = useGetTravelCourse();
   const { selectedOption } = useSelectOptionContext();
 
+  const onClickTab = (day: number) => {
+    setSelectedTab(day);
+  };
+
+  const onClickPanel = (placeName: string) => {
+    setSelectedPanel(placeName);
+  };
+
+  const courses = useMemo(() => {
+    if (!travelCourse) return [];
+
+    setSelectedPanel('');
+    return travelCourse.travelCourses
+      .filter((course) => course.day === selectedTab)
+      .map((course) => ({
+        place: course.placeName,
+        day: course.day,
+        orderInday: course.orderInDay,
+        position: { lat: course.lat, lng: course.lng },
+      }));
+  }, [selectedTab, travelCourse]);
+
+  if (!travelCourse) return <></>;
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
 
@@ -42,12 +70,19 @@ const TravelCoursePage = () => {
             region={selectedOption.selectedOptionLabel}
             travelCourseDetail={travelCourse}
           />
-          <TravelCourse />
+          <TravelCourse
+            selectedTab={selectedTab}
+            onClickTab={onClickTab}
+            onClickPanel={onClickPanel}
+            oneDayCourse={courses}
+            travelDays={travelCourse.travelDays}
+          />
         </TravelCourseContainer>
         <MapContainer>
           <Wrapper
             apiKey={apiKey}
-            render={render}
+            key={selectedTab}
+            render={(status) => render(status, courses)}
             libraries={['marker']}
           />
         </MapContainer>

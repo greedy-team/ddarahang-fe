@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { colors, size } from '../../../../styles/Theme';
 
 export const TabContainer = styled.div`
-  width: 50vw;
-  height: 55px;
+  height: auto;
+  padding: 12px 0px;
   display: flex;
   flex-direction: row;
   background-color: ${colors.GRAY_200};
@@ -34,6 +34,7 @@ export const TabItem = styled.li`
   font-family: 'Pretendard-SemiBold', sans-serif;
   border-right: 2px solid ${colors.GRAY_300};
   transition: all 0.3s ease;
+  /* cursor: pointer; */
 
   &:hover {
     color: ${colors.GREY_500};

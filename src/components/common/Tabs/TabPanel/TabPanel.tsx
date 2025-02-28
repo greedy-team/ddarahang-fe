@@ -1,20 +1,22 @@
 import { Panels } from './TabPanel.style';
 import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
-import { TravelCourses } from '../../../../types';
+import { OneDayCourseType } from '../../../../types';
 
 interface TabPanelProps {
-  travelCources: Omit<TravelCourses, 'day'>[];
+  oneDayCourse: OneDayCourseType[];
+  onClickPanel: (placeName: string) => void;
 }
 
-const TabPanel = ({ travelCources }: TabPanelProps) => {
+const TabPanel = ({ oneDayCourse, onClickPanel }: TabPanelProps) => {
   return (
     <Panels>
-      {travelCources.map((course) => {
+      {oneDayCourse.map((course) => {
         return (
           <PlaceCardItem
-            key={course.orderInDay}
-            travelCources={course}
-            onClick={() => {}}
+            key={course.orderInday}
+            orderInDay={course.orderInday}
+            oneDayCourse={course}
+            onClickPanel={onClickPanel}
           />
         );
       })}

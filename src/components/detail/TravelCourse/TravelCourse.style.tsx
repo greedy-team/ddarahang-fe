@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { size } from '../../../styles/Theme';
 
 export const TravelCourseContainer = styled.div`
+  max-height: 420px;
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_006};

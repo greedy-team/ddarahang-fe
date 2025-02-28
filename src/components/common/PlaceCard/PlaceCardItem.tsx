@@ -1,17 +1,34 @@
-import { TravelCourses } from '../../../types';
+import { useEffect, useState } from 'react';
+import { OneDayCourseType } from '../../../types';
 import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep } from './PlaceCardItem.style';
+import { useSelectedPanel } from '../../../hooks/select/useSelectedPanel';
 
 interface PlaceCardProps {
-  travelCources: Omit<TravelCourses, 'day'>;
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  oneDayCourse: OneDayCourseType;
+  orderInDay: number;
+  onClickPanel: (placeName: string) => void;
 }
 
-const PlaceCardItem = ({ travelCources }: PlaceCardProps) => {
+const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProps) => {
+  const [isSelected, setIsSelected] = useState(false);
+  const { selectedPanel } = useSelectedPanel();
+
+  useEffect(() => {
+    if (selectedPanel === oneDayCourse.place) {
+      setIsSelected(!isSelected);
+    } else {
+      setIsSelected(false);
+    }
+  }, [selectedPanel]);
+
   return (
     <PlaceCardWrapper>
-      <PlaceCircleStep>{travelCources.orderInDay}</PlaceCircleStep>
-      <PlaceCardContainer>
-        <span>{travelCources.placeName}</span>
+      <PlaceCircleStep>{orderInDay}</PlaceCircleStep>
+      <PlaceCardContainer
+        isSelected={isSelected}
+        onClick={() => onClickPanel(oneDayCourse.place)}
+      >
+        <span>{oneDayCourse.place}</span>
       </PlaceCardContainer>
     </PlaceCardWrapper>
   );
