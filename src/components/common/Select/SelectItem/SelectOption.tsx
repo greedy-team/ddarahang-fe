@@ -1,5 +1,5 @@
-import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
-import { SelectOptionType } from '../../../types';
+import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { SelectOptionType } from '../../../../types';
 import { Image, LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.style';
 
 interface SelectOptionProps {

@@ -10,14 +10,19 @@ interface PaginationProps {
   onPageClick: (currentPage: number) => void;
 }
 
-const Pagination = ({ color, onPageClick, totalPageNumber, currentPageNumber }: PaginationProps) => {
+const Pagination = ({ color, onPageClick, currentPageNumber, totalPageNumber }: PaginationProps) => {
+  const handlePageClick = (pageNumber: number) => {
+    onPageClick(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <PaginationContainer>
       {Array.from({ length: totalPageNumber }, (_, index) => (
         <PageButton
           key={index}
           color={color}
-          onClick={() => onPageClick(index + 1)}
+          onClick={() => handlePageClick(index + 1)}
           text={`${index + 1}`}
           isActive={currentPageNumber === index + 1}
         />

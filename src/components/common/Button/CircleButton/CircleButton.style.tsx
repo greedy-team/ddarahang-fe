@@ -11,7 +11,6 @@ export const StyledCircleButton = styled.button<{ size: string; color: string }>
   display: flex;
   justify-content: center;
   align-items: center;
-
   cursor: pointer;
 
   ${(props) =>

@@ -1,8 +1,8 @@
-import SelectOption from '../SelectItem/SelectOption';
-import { SelectOptionListContainer } from './SelectOptionList.style';
-import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 import { RefObject } from 'react';
-import { getOptionList } from '../../../utils';
+import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { getOptionList } from '../../../../utils';
+import { SelectOptionListContainer } from './SelectOptionList.style';
+import SelectOption from '../SelectItem/SelectOption';
 
 interface SelectOptionListProps {
   isOpen: boolean;

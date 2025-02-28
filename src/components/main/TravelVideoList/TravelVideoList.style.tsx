@@ -7,7 +7,12 @@ export const TravelVideoListContainer = styled.div`
   margin-top: ${size.SIZE_006};
   display: grid;
   justify-items: center;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 2fr));
   grid-template-rows: repeat(2, auto);
   overflow: hidden;
+
+  @media screen and (max-width: 1440px) {
+    grid-template-columns: repeat(3, minmax(0, 2fr));
+    grid-template-rows: repeat(2, auto);
+  }
 `;

@@ -1,19 +1,20 @@
 import { TravelVideoListContainer } from './TravelVideoList.style';
 import { TravelList } from '../../../types';
 import YoutubeCard from '../YoutubeCard/YoutubeCard';
-
-import { VIDEO_NUMBERS_IN_PAGE } from '../../../constants';
+import { useNavigate } from 'react-router-dom';
 
 interface TravelVideoListProps {
+  videoNumberInPage: number;
   videoList: TravelList[];
   currentPageNumber: number;
 }
 
-const TravelVideoList = ({ videoList, currentPageNumber }: TravelVideoListProps) => {
-  const startVideoNumber = (currentPageNumber - 1) * VIDEO_NUMBERS_IN_PAGE;
+const TravelVideoList = ({ videoNumberInPage, videoList, currentPageNumber }: TravelVideoListProps) => {
+  const startVideoNumber = (currentPageNumber - 1) * videoNumberInPage;
 
-  const currentVideoList = videoList.slice(startVideoNumber, startVideoNumber + VIDEO_NUMBERS_IN_PAGE);
+  const currentVideoList = videoList.slice(startVideoNumber, startVideoNumber + videoNumberInPage);
 
+  const route = useNavigate();
   return (
     <TravelVideoListContainer>
       {currentVideoList.map((video) => {
@@ -24,7 +25,9 @@ const TravelVideoList = ({ videoList, currentPageNumber }: TravelVideoListProps)
             creator={video.creator}
             uploadDate={video.uploadDate}
             viewCount={video.viewCount}
-            onClick={() => {}}
+            onClick={() => {
+              route('/travelcourse/1');
+            }}
           />
         );
       })}

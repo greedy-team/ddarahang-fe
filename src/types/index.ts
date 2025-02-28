@@ -69,3 +69,5 @@ export interface OneDayCourseType {
     lng: number;
   };
 }
+
+export type SortByType = 'uploadDate' | 'viewCount' | 'default';

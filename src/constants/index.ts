@@ -1,7 +1,5 @@
 import { SelectOptionType } from '../types';
 
-export const VIDEO_NUMBERS_IN_PAGE = 8;
-
 export const COUNTRIES = ['대한민국', '일본'];
 
 export const TRAVEL_LABEL = {

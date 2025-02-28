@@ -1,8 +1,8 @@
 import { SelectContainer } from './Select.style';
-import { SelectOptionList } from '../../common/SelectOptionList/SelectOptionList';
-import SelectTab from '../../common/SelectTab/SelectTab';
 import { useRef } from 'react';
 import useDetectClose from '../../../hooks/select/useDetectClose';
+import SelectTab from '../../common/Select/SelectTab/SelectTab';
+import { SelectOptionList } from '../../common/Select/SelectOptionList/SelectOptionList';
 
 interface SelectProps {
   onSubmitOption: () => void;
