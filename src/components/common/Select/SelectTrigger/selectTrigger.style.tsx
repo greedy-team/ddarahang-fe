@@ -53,4 +53,5 @@ export const SelectTextWrapper = styled.div`
   width: 70%;
   flex-direction: column;
   align-items: flex-start;
+  gap: ${size.SIZE_003};
 `;
