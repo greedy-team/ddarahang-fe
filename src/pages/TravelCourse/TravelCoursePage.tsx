@@ -7,10 +7,10 @@ import { colors } from '../../styles/Theme';
 import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
 import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
-import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
 import { OneDayCourseType } from '../../types';
 import { useMemo, useState } from 'react';
 import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
+import Loading from '../../components/common/Loading/Loading';
 
 const render = (status: Status, courses: OneDayCourseType[]) => {
   switch (status) {
@@ -28,7 +28,6 @@ const TravelCoursePage = () => {
   const [selectedTab, setSelectedTab] = useState(1);
   const { setSelectedPanel } = useSelectedPanel();
   const { travelCourse, loading, error } = useGetTravelCourse();
-  const { selectedOption } = useSelectOptionContext();
 
   const onClickTab = (day: number) => {
     setSelectedTab(day);
@@ -53,11 +52,11 @@ const TravelCoursePage = () => {
   }, [selectedTab, travelCourse]);
 
   if (!travelCourse) return <></>;
-  if (loading) return <p>로딩 중...</p>;
   if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
 
   return (
     <>
+      <Loading loading={loading} />
       <GlobalHeader
         color={colors.WHITE}
         isIconVisible={false}
@@ -66,8 +65,6 @@ const TravelCoursePage = () => {
         <TravelCourseContainer>
           <VideoSection
             videoId='yT7y8xyNHHs'
-            country={selectedOption.countryName}
-            region={selectedOption.selectedOptionLabel}
             travelCourseDetail={travelCourse}
           />
           <TravelCourse

@@ -14,18 +14,18 @@ import {
 import { size, colors } from '../../../styles/Theme';
 import { TravelCourseDetail } from '../../../types';
 import { useNavigate } from 'react-router-dom';
+import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 
 interface VideoProps {
   videoId: string;
-  country: string;
-  region: string;
   travelCourseDetail: TravelCourseDetail | null;
 }
 
-const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoProps) => {
+const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
   if (!travelCourseDetail) return <></>;
-
+  const { selectedOption } = useSelectOptionContext();
   const route = useNavigate();
+
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
@@ -39,7 +39,7 @@ const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoPro
           }}
         />
         <HeaderTitle>
-          {country} {region}
+          {selectedOption.countryName} {selectedOption.selectedOptionLabel}
         </HeaderTitle>
       </VideoSectionHeader>
 
