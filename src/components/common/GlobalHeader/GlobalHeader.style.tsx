@@ -8,7 +8,6 @@ export const GlobalHeaderWrapper = styled.div<{ $isIconVisible: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid ${colors.GRAY_200};
 
   background-color: ${colors.WHITE};
 
