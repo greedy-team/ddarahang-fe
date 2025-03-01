@@ -55,9 +55,8 @@ export const VideoInfo = styled.div`
 `;
 
 export const ChannelName = styled.p`
-  font-size: ${size.SIZE_009};
-  font-weight: bold;
-  color: ${colors.GREY_600};
+  font-size: ${size.SIZE_008};
+  color: ${colors.GREY_500};
 `;
 
 export const VideoTitle = styled.h3`
@@ -72,7 +71,7 @@ export const VideoTitle = styled.h3`
 `;
 
 export const VideoMeta = styled.p`
-  font-size: ${size.SIZE_009};
+  font-size: ${size.SIZE_008};
   word-spacing: 3px;
   color: ${colors.GREY_500};
 

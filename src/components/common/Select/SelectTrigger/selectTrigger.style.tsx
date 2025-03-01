@@ -44,7 +44,7 @@ export const SelectLabel = styled.span`
 
 export const SelectOption = styled.span`
   color: ${colors.GREY_800};
-  font-size: ${size.SIZE_009};
+  font-size: 18px;
   font-family: 'Pretendard-SemiBold', sans-serif;
 `;
 
