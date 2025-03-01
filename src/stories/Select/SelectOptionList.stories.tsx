@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SelectOptionList } from '../../components/common/SelectOptionList/SelectOptionList';
+import { SelectOptionList } from '../../components/common/Select/SelectOptionList/SelectOptionList';
 import { COUNTRYOPTION } from '../../constants';
 
 const meta = {

@@ -38,10 +38,15 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    travelCources: {
-      orderInDay: 1,
-      placeName: '광안리 해수욕장',
-      placeAddress: ' ',
+    oneDayCourse: {
+      day: 1,
+      orderInday: 1,
+      place: '광안리 해수욕장',
+      position: {
+        lat: 15.2356,
+        lng: 13.1353,
+      },
     },
+    orderInDay: 1,
   },
 };

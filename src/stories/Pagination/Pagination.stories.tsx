@@ -17,15 +17,20 @@ const meta = {
       description: '페이지 버튼의 색상',
       defaultValue: colors.PRIMARY,
     },
-    pageSize: {
+    totalPageNumber: {
       control: 'number',
       description: '페이지 버튼의 개수',
       defaultValue: 5,
     },
-    onClick: { action: 'clicked', description: '버튼 클릭 이벤트' },
+    currentPageNumber: {
+      control: 'number',
+      description: '페이지 버튼의 개수',
+      defaultValue: 1,
+    },
+    onPageClick: { action: 'clicked', description: '버튼 클릭 이벤트' },
   },
   args: {
-    onClick: fn('Button clicked'),
+    onPageClick: fn('Button clicked'),
   },
 } satisfies Meta<typeof Pagination>;
 
@@ -35,8 +40,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    pageSize: 5,
+    totalPageNumber: 5,
+    currentPageNumber: 1,
     color: colors.WHITE,
-    onClick: () => {},
+    onPageClick: () => {},
   },
 };
