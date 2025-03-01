@@ -51,7 +51,7 @@ const TravelCoursePage = () => {
       }));
   }, [selectedTab, travelCourse]);
 
-  if (!travelCourse) return <></>;
+  if (!travelCourse) return <>코스 정보가 없습니다.</>;
   if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
 
   return (

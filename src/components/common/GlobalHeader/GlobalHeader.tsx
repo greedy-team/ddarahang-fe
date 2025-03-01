@@ -13,7 +13,7 @@ const GlobalHeader = ({ color, isIconVisible }: GlobalHeaderProps) => {
   const route = useNavigate();
 
   return (
-    <GlobalHeaderWrapper isIconVisible={isIconVisible}>
+    <GlobalHeaderWrapper $isIconVisible={isIconVisible}>
       <Logo />
       {isIconVisible && (
         <CircleButton

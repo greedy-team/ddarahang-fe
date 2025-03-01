@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-export const SelectContainer = styled.div<{ isOpen: boolean }>`
+export const SelectContainer = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: row;
   position: relative;
   transition: all 0.8s;
   width: 60%;
 
-  ${({ isOpen }) =>
-    isOpen &&
+  ${({ $isOpen }) =>
+    $isOpen &&
     `
     &::before {
       content: '';

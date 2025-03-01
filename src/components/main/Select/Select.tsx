@@ -20,7 +20,7 @@ const Select = ({ onSubmitOption }: SelectProps) => {
   });
 
   return (
-    <SelectContainer isOpen={isOpen}>
+    <SelectContainer $isOpen={isOpen}>
       <SelectTab
         isOpen={isOpen}
         setIsOpen={setIsOpen}

@@ -20,13 +20,14 @@ const TravelVideoList = ({ videoNumberInPage, videoList, currentPageNumber }: Tr
       {currentVideoList.map((video) => {
         return (
           <YoutubeCard
+            key={video.travelCourseId}
             imgUrl={video.thumbnailUrl}
             title={video.title}
             creator={video.creator}
             uploadDate={video.uploadDate}
             viewCount={video.viewCount}
             onClick={() => {
-              route('/travelcourse/1');
+              route(`/travelcourse/${video.travelCourseId}`);
             }}
           />
         );

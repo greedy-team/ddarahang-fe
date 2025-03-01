@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../../styles/Theme';
 
-export const DropdownListUl = styled.ul<{ isOpen: boolean }>`
+export const DropdownListUl = styled.ul<{ $isOpen: boolean }>`
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -19,8 +19,8 @@ export const DropdownListUl = styled.ul<{ isOpen: boolean }>`
 
   transition: all 1s;
 
-  ${(props) =>
-    props.isOpen
+  ${({ $isOpen }) =>
+    $isOpen
       ? `
         opacity: 1;
         transform: translateY(0);

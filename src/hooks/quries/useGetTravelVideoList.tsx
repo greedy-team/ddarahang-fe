@@ -19,6 +19,7 @@ const useTravelVideoList = ({ filter, countryName, regionName }: useTravelVideoL
       countryName,
       regionName,
     };
+
     setLoading(true);
     setVideoList([]);
 
