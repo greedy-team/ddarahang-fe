@@ -8,8 +8,8 @@ interface SelectTabProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onSubmitOption: () => void;
-  countryTabRef: RefObject<HTMLButtonElement | null>;
-  regionTabRef: RefObject<HTMLButtonElement | null>;
+  countryTabRef: RefObject<HTMLDivElement | null>;
+  regionTabRef: RefObject<HTMLDivElement | null>;
 }
 
 const SelectTab = ({ isOpen, setIsOpen, onSubmitOption, countryTabRef, regionTabRef }: SelectTabProps) => {

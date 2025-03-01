@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState } from 'react';
 
 interface UseDetectCloseProps {
   elem: RefObject<HTMLUListElement | null>;
-  tabRefs: RefObject<HTMLButtonElement | null>[];
+  tabRefs: RefObject<HTMLDivElement | null>[];
   initialState: boolean;
 }
 
