@@ -12,7 +12,7 @@ const meta = {
   tags: ['autodocs'],
 
   argTypes: {
-    travelCources: {
+    oneDayCourse: {
       control: 'object',
       description: '여행 코스 하루 일정 상세 정보',
       defaultValue: {
