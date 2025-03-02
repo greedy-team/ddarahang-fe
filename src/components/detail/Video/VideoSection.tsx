@@ -29,6 +29,13 @@ const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
 
   const simpleViewCount = parseFloat((travelCourseDetail.viewCount / MIN_VIEW).toFixed(1)) + '만회';
 
+  const hasRegion = () => {
+    if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
+      return '';
+    }
+    return selectedOption.selectedOptionLabel;
+  };
+
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
@@ -42,7 +49,8 @@ const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
           }}
         />
         <HeaderTitle>
-          {selectedOption.countryName} {selectedOption.selectedOptionLabel}
+          {selectedOption.countryName}
+          {hasRegion()}
         </HeaderTitle>
       </VideoSectionHeader>
 
