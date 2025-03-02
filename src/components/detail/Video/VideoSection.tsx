@@ -52,8 +52,7 @@ const VideoSection = ({ videoUrl, travelCourse }: VideoProps) => {
           }}
         />
         <HeaderTitle>
-          {selectedOption.countryName}
-          {hasRegion()}
+          {selectedOption.countryName} {hasRegion()}
         </HeaderTitle>
       </VideoSectionHeader>
 

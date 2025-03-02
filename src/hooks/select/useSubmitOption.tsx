@@ -7,8 +7,8 @@ const useSubmitOption = () => {
 
   const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
     filter: 'default',
-    countryName: '대한민국',
-    regionName: '',
+    countryName: selectedOption.countryName,
+    regionName: selectedOption.selectedOptionLabel,
   });
 
   const handleSubmitOption = () => {

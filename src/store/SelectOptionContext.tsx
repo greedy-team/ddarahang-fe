@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import { CountryType } from '../types';
 
 interface SelectOptionValueProps {
@@ -24,11 +24,20 @@ const defaultValue = {
 export const SelectedOptionContext = createContext<SelectedOptionContextProps>(defaultValue);
 
 export const SelectOptionProvider = ({ children }: { children: React.ReactNode }) => {
-  const [selectedOption, setSelectedOption] = useState<SelectOptionValueProps>({
-    isCountryOption: true,
-    countryName: '대한민국',
-    selectedOptionLabel: '',
-  });
+  const savedSelectedOption = localStorage.getItem('selectedOption');
+  const parsedSelectedOption = savedSelectedOption ? JSON.parse(savedSelectedOption) : null;
+
+  const [selectedOption, setSelectedOption] = useState<SelectOptionValueProps>(
+    parsedSelectedOption || {
+      isCountryOption: true,
+      countryName: '대한민국',
+      selectedOptionLabel: '',
+    },
+  );
+
+  useEffect(() => {
+    localStorage.setItem('selectedOption', JSON.stringify(selectedOption));
+  }, [selectedOption]);
 
   return (
     <SelectedOptionContext.Provider value={{ selectedOption, setSelectedOption }}>
