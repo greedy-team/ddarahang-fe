@@ -39,7 +39,7 @@ jobs:
         run: npm run build
 
       - name: Remove old build
-        run: sudo rm -rf $DEPLOY_DIR/build
+        run: sudo rm -rf $DEPLOY_DIR/dist
 
       - name: Copy build files
-        run: sudo cp -r build $DEPLOY_DIR/
+        run: sudo cp -r dist $DEPLOY_DIR/
