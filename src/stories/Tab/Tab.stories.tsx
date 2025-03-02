@@ -11,7 +11,7 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    travelDays: {
+    totalTravelDays: {
       control: 'number',
       description: '탭의 날짜',
       defaultValue: 4,
@@ -33,7 +33,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    travelDays: 2,
+    totalTravelDays: 2,
     selectedTab: 2,
     onClickTab: fn(),
   },

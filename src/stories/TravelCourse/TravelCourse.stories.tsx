@@ -10,12 +10,12 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    oneDayCourse: {
+    oneDayCourses: {
       control: Array,
       description: '여행코스',
       defaultValue: '여행코스 객체 리스트',
     },
-    travelDays: {
+    totalTravelDays: {
       control: 'number',
       description: '여행코스',
       defaultValue: '여행코스 객체 리스트',
@@ -38,27 +38,27 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    oneDayCourse: [
+    oneDayCourses: [
       {
         day: 1,
         orderInday: 1,
-        place: '서울 타워',
+        placeName: '서울 타워',
         position: { lat: 37.5512, lng: 126.9882 },
       },
       {
         day: 1,
         orderInday: 2,
-        place: '경복궁',
+        placeName: '경복궁',
         position: { lat: 37.5796, lng: 126.977 },
       },
       {
         day: 2,
         orderInday: 1,
-        place: '해운대',
+        placeName: '해운대',
         position: { lat: 35.1587, lng: 129.1603 },
       },
     ],
-    travelDays: 3,
+    totalTravelDays: 3,
     selectedTab: 1,
   },
 };

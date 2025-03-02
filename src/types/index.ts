@@ -6,6 +6,11 @@ export interface SelectOptionType {
   locationType: string;
 }
 
+export interface TravelList extends TravelVideoInfo {
+  travelCourseId: number;
+  thumbnailUrl: string;
+}
+
 export interface TravelVideoInfo {
   creator: string;
   title: string;
