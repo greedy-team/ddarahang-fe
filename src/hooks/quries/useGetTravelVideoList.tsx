@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CountryType, SortByType, TravelList } from '../../types';
+import { CountryType, SortByType, TravelVideoInfo } from '../../types';
 import axios from 'axios';
 
 interface useTravelVideoListProps {
@@ -11,23 +11,24 @@ interface useTravelVideoListProps {
 const useTravelVideoList = ({ filter, countryName, regionName }: useTravelVideoListProps) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
-  const [videoList, setVideoList] = useState<TravelList[]>([]);
+  const [videoList, setVideoList] = useState<TravelVideoInfo[]>([]);
 
   const getTravelVideoList = async ({ filter, countryName, regionName }: useTravelVideoListProps) => {
-    const requestBody = {
+    let requestBody = {
       filter,
       countryName,
       regionName,
     };
 
+    if (regionName == '') {
+      requestBody.regionName = '';
+    }
+
     setLoading(true);
     setVideoList([]);
 
     try {
-      const response = await axios.get(
-        'https://22840bf7-f697-4901-98a8-36683378e553.mock.pstmn.io/api/v1/travelcourses?filter&countryName=대한민국&regionName=부산',
-        { params: requestBody },
-      );
+      const response = await axios.get('https://api.ddarahang.site/api/v1/travelcourses', { params: requestBody });
 
       if (response) {
         setVideoList(response.data);

@@ -9,16 +9,17 @@ export interface SelectOptionType {
 export interface TravelVideoInfo {
   creator: string;
   title: string;
-  viewCount: number;
   uploadDate: string;
+  viewCount: number;
 }
 
-export interface TravelList extends TravelVideoInfo {
-  travelCourseId: number;
-  thumbnailUrl: string;
+export interface TravelCourse extends TravelVideoInfo {
+  videoUrl: string;
+  travelDays: number;
+  details: Detail[];
 }
 
-export interface TravelCourses extends Position {
+export interface Detail extends Position {
   day: number;
   orderInDay: number;
   placeName: string;
@@ -28,13 +29,6 @@ export interface TravelCourses extends Position {
 export interface Position {
   lat: number;
   lng: number;
-}
-
-export interface TravelCourseDetail extends TravelVideoInfo {
-  videoUrl: string;
-  travelCourseId: number;
-  travelDays: number;
-  travelCourses: TravelCourses[];
 }
 
 export type CountryType = '대한민국' | '일본';
@@ -60,14 +54,14 @@ export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카';
 
 export type LocationType = '국가' | '지역';
 
-export interface OneDayCourseType {
+export type SortByType = 'uploadDate' | 'viewCount' | 'default';
+
+export type OneDayCourseType = {
+  placeName: string;
   day: number;
   orderInday: number;
-  place: string;
   position: {
     lat: number;
     lng: number;
   };
-}
-
-export type SortByType = 'uploadDate' | 'viewCount' | 'default';
+};

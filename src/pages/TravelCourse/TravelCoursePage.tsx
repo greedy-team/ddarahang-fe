@@ -13,6 +13,7 @@ import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
 import Loading from '../../components/common/Loading/Loading';
 import { StyledErrorMessage } from '../Main/MainPage.style';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, MAP_LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
+import { useParams } from 'react-router-dom';
 
 const renderMap = (status: Status, courses: OneDayCourseType[]) => {
   switch (status) {
@@ -21,7 +22,7 @@ const renderMap = (status: Status, courses: OneDayCourseType[]) => {
     case Status.FAILURE:
       return renderErrorMessage(LOAD_ERROR_MESSAGE);
     case Status.SUCCESS:
-      return <TravelMap oneDayCourse={courses} />;
+      return <TravelMap oneDayCourses={courses} />;
   }
 };
 
@@ -41,14 +42,11 @@ const renderErrorMessage = (message: string) => (
 );
 
 const TravelCoursePage = () => {
+  const param = useParams();
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
   const [selectedTab, setSelectedTab] = useState(1);
   const { setSelectedPanel } = useSelectedPanel();
-  const { travelCourse, loading, error } = useGetTravelCourse();
-
-  if (!travelCourse) return renderErrorMessage(NO_DATA_ERROR_MESSAGE);
-  if (loading) return <Loading loading={loading} />;
-  if (error) return renderErrorMessage(LOAD_ERROR_MESSAGE);
+  const { travelCourse, loading, error } = useGetTravelCourse(Number(param.id));
 
   const onClickTab = (day: number) => {
     setSelectedTab(day);
@@ -58,19 +56,23 @@ const TravelCoursePage = () => {
     setSelectedPanel(placeName);
   };
 
-  const courses = useMemo(() => {
+  const oneDayCourses = useMemo(() => {
     if (!travelCourse) return [];
 
     setSelectedPanel('');
-    return travelCourse.travelCourses
+    return travelCourse.details
       .filter((course) => course.day === selectedTab)
       .map((course) => ({
-        place: course.placeName,
+        placeName: course.placeName,
         day: course.day,
         orderInday: course.orderInDay,
         position: { lat: course.lat, lng: course.lng },
       }));
   }, [selectedTab, travelCourse]);
+
+  if (!travelCourse) return renderErrorMessage(NO_DATA_ERROR_MESSAGE);
+  if (loading) return <Loading loading={loading} />;
+  if (error) return renderErrorMessage(LOAD_ERROR_MESSAGE);
 
   return (
     <>
@@ -81,22 +83,22 @@ const TravelCoursePage = () => {
       <TravelCoursePageLayout>
         <TravelCourseContainer>
           <VideoSection
-            videoId='yT7y8xyNHHs'
-            travelCourseDetail={travelCourse}
+            videoUrl={travelCourse.videoUrl}
+            travelCourse={travelCourse}
           />
           <TravelCourse
             selectedTab={selectedTab}
             onClickTab={onClickTab}
             onClickPanel={onClickPanel}
-            oneDayCourse={courses}
-            travelDays={travelCourse.travelDays}
+            oneDayCourses={oneDayCourses}
+            totalTravelDays={travelCourse.travelDays}
           />
         </TravelCourseContainer>
         <MapContainer>
           <Wrapper
             apiKey={apiKey}
             key={selectedTab}
-            render={(status) => renderMap(status, courses)}
+            render={(status) => renderMap(status, oneDayCourses)}
             libraries={['marker']}
           />
         </MapContainer>

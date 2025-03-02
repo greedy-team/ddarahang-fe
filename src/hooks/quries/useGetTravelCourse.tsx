@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react';
-import { TravelCourseDetail } from '../../types';
+import { TravelCourse } from '../../types';
 import axios from 'axios';
 
-const useGetTravelCourse = () => {
+const useGetTravelCourse = (videoId: number) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
-  const [travelCourse, setTravelCourse] = useState<TravelCourseDetail | null>(null);
+  const [travelCourse, setTravelCourse] = useState<TravelCourse | null>(null);
 
   useEffect(() => {
     const getTravelCourse = async () => {
       setLoading(true);
 
       try {
-        const response = await axios.get(
-          'https://22840bf7-f697-4901-98a8-36683378e553.mock.pstmn.io/api/v1/travelcourses/1',
-        );
+        const response = await axios.get(`https://api.ddarahang.site/api/v1/travelcourses/${videoId}`);
 
         if (response) {
           setTravelCourse(response.data);

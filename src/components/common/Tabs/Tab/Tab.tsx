@@ -2,18 +2,18 @@ import RectangleButton from '../../Button/RectangleButton/RectangleButton';
 import { TabContainer, TabItem, TabList } from './Tab.style';
 
 interface TabProps {
-  travelDays: number;
+  totalTravelDays: number;
   selectedTab: number;
   onClickTab: (day: number) => void;
 }
 
-const Tab = ({ travelDays, selectedTab, onClickTab }: TabProps) => {
-  const arr = Array.from({ length: travelDays }, (_, i) => `DAY${i + 1}`);
+const Tab = ({ totalTravelDays, selectedTab, onClickTab }: TabProps) => {
+  const tabs = Array.from({ length: totalTravelDays }, (_, i) => `DAY${i + 1}`);
 
   return (
     <TabContainer>
       <TabList>
-        {arr.map((tab, index) => {
+        {tabs.map((tab, index) => {
           const dayNumber = index + 1;
           if (dayNumber === selectedTab) {
             return (
