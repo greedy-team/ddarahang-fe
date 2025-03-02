@@ -62,9 +62,8 @@ const SelectTrigger = ({
     <SelectTriggerButton
       ref={tabRef}
       $isFocus={isFocus}
-      onClick={() => handleTriggerClick()}
     >
-      <SelectTextWrapper>
+      <SelectTextWrapper onClick={() => handleTriggerClick()}>
         <SelectLabel>{selectLabel}</SelectLabel>
         <SelectOption>{selectOption}</SelectOption>
       </SelectTextWrapper>

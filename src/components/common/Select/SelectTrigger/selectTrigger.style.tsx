@@ -48,9 +48,11 @@ export const SelectOption = styled.span`
   font-family: 'Pretendard-SemiBold', sans-serif;
 `;
 
-export const SelectTextWrapper = styled.div`
+export const SelectTextWrapper = styled.button`
   display: flex;
   width: 70%;
+  background-color: transparent;
+  border: none;
   flex-direction: column;
   align-items: flex-start;
   gap: ${size.SIZE_003};
