@@ -20,7 +20,7 @@ const useTravelVideoList = ({ filter, countryName, regionName }: useTravelVideoL
       regionName,
     };
 
-    if (regionName == '') {
+    if (regionName === '' || regionName === '여행 지역 검색') {
       requestBody.regionName = '';
     }
 
