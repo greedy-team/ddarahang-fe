@@ -17,20 +17,10 @@ const meta = {
       description: '비디오 고유 ID',
       defaultValue: 'LTFAaPdvzTk',
     },
-    country: {
-      control: 'text',
+    travelCourseDetail: {
+      control: 'object',
       description: '나라 이름',
       defaultValue: '대한민국',
-    },
-    region: {
-      control: 'text',
-      description: '지역 이름',
-      defaultValue: '부산',
-    },
-    travelCourseDetail: {
-      control: 'text',
-      description: '유튜브 크리에이터명',
-      defaultValue: '신지',
     },
   },
 } satisfies Meta<typeof VideoSection>;
@@ -42,8 +32,6 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     videoId: 'yT7y8xyNHHs',
-    country: '대한민국',
-    region: '부산',
     travelCourseDetail: {
       creator: '림리니',
       title:
