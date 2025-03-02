@@ -15,15 +15,17 @@ const meta = {
     oneDayCourse: {
       control: 'object',
       description: '여행 코스 하루 일정 상세 정보',
-      defaultValue: {
-        day: 1,
-        orderInDay: 1,
-        place: '광안리 해수욕장',
-        position: {
-          lat: 15.2356,
-          lng: 13.1353,
+      defaultValue: [
+        {
+          day: 1,
+          orderInDay: 1,
+          place: '광안리 해수욕장',
+          position: {
+            lat: 15.2356,
+            lng: 13.1353,
+          },
         },
-      },
+      ],
     },
   },
 
