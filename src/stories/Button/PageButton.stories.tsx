@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action as fn } from '@storybook/addon-actions';
-import { colors, size } from '../../styles/Theme';
+import { colors } from '../../styles/Theme';
 import PageButton from '../../components/common/Button/PageButton/PageButton';
 
 const meta = {

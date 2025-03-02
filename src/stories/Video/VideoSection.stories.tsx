@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import VideoSection from '../../components/detail/Video/VideoSection';
+import { TravelCourseDetail } from '../../types';
 
 const meta = {
   title: 'Video/VideoSection',
@@ -26,25 +27,10 @@ const meta = {
       description: '지역 이름',
       defaultValue: '부산',
     },
-    creator: {
+    travelCourseDetail: {
       control: 'text',
       description: '유튜브 크리에이터명',
       defaultValue: '신지',
-    },
-    title: {
-      control: 'text',
-      description: '유튜브 영상 제목',
-      defaultValue: '신지의 부산 맛집 탐방 선정 10',
-    },
-    viewCount: {
-      control: 'number',
-      description: '유튜브 영상 조회수',
-      defaultValue: 100000,
-    },
-    uploadDate: {
-      control: 'text',
-      description: '유튜브 업로드 날짜',
-      defaultValue: '2024-08-02',
     },
   },
 } satisfies Meta<typeof VideoSection>;
@@ -58,10 +44,12 @@ export const Default: Story = {
     videoId: 'yT7y8xyNHHs',
     country: '대한민국',
     region: '부산',
-    creator: '림리니',
-    title:
-      '[Vlog] 찐 부산 & 대구 맛집 다 있는 브이로그 | 출국 전 마지막 부산 여행 😭 | ana luisa 마직막 겨울 홀리데이 세일 🩵 | 다음 주',
-    viewCount: 18334,
-    uploadDate: '2024.05.12',
+    travelCourseDetail: {
+      creator: '림리니',
+      title:
+        '[Vlog] 찐 부산 & 대구 맛집 다 있는 브이로그 | 출국 전 마지막 부산 여행 😭 | ana luisa 마직막 겨울 홀리데이 세일 🩵 | 다음 주',
+      viewCount: 18334,
+      uploadDate: '2024.05.12',
+    } as TravelCourseDetail | null,
   },
 };
