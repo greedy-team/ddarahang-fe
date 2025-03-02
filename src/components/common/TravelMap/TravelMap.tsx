@@ -21,7 +21,7 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
         lat: markers[Math.floor(markers.length / 2)].position.lat,
         lng: markers[Math.floor(markers.length / 2)].position.lng,
       },
-      zoom: 10,
+      zoom: 12,
       mapId: '54070c16532231ab',
       disableDefaultUI: true,
       clickableIcons: false,
