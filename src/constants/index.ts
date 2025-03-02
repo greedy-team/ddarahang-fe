@@ -2,6 +2,8 @@ import { SelectOptionType } from '../types';
 
 export const COUNTRIES = ['대한민국', '일본'];
 
+export const MIN_VIEW = 10000;
+
 export const TRAVEL_LABEL = {
   COUNTRY: '여행 국가',
   REGION: '여행 지역',

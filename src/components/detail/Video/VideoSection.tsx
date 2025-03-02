@@ -15,6 +15,7 @@ import { size, colors } from '../../../styles/Theme';
 import { TravelCourseDetail } from '../../../types';
 import { useNavigate } from 'react-router-dom';
 import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
+import { MIN_VIEW } from '../../../constants';
 
 interface VideoProps {
   videoId: string;
@@ -25,6 +26,8 @@ const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
   if (!travelCourseDetail) return <></>;
   const { selectedOption } = useSelectOptionContext();
   const route = useNavigate();
+
+  const simpleViewCount = parseFloat((travelCourseDetail.viewCount / MIN_VIEW).toFixed(1)) + '만회';
 
   return (
     <VideoSectionContainer>
@@ -57,7 +60,7 @@ const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
           <VideoTitle>{travelCourseDetail.title}</VideoTitle>
           <VideoMeta>
             <span>업로드 날짜 {travelCourseDetail.uploadDate}</span>
-            <span>조회수 {travelCourseDetail.viewCount}회</span>
+            <span>조회수 {simpleViewCount}</span>
           </VideoMeta>
         </VideoInfo>
       </VideoContainer>
