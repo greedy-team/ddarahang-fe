@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import SelectItem from '../../components/common/Select/SelectItem/SelectOption';
+import { CountryType } from '../../types';
 
 const meta = {
   title: 'Select/SelectItem',
@@ -10,26 +12,14 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    imgUrl: {
-      control: 'text',
-      description: '나라 혹은 지역의 이미지',
-      defaultValue: './image/korea.jpg',
-    },
-    locationLabel: {
+    option: {
       control: 'text',
       description: '나라 혹은 지역의 이름',
       defaultValue: '대한민국',
     },
-    locationType: {
-      control: 'text',
-      description: '나라 혹은 도시 타입',
-      defaultValue: '국가',
-    },
-    isCountryOption: {
-      control: 'boolean',
-      description: '나라/지역 옵션',
-      defaultValue: true,
-    },
+  },
+  args: {
+    setIsOpen: action('선택 오픈 버튼'),
   },
 } satisfies Meta<typeof SelectItem>;
 
@@ -39,9 +29,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    imgUrl: './image/korea.jpg',
-    locationLabel: '일본',
-    locationType: '국가',
-    isCountryOption: true,
+    option: {
+      isCountryOption: true,
+      imgUrl: './image/korea.jpg',
+      countryLabel: '대한민국' as CountryType,
+      locationLabel: '여행 국가',
+      locationType: '대한민국',
+    },
   },
 };
