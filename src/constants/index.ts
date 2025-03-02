@@ -168,6 +168,13 @@ export const JAPANREGIONOPTION: SelectOptionType[] = [
     isCountryOption: false,
     countryLabel: '일본',
   },
+  {
+    imgUrl: 'https://i.imgur.com/bTkDE6D.jpeg',
+    locationLabel: '오키나와',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  }
 ];
 
 export const TRAVELCOURSES = [
