@@ -14,7 +14,7 @@ import { SortByType } from '../../types';
 import Loading from '../../components/common/Loading/Loading';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
-import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE } from '../../constants';
+import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
@@ -35,6 +35,26 @@ const MainPage = () => {
 
     setSortOption(sortBy);
   };
+
+  if (videoList.length === 0) {
+    return (
+      <>
+        <StyledMainPageLayout>
+          <Header
+            color={colors.WHITE}
+            onSubmitOption={handleSubmitOption}
+          />
+          <StyledContentsWrapper>
+            <StyledErrorMessage>
+              <p>{NO_DATA_ERROR_MESSAGE}</p>
+              <span>{ERROR_MESSAGE}</span>
+            </StyledErrorMessage>
+          </StyledContentsWrapper>
+          <Footer />
+        </StyledMainPageLayout>
+      </>
+    );
+  }
 
   if (error) {
     return (
