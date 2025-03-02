@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
-import { OneDayCourseType } from '../../types';
 
 const meta = {
   title: 'TravelCourse/TravelCourse',
