@@ -31,10 +31,10 @@ export const Default: Story = {
   args: {
     option: {
       isCountryOption: true,
-      imgUrl: 'https://img.youtube.com/vi/LTFAaPdvzTk/mqdefault.jpg',
+      imgUrl: './image/korea.jpg',
       countryLabel: '대한민국' as CountryType,
-      locationLabel: 'string',
-      locationType: 'string',
+      locationLabel: '여행 국가',
+      locationType: '대한민국',
     },
   },
 };

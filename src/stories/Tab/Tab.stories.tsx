@@ -14,12 +14,12 @@ const meta = {
     travelDays: {
       control: 'number',
       description: '탭의 날짜',
-      defaultValue: 1,
+      defaultValue: 4,
     },
     selectedTab: {
       control: 'number',
       description: '선택된 탭의 날짜',
-      defaultValue: 1,
+      defaultValue: 4,
     },
   },
   args: {
@@ -33,8 +33,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    travelDays: 1,
-    selectedTab: 1,
+    travelDays: 2,
+    selectedTab: 2,
     onClickTab: fn(),
   },
 };
