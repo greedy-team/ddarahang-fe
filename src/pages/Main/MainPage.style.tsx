@@ -16,6 +16,7 @@ export const StyledContentsWrapper = styled.div`
   display: flex;
   min-height: 30rem;
   flex-direction: column;
+  align-items: center;
   gap: ${size.SIZE_006};
 `;
 
