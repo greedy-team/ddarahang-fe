@@ -33,8 +33,8 @@ const SortDropdown = ({ sortOption, onSubmitDropdown }: SortDropdownProps) => {
           />
         </Dropdown.Trigger>
         <Dropdown.List isOpen={isOpen}>
-          <Dropdown.Item onClick={() => handleDropdownItemClick('viewCount')}>조회수 순</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleDropdownItemClick('uploadDate')}>최신 순</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleDropdownItemClick('viewCount')}>조회수순</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleDropdownItemClick('uploadDate')}>최신순</Dropdown.Item>
         </Dropdown.List>
       </Dropdown>
     </DropdownWrapper>

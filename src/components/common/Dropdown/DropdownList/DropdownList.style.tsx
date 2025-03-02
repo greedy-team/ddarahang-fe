@@ -17,7 +17,7 @@ export const DropdownListUl = styled.ul<{ $isOpen: boolean }>`
   top: 120%;
   z-index: 10;
 
-  transition: all 1s;
+  transition: all 0.5s;
 
   ${({ $isOpen }) =>
     $isOpen
