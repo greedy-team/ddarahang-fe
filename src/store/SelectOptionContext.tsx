@@ -31,7 +31,7 @@ export const SelectOptionProvider = ({ children }: { children: React.ReactNode }
     parsedSelectedOption || {
       isCountryOption: true,
       countryName: '대한민국',
-      selectedOptionLabel: '',
+      selectedOptionLabel: '서울',
     },
   );
 

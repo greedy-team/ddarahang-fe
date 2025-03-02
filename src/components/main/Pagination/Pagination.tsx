@@ -2,6 +2,8 @@ import PageButton from '../../common/Button/PageButton/PageButton';
 import { PaginationContainer } from './Pagination.style';
 import NextPageButton from '../../common/Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
+import { useState } from 'react';
+import { PAGE_SIZE } from '../../../constants';
 
 interface PaginationProps {
   color: string;
@@ -11,29 +13,59 @@ interface PaginationProps {
 }
 
 const Pagination = ({ color, onPageClick, currentPageNumber, totalPageNumber }: PaginationProps) => {
+  const [currentPageGroup, setCurrentPageGroup] = useState(0);
+
+  const startPage = currentPageGroup * PAGE_SIZE + 1;
+  const endPage = Math.min(startPage + PAGE_SIZE - 1, totalPageNumber);
+  const hasNextGroup = endPage < totalPageNumber;
+  const hasPrevGroup = startPage > 1;
+
   const handlePageClick = (pageNumber: number) => {
     onPageClick(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNextGroup = () => {
+    if (hasNextGroup) {
+      setCurrentPageGroup((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevGroup = () => {
+    if (hasPrevGroup) {
+      setCurrentPageGroup((prev) => prev - 1);
+    }
+  };
+
   return (
     <PaginationContainer>
-      {Array.from({ length: totalPageNumber }, (_, index) => (
+      {hasPrevGroup && (
+        <NextPageButton
+          color={colors.WHITE}
+          size={size.SIZE_013}
+          iconPath='./icon/prev.svg'
+          iconAlt='이전 페이지 그룹'
+          onClick={handlePrevGroup}
+        />
+      )}
+      {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
         <PageButton
-          key={index}
+          key={startPage + index}
           color={color}
-          onClick={() => handlePageClick(index + 1)}
-          text={`${index + 1}`}
-          isActive={currentPageNumber === index + 1}
+          onClick={() => handlePageClick(startPage + index)}
+          text={`${startPage + index}`}
+          isActive={currentPageNumber === startPage + index}
         />
       ))}
-      <NextPageButton
-        color={colors.WHITE}
-        size={size.SIZE_013}
-        iconPath='./icon/next.svg'
-        iconAlt='다음 페이지 넘어가기 아이콘'
-        onClick={() => {}}
-      />
+      {hasNextGroup && (
+        <NextPageButton
+          color={colors.WHITE}
+          size={size.SIZE_013}
+          iconPath='./icon/next.svg'
+          iconAlt='다음 페이지 그룹'
+          onClick={handleNextGroup}
+        />
+      )}
     </PaginationContainer>
   );
 };
