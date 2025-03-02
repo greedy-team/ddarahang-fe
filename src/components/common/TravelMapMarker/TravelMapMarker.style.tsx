@@ -13,7 +13,7 @@ export const Circle = styled.div<{ isSelected: boolean }>`
   width: ${size.SIZE_013};
   height: ${size.SIZE_013};
   font-size: 15px;
-  background: ${(props) => (props.isSelected ? '#FF7989' : colors.PRIMARY)};
+  background: ${(props) => (props.isSelected ? colors.PURPLE : colors.PRIMARY)};
   border-radius: 100px;
   border: 2px solid ${colors.WHITE};
   display: flex;

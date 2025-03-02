@@ -10,8 +10,8 @@ interface SelectProps {
 
 const Select = ({ onSubmitOption }: SelectProps) => {
   const optionListRef = useRef<HTMLUListElement>(null);
-  const countryTabRef = useRef<HTMLButtonElement>(null);
-  const regionTabRef = useRef<HTMLButtonElement>(null);
+  const countryTabRef = useRef<HTMLDivElement>(null);
+  const regionTabRef = useRef<HTMLDivElement>(null);
 
   const [isOpen, setIsOpen] = useDetectClose({
     elem: optionListRef,
@@ -20,7 +20,7 @@ const Select = ({ onSubmitOption }: SelectProps) => {
   });
 
   return (
-    <SelectContainer isOpen={isOpen}>
+    <SelectContainer $isOpen={isOpen}>
       <SelectTab
         isOpen={isOpen}
         setIsOpen={setIsOpen}

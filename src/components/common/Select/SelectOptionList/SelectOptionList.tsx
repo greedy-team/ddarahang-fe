@@ -22,9 +22,9 @@ export const SelectOptionList = ({ isOpen, setIsOpen, optionListRef }: SelectOpt
   return (
     <SelectOptionListContainer
       role='listbox'
-      isCountryOption={selectedOption.isCountryOption}
       ref={optionListRef}
-      isOpen={isOpen}
+      $isCountryOption={selectedOption.isCountryOption}
+      $isOpen={isOpen}
     >
       {options.map((option) => (
         <SelectOption

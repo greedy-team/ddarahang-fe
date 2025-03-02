@@ -12,8 +12,8 @@ interface CircleButtonProps {
 const CircleButton = ({ iconPath, iconAlt, text, color, size, onClick }: CircleButtonProps) => {
   return (
     <StyledCircleButton
-      color={color}
-      size={size}
+      $color={color}
+      $size={size}
       onClick={onClick}
     >
       <img

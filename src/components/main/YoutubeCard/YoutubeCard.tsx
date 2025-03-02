@@ -1,3 +1,4 @@
+import { MIN_VIEW } from '../../../constants';
 import {
   YoutubeCardContainer,
   YoutubeThumbnail,
@@ -16,6 +17,8 @@ interface YoutubeCardProps {
 }
 
 const YoutubeCard = ({ imgUrl, title, creator, uploadDate, viewCount, onClick }: YoutubeCardProps) => {
+  const simpleViewCount = parseFloat((viewCount / MIN_VIEW).toFixed(1)) + '만회';
+
   return (
     <YoutubeCardContainer onClick={onClick}>
       <YoutubeThumbnail
@@ -26,7 +29,7 @@ const YoutubeCard = ({ imgUrl, title, creator, uploadDate, viewCount, onClick }:
       <YoutubeChannelName>{creator}</YoutubeChannelName>
       <MetaData>
         <span>{uploadDate}</span>
-        <span>{viewCount}</span>
+        <span>{simpleViewCount}</span>
       </MetaData>
     </YoutubeCardContainer>
   );

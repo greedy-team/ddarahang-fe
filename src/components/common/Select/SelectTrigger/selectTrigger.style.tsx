@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../../styles/Theme';
 
-export const SelectTriggerButton = styled.button<{ isFocus: boolean }>`
+export const SelectTriggerButton = styled.div<{ $isFocus: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,8 +19,8 @@ export const SelectTriggerButton = styled.button<{ isFocus: boolean }>`
     background-color: ${colors.GRAY_200};
   }
 
-  ${(props) =>
-    props.isFocus
+  ${({ $isFocus }) =>
+    $isFocus
       ? `
         border: 1px solid ${colors.PRIMARY};
         background: ${colors.SECONDARY};
@@ -44,13 +44,16 @@ export const SelectLabel = styled.span`
 
 export const SelectOption = styled.span`
   color: ${colors.GREY_800};
-  font-size: ${size.SIZE_009};
+  font-size: 18px;
   font-family: 'Pretendard-SemiBold', sans-serif;
 `;
 
-export const SelectTextWrapper = styled.div<{ isFocus: boolean }>`
+export const SelectTextWrapper = styled.button`
   display: flex;
   width: 70%;
+  background-color: transparent;
+  border: none;
   flex-direction: column;
   align-items: flex-start;
+  gap: ${size.SIZE_003};
 `;

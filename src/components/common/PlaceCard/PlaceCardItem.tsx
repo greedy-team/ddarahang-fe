@@ -23,9 +23,9 @@ const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProp
 
   return (
     <PlaceCardWrapper>
-      <PlaceCircleStep isSelected={isSelected}>{orderInDay}</PlaceCircleStep>
+      <PlaceCircleStep>{orderInDay}</PlaceCircleStep>
       <PlaceCardContainer
-        isSelected={isSelected}
+        $isSelected={isSelected}
         onClick={() => onClickPanel(oneDayCourse.place)}
       >
         <span>{oneDayCourse.place}</span>

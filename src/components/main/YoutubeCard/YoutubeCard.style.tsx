@@ -4,10 +4,11 @@ import { colors, size } from '../../../styles/Theme';
 export const YoutubeCardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   max-width: 400px;
-  height: ${size.SIZE_024};
+  height: 355px;
   margin: ${size.SIZE_007};
-  padding: ${size.SIZE_012} ${size.SIZE_007} ${size.SIZE_012} ${size.SIZE_007};
+  padding: ${size.SIZE_010} ${size.SIZE_007} ${size.SIZE_010} ${size.SIZE_007};
   border-radius: ${size.SIZE_008};
   border: 1px solid ${colors.GRAY_200};
   box-shadow: ${size.SIZE_001} ${size.SIZE_005} ${size.SIZE_005} rgba(0, 0, 0, 0.1);

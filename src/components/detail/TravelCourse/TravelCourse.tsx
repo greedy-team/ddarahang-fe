@@ -12,6 +12,8 @@ interface TravelCourseProps {
 }
 
 const TravelCourse = ({ oneDayCourse, travelDays, selectedTab, onClickTab, onClickPanel }: TravelCourseProps) => {
+  if (!oneDayCourse) return <>코스 정보가 없습니다.</>;
+
   return (
     <TravelCourseContainer>
       <h3>여행 코스</h3>

@@ -6,7 +6,7 @@ import { colors, size } from '../../../../styles/Theme';
 import CircleButton from '../../Button/CircleButton/CircleButton';
 
 interface SelectTriggerType {
-  tabRef: RefObject<HTMLButtonElement | null>;
+  tabRef: RefObject<HTMLDivElement | null>;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isFocus: boolean;
   setIsFocus: React.Dispatch<
@@ -61,10 +61,9 @@ const SelectTrigger = ({
   return (
     <SelectTriggerButton
       ref={tabRef}
-      isFocus={isFocus}
-      onClick={() => handleTriggerClick()}
+      $isFocus={isFocus}
     >
-      <SelectTextWrapper isFocus={isFocus}>
+      <SelectTextWrapper onClick={() => handleTriggerClick()}>
         <SelectLabel>{selectLabel}</SelectLabel>
         <SelectOption>{selectOption}</SelectOption>
       </SelectTextWrapper>

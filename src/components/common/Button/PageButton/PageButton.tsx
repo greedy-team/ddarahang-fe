@@ -10,8 +10,8 @@ interface PageButtonProps {
 const PageButton = ({ text, color, isActive, onClick }: PageButtonProps) => {
   return (
     <StyledPageButton
-      isActive={isActive}
-      color={color}
+      $isActive={isActive}
+      $color={color}
       onClick={onClick}
     >
       <p>{text}</p>

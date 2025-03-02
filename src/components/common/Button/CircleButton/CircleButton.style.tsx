@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../../styles/Theme';
 
-export const StyledCircleButton = styled.button<{ size: string; color: string }>`
-  width: ${(props) => props.size};
-  height: ${(props) => props.size};
+interface CircleButtonProps {
+  $size: string;
+  $color: string;
+}
+
+export const StyledCircleButton = styled.button<CircleButtonProps>`
+  width: ${(props) => props.$size};
+  height: ${(props) => props.$size};
   border-radius: ${size.SIZE_018};
-  background: ${(props) => props.color};
+  background: ${(props) => props.$color};
   color: ${colors.WHITE};
   border: none;
   display: flex;
@@ -14,7 +19,7 @@ export const StyledCircleButton = styled.button<{ size: string; color: string }>
   cursor: pointer;
 
   ${(props) =>
-    props.color === `${colors.PRIMARY}`
+    props.$color === colors.PRIMARY
       ? `
       &:hover {
         background: ${colors.LIGHT_BLUE};

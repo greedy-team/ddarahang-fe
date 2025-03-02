@@ -7,5 +7,5 @@ interface DropdownListProps {
 }
 
 export const DropdownList = ({ isOpen, children }: DropdownListProps) => {
-  return <DropdownListUl isOpen={isOpen}>{children}</DropdownListUl>;
+  return <DropdownListUl $isOpen={isOpen}>{children}</DropdownListUl>;
 };

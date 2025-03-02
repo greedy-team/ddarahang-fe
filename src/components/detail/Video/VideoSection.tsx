@@ -14,18 +14,28 @@ import {
 import { size, colors } from '../../../styles/Theme';
 import { TravelCourseDetail } from '../../../types';
 import { useNavigate } from 'react-router-dom';
+import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
+import { MIN_VIEW } from '../../../constants';
 
 interface VideoProps {
   videoId: string;
-  country: string;
-  region: string;
   travelCourseDetail: TravelCourseDetail | null;
 }
 
-const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoProps) => {
+const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
   if (!travelCourseDetail) return <></>;
-
+  const { selectedOption } = useSelectOptionContext();
   const route = useNavigate();
+
+  const simpleViewCount = parseFloat((travelCourseDetail.viewCount / MIN_VIEW).toFixed(1)) + '만회';
+
+  const hasRegion = () => {
+    if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
+      return '';
+    }
+    return selectedOption.selectedOptionLabel;
+  };
+
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
@@ -39,7 +49,8 @@ const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoPro
           }}
         />
         <HeaderTitle>
-          {country} {region}
+          {selectedOption.countryName}
+          {hasRegion()}
         </HeaderTitle>
       </VideoSectionHeader>
 
@@ -57,7 +68,7 @@ const VideoSection = ({ videoId, country, region, travelCourseDetail }: VideoPro
           <VideoTitle>{travelCourseDetail.title}</VideoTitle>
           <VideoMeta>
             <span>업로드 날짜 {travelCourseDetail.uploadDate}</span>
-            <span>조회수 {travelCourseDetail.viewCount}회</span>
+            <span>조회수 {simpleViewCount}</span>
           </VideoMeta>
         </VideoInfo>
       </VideoContainer>
