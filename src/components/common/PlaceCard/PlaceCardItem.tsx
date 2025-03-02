@@ -14,7 +14,7 @@ const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProp
   const { selectedPanel } = useSelectedPanel();
 
   useEffect(() => {
-    if (selectedPanel === oneDayCourse.place) {
+    if (selectedPanel === oneDayCourse.placeName) {
       setIsSelected(!isSelected);
     } else {
       setIsSelected(false);
@@ -26,9 +26,9 @@ const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProp
       <PlaceCircleStep>{orderInDay}</PlaceCircleStep>
       <PlaceCardContainer
         $isSelected={isSelected}
-        onClick={() => onClickPanel(oneDayCourse.place)}
+        onClick={() => onClickPanel(oneDayCourse.placeName)}
       >
-        <span>{oneDayCourse.place}</span>
+        <span>{oneDayCourse.placeName}</span>
       </PlaceCardContainer>
     </PlaceCardWrapper>
   );

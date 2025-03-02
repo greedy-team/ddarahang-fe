@@ -4,12 +4,12 @@ import { MapWrapper, MapContainer } from './TravelMap.style';
 import { OneDayCourseType } from '../../../types';
 
 interface TravelMapProps {
-  oneDayCourse: OneDayCourseType[];
+  oneDayCourses: OneDayCourseType[];
 }
 
-const TravelMap = ({ oneDayCourse }: TravelMapProps) => {
+const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
-  const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourse);
+  const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourses);
 
   const mapRef = useRef<HTMLDivElement>(null);
 
@@ -33,8 +33,8 @@ const TravelMap = ({ oneDayCourse }: TravelMapProps) => {
   }, []);
 
   useEffect(() => {
-    setMarkers(oneDayCourse);
-  }, [oneDayCourse]);
+    setMarkers(oneDayCourses);
+  }, [oneDayCourses]);
 
   return (
     <MapWrapper>
@@ -43,8 +43,8 @@ const TravelMap = ({ oneDayCourse }: TravelMapProps) => {
         markers.map((marker, index) => (
           <TravelMapMarker
             key={index}
-            orderInday={marker.orderInday} //여기 수정
-            place={marker.place}
+            orderInday={marker.orderInday}
+            place={marker.placeName}
             travelMap={travelMap}
             position={marker.position}
           />

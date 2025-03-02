@@ -12,22 +12,22 @@ import {
   VideoMeta,
 } from './VideoSection.style';
 import { size, colors } from '../../../styles/Theme';
-import { TravelCourseDetail } from '../../../types';
+import { TravelCourse } from '../../../types';
 import { useNavigate } from 'react-router-dom';
 import { useSelectOptionContext } from '../../../hooks/select/useSelectOptionContext';
 import { MIN_VIEW } from '../../../constants';
 
 interface VideoProps {
-  videoId: string;
-  travelCourseDetail: TravelCourseDetail | null;
+  videoUrl: string;
+  travelCourse: TravelCourse | null;
 }
 
-const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
-  if (!travelCourseDetail) return <></>;
+const VideoSection = ({ videoUrl, travelCourse }: VideoProps) => {
+  if (!travelCourse) return [];
   const { selectedOption } = useSelectOptionContext();
   const route = useNavigate();
 
-  const simpleViewCount = parseFloat((travelCourseDetail.viewCount / MIN_VIEW).toFixed(1)) + '만회';
+  const simpleViewCount = parseFloat((travelCourse.viewCount / MIN_VIEW).toFixed(1)) + '만회';
 
   const hasRegion = () => {
     if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
@@ -36,6 +36,9 @@ const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
     return selectedOption.selectedOptionLabel;
   };
 
+  const videoId = videoUrl.match(/v=([^&]+)/)?.[1];
+
+  console.log(videoId);
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
@@ -64,10 +67,10 @@ const VideoSection = ({ videoId, travelCourseDetail }: VideoProps) => {
         </VideoWrapper>
 
         <VideoInfo>
-          <ChannelName>{travelCourseDetail.creator}</ChannelName>
-          <VideoTitle>{travelCourseDetail.title}</VideoTitle>
+          <ChannelName>{travelCourse.creator}</ChannelName>
+          <VideoTitle>{travelCourse.title}</VideoTitle>
           <VideoMeta>
-            <span>업로드 날짜 {travelCourseDetail.uploadDate}</span>
+            <span>업로드 날짜 {travelCourse.uploadDate}</span>
             <span>조회수 {simpleViewCount}</span>
           </VideoMeta>
         </VideoInfo>
