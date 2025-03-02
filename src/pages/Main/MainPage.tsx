@@ -7,13 +7,14 @@ import SortDropdown from '../../components/main/SortDropdown/SortDropdown';
 import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoList';
 
 import { colors } from '../../styles/Theme';
-import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
+import { StyledMainPageLayout, StyledContentsWrapper, StyledErrorMessage } from './MainPage.style';
 
 import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
 import { SortByType } from '../../types';
 import Loading from '../../components/common/Loading/Loading';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
+import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE } from '../../constants';
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
@@ -35,37 +36,52 @@ const MainPage = () => {
     setSortOption(sortBy);
   };
 
-  if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
+  if (error) {
+    return (
+      <>
+        <StyledMainPageLayout>
+          <Header
+            color={colors.WHITE}
+            onSubmitOption={handleSubmitOption}
+          />
+          <StyledContentsWrapper>
+            <StyledErrorMessage>
+              <p>{LOAD_ERROR_MESSAGE}</p>
+              <span>{ERROR_MESSAGE}</span>
+            </StyledErrorMessage>
+          </StyledContentsWrapper>
+          <Footer />
+        </StyledMainPageLayout>
+      </>
+    );
+  }
 
   return (
-    <>
-      <StyledMainPageLayout>
-        <Header
+    <StyledMainPageLayout>
+      <Header
+        color={colors.WHITE}
+        onSubmitOption={handleSubmitOption}
+      />
+      <Loading loading={loading} />
+      <SortDropdown
+        sortOption={sortOption}
+        onSubmitDropdown={(sortBy: SortByType) => handleSubmitDropdown(sortBy)}
+      />
+      <StyledContentsWrapper>
+        <TravelVideoList
+          videoNumberInPage={videoNumberInPage}
+          currentPageNumber={currentPageNumber}
+          videoList={videoList}
+        />
+        <Pagination
           color={colors.WHITE}
-          onSubmitOption={handleSubmitOption}
+          currentPageNumber={currentPageNumber}
+          totalPageNumber={totalPageNumber}
+          onPageClick={setCurrentPageNumber}
         />
-        <Loading loading={loading} />
-        <SortDropdown
-          sortOption={sortOption}
-          onSubmitDropdown={(sortBy: SortByType) => handleSubmitDropdown(sortBy)}
-        />
-
-        <StyledContentsWrapper>
-          <TravelVideoList
-            videoNumberInPage={videoNumberInPage}
-            currentPageNumber={currentPageNumber}
-            videoList={videoList}
-          />
-          <Pagination
-            color={colors.WHITE}
-            currentPageNumber={currentPageNumber}
-            totalPageNumber={totalPageNumber}
-            onPageClick={setCurrentPageNumber}
-          />
-        </StyledContentsWrapper>
-        <Footer />
-      </StyledMainPageLayout>
-    </>
+      </StyledContentsWrapper>
+      <Footer />
+    </StyledMainPageLayout>
   );
 };
 
