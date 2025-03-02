@@ -30,7 +30,7 @@ jobs:
 
       - name: Create .env.production
         run: |
-          echo "VITE_GOOGLE_MAPS_API_KEY_DEV=${{ secrets.VITE_GOOGLE_MAPS_API_KEY_DEV }}" > .env.production
+          echo "VITE_GOOGLE_MAPS_API_KEY_DEV=${{ secrets.VITE_GOOGLE_MAPS_API_KEY_DEV }}" > .env
 
       - name: Install dependencies
         run: npm ci
