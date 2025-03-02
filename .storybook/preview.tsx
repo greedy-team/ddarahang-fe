@@ -1,7 +1,10 @@
 import React from 'react';
 import type { Preview } from '@storybook/react';
-
 import GlobalStyle from '../src/Globalstyle';
+import { BrowserRouter } from 'react-router-dom';
+
+import { SelectedPanelProvider } from '../src/store/SelectedPanelContext';
+import { SelectOptionProvider } from '../src/store/SelectOptionContext';
 
 export const preview: Preview = {
   parameters: {
@@ -16,9 +19,13 @@ export const preview: Preview = {
 
 export const decorators = [
   (Story) => (
-    <>
-      <GlobalStyle />
-      <Story />
-    </>
+    <BrowserRouter>
+      <SelectOptionProvider>
+        <SelectedPanelProvider>
+          <GlobalStyle />
+          <Story />
+        </SelectedPanelProvider>
+      </SelectOptionProvider>
+    </BrowserRouter>
   ),
 ];

@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react';
-
-import { SelectOptionList } from '../../components/common/SelectOptionList/SelectOptionList';
-import { COUNTRYOPTION } from '../../constants';
+import { Meta, StoryObj } from '@storybook/react';
+import { SelectOptionList } from '../../components/common/Select/SelectOptionList/SelectOptionList';
+import { useRef, useState } from 'react';
 
 const meta = {
   title: 'Select/SelectOptionList',
@@ -11,26 +10,36 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    options: {
-      control: 'text',
-      description: '나라 혹은 지역의 이미지',
-      defaultValue: './image/korea.jpg',
-    },
-    isCountryOption: {
+    isOpen: {
       control: 'boolean',
-      description: '나라 옵션인지 지역 옵션인지',
+      description: '옵션 리스트의 열림/닫힘 상태',
       defaultValue: true,
+    },
+    setIsOpen: {
+      control: false,
+      description: '옵션 리스트 열림/닫힘 상태를 변경하는 함수',
     },
   },
 } satisfies Meta<typeof SelectOptionList>;
 
 export default meta;
-
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof SelectOptionList>;
 
 export const Default: Story = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = useState(args.isOpen);
+    const optionListRef = useRef<HTMLUListElement | null>(null);
+
+    return (
+      <SelectOptionList
+        {...args}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        optionListRef={optionListRef}
+      />
+    );
+  },
   args: {
-    options: COUNTRYOPTION,
-    isCountryOption: true,
+    isOpen: true,
   },
 };
