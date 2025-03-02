@@ -11,23 +11,44 @@ import { OneDayCourseType } from '../../types';
 import { useMemo, useState } from 'react';
 import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
 import Loading from '../../components/common/Loading/Loading';
+import { StyledErrorMessage } from '../Main/MainPage.style';
+import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, MAP_LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
 
-const render = (status: Status, courses: OneDayCourseType[]) => {
+const renderMap = (status: Status, courses: OneDayCourseType[]) => {
   switch (status) {
     case Status.LOADING:
-      return <>로딩중...</>;
+      return renderErrorMessage(MAP_LOAD_ERROR_MESSAGE);
     case Status.FAILURE:
-      return <>에러 발생...</>;
+      return renderErrorMessage(LOAD_ERROR_MESSAGE);
     case Status.SUCCESS:
       return <TravelMap oneDayCourse={courses} />;
   }
 };
+
+const renderErrorMessage = (message: string) => (
+  <>
+    <GlobalHeader
+      color={colors.WHITE}
+      isIconVisible={false}
+    />
+    <TravelCoursePageLayout>
+      <StyledErrorMessage>
+        {message}
+        <span>{ERROR_MESSAGE}</span>
+      </StyledErrorMessage>
+    </TravelCoursePageLayout>
+  </>
+);
 
 const TravelCoursePage = () => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
   const [selectedTab, setSelectedTab] = useState(1);
   const { setSelectedPanel } = useSelectedPanel();
   const { travelCourse, loading, error } = useGetTravelCourse();
+
+  if (!travelCourse) return renderErrorMessage(NO_DATA_ERROR_MESSAGE);
+  if (loading) return <Loading loading={loading} />;
+  if (error) return renderErrorMessage(LOAD_ERROR_MESSAGE);
 
   const onClickTab = (day: number) => {
     setSelectedTab(day);
@@ -51,12 +72,8 @@ const TravelCoursePage = () => {
       }));
   }, [selectedTab, travelCourse]);
 
-  if (!travelCourse) return <Loading loading={loading} />;
-  if (error) return <p>데이터를 불러오는 중 오류가 발생했습니다.</p>;
-
   return (
     <>
-      <Loading loading={loading} />
       <GlobalHeader
         color={colors.WHITE}
         isIconVisible={false}
@@ -79,7 +96,7 @@ const TravelCoursePage = () => {
           <Wrapper
             apiKey={apiKey}
             key={selectedTab}
-            render={(status) => render(status, courses)}
+            render={(status) => renderMap(status, courses)}
             libraries={['marker']}
           />
         </MapContainer>
