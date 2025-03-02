@@ -18,10 +18,10 @@ export const getOptionList = (selectedOption: {
 
 export const getSortedOption = (sortOption: SortByType) => {
   if (sortOption === 'uploadDate') {
-    return '최신 순';
+    return '최신순';
   }
   if (sortOption === 'viewCount') {
-    return '조회수 순';
+    return '조회수순';
   }
   return '정렬 옵션';
 };
