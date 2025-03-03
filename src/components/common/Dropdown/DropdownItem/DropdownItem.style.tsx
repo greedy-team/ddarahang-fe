@@ -12,6 +12,7 @@ export const DropdownItemButton = styled.button`
   border: none;
   justify-content: center;
   flex-direction: column;
+  align-items: flex-start;
 
   &:hover {
     background-color: ${colors.GRAY_200};
