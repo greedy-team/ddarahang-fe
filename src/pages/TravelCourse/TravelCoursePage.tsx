@@ -8,7 +8,7 @@ import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
 import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import { OneDayCourseType } from '../../types';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
 import Loading from '../../components/common/Loading/Loading';
 import { StyledErrorMessage } from '../Main/MainPage.style';
@@ -45,6 +45,8 @@ const TravelCoursePage = () => {
   const param = useParams();
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
   const [selectedTab, setSelectedTab] = useState(1);
+  const [showNoDataMessage, setShowNoDataMessage] = useState(false);
+
   const { setSelectedPanel } = useSelectedPanel();
   const { travelCourse, loading, error } = useGetTravelCourse(Number(param.id));
 
@@ -55,6 +57,12 @@ const TravelCoursePage = () => {
   const onClickPanel = (placeName: string) => {
     setSelectedPanel(placeName);
   };
+
+  useEffect(() => {
+    if (!loading) {
+      setShowNoDataMessage(!travelCourse);
+    }
+  }, [loading, travelCourse]);
 
   const oneDayCourses = useMemo(() => {
     if (!travelCourse) return [];
@@ -70,8 +78,8 @@ const TravelCoursePage = () => {
       }));
   }, [selectedTab, travelCourse]);
 
-  if (!travelCourse) return renderErrorMessage(NO_DATA_ERROR_MESSAGE);
   if (loading) return <Loading loading={loading} />;
+  if (showNoDataMessage) return renderErrorMessage(NO_DATA_ERROR_MESSAGE);
   if (error) return renderErrorMessage(LOAD_ERROR_MESSAGE);
 
   return (
@@ -81,19 +89,22 @@ const TravelCoursePage = () => {
         isIconVisible={false}
       />
       <TravelCoursePageLayout>
-        <TravelCourseContainer>
-          <VideoSection
-            videoUrl={travelCourse.videoUrl}
-            travelCourse={travelCourse}
-          />
-          <TravelCourse
-            selectedTab={selectedTab}
-            onClickTab={onClickTab}
-            onClickPanel={onClickPanel}
-            oneDayCourses={oneDayCourses}
-            totalTravelDays={travelCourse.travelDays}
-          />
-        </TravelCourseContainer>
+        {travelCourse && (
+          <TravelCourseContainer>
+            <VideoSection
+              videoUrl={travelCourse.videoUrl}
+              travelCourse={travelCourse}
+            />
+
+            <TravelCourse
+              selectedTab={selectedTab}
+              onClickTab={onClickTab}
+              onClickPanel={onClickPanel}
+              oneDayCourses={oneDayCourses}
+              totalTravelDays={travelCourse.travelDays}
+            />
+          </TravelCourseContainer>
+        )}
         <MapContainer>
           <Wrapper
             apiKey={apiKey}

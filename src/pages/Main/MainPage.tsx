@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
@@ -16,9 +16,28 @@ import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
 
+const renderMainErrorMessage = (handleSubmitOption: () => void, message: string) => {
+  return (
+    <StyledMainPageLayout>
+      <Header
+        color={colors.WHITE}
+        onSubmitOption={handleSubmitOption}
+      />
+      <StyledContentsWrapper>
+        <StyledErrorMessage>
+          <p>{message}</p>
+          <span>{ERROR_MESSAGE}</span>
+        </StyledErrorMessage>
+      </StyledContentsWrapper>
+      <Footer />
+    </StyledMainPageLayout>
+  );
+};
+
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const [sortOption, setSortOption] = useState<SortByType>('default');
+  const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
   const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
   const { selectedOption } = useSelectOptionContext();
@@ -36,45 +55,15 @@ const MainPage = () => {
     setSortOption(sortBy);
   };
 
-  if (videoList.length === 0) {
-    return (
-      <>
-        <StyledMainPageLayout>
-          <Header
-            color={colors.WHITE}
-            onSubmitOption={handleSubmitOption}
-          />
-          <StyledContentsWrapper>
-            <StyledErrorMessage>
-              <p>{NO_DATA_ERROR_MESSAGE}</p>
-              <span>{ERROR_MESSAGE}</span>
-            </StyledErrorMessage>
-          </StyledContentsWrapper>
-          <Footer />
-        </StyledMainPageLayout>
-      </>
-    );
-  }
+  useEffect(() => {
+    if (!loading) {
+      setShowNoDataMessage(videoList.length === 0);
+    }
+  }, [loading, videoList]);
 
-  if (error) {
-    return (
-      <>
-        <StyledMainPageLayout>
-          <Header
-            color={colors.WHITE}
-            onSubmitOption={handleSubmitOption}
-          />
-          <StyledContentsWrapper>
-            <StyledErrorMessage>
-              <p>{LOAD_ERROR_MESSAGE}</p>
-              <span>{ERROR_MESSAGE}</span>
-            </StyledErrorMessage>
-          </StyledContentsWrapper>
-          <Footer />
-        </StyledMainPageLayout>
-      </>
-    );
-  }
+  if (loading) return <Loading loading={loading} />;
+  if (showNoDataMessage) return renderMainErrorMessage(handleSubmitOption, NO_DATA_ERROR_MESSAGE);
+  if (error) renderMainErrorMessage(handleSubmitOption, LOAD_ERROR_MESSAGE);
 
   return (
     <StyledMainPageLayout>
@@ -82,10 +71,9 @@ const MainPage = () => {
         color={colors.WHITE}
         onSubmitOption={handleSubmitOption}
       />
-      <Loading loading={loading} />
       <SortDropdown
         sortOption={sortOption}
-        onSubmitDropdown={(sortBy: SortByType) => handleSubmitDropdown(sortBy)}
+        onSubmitDropdown={handleSubmitDropdown}
       />
       <StyledContentsWrapper>
         <TravelVideoList
