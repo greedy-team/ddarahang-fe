@@ -13,13 +13,13 @@ export const Circle = styled.div<{ isSelected: boolean }>`
   width: ${size.SIZE_013};
   height: ${size.SIZE_013};
   font-size: 15px;
-  background: ${(props) => (props.isSelected ? colors.PURPLE : colors.PRIMARY)};
+  background: ${(props) => (props.isSelected ? colors.RED : colors.PRIMARY)};
   border-radius: 100px;
   border: 2px solid ${colors.WHITE};
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: ${(props) => (props.isSelected ? 10 : 2)};
   transition: 0.3s all;
 
   &:hover {

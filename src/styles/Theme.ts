@@ -10,7 +10,7 @@ export const colors = {
   GREY_800: '#262626',
   BLACK: '#141619',
   WHITE: '#ffffff',
-  PURPLE: '#947FFE',
+  RED: '#FF6174',
 };
 
 export const size = {
