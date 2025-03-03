@@ -27,12 +27,6 @@ const TravelMapMarker = ({
     }
   }, [selectedPanel]);
 
-  const handleMapSearch = (place: string) => {
-    if (!place) return;
-    const query = encodeURIComponent(place);
-    window.open(`https://www.google.com/maps/search/?q=${query}`, '_blank');
-  };
-
   useEffect(() => {
     if (!travelMap) return;
     const markerContainer = document.createElement('div');
