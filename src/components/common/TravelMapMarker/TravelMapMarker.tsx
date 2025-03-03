@@ -44,14 +44,13 @@ const TravelMapMarker = ({
     });
 
     const contentString = `
-    <div id="dialog" style="font-family: Arial, sans-serif; padding: 10px; width: 400px;">
-      <h1 id="firstHeading" style="font-size: 18px; color: ${colors.BLACK}; margin-bottom: 10px;">${place}</h1>
+    <div id="content" style="font-family: Arial, sans-serif; width: 200px;">
       <div id="bodyContent" style="font-size: 14px; line-height: 1.5;">
         <p style = "color: ${colors.BLACK}">
           대한민국 어딘가
         </p>
-        <p style="margin-top: 10px;">
-          <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194"
+        <p style="margin-top: 1px;">
+          <a href="https://www.google.com/maps/search/?q=${place}"
             target="_blank"
             style="color: ${colors.PRIMARY}; text-decoration: none; font-weight: bold;">
             Google 지도로 확인하기
@@ -61,30 +60,9 @@ const TravelMapMarker = ({
     </div>
     `;
 
-    // const contentString =
-    //   '<div id="content">' +
-    //   '<div id="siteNotice">' +
-    //   '</div>' +
-    //   '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-    //   '<div id="bodyContent">' +
-    //   '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-    //   'sandstone rock formation in the southern part of the ' +
-    //   'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
-    //   'south west of the nearest large town, Alice Springs; 450&#160;km ' +
-    //   '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
-    //   'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
-    //   'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
-    //   'Aboriginal people of the area. It has many springs, waterholes, ' +
-    //   'rock caves and ancient paintings. Uluru is listed as a World ' +
-    //   'Heritage Site.</p>' +
-    //   '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    //   'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-    //   '(last visited June 22, 2009).</p>' +
-    //   '</div>' +
-    //   '</div>';
-
     const infowindow = new google.maps.InfoWindow({
       content: contentString,
+      headerContent: place,
     });
 
     createRoot(markerContainer).render(<Circle isSelected={isSelected}>{orderInday}</Circle>);
