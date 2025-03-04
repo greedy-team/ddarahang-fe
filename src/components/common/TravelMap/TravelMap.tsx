@@ -10,7 +10,7 @@ interface TravelMapProps {
 const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
   const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourses);
-
+  const [selectedMarker, setSelectedMarker] = useState<string>();
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,6 +48,8 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
             travelMap={travelMap}
             position={marker.position}
             address={marker.address}
+            selectedMarker={selectedMarker}
+            setSelectedMarker={setSelectedMarker}
           />
         ))}
     </MapWrapper>

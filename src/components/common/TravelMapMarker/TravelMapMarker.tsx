@@ -11,21 +11,27 @@ const TravelMapMarker = ({
   position,
   place,
   address,
+  selectedMarker,
+  setSelectedMarker,
 }: {
   orderInday: number;
   travelMap: google.maps.Map | null;
   position: Position;
   place: string;
   address: string;
+  selectedMarker: string | undefined;
+  setSelectedMarker: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
   const [isSelected, setIsSelected] = useState(false);
-  const { selectedPanel } = useSelectedPanel();
+  const { selectedPanel, setSelectedPanel } = useSelectedPanel();
 
   useEffect(() => {
     if (String(selectedPanel) === place) {
       setIsSelected(!isSelected);
+      setSelectedMarker('');
     } else {
       setIsSelected(false);
+      setSelectedMarker('');
     }
   }, [selectedPanel]);
 
@@ -73,23 +79,28 @@ const TravelMapMarker = ({
       headerContent: place,
     });
 
-    createRoot(markerContainer).render(<Circle isSelected={isSelected}>{orderInday}</Circle>);
+    if (selectedMarker === place || isSelected) {
+      infowindow.open({
+        anchor: markerInstance,
+      });
+    } else {
+      infowindow.close();
+    }
 
     markerInstance.addListener('click', () => {
+      setSelectedPanel(place);
+      setSelectedMarker(place);
       infowindow.open({
         anchor: markerInstance,
       });
     });
 
-    isSelected &&
-      infowindow.open({
-        anchor: markerInstance,
-      });
+    createRoot(markerContainer).render(<Circle isSelected={isSelected}>{orderInday}</Circle>);
 
     return () => {
       markerInstance.map = null;
     };
-  }, [isSelected]);
+  }, [isSelected, selectedMarker]);
 
   return <MarkerWrapper />;
 };
