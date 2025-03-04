@@ -67,8 +67,12 @@ const TravelMapMarker = ({
       infowindow.open({
         anchor: markerInstance,
       });
-      // handleMapSearch(place);
     });
+
+    isSelected &&
+      infowindow.open({
+        anchor: markerInstance,
+      });
 
     return () => {
       markerInstance.map = null;
