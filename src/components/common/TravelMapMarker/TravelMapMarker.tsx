@@ -40,10 +40,22 @@ const TravelMapMarker = ({
     });
 
     const contentString = `
-    <div id="content" style="font-family: Arial, sans-serif; width: 200px;">
-      <div id="bodyContent" style="font-size: 14px; line-height: 1.5;">
+    <div 
+      id="content" 
+      style="width: 200px; 
+      font-weight: 500;
+      word-break: keep-all;
+    ">
+      <div 
+        id="bodyContent" 
+        style="font-size: 14px; 
+        line-height: 1.5; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: ${colors.BLACK}
+      ">
         <p style = "color: ${colors.BLACK}">
-          대한민국 어딘가
+          ${address}
         </p>
         <p style="margin-top: 1px; border: none">
           <a href="https://www.google.com/maps/search/?q=${place}+${address}"
