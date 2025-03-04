@@ -28,7 +28,7 @@ export interface Detail extends Position {
   day: number;
   orderInDay: number;
   placeName: string;
-  placeAddress: string | null;
+  placeAddress: string;
 }
 
 export interface Position {
@@ -65,6 +65,7 @@ export type OneDayCourseType = {
   placeName: string;
   day: number;
   orderInday: number;
+  address: string;
   position: {
     lat: number;
     lng: number;
