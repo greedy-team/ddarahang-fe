@@ -45,7 +45,7 @@ const TravelMapMarker = ({
         <p style = "color: ${colors.BLACK}">
           대한민국 어딘가
         </p>
-        <p style="margin-top: 1px;">
+        <p style="margin-top: 1px; border: none">
           <a href="https://www.google.com/maps/search/?q=${place}+${address}"
             target="_blank"
             style="color: ${colors.PRIMARY}; text-decoration: none; font-weight: bold;">
