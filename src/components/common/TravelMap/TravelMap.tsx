@@ -47,6 +47,7 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
             place={marker.placeName}
             travelMap={travelMap}
             position={marker.position}
+            address={marker.address}
           />
         ))}
     </MapWrapper>

@@ -10,11 +10,13 @@ const TravelMapMarker = ({
   travelMap,
   position,
   place,
+  address,
 }: {
   orderInday: number;
   travelMap: google.maps.Map | null;
   position: Position;
   place: string;
+  address: string;
 }) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel } = useSelectedPanel();
@@ -44,7 +46,7 @@ const TravelMapMarker = ({
           대한민국 어딘가
         </p>
         <p style="margin-top: 1px;">
-          <a href="https://www.google.com/maps/search/?q=${place}"
+          <a href="https://www.google.com/maps/search/?q=${place}+${address}"
             target="_blank"
             style="color: ${colors.PRIMARY}; text-decoration: none; font-weight: bold;">
             Google 지도로 확인하기
