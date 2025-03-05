@@ -1,8 +1,10 @@
 import { RefObject, useEffect, useState } from 'react';
 
 interface UseDetectCloseProps {
-  elem: RefObject<HTMLUListElement | null>;
-  tabRefs: RefObject<HTMLDivElement | null>[];
+  elem: RefObject<HTMLUListElement | HTMLDivElement | null>;
+  tabRefs:
+    | RefObject<HTMLDivElement | HTMLButtonElement | null>
+    | RefObject<HTMLDivElement | HTMLButtonElement | null>[];
   initialState: boolean;
 }
 
@@ -11,7 +13,9 @@ const useDetectClose = ({ elem, tabRefs, initialState }: UseDetectCloseProps) =>
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      const isTabClick = tabRefs.some((tabRef) => tabRef.current && tabRef.current.contains(e.target as Node));
+      const tabRefArray = Array.isArray(tabRefs) ? tabRefs : [tabRefs];
+
+      const isTabClick = tabRefArray.some((tabRef) => tabRef.current && tabRef.current.contains(e.target as Node));
 
       if (isTabClick) {
         setIsOpen(true);
@@ -19,6 +23,7 @@ const useDetectClose = ({ elem, tabRefs, initialState }: UseDetectCloseProps) =>
         setIsOpen(false);
       }
     };
+
     if (isOpen) {
       window.addEventListener('click', onClick);
     } else {
@@ -28,7 +33,7 @@ const useDetectClose = ({ elem, tabRefs, initialState }: UseDetectCloseProps) =>
     return () => {
       window.removeEventListener('click', onClick);
     };
-  }, [isOpen, elem]);
+  }, [isOpen, elem, tabRefs]);
 
   return [isOpen, setIsOpen] as const;
 };

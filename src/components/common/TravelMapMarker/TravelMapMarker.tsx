@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { MarkerWrapper, Circle } from './TravelMapMarker.style';
 import { createRoot } from 'react-dom/client';
 import { Position } from '../../../types';
-import { useSelectedPanel } from '../../../hooks/select/useSelectedPanel';
+import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 import { colors } from '../../../styles/Theme';
+
 
 const TravelMapMarker = ({
   orderInday,

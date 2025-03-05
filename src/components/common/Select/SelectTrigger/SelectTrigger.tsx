@@ -1,6 +1,6 @@
 import { RefObject } from 'react';
 import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './selectTrigger.style';
-import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { TRAVEL_LABEL } from '../../../../constants';
 import { colors, size } from '../../../../styles/Theme';
 import CircleButton from '../../Button/CircleButton/CircleButton';

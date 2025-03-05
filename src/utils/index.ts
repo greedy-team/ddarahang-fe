@@ -21,7 +21,7 @@ export const getSortedOption = (sortOption: SortByType) => {
     return '최신순';
   }
   if (sortOption === 'viewCount') {
-    return '조회수순';
+    return '조회순';
   }
   return '정렬 옵션';
 };

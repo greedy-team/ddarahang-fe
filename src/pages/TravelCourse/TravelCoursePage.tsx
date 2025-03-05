@@ -9,7 +9,7 @@ import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import { OneDayCourseType } from '../../types';
 import { useEffect, useMemo, useState } from 'react';
-import { useSelectedPanel } from '../../hooks/select/useSelectedPanel';
+import { useSelectedPanel } from '../../hooks/context/useSelectedPanelContext';
 import Loading from '../../components/common/Loading/Loading';
 import { StyledErrorMessage } from '../Main/MainPage.style';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, MAP_LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
