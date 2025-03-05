@@ -45,7 +45,7 @@ const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps
   useEffect(() => {
     setSortOption('default');
     getTravelVideoList({ filter: 'default', countryName, regionName });
-  }, [regionName]);
+  }, [countryName, regionName]);
 
   return { videoList, loading, error, getTravelVideoList };
 };

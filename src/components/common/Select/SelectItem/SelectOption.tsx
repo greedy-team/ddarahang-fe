@@ -1,3 +1,4 @@
+import { TRAVEL_LABEL } from '../../../../constants';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { SelectOptionType } from '../../../../types';
 import { Image, LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.style';
@@ -15,7 +16,7 @@ const SelectOption = ({ option, setIsOpen }: SelectOptionProps) => {
       setSelectedOption((prev) => ({
         ...prev,
         countryName: option.countryLabel,
-        selectedOptionLabel: '',
+        selectedOptionLabel: TRAVEL_LABEL.REGION + ' 검색',
       }));
     }
 
