@@ -1,9 +1,18 @@
-import { defineConfig } from 'vite';
+import { InlineConfig, UserConfig, defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+
+interface VitestConfigExport extends UserConfig {
+  test: InlineConfig;
+}
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/tests/setup.js',
+  },
   server: {
     proxy: {
       '/api': {
@@ -13,7 +22,4 @@ export default defineConfig({
       },
     },
   },
-  optimizeDeps: {
-    include: ['msw'],
-  },
-});
+} as VitestConfigExport);
