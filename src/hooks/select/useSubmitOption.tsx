@@ -1,4 +1,4 @@
-import { useSelectOptionContext } from './useSelectOptionContext';
+import { useSelectOptionContext } from '../context/useSelectOptionContext';
 import useTravelVideoList from '../quries/useGetTravelVideoList';
 import { TRAVEL_LABEL } from '../../constants';
 

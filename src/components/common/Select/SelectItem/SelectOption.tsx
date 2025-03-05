@@ -1,4 +1,4 @@
-import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { SelectOptionType } from '../../../../types';
 import { Image, LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.style';
 

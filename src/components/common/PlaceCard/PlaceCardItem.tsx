@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { OneDayCourseType } from '../../../types';
 import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep } from './PlaceCardItem.style';
-import { useSelectedPanel } from '../../../hooks/select/useSelectedPanel';
+import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 
 interface PlaceCardProps {
   oneDayCourse: OneDayCourseType;

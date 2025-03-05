@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer } from './SelectTab.style';
-import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { TRAVEL_LABEL } from '../../../../constants';
 
 interface SelectTabProps {
