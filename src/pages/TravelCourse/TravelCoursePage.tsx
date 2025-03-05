@@ -75,6 +75,7 @@ const TravelCoursePage = () => {
         day: course.day,
         orderInday: course.orderInDay,
         position: { lat: course.lat, lng: course.lng },
+        address: course.placeAddress,
       }));
   }, [selectedTab, travelCourse]);
 

@@ -86,6 +86,18 @@ a {
     background-color: transparent;  
   }
 
+  .gm-style-iw-ch {
+    font-size: 18px;
+    font-weight: bold;    
+    font-family: "Pretendard-SemiBold";
+    color: ${colors.BLACK};
+  }
+
+  .gm-style-iw {
+    font-family: "Pretendard-Regular";
+  }
+
+
 /**Firefox 브라우저 
 스크롤바도 추가 해야함 */
 `;

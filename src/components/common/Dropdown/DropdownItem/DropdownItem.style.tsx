@@ -11,6 +11,7 @@ export const DropdownItemButton = styled.button`
   display: flex;
   border: none;
   justify-content: center;
+  align-items: flex-start;
   flex-direction: column;
   align-items: flex-start;
 

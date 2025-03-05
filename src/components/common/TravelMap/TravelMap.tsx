@@ -10,7 +10,7 @@ interface TravelMapProps {
 const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
   const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourses);
-
+  const [selectedMarker, setSelectedMarker] = useState<string>();
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,12 +21,12 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
         lat: markers[Math.floor(markers.length / 2)].position.lat,
         lng: markers[Math.floor(markers.length / 2)].position.lng,
       },
-      zoom: 12,
+      zoom: 13,
       mapId: '54070c16532231ab',
       disableDefaultUI: true,
       clickableIcons: false,
-      minZoom: 1,
-      maxZoom: 30,
+      minZoom: 7,
+      maxZoom: 20,
     });
 
     setTravelMap(instance);
@@ -47,6 +47,9 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
             place={marker.placeName}
             travelMap={travelMap}
             position={marker.position}
+            address={marker.address}
+            selectedMarker={selectedMarker}
+            setSelectedMarker={setSelectedMarker}
           />
         ))}
     </MapWrapper>
