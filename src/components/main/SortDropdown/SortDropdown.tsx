@@ -1,18 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Dropdown } from '../../common/Dropdown/Dropdown/Dropdown';
 import { DropdownWrapper } from './SortDropdown.style';
 import { SortByType } from '../../../types';
 import { getSortedOption } from '../../../utils';
+import { useSortOptionContext } from '../../../hooks/context/useSortOptionContext';
+import useDetectClose from '../../../hooks/select/useDetectClose';
 
 interface SortDropdownProps {
-  sortOption: SortByType;
   onSubmitDropdown: (sortBy: SortByType) => void;
 }
 
-const SortDropdown = ({ sortOption, onSubmitDropdown }: SortDropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+const SortDropdown = ({ onSubmitDropdown }: SortDropdownProps) => {
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const { sortOption } = useSortOptionContext();
 
-  const sortedOptionText = getSortedOption(sortOption);
+  const [isOpen, setIsOpen] = useDetectClose({
+    elem: dropdownRef,
+    tabRefs: triggerRef,
+    initialState: false,
+  });
+  const [sortedOptionText, setSortedOptionText] = useState(getSortedOption(sortOption));
+
+  useEffect(() => {
+    const optionText = getSortedOption(sortOption);
+    setSortedOptionText(optionText);
+  }, [sortOption]);
 
   const handleDropdownItemClick = (sortBy: SortByType) => {
     onSubmitDropdown(sortBy);
@@ -20,9 +33,12 @@ const SortDropdown = ({ sortOption, onSubmitDropdown }: SortDropdownProps) => {
   };
 
   return (
-    <DropdownWrapper>
+    <DropdownWrapper ref={dropdownRef}>
       <Dropdown>
-        <Dropdown.Trigger onClick={() => setIsOpen(!isOpen)}>
+        <Dropdown.Trigger
+          triggerRef={triggerRef}
+          onClick={() => setIsOpen(!isOpen)}
+        >
           <span>{sortedOptionText}</span>
           {/** 이미지 아이콘을 클릭했을 때 180도 회전하도록 추후 구현 */}
           <img
