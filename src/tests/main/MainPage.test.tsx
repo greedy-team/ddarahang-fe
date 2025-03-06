@@ -1,9 +1,9 @@
+import { RouterProvider } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
 import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoList';
 import { SelectOptionProvider } from '../../store/SelectOptionContext';
-import { RouterProvider } from 'react-router-dom';
 import { router } from '../../router';
 
 describe('메인 페이지', () => {
