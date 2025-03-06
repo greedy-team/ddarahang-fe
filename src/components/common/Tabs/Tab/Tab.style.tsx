@@ -32,7 +32,22 @@ export const TabItem = styled.li`
   cursor: pointer;
   font-size: ${size.SIZE_009};
   font-family: 'Pretendard-SemiBold', sans-serif;
-  border-right: 2px solid ${colors.GRAY_300};
+  height: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
+  position: relative;
+
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 2px;
+    background-color: ${colors.GRAY_300};
+  }
 
   &:hover {
     color: ${colors.GREY_500};
