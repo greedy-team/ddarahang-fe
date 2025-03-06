@@ -1,4 +1,4 @@
-import { BrowserRouter, RouterProvider } from 'react-router-dom';
+import { MemoryRouter, RouterProvider } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
@@ -25,12 +25,12 @@ beforeAll(() => {
 
 const rtlRender = (ui: any, options?: any) => {
   const Wrapper = ({ children }: any) => (
-    <BrowserRouter>
+    <MemoryRouter>
       <SelectOptionProvider>
         <RouterProvider router={router} />
         {children}
       </SelectOptionProvider>
-    </BrowserRouter>
+    </MemoryRouter>
   );
   return render(ui, { wrapper: Wrapper, ...options });
 };
@@ -42,7 +42,7 @@ const Main = () => {
     getTravelVideoList({
       filter: 'default',
       countryName: '대한민국',
-      regionName: '서울',
+      regionName: '인천',
     });
   }, []);
 
