@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@googlemaps/react-wrapper": "^1.1.42",
+    "@storybook/addon-actions": "^8.6.4",
     "axios": "^1.7.9",
     "jsdom": "^26.0.0",
     "react": "^18.2.0",

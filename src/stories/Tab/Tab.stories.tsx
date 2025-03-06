@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
 
 import Tab from '../../components/common/Tabs/Tab/Tab';
-import { fn } from '@storybook/test';
 
 const meta = {
   title: 'Tab/Tab',

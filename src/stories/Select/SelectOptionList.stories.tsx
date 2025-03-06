@@ -1,6 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { SelectOptionList } from '../../components/common/Select/SelectOptionList/SelectOptionList';
 import { useRef, useState } from 'react';
+import { Meta, StoryObj } from '@storybook/react';
+
+import { SelectOptionList } from '../../components/common/Select/SelectOptionList/SelectOptionList';
 
 const meta = {
   title: 'Select/SelectOptionList',
@@ -32,7 +33,6 @@ export const Default: Story = {
 
     return (
       <SelectOptionList
-        {...args}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         optionListRef={optionListRef}
