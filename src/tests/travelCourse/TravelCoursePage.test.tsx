@@ -3,6 +3,8 @@ import { render, screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import VideoSection from '../../components/detail/Video/VideoSection';
+import TabPanel from '../../components/common/Tabs/TabPanel/TabPanel';
+import { OneDayCourseType } from '../../types';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -25,10 +27,11 @@ const rtlRender = (ui: any) => {
   return render(ui, { wrapper: Wrapper });
 };
 
-const TravelCourse = () => {
+const VideoSectionComponent = () => {
   const { travelCourse } = useGetTravelCourse(1);
 
   if (!travelCourse) return null;
+
   return (
     <VideoSection
       videoUrl={travelCourse.videoUrl}
@@ -37,11 +40,57 @@ const TravelCourse = () => {
   );
 };
 
+const mockOneDayCourses: OneDayCourseType[] = [
+  {
+    placeName: '제주도 어딘가',
+    day: 1,
+    orderInday: 1,
+    address: '제주특별자치도 제주시',
+    position: {
+      lat: 33.4996,
+      lng: 126.5312,
+    },
+  },
+  {
+    placeName: '서울 어딘가',
+    day: 2,
+    orderInday: 1,
+    address: '서울특별시 중구',
+    position: {
+      lat: 37.5665,
+      lng: 126.978,
+    },
+  },
+  {
+    placeName: '부산 어딘가',
+    day: 3,
+    orderInday: 1,
+    address: '부산 광역시',
+    position: {
+      lat: 35.1796,
+      lng: 129.0756,
+    },
+  },
+];
+
+const TravelCourses = () => {
+  const onClickPanel = () => {};
+
+  return (
+    <TabPanel
+      oneDayCourse={mockOneDayCourses}
+      onClickPanel={onClickPanel}
+    />
+  );
+};
+
 const getTravelVideo = async (id: number) => {
   const response = await fetch(`/api/travelcourse/${id}`);
+
   if (!response.ok) {
     throw new Error('Failed to fetch product');
   }
+
   return response.json();
 };
 
@@ -62,11 +111,10 @@ describe('여행 코스 디테일 페이지', () => {
       };
 
       vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse as Response);
+      const video = await getTravelVideo(1);
+      expect(video).toEqual(mockTravelCourse);
 
-      const product = await getTravelVideo(1);
-      expect(product).toEqual(mockTravelCourse);
-
-      rtlRender(<TravelCourse />);
+      rtlRender(<VideoSectionComponent />);
 
       waitFor(() => {
         const videoElement = screen.getByRole('video');
@@ -74,6 +122,27 @@ describe('여행 코스 디테일 페이지', () => {
       });
 
       expect(global.fetch).toHaveBeenCalledWith('/api/travelcourse/1');
+
+      vi.restoreAllMocks();
+    });
+  });
+
+  describe('여행 코스 패널 테스트', () => {
+    it('여행 코스 목록이 렌더링 된다.', async () => {
+      const onClickPanel = vi.fn();
+
+      rtlRender(<TravelCourses />);
+
+      await waitFor(() => {
+        mockOneDayCourses.forEach((course) => {
+          expect(screen.getByText(course.placeName)).toBeInTheDocument();
+          expect(screen.getByText(course.address)).toBeInTheDocument();
+        });
+      });
+
+      const firstPanel = screen.getByText(mockOneDayCourses[0].placeName);
+      firstPanel.click();
+      expect(onClickPanel).toHaveBeenCalled();
 
       vi.restoreAllMocks();
     });
