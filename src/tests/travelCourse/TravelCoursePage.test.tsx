@@ -95,7 +95,7 @@ const getTravelVideo = async (id: number) => {
 };
 
 describe('여행 코스 디테일 페이지', () => {
-  describe('비디오 섹션 테스트', () => {
+  describe('여행 코스 디테일 테스트', () => {
     it('여행 코스 페이지로 이동 시 비디오 섹션이 렌더링 된다.', async () => {
       const mockTravelCourse = {
         travelCourseId: 1,
@@ -124,6 +124,12 @@ describe('여행 코스 디테일 페이지', () => {
       expect(global.fetch).toHaveBeenCalledWith('/api/travelcourse/1');
 
       vi.restoreAllMocks();
+    });
+
+    it('여행 코스 API 호출이 실패하면 에러를 던져야 한다', async () => {
+      vi.spyOn(global, 'fetch').mockRejectedValue(new Error('Network error'));
+
+      await expect(getTravelVideo(1)).rejects.toThrow('Network error');
     });
   });
 
