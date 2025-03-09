@@ -1,7 +1,7 @@
-import { MemoryRouter } from 'react-router-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoList';
+import rtlRender from '../render';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -18,11 +18,6 @@ beforeAll(() => {
     })),
   });
 });
-
-const rtlRender = (ui: any, options?: any) => {
-  const Wrapper = ({ children }: any) => <MemoryRouter>{children}</MemoryRouter>;
-  return render(ui, { wrapper: Wrapper, ...options });
-};
 
 const CustomTravelVideoList = ({ mockVideoList }: any) => {
   return (

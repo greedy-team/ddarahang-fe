@@ -1,11 +1,11 @@
-import { MemoryRouter } from 'react-router-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import VideoSection from '../../components/detail/Video/VideoSection';
 import TabPanel from '../../components/common/Tabs/TabPanel/TabPanel';
 import { TravelCourse } from '../../types';
 import { SelectedPanelProvider } from '../../store/SelectedPanelContext';
 import { mockOneDayCourses, mockTravelCourse } from '../mockData';
+import rtlRender from '../render';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -16,11 +16,6 @@ beforeAll(() => {
     })),
   });
 });
-
-const rtlRender = (ui: any) => {
-  const Wrapper = ({ children }: any) => <MemoryRouter initialEntries={['/travelcourse/1']}>{children}</MemoryRouter>;
-  return render(ui, { wrapper: Wrapper });
-};
 
 const CustomVideoSection = ({ mockTravelCourse }: { mockTravelCourse: TravelCourse }) => {
   return (
