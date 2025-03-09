@@ -58,7 +58,7 @@ const VideoSection = ({ videoUrl, travelCourse }: VideoProps) => {
       <VideoContainer>
         <VideoWrapper>
           <Iframe
-            data-testId='video-player'
+            data-testid='video-player'
             src={`https://www.youtube.com/embed/${videoId}`}
             allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
             allowFullScreen
