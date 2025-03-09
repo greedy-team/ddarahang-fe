@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CountryType, SortByType, TravelList } from '../../types';
 import axios from 'axios';
+import { useSortOptionContext } from '../context/useSortOptionContext';
 
 interface useTravelVideoListProps {
   filter: SortByType;
@@ -8,10 +9,11 @@ interface useTravelVideoListProps {
   regionName: string;
 }
 
-const useTravelVideoList = ({ filter, countryName, regionName }: useTravelVideoListProps) => {
+const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [videoList, setVideoList] = useState<TravelList[]>([]);
+  const { setSortOption } = useSortOptionContext();
 
   const getTravelVideoList = async ({ filter, countryName, regionName }: useTravelVideoListProps) => {
     let requestBody = {
@@ -41,7 +43,8 @@ const useTravelVideoList = ({ filter, countryName, regionName }: useTravelVideoL
   };
 
   useEffect(() => {
-    getTravelVideoList({ filter, countryName, regionName });
+    setSortOption('default');
+    getTravelVideoList({ filter: 'default', countryName, regionName });
   }, [countryName, regionName]);
 
   return { videoList, loading, error, getTravelVideoList };

@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { SelectedPanelProvider } from '../src/store/SelectedPanelContext';
 import { SelectOptionProvider } from '../src/store/SelectOptionContext';
+import { SortOptionProvider } from '../src/store/SortOptionContext';
 
 export const preview: Preview = {
   parameters: {
@@ -20,12 +21,14 @@ export const preview: Preview = {
 export const decorators = [
   (Story) => (
     <BrowserRouter>
-      <SelectOptionProvider>
-        <SelectedPanelProvider>
-          <GlobalStyle />
-          <Story />
-        </SelectedPanelProvider>
-      </SelectOptionProvider>
+      <SortOptionProvider>
+        <SelectOptionProvider>
+          <SelectedPanelProvider>
+            <GlobalStyle />
+            <Story />
+          </SelectedPanelProvider>
+        </SelectOptionProvider>
+      </SortOptionProvider>
     </BrowserRouter>
   ),
 ];

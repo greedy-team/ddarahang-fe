@@ -9,12 +9,13 @@ import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoLi
 import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper, StyledErrorMessage } from './MainPage.style';
 
-import { useSelectOptionContext } from '../../hooks/select/useSelectOptionContext';
+import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
 import Loading from '../../components/common/Loading/Loading';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
+import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 
 const renderMainErrorMessage = (handleSubmitOption: () => void, message: string) => {
   return (
@@ -36,7 +37,7 @@ const renderMainErrorMessage = (handleSubmitOption: () => void, message: string)
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
-  const [sortOption, setSortOption] = useState<SortByType>('default');
+  const { setSortOption } = useSortOptionContext();
   const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
   const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
@@ -71,10 +72,7 @@ const MainPage = () => {
         color={colors.WHITE}
         onSubmitOption={handleSubmitOption}
       />
-      <SortDropdown
-        sortOption={sortOption}
-        onSubmitDropdown={handleSubmitDropdown}
-      />
+      <SortDropdown onSubmitDropdown={handleSubmitDropdown} />
       <StyledContentsWrapper>
         <TravelVideoList
           videoNumberInPage={videoNumberInPage}

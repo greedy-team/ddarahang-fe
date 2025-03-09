@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer } from './SelectTab.style';
-import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { TRAVEL_LABEL } from '../../../../constants';
 
 interface SelectTabProps {
@@ -13,7 +13,7 @@ interface SelectTabProps {
 }
 
 const SelectTab = ({ isOpen, setIsOpen, onSubmitOption, countryTabRef, regionTabRef }: SelectTabProps) => {
-  const { selectedOption, setSelectedOption } = useSelectOptionContext();
+  const { selectedOption } = useSelectOptionContext();
 
   const [isFocus, setIsFocus] = useState({
     country: false,
@@ -25,15 +25,6 @@ const SelectTab = ({ isOpen, setIsOpen, onSubmitOption, countryTabRef, regionTab
       setIsFocus({ country: false, region: false });
     }
   }, [isOpen]);
-
-  useEffect(() => {
-    if (!selectedOption.selectedOptionLabel) {
-      setSelectedOption((prev) => ({
-        ...prev,
-        selectedOptionLabel: TRAVEL_LABEL.REGION + ' 검색',
-      }));
-    }
-  }, [selectedOption.selectedOptionLabel, setSelectedOption]);
 
   return (
     <SelectTabContainer>

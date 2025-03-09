@@ -6,6 +6,7 @@ export const DropdownListUl = styled.ul<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   padding-left: ${size.SIZE_003};
   border-radius: ${size.SIZE_004};
   border: 1px solid ${colors.GRAY_300};
