@@ -4,8 +4,8 @@ import VideoSection from '../../components/detail/Video/VideoSection';
 import TabPanel from '../../components/common/Tabs/TabPanel/TabPanel';
 import { TravelCourse } from '../../types';
 import { SelectedPanelProvider } from '../../store/SelectedPanelContext';
-import { mockOneDayCourses, mockTravelCourse } from '../mockData';
-import rtlRender from '../render';
+import { mockOneDayCourses, mockTravelCourse } from '../data/mockData';
+import rtlRender from '../Render';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
