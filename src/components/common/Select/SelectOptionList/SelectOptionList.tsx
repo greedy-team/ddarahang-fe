@@ -1,5 +1,5 @@
 import { Dispatch, RefObject, SetStateAction } from 'react';
-import { useSelectOptionContext } from '../../../../hooks/select/useSelectOptionContext';
+import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { getOptionList } from '../../../../utils';
 import { SelectOptionListContainer } from './SelectOptionList.style';
 import SelectOption from '../SelectItem/SelectOption';
