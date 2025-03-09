@@ -38,7 +38,6 @@ const VideoSection = ({ videoUrl, travelCourse }: VideoProps) => {
 
   const videoId = videoUrl.match(/v=([^&]+)/)?.[1];
 
-  console.log(videoId);
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
@@ -59,6 +58,7 @@ const VideoSection = ({ videoUrl, travelCourse }: VideoProps) => {
       <VideoContainer>
         <VideoWrapper>
           <Iframe
+            data-testId='video-player'
             src={`https://www.youtube.com/embed/${videoId}`}
             allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
             allowFullScreen

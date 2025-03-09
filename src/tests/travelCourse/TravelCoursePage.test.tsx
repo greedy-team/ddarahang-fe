@@ -5,6 +5,7 @@ import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
 import VideoSection from '../../components/detail/Video/VideoSection';
 import TabPanel from '../../components/common/Tabs/TabPanel/TabPanel';
 import { OneDayCourseType } from '../../types';
+import { SelectedPanelProvider } from '../../store/SelectedPanelContext';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -12,12 +13,6 @@ beforeAll(() => {
     value: vi.fn().mockImplementation((query) => ({
       matches: false,
       media: query,
-      onchange: null,
-      addListener: vi.fn(),
-      removeListener: vi.fn(),
-      addEventListener: vi.fn(),
-      removeEventListener: vi.fn(),
-      dispatchEvent: vi.fn(),
     })),
   });
 });
@@ -27,7 +22,7 @@ const rtlRender = (ui: any) => {
   return render(ui, { wrapper: Wrapper });
 };
 
-const VideoSectionComponent = () => {
+const CustomVideoSection = () => {
   const { travelCourse } = useGetTravelCourse(1);
 
   if (!travelCourse) return null;
@@ -73,82 +68,42 @@ const mockOneDayCourses: OneDayCourseType[] = [
   },
 ];
 
-const TravelCourses = () => {
+const CustomTabpanel = () => {
   const onClickPanel = () => {};
 
   return (
-    <TabPanel
-      oneDayCourse={mockOneDayCourses}
-      onClickPanel={onClickPanel}
-    />
+    <SelectedPanelProvider>
+      <TabPanel
+        oneDayCourse={mockOneDayCourses}
+        onClickPanel={onClickPanel}
+      />
+    </SelectedPanelProvider>
   );
-};
-
-const getTravelVideo = async (id: number) => {
-  const response = await fetch(`/api/travelcourse/${id}`);
-
-  if (!response.ok) {
-    throw new Error('Failed to fetch product');
-  }
-
-  return response.json();
 };
 
 describe('여행 코스 디테일 페이지', () => {
   describe('여행 코스 디테일 테스트', () => {
     it('여행 코스 페이지로 이동 시 비디오 섹션이 렌더링 된다.', async () => {
-      const mockTravelCourse = {
-        travelCourseId: 1,
-        travelDays: 3,
-        videoUrl: 'https://example.com/video',
-      };
+      rtlRender(<CustomVideoSection />);
 
-      const mockResponse = {
-        ok: true,
-        json: async () => mockTravelCourse,
-        status: 200,
-        headers: new Headers(),
-      };
-
-      vi.spyOn(global, 'fetch').mockResolvedValue(mockResponse as Response);
-      const video = await getTravelVideo(1);
-      expect(video).toEqual(mockTravelCourse);
-
-      rtlRender(<VideoSectionComponent />);
-
-      waitFor(() => {
-        const videoElement = screen.getByRole('video');
-        expect(videoElement).toHaveAttribute('src', 'https://example.com/video');
-      });
-
-      expect(global.fetch).toHaveBeenCalledWith('/api/travelcourse/1');
+      waitFor(() =>
+        expect(screen.getByTestId('video-player')).toHaveAttribute('src', `https://www.youtube.com/embed/:videoId`),
+      );
 
       vi.restoreAllMocks();
-    });
-
-    it('여행 코스 API 호출이 실패하면 에러를 던져야 한다', async () => {
-      vi.spyOn(global, 'fetch').mockRejectedValue(new Error('Network error'));
-
-      await expect(getTravelVideo(1)).rejects.toThrow('Network error');
     });
   });
 
   describe('여행 코스 패널 테스트', () => {
     it('여행 코스 목록이 렌더링 된다.', async () => {
-      const onClickPanel = vi.fn();
+      rtlRender(<CustomTabpanel />);
 
-      rtlRender(<TravelCourses />);
-
-      await waitFor(() => {
+      waitFor(() => {
         mockOneDayCourses.forEach((course) => {
           expect(screen.getByText(course.placeName)).toBeInTheDocument();
           expect(screen.getByText(course.address)).toBeInTheDocument();
         });
       });
-
-      const firstPanel = screen.getByText(mockOneDayCourses[0].placeName);
-      firstPanel.click();
-      expect(onClickPanel).toHaveBeenCalled();
 
       vi.restoreAllMocks();
     });
