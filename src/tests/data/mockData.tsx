@@ -1,4 +1,4 @@
-import { OneDayCourseType, TravelCourse } from '../types';
+import { OneDayCourseType, TravelCourse } from '../../types';
 
 export const mockTravelCourse: TravelCourse = {
   creator: '유튜버 이름',
@@ -97,5 +97,24 @@ export const mockOneDayCourses: OneDayCourseType[] = [
       lat: 35.1796,
       lng: 129.0756,
     },
+  },
+];
+
+export const videoList = [
+  {
+    travelCourseId: 1,
+    title: '서울 여행 코스 추천, 데이트 코스',
+    creator: 'creator1',
+    uploadDate: '2025-03-09',
+    viewCount: 20000,
+    thumbnailUrl: 'https://example.com/video/12345',
+  },
+  {
+    travelCourseId: 2,
+    title: '부산 여행 코스 추천, 데이트 코스',
+    creator: 'creator2',
+    uploadDate: '2025-03-09',
+    viewCount: 20000,
+    thumbnailUrl: 'https://example.com/video/12345',
   },
 ];
