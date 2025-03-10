@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { action } from '@storybook/addon-actions'; // action 임포트
-import { SortByType } from '../../types';
-
 
 import SortDropdown from '../../components/main/SortDropdown/SortDropdown';
 
