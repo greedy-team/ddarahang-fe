@@ -17,6 +17,7 @@ const CircleButton = ({ iconPath, iconAlt, text, color, size, onClick }: CircleB
       onClick={onClick}
     >
       <img
+        data-testid='icon-img'
         src={iconPath}
         alt={iconAlt}
       />
