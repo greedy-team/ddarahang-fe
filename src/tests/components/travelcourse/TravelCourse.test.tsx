@@ -1,9 +1,9 @@
 import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
-import TabPanel from '../../../components/common/Tabs/TabPanel/TabPanel';
 import { SelectedPanelProvider } from '../../../store/SelectedPanelContext';
 import { mockOneDayCourses } from '../../data/mockData';
 import rtlRender from '../../Render';
+import TravelCourse from '../../../components/detail/TravelCourse/TravelCourse';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -15,27 +15,31 @@ beforeAll(() => {
   });
 });
 
-const CustomTabpanel = () => {
+const CustomTravelCourse = () => {
   const onClickPanel = () => {};
+  const onClickTab = () => {};
 
   return (
     <SelectedPanelProvider>
-      <TabPanel
-        oneDayCourse={mockOneDayCourses}
+      <TravelCourse
+        totalTravelDays={3}
+        selectedTab={1}
+        oneDayCourses={mockOneDayCourses}
         onClickPanel={onClickPanel}
+        onClickTab={onClickTab}
       />
     </SelectedPanelProvider>
   );
 };
 
 describe('여행 코스 디테일 페이지', () => {
-  it('여행 코스 장소 패널이 렌더링 된다.', async () => {
-    rtlRender(<CustomTabpanel />);
+  it('여행 코스 목록이 렌더링 된다.', async () => {
+    rtlRender(<CustomTravelCourse />);
 
     await waitFor(() => {
-      mockOneDayCourses.forEach((course) => {
-        expect(screen.getByText(course.placeName)).toBeInTheDocument();
-      });
+      expect(screen.getByText('DAY1')).toBeInTheDocument();
+      expect(screen.getByText('DAY2')).toBeInTheDocument();
+      expect(screen.getByText('DAY3')).toBeInTheDocument();
     });
 
     screen.debug();
