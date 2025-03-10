@@ -1,8 +1,8 @@
 import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
-import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoList';
-import rtlRender from '../Render';
-import { videoList } from '../data/mockData';
+import TravelVideoList from '../../../components/main/TravelVideoList/TravelVideoList';
+import rtlRender from '../../Render';
+import { videoList } from '../../data/mockData';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
