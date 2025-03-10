@@ -146,6 +146,13 @@ export const KOREAREGIONOPTION: SelectOptionType[] = [
     isCountryOption: false,
     countryLabel: '대한민국',
   },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/ulleung-do.jpg',
+    locationLabel: '울릉도',
+    locationType: '지역, 대한민국',
+    isCountryOption: false,
+    countryLabel: '대한민국',
+  },
 ];
 
 export const JAPANREGIONOPTION: SelectOptionType[] = [
@@ -171,8 +178,29 @@ export const JAPANREGIONOPTION: SelectOptionType[] = [
     countryLabel: '일본',
   },
   {
-    imgUrl: 'https://i.imgur.com/q2zFoXH.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/okinawa.jpg',
     locationLabel: '오키나와',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/kitakyushu.jpg',
+    locationLabel: '기타큐슈',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/yokohama.jpg',
+    locationLabel: '요코하마',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/nagoya.jpg',
+    locationLabel: '나고야',
     locationType: '도시, 일본',
     isCountryOption: false,
     countryLabel: '일본',
