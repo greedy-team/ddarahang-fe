@@ -31,8 +31,6 @@ describe('여행 코스 디테일 페이지', () => {
       expect(screen.getByTestId('icon-img')).toHaveAttribute('alt', '로그인 아이콘');
     });
 
-    vi.restoreAllMocks();
-
     screen.debug();
   });
 });

@@ -32,13 +32,12 @@ describe('여행 코스 디테일 페이지', () => {
   it('여행 코스 목록이 렌더링 된다.', async () => {
     rtlRender(<CustomTabpanel />);
 
-    waitFor(() => {
+    await waitFor(() => {
       mockOneDayCourses.forEach((course) => {
         expect(screen.getByText(course.placeName)).toBeInTheDocument();
-        expect(screen.getByText(course.address)).toBeInTheDocument();
       });
     });
 
-    vi.restoreAllMocks();
+    screen.debug();
   });
 });

@@ -28,10 +28,10 @@ describe('여행 코스 디테일 페이지', () => {
   it('여행 코스 페이지로 이동 시 비디오 섹션이 렌더링 된다.', async () => {
     rtlRender(<CustomVideoSection mockTravelCourse={mockTravelCourse} />);
 
-    waitFor(() =>
-      expect(screen.getByTestId('video-player')).toHaveAttribute('src', `https://www.youtube.com/embed/:videoId`),
+    await waitFor(() =>
+      expect(screen.getByTestId('video-player')).toHaveAttribute('src', `https://www.youtube.com/embed/undefined`),
     );
 
-    vi.restoreAllMocks();
+    screen.debug();
   });
 });

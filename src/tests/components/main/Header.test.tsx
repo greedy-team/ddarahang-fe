@@ -39,5 +39,7 @@ describe('메인페이지 헤더 컴포넌트', () => {
       expect(screen.getByText('어디로 여행을 떠나시나요?')).toBeInTheDocument();
       expect(screen.getByText('따라만 하면 준비 끝! 인기 여행 영상으로 코스를 둘러보세요.')).toBeInTheDocument();
     });
+
+    screen.debug();
   });
 });

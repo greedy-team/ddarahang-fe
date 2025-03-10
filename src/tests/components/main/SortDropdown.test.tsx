@@ -35,8 +35,11 @@ describe('정렬 드롭 다운 컴포넌트', () => {
     rtlRender(<CustomSortDropDown />);
 
     await waitFor(() => {
+      expect(screen.getByText('정렬 옵션')).toBeInTheDocument();
       expect(screen.getByText('조회순')).toBeInTheDocument();
       expect(screen.getByText('최신순')).toBeInTheDocument();
     });
+
+    screen.debug();
   });
 });

@@ -39,6 +39,8 @@ describe('메인 페이지', () => {
         expect(screen.getByText('서울 여행 코스 추천, 데이트 코스')).toBeInTheDocument();
         expect(screen.getByText('부산 여행 코스 추천, 데이트 코스')).toBeInTheDocument();
       });
+
+      screen.debug();
     });
   });
 });

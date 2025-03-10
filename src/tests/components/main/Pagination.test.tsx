@@ -44,5 +44,7 @@ describe('메인페이지 페이지네이션', () => {
       expect(screen.getByText('4')).toBeInTheDocument;
       expect(screen.getByText('5')).toBeInTheDocument;
     });
+
+    screen.debug();
   });
 });
