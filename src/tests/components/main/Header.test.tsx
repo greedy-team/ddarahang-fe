@@ -1,8 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
-import SortDropdown from '../../../components/main/SortDropdown/SortDropdown';
 import rtlRender from '../../Render';
-import { SortOptionProvider } from '../../../store/SortOptionContext';
 import Header from '../../../components/main/Header/Header';
 import { colors } from '../../../styles/Theme';
 
