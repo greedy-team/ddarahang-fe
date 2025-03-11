@@ -1,13 +1,11 @@
-import { useEffect, useState, useMemo, Suspense } from 'react';
+import { useEffect, useState, useMemo, Suspense, lazy } from 'react';
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
 import Pagination from '../../components/main/Pagination/Pagination';
 import SortDropdown from '../../components/main/SortDropdown/SortDropdown';
-import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoList';
 
 import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper, StyledErrorMessage } from './MainPage.style';
-
 import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
@@ -15,6 +13,8 @@ import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 import Loading from '../../components/common/Loading/Loading';
+
+const TravelVideoList = lazy(() => import('../../components/main/TravelVideoList/TravelVideoList'));
 
 const renderMainErrorMessage = (handleSubmitOption: () => void, message: string) => {
   return (
@@ -72,13 +72,17 @@ const MainPage = () => {
       />
       <SortDropdown onSubmitDropdown={handleSubmitDropdown} />
       <StyledContentsWrapper>
-        <Suspense fallback={<Loading />}>
-          <TravelVideoList
-            videoNumberInPage={videoNumberInPage}
-            currentPageNumber={currentPageNumber}
-            videoList={videoList}
-          />
-        </Suspense>
+        {loading ? (
+          <Loading loading={true} />
+        ) : (
+          <Suspense fallback={<Loading loading={true} />}>
+            <TravelVideoList
+              videoNumberInPage={videoNumberInPage}
+              currentPageNumber={currentPageNumber}
+              videoList={videoList}
+            />
+          </Suspense>
+        )}
         <Pagination
           color={colors.WHITE}
           currentPageNumber={currentPageNumber}

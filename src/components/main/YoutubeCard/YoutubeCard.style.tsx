@@ -29,6 +29,7 @@ export const YoutubeThumbnail = styled.img`
 
 export const YoutubeTitle = styled.h2`
   font-size: 1.125rem;
+  font-family: 'Pretendard-SemiBold';
   padding-top: ${size.SIZE_006};
   padding-bottom: ${size.SIZE_003};
   overflow-wrap: break-word;
