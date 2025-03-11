@@ -2,6 +2,8 @@ import { TravelVideoListContainer } from './TravelVideoList.style';
 import { TravelList } from '../../../types';
 import YoutubeCard from '../YoutubeCard/YoutubeCard';
 import { useNavigate } from 'react-router-dom';
+import { Suspense } from 'react';
+import Loading from '../../common/Loading/Loading';
 
 interface TravelVideoListProps {
   videoNumberInPage: number;
@@ -16,23 +18,25 @@ const TravelVideoList = ({ videoNumberInPage, videoList, currentPageNumber }: Tr
 
   const route = useNavigate();
   return (
-    <TravelVideoListContainer>
-      {currentVideoList.map((video) => {
-        return (
-          <YoutubeCard
-            key={video.travelCourseId}
-            imgUrl={video.thumbnailUrl}
-            title={video.title}
-            creator={video.creator}
-            uploadDate={video.uploadDate}
-            viewCount={video.viewCount}
-            onClick={() => {
-              route(`/travelcourse/${video.travelCourseId}`);
-            }}
-          />
-        );
-      })}
-    </TravelVideoListContainer>
+    <Suspense fallback={<Loading />}>
+      <TravelVideoListContainer>
+        {currentVideoList.map((video) => {
+          return (
+            <YoutubeCard
+              key={video.travelCourseId}
+              imgUrl={video.thumbnailUrl}
+              title={video.title}
+              creator={video.creator}
+              uploadDate={video.uploadDate}
+              viewCount={video.viewCount}
+              onClick={() => {
+                route(`/travelcourse/${video.travelCourseId}`);
+              }}
+            />
+          );
+        })}
+      </TravelVideoListContainer>
+    </Suspense>
   );
 };
 

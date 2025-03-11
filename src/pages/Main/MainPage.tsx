@@ -11,7 +11,6 @@ import { StyledMainPageLayout, StyledContentsWrapper, StyledErrorMessage } from 
 
 import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
-import Loading from '../../components/common/Loading/Loading';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
@@ -62,7 +61,6 @@ const MainPage = () => {
     }
   }, [loading, videoList]);
 
-  if (loading) return <Loading loading={loading} />;
   if (showNoDataMessage) return renderMainErrorMessage(handleSubmitOption, NO_DATA_ERROR_MESSAGE);
   if (error) renderMainErrorMessage(handleSubmitOption, LOAD_ERROR_MESSAGE);
 
