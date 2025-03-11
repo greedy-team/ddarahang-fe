@@ -10,7 +10,7 @@ const Logo = () => {
         route('/');
       }}
     >
-      따라<span>여</span>행
+      따라행
     </StyledLogo>
   );
 };
