@@ -1,5 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
-
+import { useEffect, useState, useMemo, Suspense } from 'react';
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
 import Pagination from '../../components/main/Pagination/Pagination';
@@ -15,6 +14,7 @@ import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
+import Loading from '../../components/common/Loading/Loading';
 
 const renderMainErrorMessage = (handleSubmitOption: () => void, message: string) => {
   return (
@@ -72,11 +72,13 @@ const MainPage = () => {
       />
       <SortDropdown onSubmitDropdown={handleSubmitDropdown} />
       <StyledContentsWrapper>
-        <TravelVideoList
-          videoNumberInPage={videoNumberInPage}
-          currentPageNumber={currentPageNumber}
-          videoList={videoList}
-        />
+        <Suspense fallback={<Loading />}>
+          <TravelVideoList
+            videoNumberInPage={videoNumberInPage}
+            currentPageNumber={currentPageNumber}
+            videoList={videoList}
+          />
+        </Suspense>
         <Pagination
           color={colors.WHITE}
           currentPageNumber={currentPageNumber}
