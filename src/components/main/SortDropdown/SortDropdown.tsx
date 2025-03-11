@@ -33,26 +33,28 @@ const SortDropdown = ({ onSubmitDropdown }: SortDropdownProps) => {
   };
 
   return (
-    <DropdownWrapper ref={dropdownRef}>
-      <Dropdown>
-        <Dropdown.Trigger
-          triggerRef={triggerRef}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <span>{sortedOptionText}</span>
-          {/** 이미지 아이콘을 클릭했을 때 180도 회전하도록 추후 구현 */}
-          <img
-            width={24}
-            height={24}
-            src='./icon/DownArrow.svg'
-            alt='아래 화살표'
-          />
-        </Dropdown.Trigger>
-        <Dropdown.List isOpen={isOpen}>
-          <Dropdown.Item onClick={() => handleDropdownItemClick('viewCount')}>조회순</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleDropdownItemClick('uploadDate')}>최신순</Dropdown.Item>
-        </Dropdown.List>
-      </Dropdown>
+    <DropdownWrapper>
+      <div ref={dropdownRef}>
+        <Dropdown>
+          <Dropdown.Trigger
+            triggerRef={triggerRef}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span>{sortedOptionText}</span>
+            {/** 이미지 아이콘을 클릭했을 때 180도 회전하도록 추후 구현 */}
+            <img
+              width={24}
+              height={24}
+              src='./icon/DownArrow.svg'
+              alt='아래 화살표'
+            />
+          </Dropdown.Trigger>
+          <Dropdown.List isOpen={isOpen}>
+            <Dropdown.Item onClick={() => handleDropdownItemClick('viewCount')}>조회순</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleDropdownItemClick('uploadDate')}>최신순</Dropdown.Item>
+          </Dropdown.List>
+        </Dropdown>
+      </div>
     </DropdownWrapper>
   );
 };
