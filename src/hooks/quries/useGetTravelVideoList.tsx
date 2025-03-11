@@ -27,8 +27,6 @@ const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps
     }
 
     setLoading(true);
-    setVideoList([]);
-
     try {
       const response = await axios.get('https://api.ddarahang.site/api/v1/travelcourses', { params: requestBody });
 

@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
@@ -12,10 +12,10 @@ import { StyledMainPageLayout, StyledContentsWrapper, StyledErrorMessage } from 
 import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
 import Loading from '../../components/common/Loading/Loading';
-import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
+import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
 
 const renderMainErrorMessage = (handleSubmitOption: () => void, message: string) => {
   return (
@@ -38,13 +38,25 @@ const renderMainErrorMessage = (handleSubmitOption: () => void, message: string)
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const { setSortOption } = useSortOptionContext();
-  const [showNoDataMessage, setShowNoDataMessage] = useState(false);
-
-  const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
   const { selectedOption } = useSelectOptionContext();
+
+  const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
+    filter: 'default',
+    countryName: selectedOption.countryName,
+    regionName: selectedOption.selectedOptionLabel,
+  });
+
   const { videoNumberInPage } = useMediaScreen();
 
   const totalPageNumber = useMemo(() => Math.ceil(videoList.length / videoNumberInPage), [videoList]);
+
+  const handleSubmitOption = () => {
+    getTravelVideoList({
+      filter: 'default',
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+    });
+  };
 
   const handleSubmitDropdown = (sortBy: SortByType) => {
     getTravelVideoList({
@@ -56,15 +68,9 @@ const MainPage = () => {
     setSortOption(sortBy);
   };
 
-  useEffect(() => {
-    if (!loading) {
-      setShowNoDataMessage(videoList.length === 0);
-    }
-  }, [loading, videoList]);
-
   if (loading) return <Loading loading={loading} />;
-  if (showNoDataMessage) return renderMainErrorMessage(handleSubmitOption, NO_DATA_ERROR_MESSAGE);
-  if (error) renderMainErrorMessage(handleSubmitOption, LOAD_ERROR_MESSAGE);
+  if (videoList.length === 0) return renderMainErrorMessage(handleSubmitOption, NO_DATA_ERROR_MESSAGE);
+  if (error) return renderMainErrorMessage(handleSubmitOption, LOAD_ERROR_MESSAGE);
 
   return (
     <StyledMainPageLayout>
