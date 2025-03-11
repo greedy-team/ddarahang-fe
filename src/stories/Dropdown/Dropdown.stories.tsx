@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { action } from '@storybook/addon-actions'; // action 임포트
+
 import SortDropdown from '../../components/main/SortDropdown/SortDropdown';
-import { action } from '@storybook/addon-actions';
 
 const meta = {
   title: 'Dropdown/SortDropdown',
