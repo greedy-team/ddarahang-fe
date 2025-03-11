@@ -38,7 +38,6 @@ const VideoSection = ({ videoUrl, travelCourse }: VideoProps) => {
 
   const videoId = videoUrl.match(/v=([^&]+)/)?.[1];
 
-  console.log(videoId);
   return (
     <VideoSectionContainer>
       <VideoSectionHeader>
