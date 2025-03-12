@@ -12,7 +12,7 @@ export const SelectOptionListContainer = styled.ul<{ $isCountryOption: boolean; 
   border-radius: ${size.SIZE_008};
   box-shadow: ${size.SIZE_002} ${size.SIZE_002} ${size.SIZE_002} rgba(0, 0, 0, 0.1);
   width: 480px;
-  max-height: ${(props) => (props.$isCountryOption ? size.SIZE_020 : size.SIZE_025)};
+  max-height: 29rem;
   padding: ${size.SIZE_006} ${size.SIZE_001};
   overflow-y: scroll;
   overflow-x: hidden;
