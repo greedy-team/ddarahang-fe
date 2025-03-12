@@ -1,44 +1,23 @@
-import { useEffect, useState, useMemo } from 'react';
-
+import { useState, useMemo, Suspense, lazy } from 'react';
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
 import Pagination from '../../components/main/Pagination/Pagination';
 import SortDropdown from '../../components/main/SortDropdown/SortDropdown';
-import TravelVideoList from '../../components/main/TravelVideoList/TravelVideoList';
 
 import { colors } from '../../styles/Theme';
-import { StyledMainPageLayout, StyledContentsWrapper, StyledErrorMessage } from './MainPage.style';
-
+import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
-import Loading from '../../components/common/Loading/Loading';
 import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
-import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
+import Loading from '../../components/common/Loading/Loading';
 
-const renderMainErrorMessage = (handleSubmitOption: () => void, message: string) => {
-  return (
-    <StyledMainPageLayout>
-      <Header
-        color={colors.WHITE}
-        onSubmitOption={handleSubmitOption}
-      />
-      <StyledContentsWrapper>
-        <StyledErrorMessage>
-          <p>{message}</p>
-          <span>{ERROR_MESSAGE}</span>
-        </StyledErrorMessage>
-      </StyledContentsWrapper>
-      <Footer />
-    </StyledMainPageLayout>
-  );
-};
+const TravelVideoList = lazy(() => import('../../components/main/TravelVideoList/TravelVideoList'));
 
 const MainPage = () => {
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const { setSortOption } = useSortOptionContext();
-  const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
   const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
   const { selectedOption } = useSelectOptionContext();
@@ -56,16 +35,6 @@ const MainPage = () => {
     setSortOption(sortBy);
   };
 
-  useEffect(() => {
-    if (!loading) {
-      setShowNoDataMessage(videoList.length === 0);
-    }
-  }, [loading, videoList]);
-
-  if (loading) return <Loading loading={loading} />;
-  if (showNoDataMessage) return renderMainErrorMessage(handleSubmitOption, NO_DATA_ERROR_MESSAGE);
-  if (error) renderMainErrorMessage(handleSubmitOption, LOAD_ERROR_MESSAGE);
-
   return (
     <StyledMainPageLayout>
       <Header
@@ -74,17 +43,24 @@ const MainPage = () => {
       />
       <SortDropdown onSubmitDropdown={handleSubmitDropdown} />
       <StyledContentsWrapper>
-        <TravelVideoList
-          videoNumberInPage={videoNumberInPage}
-          currentPageNumber={currentPageNumber}
-          videoList={videoList}
-        />
-        <Pagination
-          color={colors.WHITE}
-          currentPageNumber={currentPageNumber}
-          totalPageNumber={totalPageNumber}
-          onPageClick={setCurrentPageNumber}
-        />
+        {loading ? (
+          <Loading loading={true} />
+        ) : (
+          <Suspense fallback={<Loading loading={true} />}>
+            <TravelVideoList
+              error={error}
+              videoNumberInPage={videoNumberInPage}
+              currentPageNumber={currentPageNumber}
+              videoList={videoList}
+            />
+            <Pagination
+              color={colors.WHITE}
+              currentPageNumber={currentPageNumber}
+              totalPageNumber={totalPageNumber}
+              onPageClick={setCurrentPageNumber}
+            />
+          </Suspense>
+        )}
       </StyledContentsWrapper>
       <Footer />
     </StyledMainPageLayout>
