@@ -3,7 +3,7 @@ import { colors, size } from '../../../styles/Theme';
 
 export const GlobalHeaderWrapper = styled.div<{ $isIconVisible: boolean }>`
   width: 100%;
-  height: ${size.SIZE_017};
+  height: ${size.SIZE_018};
   padding: ${size.SIZE_001} ${size.SIZE_016};
   display: flex;
   align-items: center;
