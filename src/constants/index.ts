@@ -1,6 +1,6 @@
 import { SelectOptionType } from '../types';
 
-export const COUNTRIES = ['대한민국', '일본'];
+export const COUNTRIES = ['대한민국', '일본', '말레이시아'];
 
 export const MIN_VIEW = 10000;
 
@@ -28,6 +28,13 @@ export const COUNTRYOPTION: SelectOptionType[] = [
     imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/japan.jpg',
     locationLabel: '일본',
     countryLabel: '일본',
+    locationType: '국가',
+    isCountryOption: true,
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/malaysia.jpg',
+    locationLabel: '말레이시아',
+    countryLabel: '말레이시아',
     locationType: '국가',
     isCountryOption: true,
   },
@@ -204,6 +211,16 @@ export const JAPANREGIONOPTION: SelectOptionType[] = [
     locationType: '도시, 일본',
     isCountryOption: false,
     countryLabel: '일본',
+  },
+];
+
+export const MALAYSIAREGIONOPTION: SelectOptionType[] = [
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/kota-kinabalu.jpg',
+    locationLabel: '코타키나발루',
+    locationType: '도시, 말레이시아',
+    isCountryOption: false,
+    countryLabel: '말레이시아',
   },
 ];
 
