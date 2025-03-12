@@ -53,14 +53,14 @@ const MainPage = () => {
               currentPageNumber={currentPageNumber}
               videoList={videoList}
             />
+            <Pagination
+              color={colors.WHITE}
+              currentPageNumber={currentPageNumber}
+              totalPageNumber={totalPageNumber}
+              onPageClick={setCurrentPageNumber}
+            />
           </Suspense>
         )}
-        <Pagination
-          color={colors.WHITE}
-          currentPageNumber={currentPageNumber}
-          totalPageNumber={totalPageNumber}
-          onPageClick={setCurrentPageNumber}
-        />
       </StyledContentsWrapper>
       <Footer />
     </StyledMainPageLayout>
