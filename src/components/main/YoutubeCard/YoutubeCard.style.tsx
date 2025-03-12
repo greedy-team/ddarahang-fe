@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
+import LazyImage from '../../common/Image/LazyImage';
 
 export const YoutubeCardContainer = styled.div`
   display: flex;
@@ -20,9 +21,10 @@ export const YoutubeCardContainer = styled.div`
   }
 `;
 
-export const YoutubeThumbnail = styled.img`
-  width: 100%;
-  aspect-ratio: 16/9;
+export const YoutubeThumbnail = styled(LazyImage).attrs({
+  width: '100%',
+  ratio: '16/9',
+})`
   object-fit: cover;
   border-radius: ${size.SIZE_006};
 `;

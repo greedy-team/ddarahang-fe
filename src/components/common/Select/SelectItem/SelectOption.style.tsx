@@ -20,10 +20,6 @@ export const Option = styled.li`
   }
 `;
 
-export const Image = styled.img`
-  border-radius: ${size.SIZE_003};
-`;
-
 export const LocationLabelWrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -36,7 +36,7 @@ export interface Position {
   lng: number;
 }
 
-export type CountryType = '대한민국' | '일본';
+export type CountryType = '대한민국' | '일본' | '말레이시아';
 export type KoreanRegionType =
   | '서울'
   | '제주도'
@@ -55,7 +55,7 @@ export type KoreanRegionType =
   | '전라북도'
   | '전라남도';
 
-export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카';
+export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카' | '오키나와' | '기타큐슈' | '요코하마' | '나고야';
 
 export type LocationType = '국가' | '지역';
 

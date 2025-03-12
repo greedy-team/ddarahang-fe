@@ -1,4 +1,4 @@
-import { COUNTRIES, COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION } from '../constants';
+import { COUNTRIES, COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION, MALAYSIAREGIONOPTION } from '../constants';
 import { CountryType, SortByType } from '../types';
 
 export const getOptionList = (selectedOption: {
@@ -12,6 +12,8 @@ export const getOptionList = (selectedOption: {
     return KOREAREGIONOPTION;
   } else if (selectedOption.countryName === COUNTRIES[1]) {
     return JAPANREGIONOPTION;
+  } else if (selectedOption.countryName === COUNTRIES[2]) {
+    return MALAYSIAREGIONOPTION;
   }
   return [];
 };

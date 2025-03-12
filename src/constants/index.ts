@@ -1,6 +1,6 @@
 import { SelectOptionType } from '../types';
 
-export const COUNTRIES = ['대한민국', '일본'];
+export const COUNTRIES = ['대한민국', '일본', '말레이시아'];
 
 export const MIN_VIEW = 10000;
 
@@ -18,16 +18,23 @@ export const ERROR_MESSAGE = '서비스 이용중 불편을 드려 죄송합니�
 
 export const COUNTRYOPTION: SelectOptionType[] = [
   {
-    imgUrl: 'https://i.imgur.com/liDWbWV.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/korea.jpg',
     locationLabel: '대한민국',
     countryLabel: '대한민국',
     locationType: '국가',
     isCountryOption: true,
   },
   {
-    imgUrl: 'https://i.imgur.com/ATBRlkM.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/japan.jpg',
     locationLabel: '일본',
     countryLabel: '일본',
+    locationType: '국가',
+    isCountryOption: true,
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/malaysia.jpg',
+    locationLabel: '말레이시아',
+    countryLabel: '말레이시아',
     locationType: '국가',
     isCountryOption: true,
   },
@@ -35,113 +42,120 @@ export const COUNTRYOPTION: SelectOptionType[] = [
 
 export const KOREAREGIONOPTION: SelectOptionType[] = [
   {
-    imgUrl: 'https://i.imgur.com/liDWbWV.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/korea.jpg',
     locationLabel: '서울',
     locationType: '도시, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/rGUq22J.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/jeju-do.jpg',
     locationLabel: '제주도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/w1fBtzV.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/busan.jpg',
     locationLabel: '부산',
     locationType: '도시, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/qU6mEkm.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/incheon.jpg',
     locationLabel: '인천',
     locationType: '도시, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/Q9wGgZe.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/gangwon-do.jpg',
     locationLabel: '강원도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/BATENaS.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/daejeon.jpg',
     locationLabel: '대전',
     locationType: '도시, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/pBSiZZP.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/daegu.jpg',
     locationLabel: '대구',
     locationType: '도시, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/BaPsdAY.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/gyeonggi-do.jpg',
     locationLabel: '경기도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/KDtkwHK.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/ulsan.jpg',
     locationLabel: '울산',
     locationType: '도시, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/tOtT2MJ.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/gwangju.jpg',
     locationLabel: '광주',
     locationType: '도시, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/SBBmiJ9.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/chungcheongbuk-do.jpg',
     locationLabel: '충청북도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/1Qzb2gH.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/chungcheongnam-do.jpg',
     locationLabel: '충청남도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/NdwMH9C.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/gyeongsangbuk-do.jpg',
     locationLabel: '경상북도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/scGcHIZ.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/gyeongsangnam-do.jpg',
     locationLabel: '경상남도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/tkk2403.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/jeolabuk-do.jpg',
     locationLabel: '전라북도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://i.imgur.com/9I3sjgO.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/jeolanam-do.jpg',
     locationLabel: '전라남도',
+    locationType: '지역, 대한민국',
+    isCountryOption: false,
+    countryLabel: '대한민국',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/ulleung-do.jpg',
+    locationLabel: '울릉도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
     countryLabel: '대한민국',
@@ -150,32 +164,63 @@ export const KOREAREGIONOPTION: SelectOptionType[] = [
 
 export const JAPANREGIONOPTION: SelectOptionType[] = [
   {
-    imgUrl: 'https://i.imgur.com/wiMIQkr.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/tokyo.jpg',
     locationLabel: '도쿄',
     locationType: '도시, 일본',
     isCountryOption: false,
     countryLabel: '일본',
   },
   {
-    imgUrl: 'https://i.imgur.com/RV87CEI.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/osaka.jpg',
     locationLabel: '오사카',
     locationType: '도시, 일본',
     isCountryOption: false,
     countryLabel: '일본',
   },
   {
-    imgUrl: 'https://i.imgur.com/bTkDE6D.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/fukuoka.jpg',
     locationLabel: '후쿠오카',
     locationType: '도시, 일본',
     isCountryOption: false,
     countryLabel: '일본',
   },
   {
-    imgUrl: 'https://i.imgur.com/q2zFoXH.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/okinawa.jpg',
     locationLabel: '오키나와',
     locationType: '도시, 일본',
     isCountryOption: false,
     countryLabel: '일본',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/kitakyushu.jpg',
+    locationLabel: '기타큐슈',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/yokohama.jpg',
+    locationLabel: '요코하마',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/nagoya.jpg',
+    locationLabel: '나고야',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  },
+];
+
+export const MALAYSIAREGIONOPTION: SelectOptionType[] = [
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/kota-kinabalu.jpg',
+    locationLabel: '코타키나발루',
+    locationType: '도시, 말레이시아',
+    isCountryOption: false,
+    countryLabel: '말레이시아',
   },
 ];
 

@@ -1,7 +1,8 @@
 import { TRAVEL_LABEL } from '../../../../constants';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { SelectOptionType } from '../../../../types';
-import { Image, LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.style';
+import LazyImage from '../../Image/LazyImage';
+import { LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.style';
 
 interface SelectOptionProps {
   option: SelectOptionType;
@@ -36,11 +37,12 @@ const SelectOption = ({ option, setIsOpen }: SelectOptionProps) => {
       data-value={option.locationLabel}
       onClick={() => handleSelectedItem()}
     >
-      <Image
-        width={40}
-        height={38}
-        src={option.imgUrl}
+      <LazyImage
+        width={'40px'}
+        height={'38px'}
+        borderRadius={'8px'}
         alt='지역 대표 사진'
+        src={option.imgUrl}
       />
       <LocationLabelWrapper>
         <h4>{option.locationLabel}</h4>
