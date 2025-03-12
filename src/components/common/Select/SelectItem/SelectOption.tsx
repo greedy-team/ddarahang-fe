@@ -7,9 +7,10 @@ import { LocationLabelWrapper, LocationTypeText, Option } from './SelectOption.s
 interface SelectOptionProps {
   option: SelectOptionType;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentPageNumber: (currentPageNumber: number) => void;
 }
 
-const SelectOption = ({ option, setIsOpen }: SelectOptionProps) => {
+const SelectOption = ({ option, setIsOpen, setCurrentPageNumber }: SelectOptionProps) => {
   const { setSelectedOption } = useSelectOptionContext();
 
   const handleSelectedItem = () => {
@@ -28,6 +29,7 @@ const SelectOption = ({ option, setIsOpen }: SelectOptionProps) => {
       }));
     }
 
+    setCurrentPageNumber(1);
     setIsOpen(false);
   };
 
