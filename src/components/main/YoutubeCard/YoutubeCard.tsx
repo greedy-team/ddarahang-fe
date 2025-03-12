@@ -1,11 +1,7 @@
 import { MIN_VIEW } from '../../../constants';
-import {
-  YoutubeCardContainer,
-  YoutubeThumbnail,
-  YoutubeTitle,
-  YoutubeChannelName,
-  MetaData,
-} from './YoutubeCard.style';
+import { size } from '../../../styles/Theme';
+import LazyImage from '../../common/Image/LazyImage';
+import { YoutubeCardContainer, YoutubeTitle, YoutubeChannelName, MetaData } from './YoutubeCard.style';
 
 interface YoutubeCardProps {
   imgUrl: string;
@@ -21,7 +17,10 @@ const YoutubeCard = ({ imgUrl, title, creator, uploadDate, viewCount, onClick }:
 
   return (
     <YoutubeCardContainer onClick={onClick}>
-      <YoutubeThumbnail
+      <LazyImage
+        width='100%'
+        ratio='16/9'
+        borderRadius={size.SIZE_006}
         src={imgUrl}
         alt={title}
       />

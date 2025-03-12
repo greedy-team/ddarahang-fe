@@ -25,7 +25,6 @@ const LazyImage = ({ src, alt, placeholder, width, height, ratio, borderRadius =
         borderRadius,
         transition: 'opacity 0.5s',
         opacity: isLoaded ? 1 : 0.2,
-        objectFit: 'cover',
       }}
     />
   );

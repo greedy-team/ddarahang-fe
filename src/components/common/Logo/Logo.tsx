@@ -10,6 +10,12 @@ const Logo = () => {
         route('/');
       }}
     >
+      <img
+        src='/icon/Logo.jpeg'
+        alt='로고'
+        width={55}
+        height={50}
+      />
       따라행
     </StyledLogo>
   );
