@@ -7,7 +7,7 @@ import { StyledContentsWrapper, StyledErrorMessage } from '../../../pages/Main/M
 import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants';
 
 interface TravelVideoListProps {
-  error: unknown;
+  error?: unknown;
   videoNumberInPage: number;
   videoList: TravelList[];
   currentPageNumber: number;
