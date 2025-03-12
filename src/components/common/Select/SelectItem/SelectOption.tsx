@@ -38,9 +38,9 @@ const SelectOption = ({ option, setIsOpen }: SelectOptionProps) => {
       onClick={() => handleSelectedItem()}
     >
       <LazyImage
-        width={'40px'} // 픽셀 명시적 표기 권장
+        width={'40px'}
         height={'38px'}
-        borderRadius={'8px'} // 별도의 radius 적용
+        borderRadius={'8px'}
         alt='지역 대표 사진'
         src={option.imgUrl}
       />
