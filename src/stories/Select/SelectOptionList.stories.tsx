@@ -20,6 +20,10 @@ const meta = {
       control: false,
       description: '옵션 리스트 열림/닫힘 상태를 변경하는 함수',
     },
+    optionListRef: {
+      control: false,
+      description: '옵션 리스트의 ref',
+    },
   },
 } satisfies Meta<typeof SelectOptionList>;
 
@@ -36,6 +40,7 @@ export const Default: Story = {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         optionListRef={optionListRef}
+        setCurrentPageNumber={() => {}}
       />
     );
   },

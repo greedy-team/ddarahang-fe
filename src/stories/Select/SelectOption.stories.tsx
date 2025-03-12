@@ -20,6 +20,7 @@ const meta = {
   },
   args: {
     setIsOpen: action('선택 오픈 버튼'),
+    setCurrentPageNumber: action('페이지 번호 설정'),
   },
 } satisfies Meta<typeof SelectItem>;
 
@@ -36,5 +37,6 @@ export const Default: Story = {
       locationLabel: '여행 국가',
       locationType: '대한민국',
     },
+    setCurrentPageNumber: action('페이지 번호 설정'),
   },
 };

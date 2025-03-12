@@ -22,11 +22,13 @@ beforeAll(() => {
 
 const CustomHeader = () => {
   const onSubmitOption = () => {};
+  const setCurrentPageNumber = () => {};
 
   return (
     <Header
       color={colors.WHITE}
       onSubmitOption={onSubmitOption}
+      setCurrentPageNumber={setCurrentPageNumber}
     />
   );
 };
