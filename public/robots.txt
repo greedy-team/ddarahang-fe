@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ddarahang.site/sitemap.xml
