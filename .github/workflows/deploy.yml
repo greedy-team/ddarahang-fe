@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - feature/91-google-analytics
 
 jobs:
   build-and-deploy:
