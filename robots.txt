@@ -1,5 +1,4 @@
 User-agent: Googlebot
-Disallow: /travelcourse/
 
 User-agent: *
 Allow: /
