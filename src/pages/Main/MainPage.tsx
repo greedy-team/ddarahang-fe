@@ -1,4 +1,4 @@
-import { useState, useMemo, Suspense, lazy } from 'react';
+import { useState, useMemo, Suspense, lazy, useEffect } from 'react';
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
 import Pagination from '../../components/main/Pagination/Pagination';
@@ -8,22 +8,35 @@ import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
-import useSubmitOption from '../../hooks/select/useSubmitOption';
 import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 import Loading from '../../components/common/Loading/Loading';
+import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
 
 const TravelVideoList = lazy(() => import('../../components/main/TravelVideoList/TravelVideoList'));
 
 const MainPage = () => {
-  const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
+  const savedPageNumber = localStorage.getItem('currentPageNumber');
+  const initialPageNumber = savedPageNumber ? parseInt(savedPageNumber, 10) : 1;
+
+  const [currentPageNumber, setCurrentPageNumber] = useState<number>(initialPageNumber);
   const { setSortOption } = useSortOptionContext();
 
-  const { videoList, loading, error, handleSubmitOption, getTravelVideoList } = useSubmitOption();
   const { selectedOption } = useSelectOptionContext();
+
+  const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
+    filter: 'default',
+    countryName: selectedOption.countryName,
+    regionName: selectedOption.selectedOptionLabel,
+  });
+
   const { videoNumberInPage } = useMediaScreen();
 
   const totalPageNumber = useMemo(() => Math.ceil(videoList.length / videoNumberInPage), [videoList]);
+
+  useEffect(() => {
+    localStorage.setItem('currentPageNumber', String(currentPageNumber));
+  }, [currentPageNumber]);
 
   const handleSubmitDropdown = (sortBy: SortByType) => {
     getTravelVideoList({
@@ -35,11 +48,21 @@ const MainPage = () => {
     setSortOption(sortBy);
   };
 
+  const handleSubmitOption = () => {
+    getTravelVideoList({
+      filter: 'default',
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+    });
+    setCurrentPageNumber(1);
+  };
+
   return (
     <StyledMainPageLayout>
       <Header
         color={colors.WHITE}
         onSubmitOption={handleSubmitOption}
+        setCurrentPageNumber={setCurrentPageNumber}
       />
       <SortDropdown onSubmitDropdown={handleSubmitDropdown} />
       <StyledContentsWrapper>

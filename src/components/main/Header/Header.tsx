@@ -5,9 +5,10 @@ import { HeaderWrapper } from './Header.style';
 interface HeaderProps {
   color: string;
   onSubmitOption: () => void;
+  setCurrentPageNumber: (currentPageNumber: number) => void;
 }
 
-const Header = ({ color, onSubmitOption }: HeaderProps) => {
+const Header = ({ color, onSubmitOption, setCurrentPageNumber }: HeaderProps) => {
   return (
     <>
       <GlobalHeader
@@ -17,7 +18,10 @@ const Header = ({ color, onSubmitOption }: HeaderProps) => {
       <HeaderWrapper>
         <h1>어디로 여행을 떠나시나요?</h1>
         <p>따라만 하면 준비 끝! 인기 여행 영상으로 코스를 둘러보세요.</p>
-        <Select onSubmitOption={onSubmitOption} />
+        <Select
+          setCurrentPageNumber={setCurrentPageNumber}
+          onSubmitOption={onSubmitOption}
+        />
       </HeaderWrapper>
     </>
   );

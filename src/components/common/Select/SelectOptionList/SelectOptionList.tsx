@@ -7,10 +7,11 @@ import SelectOption from '../SelectItem/SelectOption';
 interface SelectOptionListProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
+  setCurrentPageNumber: (currentPageNumber: number) => void;
   optionListRef: RefObject<HTMLUListElement | null>;
 }
 
-export const SelectOptionList = ({ isOpen, setIsOpen, optionListRef }: SelectOptionListProps) => {
+export const SelectOptionList = ({ isOpen, setIsOpen, setCurrentPageNumber, optionListRef }: SelectOptionListProps) => {
   const { selectedOption } = useSelectOptionContext();
 
   const options = getOptionList(selectedOption);
@@ -29,6 +30,7 @@ export const SelectOptionList = ({ isOpen, setIsOpen, optionListRef }: SelectOpt
       {options.map((option) => (
         <SelectOption
           setIsOpen={setIsOpen}
+          setCurrentPageNumber={setCurrentPageNumber}
           key={option.locationLabel}
           option={option}
         />

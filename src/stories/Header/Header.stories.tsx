@@ -17,6 +17,10 @@ const meta = {
       description: '페이지 버튼의 색상',
       defaultValue: colors.PRIMARY,
     },
+    setCurrentPageNumber: {
+      action: 'setCurrentPageNumber',
+      description: '페이지 번호를 설정하는 함수',
+    },
   },
 } satisfies Meta<typeof Header>;
 
@@ -28,5 +32,6 @@ export const Default: Story = {
   args: {
     color: colors.WHITE,
     onSubmitOption: () => {},
+    setCurrentPageNumber: () => {},
   },
 };
