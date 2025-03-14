@@ -1,7 +1,7 @@
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { getOptionList } from '../../../../utils';
-import { SelectOptionListContainer } from './SelectOptionList.style';
+import { SelectOptionListContainer, MobileTitle } from './SelectOptionList.style';
 import SelectOption from '../SelectItem/SelectOption';
 
 interface SelectOptionListProps {
@@ -27,6 +27,7 @@ export const SelectOptionList = ({ isOpen, setIsOpen, setCurrentPageNumber, opti
       $isCountryOption={selectedOption.isCountryOption}
       $isOpen={isOpen}
     >
+      <MobileTitle>여행 국가와 지역을 선택해주세요</MobileTitle>
       {options.map((option) => (
         <SelectOption
           setIsOpen={setIsOpen}

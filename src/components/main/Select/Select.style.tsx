@@ -7,6 +7,10 @@ export const SelectContainer = styled.div<{ $isOpen: boolean }>`
   transition: all 0.8s;
   width: 60%;
 
+  @media screen and (max-width: 780px) {
+    width: 95%;
+  }
+
   ${({ $isOpen }) =>
     $isOpen &&
     `

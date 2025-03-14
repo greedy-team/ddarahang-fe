@@ -20,4 +20,9 @@ export const TravelVideoListContainer = styled.div`
     grid-template-columns: repeat(2, minmax(0, 2fr));
     grid-template-rows: repeat(2, auto);
   }
+
+  @media screen and (max-width: 780px) {
+    grid-template-columns: repeat(1, minmax(0, 2fr));
+    grid-template-rows: repeat(1, auto);
+  }
 `;

@@ -19,6 +19,13 @@ export const SelectTriggerButton = styled.div<{ $isFocus: boolean }>`
     background-color: ${colors.GRAY_200};
   }
 
+  @media screen and (max-width: 780px) {
+    width: 100%;
+    justify-content: flex-start;
+    height: ${size.SIZE_017};
+    border-radius: 0;
+  }
+
   ${({ $isFocus }) =>
     $isFocus
       ? `
@@ -56,4 +63,10 @@ export const SelectTextWrapper = styled.button`
   flex-direction: column;
   align-items: flex-start;
   gap: ${size.SIZE_003};
+`;
+
+export const CircleButtonWrapper = styled.div`
+  @media screen and (max-width: 780px) {
+    display: none;
+  }
 `;

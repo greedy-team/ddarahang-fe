@@ -21,6 +21,17 @@ export const SelectOptionListContainer = styled.ul<{ $isCountryOption: boolean; 
     opacity 0.5s,
     transform 0.5s;
 
+  @media screen and (max-width: 780px) {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    max-height: 100vh;
+    border-radius: 0;
+    z-index: 9999;
+  }
+
   ${(props) =>
     props.$isCountryOption
       ? ''
@@ -41,4 +52,16 @@ export const SelectOptionListContainer = styled.ul<{ $isCountryOption: boolean; 
         transform: translateY(-10px);
         pointer-events: none;
       `}
+`;
+
+export const MobileTitle = styled.h3`
+  display: none;
+
+  @media screen and (max-width: 780px) {
+    display: block;
+    font-size: ${size.SIZE_011};
+    font-weight: 700;
+    padding: ${size.SIZE_006};
+    border-bottom: 1px solid ${colors.GRAY_200};
+  }
 `;
