@@ -32,8 +32,8 @@ const GlobalStyle = createGlobalStyle`
   @media all and (max-width: 750px) {
   html {
     font-size: 85%; 
+    }
   }
-}
 
 *{
     margin: 0;
