@@ -19,4 +19,15 @@ export const HeaderWrapper = styled.header`
     font-family: 'Pretendard-Regular', sans-serif;
     color: ${colors.GREY_400};
   }
+
+  @media screen and (max-width: 780px) {
+    h1 {
+      display: none;
+    }
+
+    p {
+      font-size: ${size.SIZE_009};
+      color: ${colors.BLACK};
+    }
+  }
 `;

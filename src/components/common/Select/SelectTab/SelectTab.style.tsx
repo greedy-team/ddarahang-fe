@@ -38,7 +38,8 @@ export const MobileButton = styled.button`
     color: ${colors.WHITE};
     font-size: ${size.SIZE_010};
     border: none;
-    border-radius: ${size.SIZE_003};
+    font-weight: 600;
+    border-radius: ${size.SIZE_005};
     height: ${size.SIZE_016};
   }
 `;
