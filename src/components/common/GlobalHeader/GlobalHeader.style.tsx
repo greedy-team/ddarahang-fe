@@ -16,4 +16,8 @@ export const GlobalHeaderWrapper = styled.div<{ $isIconVisible: boolean }>`
     `
       border-bottom: 2px solid  ${colors.GRAY_200};  
     `}
+
+  @media screen and (max-width: 780px) {
+    padding: ${size.SIZE_001} ${size.SIZE_008};
+  }
 `;

@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
-import { SelectTabContainer } from './SelectTab.style';
+import { SelectTabContainer, MobileButton } from './SelectTab.style';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { TRAVEL_LABEL } from '../../../../constants';
 
@@ -46,6 +46,7 @@ const SelectTab = ({ isOpen, setIsOpen, onSubmitOption, countryTabRef, regionTab
         selectOption={selectedOption.selectedOptionLabel}
         onSubmitOption={onSubmitOption}
       />
+      <MobileButton onClick={onSubmitOption}>검색</MobileButton>
     </SelectTabContainer>
   );
 };

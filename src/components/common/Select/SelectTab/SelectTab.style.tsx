@@ -16,4 +16,29 @@ export const SelectTabContainer = styled.div`
     inset 0 0 0 1px ${colors.GRAY_200},
     ${size.SIZE_003} ${size.SIZE_003} ${size.SIZE_004} rgba(0, 0, 0, 0.1);
   z-index: 5;
+
+  @media screen and (max-width: 780px) {
+    flex-direction: column;
+    gap: ${size.SIZE_004};
+    height: auto;
+    padding: ${size.SIZE_004};
+    border-radius: ${size.SIZE_006};
+  }
+`;
+
+export const MobileButton = styled.button`
+  display: none;
+
+  @media screen and (max-width: 780px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: ${colors.PRIMARY};
+    color: ${colors.WHITE};
+    font-size: ${size.SIZE_010};
+    border: none;
+    border-radius: ${size.SIZE_003};
+    height: ${size.SIZE_016};
+  }
 `;

@@ -1,5 +1,11 @@
 import { RefObject } from 'react';
-import { SelectTriggerButton, SelectTextWrapper, SelectLabel, SelectOption } from './selectTrigger.style';
+import {
+  SelectTriggerButton,
+  SelectTextWrapper,
+  SelectLabel,
+  SelectOption,
+  CircleButtonWrapper,
+} from './selectTrigger.style';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { TRAVEL_LABEL } from '../../../../constants';
 import { colors, size } from '../../../../styles/Theme';
@@ -68,13 +74,15 @@ const SelectTrigger = ({
         <SelectOption>{selectOption}</SelectOption>
       </SelectTextWrapper>
       {selectLabel === TRAVEL_LABEL.REGION && (
-        <CircleButton
-          size={size.SIZE_016}
-          color={colors.PRIMARY}
-          iconPath='./image/search.svg'
-          iconAlt='검색 아이콘'
-          onClick={() => onSubmitOption()}
-        />
+        <CircleButtonWrapper>
+          <CircleButton
+            size={size.SIZE_016}
+            color={colors.PRIMARY}
+            iconPath='./image/search.svg'
+            iconAlt='검색 아이콘'
+            onClick={() => onSubmitOption()}
+          />
+        </CircleButtonWrapper>
       )}
     </SelectTriggerButton>
   );

@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   } 
 
-    @font-face {
+  @font-face {
     font-family: 'Ownglyph_ParkDaHyun';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
     font-weight: normal;
@@ -28,6 +28,12 @@ const GlobalStyle = createGlobalStyle`
   font-weight: 600;
   font-style: normal;
   }
+
+  @media all and (max-width: 750px) {
+  html {
+    font-size: 85%; 
+  }
+}
 
 *{
     margin: 0;
