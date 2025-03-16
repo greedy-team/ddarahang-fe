@@ -7,39 +7,46 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: [self-hosted]
-
+    name: Build And Deploy
+    runs-on: ubuntu-latest
     env:
-      DEPLOY_DIR: /var/www/react-app
+      BUCKET: ddarahang.site
+      DIST: dist
+      REGION: ap-northeast-2
+      DIST_ID: ${{ secrets.CLOUD_FRONT_ID }}
 
     steps:
-      - name: Check current working directory
-        run: pwd
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: List files
-        run: ls -la
-
-      - name: CheckOut
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          node-version: 21
-          cache: 'npm'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{env.REGION}}
 
-      - name: Create .env.production
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '21.1.0'
+
+      - name: Create .env file
         run: |
-          echo "VITE_GOOGLE_MAPS_API_KEY_DEV=${{ secrets.VITE_GOOGLE_MAPS_API_KEY_DEV }}" > .env
+          echo "VITE_GOOGLE_MAPS_API_KEY_DEV=${{ secrets.VITE_GOOGLE_MAPS_API_KEY_DEV }}" >> .env
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build React App
+      - name: Build React app
         run: npm run build
 
-      - name: Remove old build
-        run: sudo rm -rf $DEPLOY_DIR
+      - name: Copy Build files to the production website with AWS CLI
+        run: |
+          aws s3 sync --delete ${{env.DIST}} s3://${{env.BUCKET}}
 
-      - name: Copy build files
-        run: sudo cp -r dist $DEPLOY_DIR/
+      - name: Clear Cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{env.DIST_ID}} \
+            --paths "/*"
