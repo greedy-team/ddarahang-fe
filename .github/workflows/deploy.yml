@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - chore/95-cicd-pipe
 
 jobs:
   build-and-deploy:
