@@ -7,14 +7,15 @@ import { useNavigate } from 'react-router-dom';
 interface GlobalHeaderProps {
   color: string;
   isIconVisible: boolean;
+  isMainHeader: boolean;
 }
 
-const GlobalHeader = ({ color, isIconVisible }: GlobalHeaderProps) => {
+const GlobalHeader = ({ color, isIconVisible, isMainHeader }: GlobalHeaderProps) => {
   const route = useNavigate();
 
   return (
     <GlobalHeaderWrapper $isIconVisible={isIconVisible}>
-      <Logo />
+      <Logo isMainHeader={isMainHeader} />
       {isIconVisible && (
         <CircleButton
           color={color}

@@ -14,6 +14,7 @@ const Header = ({ color, onSubmitOption, setCurrentPageNumber }: HeaderProps) =>
       <GlobalHeader
         color={color}
         isIconVisible={true}
+        isMainHeader={true}
       />
       <HeaderWrapper>
         <h1>어디로 여행을 떠나시나요?</h1>

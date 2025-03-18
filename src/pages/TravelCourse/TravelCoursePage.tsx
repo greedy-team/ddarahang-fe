@@ -31,6 +31,7 @@ const renderErrorMessage = (message: string) => (
     <GlobalHeader
       color={colors.WHITE}
       isIconVisible={false}
+      isMainHeader={false}
     />
     <TravelCoursePageLayout>
       <StyledErrorMessage>
@@ -88,6 +89,7 @@ const TravelCoursePage = () => {
       <GlobalHeader
         color={colors.WHITE}
         isIconVisible={false}
+        isMainHeader={false}
       />
       <TravelCoursePageLayout>
         {travelCourse && (
