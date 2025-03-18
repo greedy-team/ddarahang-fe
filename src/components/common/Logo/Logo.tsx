@@ -1,15 +1,26 @@
 import { useNavigate } from 'react-router-dom';
 import { StyledLogo } from './Logo.style';
+import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 
-const Logo = () => {
+interface LogoProps {
+  isMainHeader: boolean;
+}
+
+const Logo = ({ isMainHeader }: LogoProps) => {
   const route = useNavigate();
+  const { setSelectedOption } = useSelectOptionContext();
+
+  const handleLogoClick = () => {
+    route('/');
+    isMainHeader && setSelectedOption({
+      isCountryOption: true,
+      countryName: '대한민국',
+      selectedOptionLabel: '서울',
+    });
+  };
 
   return (
-    <StyledLogo
-      onClick={() => {
-        route('/');
-      }}
-    >
+    <StyledLogo onClick={handleLogoClick}>
       <img
         src='/icon/Logo.jpeg'
         alt='로고'

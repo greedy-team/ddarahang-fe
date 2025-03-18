@@ -7,7 +7,7 @@ const NotFoundPage = () => {
   const route = useNavigate();
   return (
     <Container>
-      <Logo />
+      <Logo isMainHeader={false} />
       <Title>요청하신 페이지를 찾을 수 없습니다. </Title>
       <Title>불편을 드려 죄송합니다.</Title>
       <Subtitle>존재하지 않는 주소이거나, 요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.</Subtitle>

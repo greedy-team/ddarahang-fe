@@ -7,7 +7,7 @@ const MaintenancePage = () => {
   const route = useNavigate();
   return (
     <Container>
-      <Logo />
+      <Logo isMainHeader={false} />
       <Title>서비스가 준비중이에요...</Title>
       <Subtitle>보다 좋은 서비스 제공을 위해 개발 중입니다... ⚙️</Subtitle>
       <Subtitle>불편을 끼쳐드려 죄송합니다.</Subtitle>
