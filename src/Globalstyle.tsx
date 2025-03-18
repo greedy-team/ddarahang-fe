@@ -74,7 +74,7 @@ img {
 }
 
 a {
-    text-decoration: none;
+    /* text-decoration: none; */
     color: inherit;
     display: inline-block;
 }

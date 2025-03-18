@@ -5,9 +5,9 @@ export const FooterWrapper = styled.footer`
   width: 100vw;
   height: 175px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  flex-direction: row;
+  align-items: center;
   gap: ${size.SIZE_006};
   background-color: ${colors.GRAY_200};
   color: ${colors.GREY_400};
@@ -22,4 +22,30 @@ export const FooterWrapper = styled.footer`
     color: ${colors.GREY_500};
     font-family: 'Pretendard-SemiBold', sans-serif;
   }
+
+  p {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
 `;
+
+export const FooterBox = styled.div`
+  width: 700px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between ;
+`
+
+export const TeamLink = styled.a`
+  border-bottom: 1px solid ${colors.GRAY_200};
+`
+
+
+export const FooterContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`
