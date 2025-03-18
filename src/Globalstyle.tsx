@@ -108,6 +108,10 @@ a {
 
   .gm-style-iw {
     font-family: "Pretendard-Regular";
+
+    & a {
+      outline: none;
+    }
   }
 
 

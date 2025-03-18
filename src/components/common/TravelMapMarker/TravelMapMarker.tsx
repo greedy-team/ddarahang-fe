@@ -5,7 +5,6 @@ import { Position } from '../../../types';
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 import { colors } from '../../../styles/Theme';
 
-
 const TravelMapMarker = ({
   orderInday,
   travelMap,
@@ -67,7 +66,7 @@ const TravelMapMarker = ({
         <p style="margin-top: 1px; border: none">
           <a href="https://www.google.com/maps/search/?q=${place}+${address}"
             target="_blank"
-            style="color: ${colors.PRIMARY}; text-decoration: none; font-weight: bold;">
+            style="color: ${colors.PRIMARY}; text-decoration: under-line; font-weight: bold;">
             Google 지도로 확인하기
           </a>
         </p>
