@@ -89,6 +89,7 @@ const TravelCoursePage = () => {
       <GlobalHeader
         color={colors.WHITE}
         isIconVisible={false}
+        isMapVisible={true}
         isMainHeader={false}
       />
       <TravelCoursePageLayout>
