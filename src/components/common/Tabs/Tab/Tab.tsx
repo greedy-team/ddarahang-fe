@@ -8,7 +8,7 @@ interface TabProps {
 }
 
 const Tab = ({ totalTravelDays, selectedTab, onClickTab }: TabProps) => {
-  const tabs = Array.from({ length: totalTravelDays }, (_, i) => `DAY${i + 1}`);
+  const tabs = Array.from({ length: totalTravelDays }, (_, i) => `${i + 1}일차`);
 
   return (
     <TabContainer>
