@@ -8,37 +8,26 @@
 
 ## 📷 서비스 화면
 
-<table>
-  <tbody style ="display: flex; flex-direction: row">
-    <tr style ="display: flex; flex-direction: column" >
-      <th>메인 페이지</th>
-      <td align="center">
-  <img src="https://github.com/user-attachments/assets/e9436e2b-307c-4468-a656-0ecebbec0c0c" width="100%" />
-        </a>
-        <br />
+<table style="width: 100%; table-layout: fixed;">
+  <tbody>
+    <tr>
+      <td style="width: 50%; text-align: center;">
+        <h3>메인 페이지</h3>
+        <img src="https://github.com/user-attachments/assets/e9436e2b-307c-4468-a656-0ecebbec0c0c" style="width: 100%;" />
+      </td>
+      <td style="width: 50%; text-align: center;">
+        <h3>유튜브 영상 페이지</h3>
+        <img src="https://github.com/user-attachments/assets/e5d371b8-c7c2-4031-a89f-eaf20a128b29" style="width: 100%;" />
       </td>
     </tr>
-    <tr style ="display: flex; flex-direction: column" >
-           <th>유튜브 영상 페이지</th>
-      <td align="center">
-  <img src="https://github.com/user-attachments/assets/e5d371b8-c7c2-4031-a89f-eaf20a128b29" width="100%" />
+    <tr>
+      <td style="width: 50%; text-align: center;">
+        <h3>메인페이지 - 조회순/최신순 정렬 기능</h3>
+        <img src="https://github.com/user-attachments/assets/5db16109-b053-452e-a228-0286db57411c" style="width: 100%;" />
       </td>
-      </tr>
-    </tbody>
-</table>
-
-<table>
- <tbody style ="display: flex; flex-direction: row">
-      <tr style ="display: flex; flex-direction: column" >
-           <th>메인페이지 - 조회순/최신순 정렬 기능</th>
-      <td align="center">
-  <img src="https://github.com/user-attachments/assets/5db16109-b053-452e-a228-0286db57411c" width="100%" />
-      </td>
-      </tr>
-       <tr style ="display: flex; flex-direction: column" >
-           <th>메인페이지 - 여행 지역 선택 기능</th>
-       <td align="center">
-         <img src="https://github.com/user-attachments/assets/0de07b5e-eb5d-4a45-a616-47d4a4226538" width="100%" />
+      <td style="width: 50%; text-align: center;">
+        <h3>메인페이지 - 여행 지역 선택 기능</h3>
+        <img src="https://github.com/user-attachments/assets/0de07b5e-eb5d-4a45-a616-47d4a4226538" style="width: 100%;" />
       </td>
     </tr>
   </tbody>
