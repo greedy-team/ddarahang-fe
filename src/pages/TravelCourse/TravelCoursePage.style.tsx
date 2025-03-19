@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { size } from '../../styles/Theme';
 
 export const TravelCoursePageLayout = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ export const TravelCourseContainer = styled.div`
   width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: ${size.SIZE_010};
 `;
 
 export const MapContainer = styled.div`

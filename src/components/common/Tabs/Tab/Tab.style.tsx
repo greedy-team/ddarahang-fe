@@ -32,9 +32,9 @@ export const TabItem = styled.li`
   cursor: pointer;
   font-size: ${size.SIZE_009};
   font-family: 'Pretendard-SemiBold', sans-serif;
-  height: 40px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  height: ${size.SIZE_012};
+  padding-top: ${size.SIZE_006};
+  padding-bottom: ${size.SIZE_006};
   align-items: center;
   position: relative;
 
@@ -44,7 +44,7 @@ export const TabItem = styled.li`
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    height: 20px;
+    height: ${size.SIZE_010};
     width: 2px;
     background-color: ${colors.GRAY_300};
   }

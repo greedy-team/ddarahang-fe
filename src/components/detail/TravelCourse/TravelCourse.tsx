@@ -14,7 +14,6 @@ interface TravelCourseProps {
 const TravelCourse = ({ oneDayCourses, totalTravelDays, selectedTab, onClickTab, onClickPanel }: TravelCourseProps) => {
   return (
     <TravelCourseContainer>
-      <h3>여행 코스</h3>
       <Tab
         totalTravelDays={totalTravelDays}
         selectedTab={selectedTab}
