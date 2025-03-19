@@ -29,6 +29,7 @@ const renderMap = (status: Status, courses: OneDayCourseType[]) => {
 const renderErrorMessage = (message: string) => (
   <>
     <GlobalHeader
+      isMobile={window.innerWidth <= 780}
       color={colors.WHITE}
       isIconVisible={false}
       isMainHeader={false}
@@ -48,8 +49,23 @@ const TravelCoursePage = () => {
   const [selectedTab, setSelectedTab] = useState(1);
   const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
+  const [isMobileMapVisible, setIsMobileMapVisible] = useState(false);
+
   const { setSelectedPanel } = useSelectedPanel();
   const { travelCourse, loading, error } = useGetTravelCourse(Number(param.id));
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 780);
+      if (!isMobile) {
+        setIsMobileMapVisible(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const onClickTab = (day: number) => {
     setSelectedTab(day);
@@ -87,36 +103,51 @@ const TravelCoursePage = () => {
   return (
     <>
       <GlobalHeader
+        isMobile={isMobile}
         color={colors.WHITE}
         isIconVisible={false}
-        isMapVisible={true}
         isMainHeader={false}
       />
       <TravelCoursePageLayout>
         {travelCourse && (
           <TravelCourseContainer>
             <VideoSection
+              isMobileMapVisible={isMobileMapVisible}
+              isMobile={isMobile}
+              setIsMobileMapVisible={setIsMobileMapVisible}
               videoUrl={travelCourse.videoUrl}
               travelCourse={travelCourse}
             />
-
-            <TravelCourse
-              selectedTab={selectedTab}
-              onClickTab={onClickTab}
-              onClickPanel={onClickPanel}
-              oneDayCourses={oneDayCourses}
-              totalTravelDays={travelCourse.travelDays}
-            />
+            {isMobileMapVisible ? (
+              <MapContainer>
+                <Wrapper
+                  apiKey={apiKey}
+                  key={selectedTab}
+                  render={(status) => renderMap(status, oneDayCourses)}
+                  libraries={['marker']}
+                />
+              </MapContainer>
+            ) : (
+              <TravelCourse
+                selectedTab={selectedTab}
+                onClickTab={onClickTab}
+                onClickPanel={onClickPanel}
+                oneDayCourses={oneDayCourses}
+                totalTravelDays={travelCourse.travelDays}
+              />
+            )}
           </TravelCourseContainer>
         )}
-        <MapContainer>
-          <Wrapper
-            apiKey={apiKey}
-            key={selectedTab}
-            render={(status) => renderMap(status, oneDayCourses)}
-            libraries={['marker']}
-          />
-        </MapContainer>
+        {!isMobile && (
+          <MapContainer>
+            <Wrapper
+              apiKey={apiKey}
+              key={selectedTab}
+              render={(status) => renderMap(status, oneDayCourses)}
+              libraries={['marker']}
+            />
+          </MapContainer>
+        )}
       </TravelCoursePageLayout>
     </>
   );

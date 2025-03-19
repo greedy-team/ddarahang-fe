@@ -12,4 +12,8 @@ export const TravelCourseContainer = styled.div`
     padding-left: ${size.SIZE_010};
     font-family: 'Pretendard-SemiBold';
   }
+
+  @media screen and (max-width: 780px) {
+    margin-top: ${size.SIZE_010};
+  }
 `;

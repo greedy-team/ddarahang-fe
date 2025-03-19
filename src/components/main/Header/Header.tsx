@@ -12,6 +12,7 @@ const Header = ({ color, onSubmitOption, setCurrentPageNumber }: HeaderProps) =>
   return (
     <>
       <GlobalHeader
+        isMobile={false}
         color={color}
         isIconVisible={true}
         isMainHeader={true}

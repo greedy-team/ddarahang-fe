@@ -12,7 +12,7 @@ export const VideoSectionContainer = styled.div`
 export const VideoSectionHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: ${size.SIZE_010};
   text-indent: ${size.SIZE_006};
 `;
@@ -23,8 +23,14 @@ export const HeaderTitle = styled.p`
   font-family: 'Pretendard-SemiBold';
 `;
 
-export const VideoContainer = styled.div`
+export const VideoSectionTitle = styled.div`
   display: flex;
+  flex-direction: row;
+  gap: ${size.SIZE_006};
+`;
+
+export const VideoContainer = styled.div<{ $isMobileMapVisible: boolean }>`
+  display: ${({ $isMobileMapVisible }) => ($isMobileMapVisible ? 'none' : 'flex')};
   align-items: center;
   justify-content: center;
   flex-direction: column;

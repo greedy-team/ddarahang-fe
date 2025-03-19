@@ -13,6 +13,10 @@ export const TravelCourseContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_010};
+
+  @media screen and (max-width: 780px) {
+    gap: 0;
+  }
 `;
 
 export const MapContainer = styled.div`

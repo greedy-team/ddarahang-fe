@@ -18,6 +18,10 @@ export const StyledCircleButton = styled.button<CircleButtonProps>`
   align-items: center;
   cursor: pointer;
 
+  @media screen and (max-width: 780px) {
+    padding: ${size.SIZE_001} ${size.SIZE_008};
+  }
+
   ${(props) =>
     props.$color === colors.PRIMARY
       ? `

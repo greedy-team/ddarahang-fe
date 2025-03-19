@@ -18,6 +18,9 @@ beforeAll(() => {
 const CustomVideoSection = ({ mockTravelCourse }: { mockTravelCourse: TravelCourse }) => {
   return (
     <VideoSection
+      isMobileMapVisible={false}
+      isMobile={false}
+      setIsMobileMapVisible={() => {}}
       videoUrl={mockTravelCourse.videoUrl}
       travelCourse={mockTravelCourse}
     />
