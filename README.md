@@ -58,10 +58,6 @@
 
 <img width="100%" alt="FE 기술 스택" src="https://github.com/user-attachments/assets/3b8d4c2c-c5fc-48ca-b204-2c2dea1c3c7f" />
 
-### 백엔드
-
-<img src="" width="80%" />
-
 ## 🔧 서비스 요청 흐름도
 
 <img width="1036" alt="서비스 요청 흐름도" src="https://github.com/user-attachments/assets/1b352c1c-dc61-441a-8ac1-a86425b6e282" />
@@ -69,10 +65,6 @@
 ## BE 아키텍쳐
 
 <img src="https://github.com/user-attachments/assets/ff9f2647-a446-4cd3-acf6-28ca01f37e52" width="100%" />
-
-## BE CI/CD
-
-<img src="" width="100%" />
 
 ## FE CI/CD
 
