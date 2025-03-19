@@ -18,6 +18,18 @@ beforeAll(() => {
       dispatchEvent: vi.fn(),
     })),
   });
+
+  global.IntersectionObserver = vi.fn(function () {
+    return {
+      observe: vi.fn(),
+      unobserve: vi.fn(),
+      disconnect: vi.fn(),
+      takeRecords: vi.fn().mockReturnValue([]),
+      root: null,
+      rootMargin: '0px',
+      thresholds: [],
+    };
+  }) as unknown as typeof IntersectionObserver;
 });
 
 const CustomTravelVideoList = ({ mockVideoList }: any) => {
