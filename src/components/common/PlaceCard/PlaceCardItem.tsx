@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { OneDayCourseType } from '../../../types';
 import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep } from './PlaceCardItem.style';
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
+import Tag from '../../detail/Tag/Tag';
 
 interface PlaceCardProps {
   oneDayCourse: OneDayCourseType;
@@ -29,6 +30,7 @@ const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProp
         onClick={() => onClickPanel(oneDayCourse.placeName)}
       >
         <span>{oneDayCourse.placeName}</span>
+        <Tag tagName={oneDayCourse.tag} />
       </PlaceCardContainer>
     </PlaceCardWrapper>
   );

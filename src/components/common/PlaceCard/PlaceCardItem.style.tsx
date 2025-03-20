@@ -4,16 +4,18 @@ import { colors, size } from '../../../styles/Theme';
 export const PlaceCardContainer = styled.li<{ $isSelected: boolean }>`
   min-width: ${size.SIZE_021};
   width: 100%;
-  height: ${size.SIZE_016};
-  padding: ${size.SIZE_010};
+  height: 4.5rem;
+  padding-left: ${size.SIZE_010};
   display: flex;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: ${size.SIZE_006};
+  border: 1px solid ${colors.GRAY_200};
   border-radius: ${size.SIZE_006};
-  border: 1px solid ${(props) => (props.$isSelected ? colors.PRIMARY : colors.GRAY_200)};
   box-shadow: ${size.SIZE_003} ${size.SIZE_003} ${size.SIZE_003} rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  background-color: ${(props) => (props.$isSelected ? colors.SECONDARY : 'transparent')};
-  color: ${(props) => (props.$isSelected ? colors.PRIMARY : 'inherit')};
+  background-color: ${(props) => (props.$isSelected ? colors.GRAY_200 : 'transparent')};
   font-weight: ${(props) => (props.$isSelected ? 700 : 'normal')};
   font-family: ${(props) => (props.$isSelected ? "'Pretendard-SemiBold', sans-serif" : 'inherit')};
 
