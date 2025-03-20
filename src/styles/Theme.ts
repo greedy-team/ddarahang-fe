@@ -11,6 +11,7 @@ export const colors = {
   BLACK: '#141619',
   WHITE: '#ffffff',
   RED: '#FF6174',
+  LIGHT_RED: '#FFA1AC',
 };
 
 export const size = {

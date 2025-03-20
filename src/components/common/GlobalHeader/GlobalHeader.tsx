@@ -6,15 +6,31 @@ interface GlobalHeaderProps {
   isIconVisible: boolean;
   isMainHeader: boolean;
   isMobile: boolean;
+  setCurrentPageNumber: (currentPageNumber: number) => void;
 }
 
-const GlobalHeader = ({ isIconVisible, isMainHeader, isMobile }: GlobalHeaderProps) => {
+
+const GlobalHeader = ({ color, isIconVisible, isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
+  const route = useNavigate();
+
   return (
     <GlobalHeaderWrapper
       $isMobile={isMobile}
       $isIconVisible={isIconVisible}
     >
-      <Logo isMainHeader={isMainHeader} />
+      <Logo
+        isMainHeader={isMainHeader}
+        setCurrentPageNumber={setCurrentPageNumber}
+      />
+      {isIconVisible && (
+        <CircleButton
+          color={color}
+          size={size.SIZE_016}
+          iconAlt='로그인 아이콘'
+          iconPath='./icon/LoginIcon.svg'
+          onClick={() => route('/maintenance')}
+        />
+      )}
     </GlobalHeaderWrapper>
   );
 };
