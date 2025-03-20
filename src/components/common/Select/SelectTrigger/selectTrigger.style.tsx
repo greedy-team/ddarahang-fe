@@ -6,9 +6,8 @@ export const SelectTriggerButton = styled.div<{ $isFocus: boolean }>`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: ${size.SIZE_010};
   gap: ${size.SIZE_002};
-  width: 50%;
+  width: 100%;
   height: 100%;
   background-color: ${colors.WHITE};
   border-radius: ${size.SIZE_007};
@@ -57,7 +56,8 @@ export const SelectOption = styled.span`
 
 export const SelectTextWrapper = styled.button`
   display: flex;
-  width: 70%;
+  width: 100%;
+  padding: ${size.SIZE_009};
   background-color: transparent;
   border: none;
   flex-direction: column;
@@ -66,6 +66,7 @@ export const SelectTextWrapper = styled.button`
 `;
 
 export const CircleButtonWrapper = styled.div`
+  padding-right: ${size.SIZE_006};
   @media screen and (max-width: 780px) {
     display: none;
   }
