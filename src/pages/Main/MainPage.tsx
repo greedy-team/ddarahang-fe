@@ -60,7 +60,6 @@ const MainPage = () => {
   return (
     <StyledMainPageLayout>
       <Header
-        color={colors.WHITE}
         onSubmitOption={handleSubmitOption}
         setCurrentPageNumber={setCurrentPageNumber}
       />

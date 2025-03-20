@@ -2,8 +2,6 @@ import { Status, Wrapper } from '@googlemaps/react-wrapper';
 import TravelMap from '../../components/common/TravelMap/TravelMap';
 import { MapContainer, TravelCourseContainer, TravelCoursePageLayout } from './TravelCoursePage.style';
 import GlobalHeader from '../../components/common/GlobalHeader/GlobalHeader';
-
-import { colors } from '../../styles/Theme';
 import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
 import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
@@ -30,7 +28,6 @@ const renderErrorMessage = (message: string) => (
   <>
     <GlobalHeader
       isMobile={window.innerWidth <= 780}
-      color={colors.WHITE}
       isIconVisible={false}
       isMainHeader={false}
     />
@@ -105,7 +102,6 @@ const TravelCoursePage = () => {
     <>
       <GlobalHeader
         isMobile={isMobile}
-        color={colors.WHITE}
         isIconVisible={false}
         isMainHeader={false}
       />
