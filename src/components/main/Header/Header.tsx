@@ -16,6 +16,7 @@ const Header = ({ color, onSubmitOption, setCurrentPageNumber }: HeaderProps) =>
         color={color}
         isIconVisible={true}
         isMainHeader={true}
+        setCurrentPageNumber={setCurrentPageNumber}
       />
       <HeaderWrapper>
         <h1>어디로 여행을 떠나시나요?</h1>

@@ -4,9 +4,10 @@ import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionCo
 
 interface LogoProps {
   isMainHeader: boolean;
+  setCurrentPageNumber: (currentPageNumber: number) => void;
 }
 
-const Logo = ({ isMainHeader }: LogoProps) => {
+const Logo = ({ isMainHeader, setCurrentPageNumber }: LogoProps) => {
   const route = useNavigate();
   const { setSelectedOption } = useSelectOptionContext();
 
@@ -18,6 +19,7 @@ const Logo = ({ isMainHeader }: LogoProps) => {
         countryName: '대한민국',
         selectedOptionLabel: '서울',
       });
+    setCurrentPageNumber(1);
   };
 
   return (

@@ -9,14 +9,21 @@ interface GlobalHeaderProps {
   isIconVisible: boolean;
   isMainHeader: boolean;
   isMobile: boolean;
+  setCurrentPageNumber: (currentPageNumber: number) => void;
 }
 
-const GlobalHeader = ({ color, isIconVisible, isMainHeader, isMobile }: GlobalHeaderProps) => {
+const GlobalHeader = ({ color, isIconVisible, isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
   const route = useNavigate();
 
   return (
-    <GlobalHeaderWrapper $isMobile={isMobile} $isIconVisible={isIconVisible}>
-      <Logo isMainHeader={isMainHeader} />
+    <GlobalHeaderWrapper
+      $isMobile={isMobile}
+      $isIconVisible={isIconVisible}
+    >
+      <Logo
+        isMainHeader={isMainHeader}
+        setCurrentPageNumber={setCurrentPageNumber}
+      />
       {isIconVisible && (
         <CircleButton
           color={color}
