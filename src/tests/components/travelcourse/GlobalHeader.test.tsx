@@ -2,7 +2,6 @@ import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import rtlRender from '../../Render';
 import GlobalHeader from '../../../components/common/GlobalHeader/GlobalHeader';
-import { colors } from '../../../styles/Theme';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -19,8 +18,8 @@ const CustomGlobalHeader = () => {
     <GlobalHeader
       isMobile={false}
       isMainHeader={false}
-      color={colors.WHITE}
       isIconVisible={true}
+      setCurrentPageNumber={() => {}}
     />
   );
 };

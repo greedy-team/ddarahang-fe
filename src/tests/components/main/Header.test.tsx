@@ -2,7 +2,6 @@ import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import rtlRender from '../../Render';
 import Header from '../../../components/main/Header/Header';
-import { colors } from '../../../styles/Theme';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -38,7 +37,6 @@ const CustomHeader = () => {
 
   return (
     <Header
-      color={colors.WHITE}
       onSubmitOption={onSubmitOption}
       setCurrentPageNumber={setCurrentPageNumber}
     />

@@ -2,17 +2,14 @@ import Logo from '../Logo/Logo';
 import { GlobalHeaderWrapper } from './GlobalHeader.style';
 
 interface GlobalHeaderProps {
-  color: string;
   isIconVisible: boolean;
   isMainHeader: boolean;
   isMobile: boolean;
-  setCurrentPageNumber: (currentPageNumber: number) => void;
+  setCurrentPageNumber?: (currentPageNumber: number) => void;
 }
 
-
-const GlobalHeader = ({ color, isIconVisible, isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
-  const route = useNavigate();
-
+const GlobalHeader = ({ isIconVisible, isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
+  if (!setCurrentPageNumber) return;
   return (
     <GlobalHeaderWrapper
       $isMobile={isMobile}
@@ -22,15 +19,6 @@ const GlobalHeader = ({ color, isIconVisible, isMainHeader, isMobile, setCurrent
         isMainHeader={isMainHeader}
         setCurrentPageNumber={setCurrentPageNumber}
       />
-      {isIconVisible && (
-        <CircleButton
-          color={color}
-          size={size.SIZE_016}
-          iconAlt='로그인 아이콘'
-          iconPath='./icon/LoginIcon.svg'
-          onClick={() => route('/maintenance')}
-        />
-      )}
     </GlobalHeaderWrapper>
   );
 };

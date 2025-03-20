@@ -3,17 +3,15 @@ import Select from '../Select/Select';
 import { HeaderWrapper } from './Header.style';
 
 interface HeaderProps {
-  color: string;
   onSubmitOption: () => void;
   setCurrentPageNumber: (currentPageNumber: number) => void;
 }
 
-const Header = ({ color, onSubmitOption, setCurrentPageNumber }: HeaderProps) => {
+const Header = ({ onSubmitOption, setCurrentPageNumber }: HeaderProps) => {
   return (
     <>
       <GlobalHeader
         isMobile={false}
-        color={color}
         isIconVisible={true}
         isMainHeader={true}
         setCurrentPageNumber={setCurrentPageNumber}
