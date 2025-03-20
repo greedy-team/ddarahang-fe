@@ -91,6 +91,7 @@ const TravelCoursePage = () => {
         placeName: course.placeName,
         day: course.day,
         orderInday: course.orderInDay,
+        tag: course.tag,
         position: { lat: course.lat, lng: course.lng },
         address: course.placeAddress,
       }));

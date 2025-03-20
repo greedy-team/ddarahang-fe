@@ -23,6 +23,6 @@ export const Circle = styled.div<{ isSelected: boolean }>`
   transition: 0.3s all;
 
   &:hover {
-    background-color: ${colors.LIGHT_BLUE};
+    background-color: ${(props) => (props.isSelected ? colors.LIGHT_RED : colors.LIGHT_BLUE)};
   }
 `;
