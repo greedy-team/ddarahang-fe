@@ -4,24 +4,28 @@ import { colors, size } from '../../../styles/Theme';
 export const PlaceCardContainer = styled.li<{ $isSelected: boolean }>`
   min-width: ${size.SIZE_021};
   width: 100%;
-  height: 4.5rem;
+  height: 3.25rem;
   padding-left: ${size.SIZE_010};
+  padding-right: ${size.SIZE_010};
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   gap: ${size.SIZE_006};
   border: 1px solid ${colors.GRAY_200};
   border-radius: ${size.SIZE_006};
   box-shadow: ${size.SIZE_003} ${size.SIZE_003} ${size.SIZE_003} rgba(0, 0, 0, 0.1);
   cursor: pointer;
   background-color: ${(props) => (props.$isSelected ? colors.GRAY_200 : 'transparent')};
-  font-weight: ${(props) => (props.$isSelected ? 700 : 'normal')};
-  font-family: ${(props) => (props.$isSelected ? "'Pretendard-SemiBold', sans-serif" : 'inherit')};
 
   &:hover {
     background-color: ${colors.GRAY_200};
   }
+`;
+
+export const PlaceName = styled.span<{ $isSelected: boolean }>`
+  font-weight: ${(props) => (props.$isSelected ? 600 : 'normal')};
+  font-family: ${(props) => (props.$isSelected ? "'Pretendard-SemiBold', sans-serif" : 'inherit')};
 `;
 
 export const PlaceCardWrapper = styled.div`

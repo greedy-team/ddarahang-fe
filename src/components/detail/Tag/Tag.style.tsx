@@ -8,15 +8,15 @@ const backgroundColors = {
   쇼핑: '#FCE8E6',
   숙박: '#EAEAFF',
   카페: '#FFEBBD',
-  기타: colors.GRAY_200,
+  기타: '#E1E1E1',
 };
 
-export const StyledTag = styled.div<{ category: TagType }>`
+export const StyledTag = styled.p<{ category: TagType }>`
   width: ${size.SIZE_016};
-  height: ${size.SIZE_010};
-  border-radius: ${size.SIZE_006};
+  height: ${size.SIZE_011};
+  border-radius: ${size.SIZE_008};
   background-color: ${({ category }) => backgroundColors[category] || colors.GRAY_200};
-  font-size: 10px;
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
