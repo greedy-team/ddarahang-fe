@@ -1,10 +1,29 @@
-<div align="center">
-  <h2>
-     <a href="https://ddarahang.site" align="center">따라행
-   </h2>
-   <p>따라행은 유튜브의 여행 브이로그를 모아서</p>
-   <p>영상에서 유튜버 분들이 실제로 방문한 여행 코스를 지도와 함께 제공 하는 서비스입니다</p>
-</div>
+# 따라행 ✈️
+
+## 📝  프로젝트 소개
+
+### ✏️ 서비스 한 줄 소개
+
+- 따라행은 유튜브의 여행 브이로그를 모아서, 영상에서 유튜버 분들이 실제로 방문한 여행 코스를 지도와 함께 제공 하는 서비스입니다.
+
+### 서비스 목적
+
+- 유튜버들의 여행 코스를 시각적으로 보여줌으로써 여행을 계획하는 사용자들에게 유용한 정보를 제공하는 것이 목표입니다.
+- 유튜브 여행 Vlog를 분석하여 여행지 정보를 추출하고, 일정별 여행 코스를 지도와 함께 제공하여 사용자 경험을 극대화합니다.
+
+### 서비스 가치
+
+- 유튜브 영상 기반의 신뢰도 높은 장소 추천
+- 일정별 여행 코스를 한눈에 볼 수 있는 UI 제공
+- 사용자 친화적인 지도 기반 시각화 기능 지원
+- 유튜브 원본 영상과 여행지를 연결하여 정보 탐색 효율성 증가
+
+### 주요 대상 사용자
+
+- 여행에 관심 있는 유튜브 시청자
+- 여행을 계획 중인 사람들
+  - 여행 장소를 영상을 통해 미리 확인하고 싶은 사람들
+- 신뢰할 수 있는 여행 코스를 찾고 싶은 사용자
 
 ## 📷 서비스 화면
 
@@ -45,19 +64,25 @@
 
 ### 프론트엔드
 
-<img width="100%" alt="FE 기술 스택" src="https://github.com/user-attachments/assets/3b8d4c2c-c5fc-48ca-b204-2c2dea1c3c7f" />
+<div align="center">
+<img width="800" alt="FE 기술 스택" src="https://github.com/user-attachments/assets/3b8d4c2c-c5fc-48ca-b204-2c2dea1c3c7f" />
+</div>
 
 ## 🔧 서비스 요청 흐름도
 
-<img width="1036" alt="서비스 요청 흐름도" src="https://github.com/user-attachments/assets/1b352c1c-dc61-441a-8ac1-a86425b6e282" />
+<div align ="center">
+<img  width="800" alt="서비스 요청 흐름도" src="https://github.com/user-attachments/assets/1b352c1c-dc61-441a-8ac1-a86425b6e282" />
+</div>
 
 ## BE 아키텍쳐
 
-<img src="https://github.com/user-attachments/assets/ff9f2647-a446-4cd3-acf6-28ca01f37e52" width="100%" />
+<div align ="center">
+<img src="https://github.com/user-attachments/assets/ff9f2647-a446-4cd3-acf6-28ca01f37e52"  width="800"/>
+</div>
 
 ## FE CI/CD
 
-<img src="https://github.com/user-attachments/assets/7e2795bc-71f1-46e4-a158-2a9a999d0397" width="100%" />
+<img src="https://github.com/user-attachments/assets/7e2795bc-71f1-46e4-a158-2a9a999d0397"  width="800"/>
 
 ---
 
