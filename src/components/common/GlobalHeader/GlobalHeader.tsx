@@ -9,7 +9,6 @@ interface GlobalHeaderProps {
 }
 
 const GlobalHeader = ({ isIconVisible, isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
-  if (!setCurrentPageNumber) return;
   return (
     <GlobalHeaderWrapper
       $isMobile={isMobile}

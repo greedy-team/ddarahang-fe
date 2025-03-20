@@ -4,7 +4,7 @@ import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionCo
 
 interface LogoProps {
   isMainHeader: boolean;
-  setCurrentPageNumber: (currentPageNumber: number) => void;
+  setCurrentPageNumber?: (currentPageNumber: number) => void;
 }
 
 const Logo = ({ isMainHeader, setCurrentPageNumber }: LogoProps) => {
@@ -19,7 +19,7 @@ const Logo = ({ isMainHeader, setCurrentPageNumber }: LogoProps) => {
         countryName: '대한민국',
         selectedOptionLabel: '서울',
       });
-    setCurrentPageNumber(1);
+    if (setCurrentPageNumber) setCurrentPageNumber(1);
   };
 
   return (
