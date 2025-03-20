@@ -21,12 +21,12 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
         lat: markers[Math.floor(markers.length / 2)].position.lat,
         lng: markers[Math.floor(markers.length / 2)].position.lng,
       },
-      zoom: 13,
+      zoom: 15,
       mapId: '54070c16532231ab',
       disableDefaultUI: true,
       clickableIcons: false,
-      minZoom: 7,
-      maxZoom: 20,
+      minZoom: 13,
+      maxZoom: 17,
     });
 
     setTravelMap(instance);
