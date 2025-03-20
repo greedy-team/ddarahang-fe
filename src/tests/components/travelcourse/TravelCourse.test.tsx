@@ -13,6 +13,18 @@ beforeAll(() => {
       media: query,
     })),
   });
+
+  global.IntersectionObserver = vi.fn(function () {
+    return {
+      observe: vi.fn(),
+      unobserve: vi.fn(),
+      disconnect: vi.fn(),
+      takeRecords: vi.fn().mockReturnValue([]),
+      root: null,
+      rootMargin: '0px',
+      thresholds: [],
+    };
+  }) as unknown as typeof IntersectionObserver;
 });
 
 const CustomTravelCourse = () => {
@@ -37,9 +49,9 @@ describe('여행 코스 디테일 페이지', () => {
     rtlRender(<CustomTravelCourse />);
 
     await waitFor(() => {
-      expect(screen.getByText('DAY1')).toBeInTheDocument();
-      expect(screen.getByText('DAY2')).toBeInTheDocument();
-      expect(screen.getByText('DAY3')).toBeInTheDocument();
+      expect(screen.getByText('1일차')).toBeInTheDocument();
+      expect(screen.getByText('2일차')).toBeInTheDocument();
+      expect(screen.getByText('3일차')).toBeInTheDocument();
     });
 
     screen.debug();

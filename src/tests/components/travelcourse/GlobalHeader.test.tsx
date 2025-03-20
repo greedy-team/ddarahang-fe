@@ -17,6 +17,7 @@ beforeAll(() => {
 const CustomGlobalHeader = () => {
   return (
     <GlobalHeader
+      isMobile={false}
       isMainHeader={false}
       color={colors.WHITE}
       isIconVisible={true}

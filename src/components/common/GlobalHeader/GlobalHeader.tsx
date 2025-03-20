@@ -8,13 +8,14 @@ interface GlobalHeaderProps {
   color: string;
   isIconVisible: boolean;
   isMainHeader: boolean;
+  isMobile: boolean;
 }
 
-const GlobalHeader = ({ color, isIconVisible, isMainHeader }: GlobalHeaderProps) => {
+const GlobalHeader = ({ color, isIconVisible, isMainHeader, isMobile }: GlobalHeaderProps) => {
   const route = useNavigate();
 
   return (
-    <GlobalHeaderWrapper $isIconVisible={isIconVisible}>
+    <GlobalHeaderWrapper $isMobile={isMobile} $isIconVisible={isIconVisible}>
       <Logo isMainHeader={isMainHeader} />
       {isIconVisible && (
         <CircleButton

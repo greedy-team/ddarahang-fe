@@ -6,7 +6,7 @@ interface CircleButtonProps {
   color: string;
   size: string;
   text?: string | null;
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const CircleButton = ({ iconPath, iconAlt, text, color, size, onClick }: CircleButtonProps) => {

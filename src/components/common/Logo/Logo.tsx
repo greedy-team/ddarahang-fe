@@ -12,11 +12,12 @@ const Logo = ({ isMainHeader }: LogoProps) => {
 
   const handleLogoClick = () => {
     route('/');
-    isMainHeader && setSelectedOption({
-      isCountryOption: true,
-      countryName: '대한민국',
-      selectedOptionLabel: '서울',
-    });
+    isMainHeader &&
+      setSelectedOption({
+        isCountryOption: true,
+        countryName: '대한민국',
+        selectedOptionLabel: '서울',
+      });
   };
 
   return (
