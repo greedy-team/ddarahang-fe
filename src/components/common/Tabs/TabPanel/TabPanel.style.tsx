@@ -16,7 +16,6 @@ export const Panels = styled.div`
   @media screen and (max-width: 780px) {
     max-height: unset;
     height: auto;
-    min-height: 100%;
     overflow-y: unset;
   }
 `;
