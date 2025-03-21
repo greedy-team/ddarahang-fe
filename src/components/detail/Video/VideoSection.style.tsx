@@ -20,6 +20,7 @@ export const VideoSectionHeader = styled.div`
 export const HeaderTitle = styled.p`
   font-size: ${size.SIZE_010};
   color: ${colors.BLACK};
+  font-family: 'Pretendard-SemiBold';
 `;
 
 export const VideoSectionTitle = styled.div`

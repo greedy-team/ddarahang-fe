@@ -31,6 +31,10 @@ export const YoutubeTitle = styled.h2`
   -webkit-box-orient: vertical;
   overflow: hidden;
   color: ${colors.BLACK};
+
+  @media screen and (max-width: 780px) {
+    font-family: 'Pretendard-Regular';
+  }
 `;
 
 export const YoutubeChannelName = styled.div`
