@@ -6,6 +6,12 @@ export const TravelCoursePageLayout = styled.div`
   justify-content: center;
   width: 100vw;
   min-height: 925px;
+
+  @media screen and (max-width: 780px) {
+    gap: 0;
+    height: 100vh;
+    min-height: 500px;
+  }
 `;
 
 export const TravelCourseContainer = styled.div`
