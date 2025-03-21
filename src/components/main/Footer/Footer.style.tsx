@@ -28,7 +28,6 @@ export const FooterWrapper = styled.footer`
     flex-direction: row;
     gap: 10px;
   }
-
 `;
 
 export const FooterBox = styled.div`
@@ -36,16 +35,21 @@ export const FooterBox = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between ;
-`
+  justify-content: space-between;
+
+  @media screen and (max-width: 780px) {
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+  }
+`;
 
 export const TeamLink = styled.a`
   border-bottom: 1px solid ${colors.GRAY_200};
-`
-
+`;
 
 export const FooterContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-`
+`;
