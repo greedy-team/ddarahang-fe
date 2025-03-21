@@ -8,7 +8,6 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisib
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 100;
   background-color: ${colors.WHITE};
 
   ${({ $isIconVisible }) =>
@@ -22,5 +21,6 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisib
     ${({ $isMobile }) => $isMobile && 'display: none;'};
     position: sticky;
     top: 0;
+    z-index: 100;
   }
 `;
