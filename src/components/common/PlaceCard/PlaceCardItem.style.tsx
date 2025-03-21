@@ -24,6 +24,7 @@ export const PlaceCardContainer = styled.li<{ $isSelected: boolean }>`
 `;
 
 export const PlaceName = styled.span<{ $isSelected: boolean }>`
+  max-width: 70%;
   font-weight: ${(props) => (props.$isSelected ? 600 : 'normal')};
   font-family: ${(props) => (props.$isSelected ? "'Pretendard-SemiBold', sans-serif" : 'inherit')};
 `;
