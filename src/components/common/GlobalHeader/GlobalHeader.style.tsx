@@ -8,7 +8,7 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisib
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  z-index: 100;
   background-color: ${colors.WHITE};
 
   ${({ $isIconVisible }) =>
@@ -19,6 +19,8 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisib
 
   @media screen and (max-width: 780px) {
     padding: ${size.SIZE_001} ${size.SIZE_008};
-    ${({ $isMobile }) => $isMobile && 'display: none;'}
+    ${({ $isMobile }) => $isMobile && 'display: none;'};
+    position: sticky;
+    top: 0;
   }
 `;

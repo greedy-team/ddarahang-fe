@@ -8,7 +8,7 @@ export const StyledMainPageLayout = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+
   gap: ${size.SIZE_006};
 `;
 
