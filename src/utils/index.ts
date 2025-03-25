@@ -1,7 +1,15 @@
-import { COUNTRIES, COUNTRYOPTION, JAPANREGIONOPTION, KOREAREGIONOPTION, MALAYSIAREGIONOPTION } from '../constants';
+import {
+  COUNTRIES,
+  COUNTRYOPTION,
+  JAPANREGIONOPTION,
+  KOREAREGIONOPTION,
+  MALAYSIAREGIONOPTION,
+  VIEWTNAMOPTION,
+  CHINAOPTION,
+} from '../constants';
 import { CountryType, SortByType } from '../types';
 
-export const getOptionList = (selectedOption: {
+export const getRegionOptionList = (selectedOption: {
   isCountryOption: boolean;
   countryName: CountryType;
   selectedOptionLabel: string;
@@ -14,6 +22,10 @@ export const getOptionList = (selectedOption: {
     return JAPANREGIONOPTION;
   } else if (selectedOption.countryName === COUNTRIES[2]) {
     return MALAYSIAREGIONOPTION;
+  } else if (selectedOption.countryName === COUNTRIES[3]) {
+    return VIEWTNAMOPTION;
+  } else if (selectedOption.countryName === COUNTRIES[4]) {
+    return CHINAOPTION;
   }
   return [];
 };

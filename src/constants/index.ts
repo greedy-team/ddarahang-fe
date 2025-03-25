@@ -1,6 +1,6 @@
 import { SelectOptionType } from '../types';
 
-export const COUNTRIES = ['대한민국', '일본', '말레이시아'];
+export const COUNTRIES = ['대한민국', '일본', '말레이시아', '베트남', '중국'];
 
 export const MIN_VIEW = 10000;
 
@@ -35,6 +35,20 @@ export const COUNTRYOPTION: SelectOptionType[] = [
     imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/malaysia.jpg',
     locationLabel: '말레이시아',
     countryLabel: '말레이시아',
+    locationType: '국가',
+    isCountryOption: true,
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/vietnam.png',
+    locationLabel: '베트남',
+    countryLabel: '베트남',
+    locationType: '국가',
+    isCountryOption: true,
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/China.png',
+    locationLabel: '중국',
+    countryLabel: '중국',
     locationType: '국가',
     isCountryOption: true,
   },
@@ -224,45 +238,22 @@ export const MALAYSIAREGIONOPTION: SelectOptionType[] = [
   },
 ];
 
-export const TRAVELCOURSES = [
+export const VIEWTNAMOPTION: SelectOptionType[] = [
   {
-    orderInDay: 1,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/Phu_Quoc.png',
+    locationLabel: '푸꾸옥',
+    locationType: '도시, 베트남',
+    isCountryOption: false,
+    countryLabel: '베트남',
   },
+];
+
+export const CHINAOPTION: SelectOptionType[] = [
   {
-    orderInDay: 2,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
-  },
-  {
-    orderInDay: 3,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
-  },
-  {
-    orderInDay: 4,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
-  },
-  {
-    orderInDay: 5,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
-  },
-  {
-    orderInDay: 6,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
-  },
-  {
-    orderInDay: 7,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
-  },
-  {
-    orderInDay: 8,
-    placeName: '광안리 해수욕장',
-    placeAddress: '',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/shanghai.png',
+    locationLabel: '상하이',
+    locationType: '도시, 중국',
+    isCountryOption: false,
+    countryLabel: '중국',
   },
 ];

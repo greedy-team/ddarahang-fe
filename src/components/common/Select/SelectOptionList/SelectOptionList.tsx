@@ -1,6 +1,6 @@
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
-import { getOptionList } from '../../../../utils';
+import { getRegionOptionList } from '../../../../utils';
 import { SelectOptionListContainer, MobileTitle } from './SelectOptionList.style';
 import SelectOption from '../SelectItem/SelectOption';
 
@@ -14,7 +14,7 @@ interface SelectOptionListProps {
 export const SelectOptionList = ({ isOpen, setIsOpen, setCurrentPageNumber, optionListRef }: SelectOptionListProps) => {
   const { selectedOption } = useSelectOptionContext();
 
-  const options = getOptionList(selectedOption);
+  const options = getRegionOptionList(selectedOption);
 
   if (!options.length) {
     return null;

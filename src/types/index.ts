@@ -1,4 +1,4 @@
-export type CountryType = '대한민국' | '일본' | '말레이시아';
+export type CountryType = '대한민국' | '일본' | '말레이시아' | '베트남' | '중국';
 export type KoreanRegionType =
   | '서울'
   | '제주도'
