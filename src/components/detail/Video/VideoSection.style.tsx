@@ -70,7 +70,7 @@ export const VideoWrapper = styled.div`
 
 export const Iframe = styled.iframe`
   position: absolute;
-  border-radius: 15px;
+  border-radius: ${size.SIZE_008};
   width: 100%;
   height: 100%;
   border: none;
@@ -81,12 +81,8 @@ export const VideoInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 90%;
-  gap: 5px;
-  padding-top: 20px;
-
-  @media screen and (max-width: 780px) {
-    margin-bottom: ${size.SIZE_010};
-  }
+  gap: ${size.SIZE_004};
+  padding-top: ${size.SIZE_010};
 `;
 
 export const ChannelName = styled.p`
@@ -95,7 +91,7 @@ export const ChannelName = styled.p`
 `;
 
 export const VideoTitle = styled.h3`
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: 'Pretendard-SemiBold';
   color: ${colors.BLACK};
   display: -webkit-box;
@@ -111,6 +107,6 @@ export const VideoMeta = styled.p`
   color: ${colors.GREY_500};
 
   & > span {
-    margin-right: 20px;
+    margin-right: ${size.SIZE_010};
   }
 `;

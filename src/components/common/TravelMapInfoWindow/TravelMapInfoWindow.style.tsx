@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { colors } from '../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 
 export const MapInfoWindowContainer = styled.div`
-  width: 200px;
+  width: 12.5rem;
   font-weight: 500;
   word-break: keep-all;
 `;
 
 export const BodyContent = styled.div`
-  font-size: 14px;
+  font-size: ${size.SIZE_008};
   line-height: 1.5;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -20,7 +20,7 @@ export const BodyContent = styled.div`
 `;
 
 export const StyledGoogleLink = styled.p`
-  margin-top: 1px;
+  margin-top: ${size.SIZE_002};
   border: none;
 `;
 

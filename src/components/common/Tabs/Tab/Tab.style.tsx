@@ -3,7 +3,7 @@ import { colors, size } from '../../../../styles/Theme';
 
 export const TabContainer = styled.div`
   height: auto;
-  padding: 12px 0px;
+  padding: ${size.SIZE_007} ${size.SIZE_001};
   display: flex;
   flex-direction: row;
   background-color: ${colors.GRAY_200};
@@ -45,7 +45,7 @@ export const TabItem = styled.li`
     top: 50%;
     transform: translateY(-50%);
     height: ${size.SIZE_010};
-    width: 2px;
+    width: ${size.SIZE_002};
     background-color: ${colors.GRAY_300};
   }
 

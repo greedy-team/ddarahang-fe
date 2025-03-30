@@ -5,17 +5,17 @@ export const TravelCoursePageLayout = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
-  min-height: 925px;
+  min-height: 57.8rem;
 
   @media screen and (max-width: 780px) {
     gap: 0;
     height: 100vh;
-    min-height: 500px;
+    min-height: 31.25rem;
   }
 `;
 
 export const TravelCourseContainer = styled.div`
-  width: 600px;
+  width: 37.5rem;
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_010};

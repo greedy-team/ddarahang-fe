@@ -50,7 +50,7 @@ export const SelectLabel = styled.span`
 
 export const SelectOption = styled.span`
   color: ${colors.GREY_800};
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: 'Pretendard-SemiBold', sans-serif;
 `;
 
