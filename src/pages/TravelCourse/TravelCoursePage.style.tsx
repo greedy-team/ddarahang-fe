@@ -28,4 +28,8 @@ export const TravelCourseContainer = styled.div`
 export const MapContainer = styled.div`
   flex: 1 1 0%;
   display: flex;
+
+  @media screen {
+    min-height: 250px;
+  }
 `;

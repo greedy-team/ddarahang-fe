@@ -54,8 +54,10 @@ const TravelCoursePage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 780);
-      if (!isMobile) {
+      const mobile = window.innerWidth <= 780;
+      setIsMobile(mobile);
+
+      if (!mobile) {
         setIsMobileMapVisible(false);
       }
     };
@@ -115,7 +117,7 @@ const TravelCoursePage = () => {
               videoUrl={travelCourse.videoUrl}
               travelCourse={travelCourse}
             />
-            {isMobileMapVisible ? (
+            {isMobileMapVisible && (
               <MapContainer>
                 <Wrapper
                   apiKey={apiKey}
@@ -124,15 +126,14 @@ const TravelCoursePage = () => {
                   libraries={['marker']}
                 />
               </MapContainer>
-            ) : (
-              <TravelCourse
-                selectedTab={selectedTab}
-                onClickTab={onClickTab}
-                onClickPanel={onClickPanel}
-                oneDayCourses={oneDayCourses}
-                totalTravelDays={travelCourse.travelDays}
-              />
             )}
+            <TravelCourse
+              selectedTab={selectedTab}
+              onClickTab={onClickTab}
+              onClickPanel={onClickPanel}
+              oneDayCourses={oneDayCourses}
+              totalTravelDays={travelCourse.travelDays}
+            />
           </TravelCourseContainer>
         )}
         {!isMobile && (

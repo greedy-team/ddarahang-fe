@@ -11,13 +11,14 @@ import {
   VideoTitle,
   VideoMeta,
   VideoSectionTitle,
+  ToggleContainer,
+  ToggleItem,
 } from './VideoSection.style';
 import { size, colors } from '../../../styles/Theme';
 import { TravelCourse } from '../../../types';
 import { useNavigate } from 'react-router-dom';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 import { MIN_VIEW } from '../../../constants';
-import CircleButton from '../../common/Button/CircleButton/CircleButton';
 
 interface VideoProps {
   videoUrl: string;
@@ -65,13 +66,21 @@ const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible,
           </HeaderTitle>
         </VideoSectionTitle>
         {isMobile && (
-          <CircleButton
-            color={colors.WHITE}
-            size={size.SIZE_016}
-            iconAlt='지도 아이콘'
-            iconPath='/icon/map.svg'
-            onClick={() => handleClickMapIcon()}
-          />
+          <ToggleContainer>
+            <ToggleItem
+              $selected={!isMobileMapVisible}
+              onClick={() => handleClickMapIcon()}
+            >
+              영상 보기
+            </ToggleItem>
+
+            <ToggleItem
+              $selected={isMobileMapVisible}
+              onClick={() => handleClickMapIcon()}
+            >
+              지도 보기
+            </ToggleItem>
+          </ToggleContainer>
         )}
       </VideoSectionHeader>
 
