@@ -15,8 +15,8 @@ export const TravelCourseContainer = styled.div`
 
   @media screen and (max-width: 780px) {
     margin-top: ${size.SIZE_010};
-    /* max-height: 100vh; */
-    max-height: 300px;
+    max-height: 100vh;
+    overflow: hidden;
     gap: 0px;
     /* max-height: none; */
   }
