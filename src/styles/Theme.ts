@@ -30,6 +30,7 @@ export const size = {
   SIZE_011: '1.5rem',
   SIZE_012: '1.875rem',
   SIZE_013: '2rem',
+  SIZE_013_5: '2.15rem',
   SIZE_014: '2.5rem',
   SIZE_015: '2.75rem',
   SIZE_016: '3.125rem',

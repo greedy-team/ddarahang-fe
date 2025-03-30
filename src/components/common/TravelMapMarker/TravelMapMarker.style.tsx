@@ -10,9 +10,9 @@ export const MarkerWrapper = styled.div`
 
 export const Circle = styled.div<{ isSelected: boolean }>`
   color: ${colors.WHITE};
-  width: ${size.SIZE_014};
-  height: ${size.SIZE_014};
-  font-size: 18px;
+  width: ${size.SIZE_013_5};
+  height: ${size.SIZE_013_5};
+  font-size: 16px;
   background: ${(props) => (props.isSelected ? colors.RED : colors.PURPLE)};
   border-radius: 100px;
   border: 3px solid ${colors.WHITE};
