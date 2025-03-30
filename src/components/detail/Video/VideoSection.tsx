@@ -11,6 +11,7 @@ import {
   VideoTitle,
   VideoMeta,
   VideoSectionTitle,
+  ToggleButton,
 } from './VideoSection.style';
 import { size, colors } from '../../../styles/Theme';
 import { TravelCourse } from '../../../types';
@@ -65,13 +66,15 @@ const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible,
           </HeaderTitle>
         </VideoSectionTitle>
         {isMobile && (
-          <CircleButton
-            color={colors.WHITE}
-            size={size.SIZE_016}
-            iconAlt='지도 아이콘'
-            iconPath='/icon/map.svg'
-            onClick={() => handleClickMapIcon()}
-          />
+          <ToggleButton onClick={() => handleClickMapIcon()}>지도 보기</ToggleButton>
+          // <CircleButton
+          //   color={colors.WHITE}
+          //   size={size.SIZE_016}
+          //   iconAlt='지도 아이콘'
+          //   iconPath='/icon/map.svg'
+          //   text='지도 보기'
+          //   onClick={() => handleClickMapIcon()}
+          // />
         )}
       </VideoSectionHeader>
 

@@ -41,6 +41,16 @@ export const VideoContainer = styled.div<{ $isMobileMapVisible: boolean }>`
   width: 100%;
 `;
 
+export const ToggleButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  size: ${size.SIZE_016};
+  color: ${colors.GREY_500};
+  background-color: transparent;
+  border: none;
+`;
+
 export const VideoWrapper = styled.div`
   position: relative;
   width: 90%;
