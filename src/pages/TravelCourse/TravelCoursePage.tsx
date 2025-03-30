@@ -115,7 +115,7 @@ const TravelCoursePage = () => {
               videoUrl={travelCourse.videoUrl}
               travelCourse={travelCourse}
             />
-            {isMobileMapVisible ? (
+            {isMobileMapVisible && (
               <MapContainer>
                 <Wrapper
                   apiKey={apiKey}
@@ -124,15 +124,14 @@ const TravelCoursePage = () => {
                   libraries={['marker']}
                 />
               </MapContainer>
-            ) : (
-              <TravelCourse
-                selectedTab={selectedTab}
-                onClickTab={onClickTab}
-                onClickPanel={onClickPanel}
-                oneDayCourses={oneDayCourses}
-                totalTravelDays={travelCourse.travelDays}
-              />
             )}
+            <TravelCourse
+              selectedTab={selectedTab}
+              onClickTab={onClickTab}
+              onClickPanel={onClickPanel}
+              oneDayCourses={oneDayCourses}
+              totalTravelDays={travelCourse.travelDays}
+            />
           </TravelCourseContainer>
         )}
         {!isMobile && (
