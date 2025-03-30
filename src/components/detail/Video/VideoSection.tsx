@@ -66,15 +66,9 @@ const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible,
           </HeaderTitle>
         </VideoSectionTitle>
         {isMobile && (
-          <ToggleButton onClick={() => handleClickMapIcon()}>지도 보기</ToggleButton>
-          // <CircleButton
-          //   color={colors.WHITE}
-          //   size={size.SIZE_016}
-          //   iconAlt='지도 아이콘'
-          //   iconPath='/icon/map.svg'
-          //   text='지도 보기'
-          //   onClick={() => handleClickMapIcon()}
-          // />
+          <ToggleButton onClick={() => handleClickMapIcon()}>
+            {isMobileMapVisible ? '영상 보기' : '지도 보기'}
+          </ToggleButton>
         )}
       </VideoSectionHeader>
 
