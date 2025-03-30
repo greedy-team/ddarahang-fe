@@ -10,6 +10,8 @@ export const colors = {
   GREY_800: '#262626',
   BLACK: '#141619',
   WHITE: '#ffffff',
+  PURPLE: '#947FFE',
+  LIGHT_PURPLE: '#B3A3FF',
   RED: '#FF6174',
   LIGHT_RED: '#FFA1AC',
 };

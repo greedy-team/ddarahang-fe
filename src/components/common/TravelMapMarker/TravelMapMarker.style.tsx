@@ -10,12 +10,12 @@ export const MarkerWrapper = styled.div`
 
 export const Circle = styled.div<{ isSelected: boolean }>`
   color: ${colors.WHITE};
-  width: ${size.SIZE_013};
-  height: ${size.SIZE_013};
-  font-size: 15px;
-  background: ${(props) => (props.isSelected ? colors.RED : colors.PRIMARY)};
+  width: ${size.SIZE_014};
+  height: ${size.SIZE_014};
+  font-size: 18px;
+  background: ${(props) => (props.isSelected ? colors.RED : colors.PURPLE)};
   border-radius: 100px;
-  border: 2px solid ${colors.WHITE};
+  border: 3px solid ${colors.WHITE};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,6 +23,6 @@ export const Circle = styled.div<{ isSelected: boolean }>`
   transition: 0.3s all;
 
   &:hover {
-    background-color: ${(props) => (props.isSelected ? colors.LIGHT_RED : colors.LIGHT_BLUE)};
+    background-color: ${(props) => (props.isSelected ? colors.LIGHT_RED : colors.LIGHT_PURPLE)};
   }
 `;
