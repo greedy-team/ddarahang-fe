@@ -7,6 +7,10 @@ export const VideoSectionContainer = styled.div`
   justify-content: center;
   width: 100%;
   padding: 0;
+
+  @media screen and (max-width: 780px) {
+    /* margin-bottom: ${size.SIZE_010}; */
+  }
 `;
 
 export const VideoSectionHeader = styled.div`
@@ -58,6 +62,10 @@ export const VideoInfo = styled.div`
   width: 90%;
   gap: 5px;
   padding-top: 20px;
+
+  @media screen and (max-width: 780px) {
+    margin-bottom: ${size.SIZE_010};
+  }
 `;
 
 export const ChannelName = styled.p`
