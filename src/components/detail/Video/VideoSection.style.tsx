@@ -41,14 +41,25 @@ export const VideoContainer = styled.div<{ $isMobileMapVisible: boolean }>`
   width: 100%;
 `;
 
-export const ToggleButton = styled.button`
+export const ToggleContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  size: ${size.SIZE_016};
-  color: ${colors.GREY_500};
-  background-color: transparent;
+  border-radius: 8px;
+  background-color: ${colors.GRAY_200};
+  overflow: hidden;
+`;
+
+export const ToggleItem = styled.button<{ $selected: boolean }>`
+  flex: 1;
+  padding: 8px 16px;
+  color: ${({ $selected }) => ($selected ? colors.WHITE : colors.GREY_600)};
+  background-color: ${({ $selected }) => ($selected ? colors.PRIMARY : 'transparent')};
   border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: ${({ $selected }) => ($selected ? colors.PRIMARY : colors.LIGHT_BLUE)};
+  }
 `;
 
 export const VideoWrapper = styled.div`
