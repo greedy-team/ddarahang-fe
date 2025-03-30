@@ -54,8 +54,10 @@ const TravelCoursePage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 780);
-      if (!isMobile) {
+      const mobile = window.innerWidth <= 780;
+      setIsMobile(mobile);
+
+      if (!mobile) {
         setIsMobileMapVisible(false);
       }
     };
