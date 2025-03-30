@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MarkerWrapper, Circle } from './TravelMapMarker.style';
+import { MarkerWrapper, Circle, PlaceCard, StyledMarker } from './TravelMapMarker.style';
 import { createRoot } from 'react-dom/client';
 import { Position } from '../../../types';
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
@@ -95,7 +95,12 @@ const TravelMapMarker = ({
       });
     });
 
-    createRoot(markerContainer).render(<Circle isSelected={isSelected}>{orderInday}</Circle>);
+    createRoot(markerContainer).render(
+      <StyledMarker>
+        <Circle isSelected={isSelected}>{orderInday}</Circle>
+        <PlaceCard>{place}</PlaceCard>
+      </StyledMarker>,
+    );
 
     return () => {
       markerInstance.map = null;
