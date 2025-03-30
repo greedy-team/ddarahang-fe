@@ -4,9 +4,12 @@ import { colors, size } from './styles/Theme';
 const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff')
+    , url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.ttf') format('ttf');
+
     font-style: normal;
   } 
+
 
   @font-face {
     font-family: 'Ownglyph_ParkDaHyun';
