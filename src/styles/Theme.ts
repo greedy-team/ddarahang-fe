@@ -10,6 +10,8 @@ export const colors = {
   GREY_800: '#262626',
   BLACK: '#141619',
   WHITE: '#ffffff',
+  PURPLE: '#947FFE',
+  LIGHT_PURPLE: '#B3A3FF',
   RED: '#FF6174',
   LIGHT_RED: '#FFA1AC',
 };
@@ -28,6 +30,7 @@ export const size = {
   SIZE_011: '1.5rem',
   SIZE_012: '1.875rem',
   SIZE_013: '2rem',
+  SIZE_013_5: '2.15rem',
   SIZE_014: '2.5rem',
   SIZE_015: '2.75rem',
   SIZE_016: '3.125rem',
