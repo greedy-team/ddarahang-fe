@@ -66,14 +66,6 @@ const TravelCoursePage = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const onClickTab = (day: number) => {
-    setSelectedTab(day);
-  };
-
-  const onClickPanel = (placeName: string) => {
-    setSelectedPanel(placeName);
-  };
-
   useEffect(() => {
     if (!loading) {
       setShowNoDataMessage(!travelCourse);
@@ -129,8 +121,8 @@ const TravelCoursePage = () => {
             )}
             <TravelCourse
               selectedTab={selectedTab}
-              onClickTab={onClickTab}
-              onClickPanel={onClickPanel}
+              setSelectedTab={setSelectedTab}
+              setSelectedPanel={setSelectedPanel}
               oneDayCourses={oneDayCourses}
               totalTravelDays={travelCourse.travelDays}
             />

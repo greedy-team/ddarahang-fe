@@ -7,21 +7,27 @@ interface TravelCourseProps {
   oneDayCourses: OneDayCourseType[];
   totalTravelDays: number;
   selectedTab: number;
-  onClickTab: (day: number) => void;
-  onClickPanel: (placeName: string) => void;
+  setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
+  setSelectedPanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TravelCourse = ({ oneDayCourses, totalTravelDays, selectedTab, onClickTab, onClickPanel }: TravelCourseProps) => {
+const TravelCourse = ({
+  oneDayCourses,
+  totalTravelDays,
+  selectedTab,
+  setSelectedTab,
+  setSelectedPanel,
+}: TravelCourseProps) => {
   return (
     <TravelCourseContainer>
       <Tab
         totalTravelDays={totalTravelDays}
         selectedTab={selectedTab}
-        onClickTab={onClickTab}
+        setSelectedTab={setSelectedTab}
       />
       <TabPanel
         oneDayCourse={oneDayCourses}
-        onClickPanel={onClickPanel}
+        setSelectedPanel={setSelectedPanel}
       />
     </TravelCourseContainer>
   );

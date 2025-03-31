@@ -4,7 +4,7 @@ interface PageButtonProps {
   color: string;
   text?: string | null;
   isActive: boolean;
-  onClick: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const PageButton = ({ text, color, isActive, onClick }: PageButtonProps) => {
