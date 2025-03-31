@@ -10,7 +10,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { useSelectedPanel } from '../../hooks/context/useSelectedPanelContext';
 import Loading from '../../components/common/Loading/Loading';
 import { StyledErrorMessage } from '../Main/MainPage.style';
-import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, MAP_LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants';
+import {
+  ERROR_MESSAGE,
+  LOAD_ERROR_MESSAGE,
+  MAP_LOAD_ERROR_MESSAGE,
+  NO_DATA_ERROR_MESSAGE,
+} from '../../constants/messages';
 import { useParams } from 'react-router-dom';
 
 const renderMap = (status: Status, courses: OneDayCourseType[]) => {

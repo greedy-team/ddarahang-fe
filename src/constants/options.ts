@@ -2,20 +2,6 @@ import { SelectOptionType } from '../types';
 
 export const COUNTRIES = ['대한민국', '일본', '말레이시아', '베트남', '중국'];
 
-export const MIN_VIEW = 10000;
-
-export const PAGE_SIZE = 5;
-
-export const TRAVEL_LABEL = {
-  COUNTRY: '여행 국가',
-  REGION: '여행 지역',
-};
-
-export const NO_DATA_ERROR_MESSAGE = '여행 데이터가 존재하지 않습니다.';
-export const LOAD_ERROR_MESSAGE = '데이터를 불러오는 중 오류가 발생하였습니다.';
-export const MAP_LOAD_ERROR_MESSAGE = '지도 로딩 중..';
-export const ERROR_MESSAGE = '서비스 이용중 불편을 드려 죄송합니다.';
-
 export const COUNTRYOPTION: SelectOptionType[] = [
   {
     imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/korea.jpg',

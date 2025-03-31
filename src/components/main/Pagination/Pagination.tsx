@@ -3,7 +3,7 @@ import { PaginationContainer } from './Pagination.style';
 import NextPageButton from '../../common/Button/CircleButton/CircleButton';
 import { colors, size } from '../../../styles/Theme';
 import { useState } from 'react';
-import { PAGE_SIZE } from '../../../constants';
+import { PAGE_SIZE } from '../../../constants/size';
 
 interface PaginationProps {
   color: string;

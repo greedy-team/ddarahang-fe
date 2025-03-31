@@ -1,4 +1,4 @@
-import { TRAVEL_LABEL } from '../../../../constants';
+import { TRAVEL_LABEL } from '../../../../constants/label';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
 import { SelectOptionType } from '../../../../types';
 import LazyImage from '../../Image/LazyImage';

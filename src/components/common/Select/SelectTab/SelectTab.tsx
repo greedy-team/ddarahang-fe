@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState } from 'react';
 import SelectTrigger from '../SelectTrigger/SelectTrigger';
 import { SelectTabContainer, MobileButton } from './SelectTab.style';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
-import { TRAVEL_LABEL } from '../../../../constants';
+import { TRAVEL_LABEL } from '../../../../constants/label';
 
 interface SelectTabProps {
   isOpen: boolean;

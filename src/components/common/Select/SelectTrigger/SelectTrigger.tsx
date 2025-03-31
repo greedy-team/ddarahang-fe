@@ -7,7 +7,7 @@ import {
   CircleButtonWrapper,
 } from './selectTrigger.style';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
-import { TRAVEL_LABEL } from '../../../../constants';
+import { TRAVEL_LABEL } from '../../../../constants/label';
 import { colors, size } from '../../../../styles/Theme';
 import CircleButton from '../../Button/CircleButton/CircleButton';
 

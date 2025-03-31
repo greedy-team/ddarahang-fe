@@ -4,7 +4,7 @@ import YoutubeCard from '../YoutubeCard/YoutubeCard';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { StyledContentsWrapper, StyledErrorMessage } from '../../../pages/Main/MainPage.style';
-import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants';
+import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants/messages';
 
 interface TravelVideoListProps {
   error?: unknown;
