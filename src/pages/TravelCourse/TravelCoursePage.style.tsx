@@ -30,6 +30,6 @@ export const MapContainer = styled.div`
   display: flex;
 
   @media screen {
-    min-height: 250px;
+    min-height: 15.625rem;
   }
 `;

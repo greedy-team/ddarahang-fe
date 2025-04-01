@@ -6,11 +6,6 @@ export const VideoSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  padding: 0;
-
-  @media screen and (max-width: 780px) {
-    /* margin-bottom: ${size.SIZE_010}; */
-  }
 `;
 
 export const VideoSectionHeader = styled.div`
@@ -43,14 +38,14 @@ export const VideoContainer = styled.div<{ $isMobileMapVisible: boolean }>`
 
 export const ToggleContainer = styled.div`
   display: flex;
-  border-radius: 8px;
+  border-radius: ${size.SIZE_005};
   background-color: ${colors.GRAY_200};
   overflow: hidden;
 `;
 
 export const ToggleItem = styled.button<{ $selected: boolean }>`
   flex: 1;
-  padding: 8px 16px;
+  padding: ${size.SIZE_005} ${size.SIZE_009};
   color: ${({ $selected }) => ($selected ? colors.WHITE : colors.GREY_600)};
   background-color: ${({ $selected }) => ($selected ? colors.PRIMARY : 'transparent')};
   border: none;
@@ -58,6 +53,7 @@ export const ToggleItem = styled.button<{ $selected: boolean }>`
   transition: background-color 0.2s;
 
   &:hover {
+    color: ${colors.WHITE};
     background-color: ${({ $selected }) => ($selected ? colors.PRIMARY : colors.LIGHT_BLUE)};
   }
 `;
@@ -83,6 +79,10 @@ export const VideoInfo = styled.div`
   width: 90%;
   gap: ${size.SIZE_004};
   padding-top: ${size.SIZE_010};
+
+  @media screen and (max-width: 780px) {
+    margin-bottom: ${size.SIZE_010};
+  }
 `;
 
 export const ChannelName = styled.p`
@@ -103,7 +103,7 @@ export const VideoTitle = styled.h3`
 
 export const VideoMeta = styled.p`
   font-size: ${size.SIZE_008};
-  word-spacing: 3px;
+  word-spacing: ${size.SIZE_002};
   color: ${colors.GREY_500};
 
   & > span {
