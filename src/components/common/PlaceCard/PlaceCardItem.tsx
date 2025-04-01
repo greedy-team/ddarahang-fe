@@ -7,10 +7,10 @@ import Tag from '../../detail/Tag/Tag';
 interface PlaceCardProps {
   oneDayCourse: OneDayCourseType;
   orderInDay: number;
-  onClickPanel: (placeName: string) => void;
+  setSelectedPanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProps) => {
+const PlaceCardItem = ({ oneDayCourse, orderInDay, setSelectedPanel }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel } = useSelectedPanel();
 
@@ -27,7 +27,7 @@ const PlaceCardItem = ({ oneDayCourse, orderInDay, onClickPanel }: PlaceCardProp
       <PlaceCircleStep>{orderInDay}</PlaceCircleStep>
       <PlaceCardContainer
         $isSelected={isSelected}
-        onClick={() => onClickPanel(oneDayCourse.placeName)}
+        onClick={() => setSelectedPanel(oneDayCourse.placeName)}
       >
         <PlaceName $isSelected={isSelected}>{oneDayCourse.placeName}</PlaceName>
         <Tag tagName={oneDayCourse.tag} />

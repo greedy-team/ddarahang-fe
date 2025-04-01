@@ -6,7 +6,7 @@ import {
   MALAYSIAREGIONOPTION,
   VIEWTNAMOPTION,
   CHINAOPTION,
-} from '../constants';
+} from '../constants/options';
 import { CountryType, SortByType } from '../types';
 
 export const getRegionOptionList = (selectedOption: {

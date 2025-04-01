@@ -4,10 +4,10 @@ import { TabContainer, TabItem, TabList } from './Tab.style';
 interface TabProps {
   totalTravelDays: number;
   selectedTab: number;
-  onClickTab: (day: number) => void;
+  setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Tab = ({ totalTravelDays, selectedTab, onClickTab }: TabProps) => {
+const Tab = ({ totalTravelDays, selectedTab, setSelectedTab }: TabProps) => {
   const tabs = Array.from({ length: totalTravelDays }, (_, i) => `${i + 1}일차`);
 
   return (
@@ -28,7 +28,7 @@ const Tab = ({ totalTravelDays, selectedTab, onClickTab }: TabProps) => {
           return (
             <TabItem
               key={tab}
-              onClick={() => onClickTab(dayNumber)}
+              onClick={() => setSelectedTab(dayNumber)}
             >
               {tab}
             </TabItem>

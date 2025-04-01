@@ -1,4 +1,4 @@
-import { MIN_VIEW } from '../../../constants';
+import { MIN_VIEW } from '../../../constants/size';
 import { size } from '../../../styles/Theme';
 import LazyImage from '../../common/Image/LazyImage';
 import { YoutubeCardContainer, YoutubeTitle, YoutubeChannelName, MetaData } from './YoutubeCard.style';

@@ -12,9 +12,9 @@ export const Circle = styled.div<{ isSelected: boolean }>`
   color: ${colors.WHITE};
   width: ${size.SIZE_013};
   height: ${size.SIZE_013};
-  font-size: 14px;
+  font-size: ${size.SIZE_008};
   background: ${(props) => (props.isSelected ? colors.RED : colors.PRIMARY)};
-  border-radius: 100px;
+  border-radius: 6.25rem;
   border: 3px solid ${colors.WHITE};
   display: flex;
   align-items: center;
@@ -31,12 +31,12 @@ export const PlaceCard = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
   color: ${colors.BLACK};
   box-shadow:
-    inset 0 0 0 2px ${colors.GRAY_200},
+    inset 0 0 0 ${size.SIZE_002} ${colors.GRAY_200},
     ${size.SIZE_002} ${size.SIZE_002} ${size.SIZE_002} rgba(55, 55, 55, 0.2);
   width: fit-content;
-  padding: 10px;
-  border-radius: 20px;
-  height: 25px;
+  padding: ${size.SIZE_006};
+  border-radius: ${size.SIZE_010};
+  height: ${size.SIZE_011};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,5 +48,5 @@ export const StyledMarker = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 0px;
+  gap: ${size.SIZE_001};
 `;

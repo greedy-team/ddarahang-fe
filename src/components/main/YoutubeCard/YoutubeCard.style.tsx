@@ -5,8 +5,8 @@ export const YoutubeCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 400px;
-  height: 355px;
+  max-width: 25rem;
+  height: 22.2rem;
   margin: ${size.SIZE_007};
   padding: ${size.SIZE_010} ${size.SIZE_007} ${size.SIZE_010} ${size.SIZE_007};
   border-radius: ${size.SIZE_008};

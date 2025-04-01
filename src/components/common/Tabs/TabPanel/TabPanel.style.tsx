@@ -3,7 +3,7 @@ import { size } from '../../../../styles/Theme';
 
 export const Panels = styled.div`
   width: 100%;
-  max-height: 500px;
+  max-height: 31.25rem;
   height: auto;
   overflow-y: auto;
   overflow-x: hidden;

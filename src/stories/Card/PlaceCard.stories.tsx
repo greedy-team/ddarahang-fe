@@ -30,7 +30,7 @@ const meta = {
   },
 
   args: {
-    onClickPanel: fn('PlaceCard Click'),
+    setSelectedPanel: fn('PlaceCard Click'),
   },
 } satisfies Meta<typeof PlaceCard>;
 

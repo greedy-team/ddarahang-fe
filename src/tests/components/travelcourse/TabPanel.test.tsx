@@ -16,13 +16,13 @@ beforeAll(() => {
 });
 
 const CustomTabpanel = () => {
-  const onClickPanel = () => {};
+  const setSelectedPanel = () => {};
 
   return (
     <SelectedPanelProvider>
       <TabPanel
         oneDayCourse={mockOneDayCourses}
-        onClickPanel={onClickPanel}
+        setSelectedPanel={setSelectedPanel}
       />
     </SelectedPanelProvider>
   );

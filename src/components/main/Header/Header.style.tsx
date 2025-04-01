@@ -9,7 +9,7 @@ export const HeaderWrapper = styled.header`
   gap: ${size.SIZE_010};
   padding: ${size.SIZE_012};
   font-family: 'Pretendard-SemiBold', sans-serif;
-  border-bottom: 2px solid ${colors.GRAY_200};
+  border-bottom: ${size.SIZE_002} solid ${colors.GRAY_200};
 
   h1 {
     font-family: 'Pretendard-Bold', sans-serif;

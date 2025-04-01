@@ -17,10 +17,11 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisib
     `}
 
   @media screen and (max-width: 780px) {
+    height: ${size.SIZE_016};
     padding: ${size.SIZE_001} ${size.SIZE_008};
     ${({ $isMobile }) => $isMobile && 'display: none;'};
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10;
   }
 `;

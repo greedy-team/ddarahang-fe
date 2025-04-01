@@ -11,10 +11,10 @@ export const StyledRectangleButton = styled.button`
   cursor: pointer;
   font-size: ${size.SIZE_009};
   font-family: 'Pretendard-SemiBold', sans-serif;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: ${size.SIZE_002} ${size.SIZE_003} ${size.SIZE_005} rgba(0, 0, 0, 0.1);
 
   &:hover {
     background: ${colors.SECONDARY};
-    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: ${size.SIZE_003} ${size.SIZE_004} ${size.SIZE_007} rgba(0, 0, 0, 0.15);
   }
 `;

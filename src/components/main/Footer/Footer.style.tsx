@@ -3,7 +3,7 @@ import { colors, size } from '../../../styles/Theme';
 
 export const FooterWrapper = styled.footer`
   width: 100vw;
-  height: 175px;
+  height: 11rem;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -26,19 +26,19 @@ export const FooterWrapper = styled.footer`
   p {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: ${size.SIZE_006};
   }
 `;
 
 export const FooterBox = styled.div`
-  width: 700px;
-  padding: 10px;
+  width: 43.75rem;
+  padding: ${size.SIZE_006};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
   @media screen and (max-width: 780px) {
-    gap: 10px;
+    gap: ${size.SIZE_006};
     align-items: center;
     flex-direction: column;
   }
@@ -51,5 +51,5 @@ export const TeamLink = styled.a`
 export const FooterContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${size.SIZE_006};
 `;

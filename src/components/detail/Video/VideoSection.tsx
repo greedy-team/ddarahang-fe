@@ -18,7 +18,7 @@ import { size, colors } from '../../../styles/Theme';
 import { TravelCourse } from '../../../types';
 import { useNavigate } from 'react-router-dom';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
-import { MIN_VIEW } from '../../../constants';
+import { MIN_VIEW } from '../../../constants/size';
 
 interface VideoProps {
   videoUrl: string;

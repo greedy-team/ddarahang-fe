@@ -3,7 +3,7 @@ import { MarkerWrapper, Circle, PlaceCard, StyledMarker } from './TravelMapMarke
 import { createRoot } from 'react-dom/client';
 import { Position } from '../../../types';
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
-import { colors } from '../../../styles/Theme';
+import TravelMapInfoWindow from '../TravelMapInfoWindow/TravelMapInfoWindow';
 
 const TravelMapMarker = ({
   orderInday,
@@ -45,37 +45,12 @@ const TravelMapMarker = ({
       content: markerContainer,
     });
 
-    const contentString = `
-    <div 
-      id="content" 
-      style="width: 200px; 
-      font-weight: 500;
-      word-break: keep-all;
-    ">
-      <div 
-        id="bodyContent" 
-        style="font-size: 14px; 
-        line-height: 1.5; 
-        overflow: hidden;
-        text-overflow: ellipsis;
-        color: ${colors.BLACK}
-      ">
-        <p style = "color: ${colors.BLACK}">
-          ${address}
-        </p>
-        <p style="margin-top: 1px; border: none">
-          <a href="https://www.google.com/maps/search/?q=${place}+${address}"
-            target="_blank"
-            style="color: ${colors.PRIMARY}; text-decoration: under-line; font-weight: bold;">
-            Google 지도로 확인하기
-          </a>
-        </p>
-      </div>
-    </div>
-    `;
-
     const infowindow = new google.maps.InfoWindow({
-      content: contentString,
+      content: (() => {
+        const container = document.createElement('div');
+        createRoot(container).render(<TravelMapInfoWindow address={address} />);
+        return container;
+      })(),
       headerContent: place,
     });
 

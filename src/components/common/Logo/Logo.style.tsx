@@ -15,4 +15,15 @@ export const StyledLogo = styled.button`
   span {
     font-size: ${size.SIZE_008};
   }
+
+  img {
+    @media (max-width: 780px) {
+      width: 2.813rem;
+      height: 2.625rem;
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    font-size: ${size.SIZE_011};
+  }
 `;

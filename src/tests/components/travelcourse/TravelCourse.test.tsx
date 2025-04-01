@@ -28,8 +28,8 @@ beforeAll(() => {
 });
 
 const CustomTravelCourse = () => {
-  const onClickPanel = () => {};
-  const onClickTab = () => {};
+  const setSelectedTab = () => {};
+  const setSelectedPanel = () => {};
 
   return (
     <SelectedPanelProvider>
@@ -37,8 +37,8 @@ const CustomTravelCourse = () => {
         totalTravelDays={3}
         selectedTab={1}
         oneDayCourses={mockOneDayCourses}
-        onClickPanel={onClickPanel}
-        onClickTab={onClickTab}
+        setSelectedTab={setSelectedTab}
+        setSelectedPanel={setSelectedPanel}
       />
     </SelectedPanelProvider>
   );

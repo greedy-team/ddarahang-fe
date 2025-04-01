@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { size } from '../../../styles/Theme';
 
 export const TravelCourseContainer = styled.div`
-  max-height: 420px;
+  max-height: 26.25rem;
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_006};
@@ -15,7 +15,7 @@ export const TravelCourseContainer = styled.div`
 
   @media screen and (max-width: 780px) {
     max-height: 100vh;
-    overflow: hidden;
-    gap: 0px;
+    gap: ${size.SIZE_001};
+    max-height: none;
   }
 `;

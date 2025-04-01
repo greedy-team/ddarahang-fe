@@ -54,6 +54,7 @@ const MainPage = () => {
       countryName: selectedOption.countryName,
       regionName: selectedOption.selectedOptionLabel,
     });
+
     setCurrentPageNumber(1);
   };
 

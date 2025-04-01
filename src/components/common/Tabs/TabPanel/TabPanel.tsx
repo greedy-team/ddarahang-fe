@@ -4,10 +4,10 @@ import { OneDayCourseType } from '../../../../types';
 
 interface TabPanelProps {
   oneDayCourse: OneDayCourseType[];
-  onClickPanel: (placeName: string) => void;
+  setSelectedPanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TabPanel = ({ oneDayCourse, onClickPanel }: TabPanelProps) => {
+const TabPanel = ({ oneDayCourse, setSelectedPanel }: TabPanelProps) => {
   return (
     <Panels>
       {oneDayCourse.map((course) => {
@@ -16,7 +16,7 @@ const TabPanel = ({ oneDayCourse, onClickPanel }: TabPanelProps) => {
             key={course.orderInday}
             orderInDay={course.orderInday}
             oneDayCourse={course}
-            onClickPanel={onClickPanel}
+            setSelectedPanel={setSelectedPanel}
           />
         );
       })}

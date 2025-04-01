@@ -16,7 +16,7 @@ export const StyledTag = styled.p<{ category: TagType }>`
   height: ${size.SIZE_011};
   border-radius: ${size.SIZE_008};
   background-color: ${({ category }) => backgroundColors[category] || colors.GRAY_200};
-  font-size: 12px;
+  font-size: ${size.SIZE_007};
   display: flex;
   align-items: center;
   justify-content: center;

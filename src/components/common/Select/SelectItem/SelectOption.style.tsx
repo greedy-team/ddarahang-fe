@@ -11,7 +11,7 @@ export const Option = styled.li`
   background-color: ${colors.WHITE};
   gap: ${size.SIZE_006};
   align-items: center;
-  margin-left: 10px;
+  margin-left: ${size.SIZE_006};
   transition: background-color 0.5s ease;
 
   &:hover {

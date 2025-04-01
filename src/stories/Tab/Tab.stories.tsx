@@ -23,7 +23,7 @@ const meta = {
     },
   },
   args: {
-    onClickTab: fn(),
+    setSelectedTab: fn(),
   },
 } satisfies Meta<typeof Tab>;
 
@@ -35,6 +35,6 @@ export const Default: Story = {
   args: {
     totalTravelDays: 2,
     selectedTab: 2,
-    onClickTab: fn(),
+    setSelectedTab: fn(),
   },
 };
