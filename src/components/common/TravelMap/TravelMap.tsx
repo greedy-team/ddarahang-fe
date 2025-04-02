@@ -56,7 +56,7 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
           <TravelMapMarker
             key={index}
             orderInday={marker.orderInday}
-            place={marker.placeName}
+            placeName={marker.placeName}
             travelMap={travelMap}
             position={marker.position}
             address={marker.address}

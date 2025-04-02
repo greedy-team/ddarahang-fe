@@ -9,7 +9,7 @@ const TravelMapMarker = ({
   orderInday,
   travelMap,
   position,
-  place,
+  placeName,
   address,
   selectedMarker,
   setSelectedMarker,
@@ -17,7 +17,7 @@ const TravelMapMarker = ({
   orderInday: number;
   travelMap: google.maps.Map | null;
   position: Position;
-  place: string;
+  placeName: string;
   address: string;
   selectedMarker: string | undefined;
   setSelectedMarker: React.Dispatch<React.SetStateAction<string | undefined>>;
@@ -26,7 +26,7 @@ const TravelMapMarker = ({
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
 
   useEffect(() => {
-    if (String(selectedPanel) === place) {
+    if (String(selectedPanel) === placeName) {
       setIsSelected(!isSelected);
       setSelectedMarker('');
     } else {
@@ -41,20 +41,25 @@ const TravelMapMarker = ({
     const markerInstance = new google.maps.marker.AdvancedMarkerElement({
       position,
       map: travelMap,
-      title: place || '마커',
+      title: placeName || '마커',
       content: markerContainer,
     });
 
     const infowindow = new google.maps.InfoWindow({
       content: (() => {
         const container = document.createElement('div');
-        createRoot(container).render(<TravelMapInfoWindow address={address} />);
+        createRoot(container).render(
+          <TravelMapInfoWindow
+            address={address}
+            placeName={placeName}
+          />,
+        );
         return container;
       })(),
-      headerContent: place,
+      headerContent: placeName,
     });
 
-    if (selectedMarker === place || isSelected) {
+    if (selectedMarker === placeName || isSelected) {
       infowindow.open({
         anchor: markerInstance,
       });
@@ -63,8 +68,8 @@ const TravelMapMarker = ({
     }
 
     markerInstance.addListener('click', () => {
-      setSelectedPanel(place);
-      setSelectedMarker(place);
+      setSelectedPanel(placeName);
+      setSelectedMarker(placeName);
       infowindow.open({
         anchor: markerInstance,
       });
@@ -73,7 +78,7 @@ const TravelMapMarker = ({
     createRoot(markerContainer).render(
       <StyledMarker>
         <Circle isSelected={isSelected}>{orderInday}</Circle>
-        <PlaceCard>{place}</PlaceCard>
+        <PlaceCard>{placeName}</PlaceCard>
       </StyledMarker>,
     );
 
