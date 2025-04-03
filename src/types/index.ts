@@ -53,6 +53,16 @@ export interface TravelCourse extends TravelVideoInfo {
   details: Detail[];
 }
 
+export interface TravelVideoListResponse {
+  content: TravelList[];
+  totalPages: number;
+  totalElements: number;
+  number: number;
+  size: number;
+  first: boolean;
+  last: boolean;
+}
+
 export interface Detail extends Position {
   day: number;
   orderInDay: number;

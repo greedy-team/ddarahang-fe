@@ -5,14 +5,14 @@ import axios from 'axios';
 const useGetTravelCourse = (videoId: number) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
-  const [travelCourse, setTravelCourse] = useState<TravelCourse | null>(null);
+  const [travelCourse, setTravelCourse] = useState<TravelCourse>();
 
   useEffect(() => {
     const getTravelCourse = async () => {
       setLoading(true);
 
       try {
-        const response = await axios.get(`https://api.ddarahang.site/api/v1/travelcourses/${videoId}`);
+        const response = await axios.get(`http://localhost:8080/api/v1/travelcourses/${videoId}`);
 
         if (response) {
           setTravelCourse(response.data);
