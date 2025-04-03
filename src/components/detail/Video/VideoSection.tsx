@@ -17,7 +17,6 @@ import {
 import { size, colors } from '../../../styles/Theme';
 import { TravelCourse } from '../../../types';
 import { useNavigate } from 'react-router-dom';
-import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 import { MIN_VIEW } from '../../../constants/size';
 
 interface VideoProps {
@@ -30,17 +29,9 @@ interface VideoProps {
 
 const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible, isMobileMapVisible }: VideoProps) => {
   if (!travelCourse) return [];
-  const { selectedOption } = useSelectOptionContext();
   const route = useNavigate();
 
   const simpleViewCount = parseFloat((travelCourse.viewCount / MIN_VIEW).toFixed(1)) + '만회';
-
-  const hasRegion = () => {
-    if (selectedOption.selectedOptionLabel === '여행 지역 검색') {
-      return '';
-    }
-    return selectedOption.selectedOptionLabel;
-  };
 
   const handleClickMapIcon = () => {
     setIsMobileMapVisible(!isMobileMapVisible);
@@ -62,7 +53,7 @@ const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible,
             }}
           />
           <HeaderTitle>
-            {selectedOption.countryName} {hasRegion()}
+            {travelCourse.regionName} {travelCourse.countryName}
           </HeaderTitle>
         </VideoSectionTitle>
         {isMobile && (

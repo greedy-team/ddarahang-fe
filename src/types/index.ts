@@ -48,6 +48,8 @@ export interface TravelVideoInfo {
 export interface TravelCourse extends TravelVideoInfo {
   videoUrl: string;
   travelDays: number;
+  countryName: string;
+  regionName: string;
   details: Detail[];
 }
 
