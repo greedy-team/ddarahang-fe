@@ -23,7 +23,7 @@ export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카' | '오�
 
 export type LocationType = '국가' | '지역';
 
-export type SortByType = 'uploadDate' | 'viewCount' | 'default';
+export type SortByType = 'uploadDate' | 'viewCount';
 
 export interface SelectOptionType {
   isCountryOption: boolean;

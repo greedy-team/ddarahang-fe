@@ -53,7 +53,7 @@ const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible,
             }}
           />
           <HeaderTitle>
-            {travelCourse.regionName} {travelCourse.countryName}
+            {travelCourse.countryName} {travelCourse.regionName}
           </HeaderTitle>
         </VideoSectionTitle>
         {isMobile && (

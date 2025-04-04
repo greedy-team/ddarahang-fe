@@ -12,10 +12,10 @@ export const SortOptionProvider = ({ children }: { children: React.ReactNode }) 
   const savedSortOption = localStorage.getItem('sortOption');
   const parsedSortOption = savedSortOption ? JSON.parse(savedSortOption) : null;
 
-  const [sortOption, setSortOption] = useState<SortByType>(parsedSortOption || 'default');
+  const [sortOption, setSortOption] = useState<SortByType>(parsedSortOption || 'uploadDate');
 
   useEffect(() => {
-    localStorage.setItem('sortOption', JSON.stringify(sortOption));
+    localStorage.setItem('uploadDate', JSON.stringify(sortOption));
   }, [sortOption]);
 
   return <SortOptionContext.Provider value={{ sortOption, setSortOption }}>{children}</SortOptionContext.Provider>;

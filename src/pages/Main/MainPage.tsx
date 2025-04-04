@@ -1,4 +1,4 @@
-import { useState, useMemo, Suspense, lazy, useEffect } from 'react';
+import { useState, Suspense, lazy, useEffect } from 'react';
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
 import Pagination from '../../components/main/Pagination/Pagination';
@@ -8,7 +8,6 @@ import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
-import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 import Loading from '../../components/common/Loading/Loading';
 import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
@@ -20,47 +19,65 @@ const MainPage = () => {
   const initialPageNumber = savedPageNumber ? parseInt(savedPageNumber, 10) : 1;
 
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(initialPageNumber);
-  const { setSortOption } = useSortOptionContext();
+  const { sortOption, setSortOption } = useSortOptionContext();
 
   const { selectedOption } = useSelectOptionContext();
 
-  const { videoListResponse, loading, error, getTravelVideoList } = useTravelVideoList({
-    sortField: 'uploadDate',
-    countryName: selectedOption.countryName,
-    regionName: selectedOption.selectedOptionLabel,
-    pageNumber: 0,
-  });
+  const { videoListResponse, loading, error, getTravelVideoList } = useTravelVideoList();
 
   const videoList = videoListResponse?.content ?? [];
   const totalPages = videoListResponse?.totalPages ?? 0;
-  const currentPage = videoListResponse?.number ?? 0;
-
-  const { videoNumberInPage } = useMediaScreen();
 
   useEffect(() => {
-    localStorage.setItem('currentPageNumber', String(currentPageNumber));
-  }, [currentPageNumber]);
-
-  const handleSubmitDropdown = (sortBy: SortByType) => {
-    getTravelVideoList({
-      sortField: sortBy,
-      countryName: selectedOption.countryName,
-      regionName: selectedOption.selectedOptionLabel,
-      pageNumber: 0,
-    });
-
-    setSortOption(sortBy);
-  };
-
-  const handleSubmitOption = () => {
     getTravelVideoList({
       sortField: 'uploadDate',
       countryName: selectedOption.countryName,
       regionName: selectedOption.selectedOptionLabel,
       pageNumber: 0,
     });
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem('currentPageNumber', String(currentPageNumber));
+  }, [currentPageNumber]);
+
+  useEffect(() => {
+    getTravelVideoList({
+      sortField: 'uploadDate',
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+      pageNumber: currentPageNumber - 1,
+    });
+  }, [selectedOption]);
+
+  useEffect(() => {
+    getTravelVideoList({
+      sortField: sortOption,
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+      pageNumber: currentPageNumber - 1,
+    });
+  }, [currentPageNumber]);
+
+  const handleSubmitDropdown = (sortBy: SortByType) => {
+    setSortOption(sortBy);
     setCurrentPageNumber(1);
+    getTravelVideoList({
+      sortField: sortBy,
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+      pageNumber: 0,
+    });
+  };
+
+  const handleSubmitOption = () => {
+    setCurrentPageNumber(1);
+    getTravelVideoList({
+      sortField: 'uploadDate',
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+      pageNumber: 0,
+    });
   };
 
   return (
@@ -77,13 +94,11 @@ const MainPage = () => {
           <Suspense fallback={<Loading loading={true} />}>
             <TravelVideoList
               error={error}
-              videoNumberInPage={videoNumberInPage}
-              currentPageNumber={currentPageNumber}
               videoList={videoList}
             />
             <Pagination
               color={colors.WHITE}
-              currentPageNumber={currentPage}
+              currentPageNumber={currentPageNumber}
               totalPageNumber={totalPages}
               onPageClick={setCurrentPageNumber}
             />

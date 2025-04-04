@@ -8,20 +8,15 @@ import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants/message
 
 interface TravelVideoListProps {
   error?: unknown;
-  videoNumberInPage: number;
   videoList: TravelList[];
-  currentPageNumber: number;
 }
 
-const TravelVideoList = ({ error, videoNumberInPage, videoList, currentPageNumber }: TravelVideoListProps) => {
+const TravelVideoList = ({ error, videoList }: TravelVideoListProps) => {
   const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
   useEffect(() => {
     setShowNoDataMessage(videoList.length === 0);
   }, [videoList]);
-
-  const startVideoNumber = (currentPageNumber - 1) * videoNumberInPage;
-  const currentVideoList = videoList.slice(startVideoNumber, startVideoNumber + videoNumberInPage);
 
   const navigate = useNavigate();
 
@@ -56,7 +51,7 @@ const TravelVideoList = ({ error, videoNumberInPage, videoList, currentPageNumbe
       {renderErrorMessage()}
 
       <TravelVideoListContainer>
-        {currentVideoList.map((video) => (
+        {videoList.map((video) => (
           <YoutubeCard
             key={video.travelCourseId}
             imgUrl={video.thumbnailUrl}

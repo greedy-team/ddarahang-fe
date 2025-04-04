@@ -3,6 +3,8 @@ import { OneDayCourseType, TravelCourse } from '../../types';
 export const mockTravelCourse: TravelCourse = {
   creator: '유튜버 이름',
   title: '서울의 아름다운 명소들 탐방',
+  regionName: '서울',
+  countryName: '대한민국',
   uploadDate: '2025-03-09',
   viewCount: 20000,
   videoUrl: 'https://example.com/video/12345',

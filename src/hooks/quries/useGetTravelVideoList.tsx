@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { CountryType, SortByType, TravelVideoListResponse } from '../../types';
 import axios from 'axios';
-import { useSortOptionContext } from '../context/useSortOptionContext';
 
 interface useTravelVideoListProps {
   sortField: SortByType;
@@ -10,11 +9,10 @@ interface useTravelVideoListProps {
   pageNumber: number;
 }
 
-const useTravelVideoList = ({ countryName, regionName, pageNumber }: useTravelVideoListProps) => {
+const useTravelVideoList = () => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [videoListResponse, setvideoListResponse] = useState<TravelVideoListResponse | null>(null);
-  const { setSortOption } = useSortOptionContext();
 
   const getTravelVideoList = async ({ sortField, countryName, regionName, pageNumber }: useTravelVideoListProps) => {
     let requestBody = {
@@ -43,12 +41,7 @@ const useTravelVideoList = ({ countryName, regionName, pageNumber }: useTravelVi
     }
   };
 
-  useEffect(() => {
-    setSortOption('uploadDate');
-    getTravelVideoList({ sortField: 'uploadDate', countryName, regionName, pageNumber: 0 });
-  }, [countryName, regionName]);
-
-  return { videoListResponse, loading, error, getTravelVideoList, pageNumber };
+  return { videoListResponse, loading, error, getTravelVideoList };
 };
 
 export default useTravelVideoList;

@@ -29,6 +29,7 @@ const SortDropdown = ({ onSubmitDropdown }: SortDropdownProps) => {
 
   const handleDropdownItemClick = (sortBy: SortByType) => {
     onSubmitDropdown(sortBy);
+    console.log(sortBy);
     setIsOpen(false);
   };
 

@@ -115,7 +115,7 @@ const TravelCoursePage = () => {
               travelCourse={travelCourse}
             />
             {isMobileMapVisible && (
-              <MapContainer>
+              <MapContainer> 
                 <Wrapper
                   apiKey={apiKey}
                   key={selectedTab}
