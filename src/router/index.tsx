@@ -3,6 +3,7 @@ import TravelCoursePage from '../pages/TravelCourse/TravelCoursePage';
 import MainPage from '../pages/Main/MainPage';
 import MaintenancePage from '../pages/Maintenance/MaintenancePage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
+import FavoritePage from '../pages/Favorite/FavoritePage';
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainPage />,
+  },
+  {
+    path: '/favorite',
+    element: <FavoritePage />,
   },
   {
     path: '/maintenance',
