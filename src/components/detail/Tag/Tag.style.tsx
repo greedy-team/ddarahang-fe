@@ -9,6 +9,7 @@ const backgroundColors = {
   숙박: '#EAEAFF',
   카페: '#FFEBBD',
   기타: colors.GRAY_200,
+  전체: '',
 };
 
 export const StyledTag = styled.p<{ category: TagType }>`
