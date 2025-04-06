@@ -17,7 +17,7 @@ export type KoreanRegionType =
   | '전라북도'
   | '전라남도';
 
-export type TagType = '음식' | '관광' | '쇼핑' | '숙박' | '카페' | '기타';
+export type TagType = '음식' | '관광' | '쇼핑' | '숙박' | '카페' | '기타' | '전체';
 
 export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카' | '오키나와' | '기타큐슈' | '요코하마' | '나고야';
 
@@ -64,14 +64,21 @@ export interface Position {
   lng: number;
 }
 
-export type OneDayCourseType = {
+export interface BasePlaceType {
   placeName: string;
-  day: number;
-  orderInday: number;
   address: string;
   tag: TagType;
+  orderInday: number;
   position: {
     lat: number;
     lng: number;
   };
-};
+}
+
+export interface OneDayCourseType extends BasePlaceType {
+  day: number;
+}
+
+export interface FavoritePlaceType extends BasePlaceType {
+  id: number;
+}
