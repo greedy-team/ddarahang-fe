@@ -28,7 +28,6 @@ const meta = {
   },
   args: {
     setSelectedTab: action('탭을 클릭'),
-    setSelectedPanel: action('패널 클릭'),
   },
 } satisfies Meta<typeof TravelCourse>;
 

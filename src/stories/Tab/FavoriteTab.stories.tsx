@@ -15,6 +15,11 @@ const meta = {
       description: '태그의 이름',
       defaultValue: '음식',
     },
+    selectedTagTab: {
+      control: 'text',
+      description: '선택된 태그 종류',
+      defaultValue: '음식',
+    },
   },
 } satisfies Meta<typeof FavoriteTab>;
 
@@ -25,5 +30,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     tag: '관광',
+    selectedTagTab: '음식',
+    setSelectedTagTab: () => {},
   },
 };
