@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import TravelMapMarker from '../TravelMapMarker/TravelMapMarker';
 import { MapWrapper, MapContainer } from './TravelMap.style';
-import { OneDayCourseType } from '../../../types';
+import { FavoritePlaceType, OneDayCourseType } from '../../../types';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 
 interface TravelMapProps {
-  oneDayCourses: OneDayCourseType[];
+  oneDayCourses: OneDayCourseType[] | FavoritePlaceType[];
 }
 
 const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
-  const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourses);
+  const [markers, setMarkers] = useState<OneDayCourseType[] | FavoritePlaceType[]>(oneDayCourses);
   const [selectedMarker, setSelectedMarker] = useState<string>();
   const mapRef = useRef<HTMLDivElement>(null);
   const { selectedOption } = useSelectOptionContext();
@@ -22,7 +22,10 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
   };
 
   useEffect(() => {
-    if (!mapRef.current) return;
+    if (!mapRef.current) {
+      alert('Map container is not available');
+      return;
+    }
 
     const instance = new window.google.maps.Map(mapRef.current, {
       center: {
