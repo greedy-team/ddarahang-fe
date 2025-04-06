@@ -114,6 +114,7 @@ const TravelCoursePage = () => {
               videoUrl={travelCourse.videoUrl}
               travelCourse={travelCourse}
             />
+
             {isMobileMapVisible && (
               <MapContainer> 
                 <Wrapper
@@ -127,7 +128,6 @@ const TravelCoursePage = () => {
             <TravelCourse
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
-              setSelectedPanel={setSelectedPanel}
               oneDayCourses={oneDayCourses}
               totalTravelDays={travelCourse.travelDays}
             />
