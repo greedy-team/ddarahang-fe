@@ -5,7 +5,7 @@ import axios from 'axios';
 const useGetTravelCourse = (videoId: number) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
-  const [travelCourse, setTravelCourse] = useState<TravelCourse | null>(null);
+  const [travelCourse, setTravelCourse] = useState<TravelCourse>();
 
   useEffect(() => {
     const getTravelCourse = async () => {

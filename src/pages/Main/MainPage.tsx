@@ -1,4 +1,4 @@
-import { useState, useMemo, Suspense, lazy, useEffect } from 'react';
+import { useState, Suspense, lazy, useEffect } from 'react';
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
 import Pagination from '../../components/main/Pagination/Pagination';
@@ -8,7 +8,6 @@ import { colors } from '../../styles/Theme';
 import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 import { useSelectOptionContext } from '../../hooks/context/useSelectOptionContext';
 import { SortByType } from '../../types';
-import useMediaScreen from '../../hooks/screen/useMediaScreen';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 import Loading from '../../components/common/Loading/Loading';
 import useTravelVideoList from '../../hooks/quries/useGetTravelVideoList';
@@ -20,42 +19,63 @@ const MainPage = () => {
   const initialPageNumber = savedPageNumber ? parseInt(savedPageNumber, 10) : 1;
 
   const [currentPageNumber, setCurrentPageNumber] = useState<number>(initialPageNumber);
-  const { setSortOption } = useSortOptionContext();
+  const { sortOption, setSortOption } = useSortOptionContext();
 
   const { selectedOption } = useSelectOptionContext();
 
-  const { videoList, loading, error, getTravelVideoList } = useTravelVideoList({
-    filter: 'default',
+  const { videoListResponse, loading, error, getTravelVideoList } = useTravelVideoList({
+    sortField: 'uploadDate',
     countryName: selectedOption.countryName,
     regionName: selectedOption.selectedOptionLabel,
+    pageNumber: currentPageNumber - 1,
   });
 
-  const { videoNumberInPage } = useMediaScreen();
-
-  const totalPageNumber = useMemo(() => Math.ceil(videoList.length / videoNumberInPage), [videoList]);
+  const videoList = videoListResponse?.content ?? [];
+  const totalPages = videoListResponse?.totalPages ?? 0;
 
   useEffect(() => {
     localStorage.setItem('currentPageNumber', String(currentPageNumber));
   }, [currentPageNumber]);
 
-  const handleSubmitDropdown = (sortBy: SortByType) => {
+  useEffect(() => {
     getTravelVideoList({
-      filter: sortBy,
+      sortField: 'uploadDate',
       countryName: selectedOption.countryName,
       regionName: selectedOption.selectedOptionLabel,
+      pageNumber: currentPageNumber - 1,
     });
+  }, [selectedOption.countryName, selectedOption.selectedOptionLabel]);
 
+  const handlePageNumber = (movePageNumber: number) => {
+    setCurrentPageNumber(movePageNumber);
+    getTravelVideoList({
+      sortField: sortOption,
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+      pageNumber: movePageNumber - 1,
+    });
+  };
+
+  const handleSubmitDropdown = (sortBy: SortByType) => {
     setSortOption(sortBy);
+    setCurrentPageNumber(1);
+    getTravelVideoList({
+      sortField: sortBy,
+      countryName: selectedOption.countryName,
+      regionName: selectedOption.selectedOptionLabel,
+      pageNumber: currentPageNumber - 1,
+    });
   };
 
   const handleSubmitOption = () => {
+    setSortOption('uploadDate');
+    setCurrentPageNumber(1);
     getTravelVideoList({
-      filter: 'default',
+      sortField: sortOption,
       countryName: selectedOption.countryName,
       regionName: selectedOption.selectedOptionLabel,
+      pageNumber: currentPageNumber - 1,
     });
-
-    setCurrentPageNumber(1);
   };
 
   return (
@@ -72,15 +92,13 @@ const MainPage = () => {
           <Suspense fallback={<Loading loading={true} />}>
             <TravelVideoList
               error={error}
-              videoNumberInPage={videoNumberInPage}
-              currentPageNumber={currentPageNumber}
               videoList={videoList}
             />
             <Pagination
               color={colors.WHITE}
               currentPageNumber={currentPageNumber}
-              totalPageNumber={totalPageNumber}
-              onPageClick={setCurrentPageNumber}
+              totalPageNumber={totalPages}
+              onPageClick={handlePageNumber}
             />
           </Suspense>
         )}

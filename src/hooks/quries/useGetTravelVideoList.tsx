@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
-import { CountryType, SortByType, TravelList } from '../../types';
+import { CountryType, SortByType, TravelVideoListResponse } from '../../types';
 import axios from 'axios';
-import { useSortOptionContext } from '../context/useSortOptionContext';
 
 interface useTravelVideoListProps {
-  filter: SortByType;
+  sortField: SortByType;
   countryName: CountryType;
   regionName: string;
+  pageNumber: number;
 }
 
-const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps) => {
+const useTravelVideoList = ({ countryName, regionName, pageNumber }: useTravelVideoListProps) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
-  const [videoList, setVideoList] = useState<TravelList[]>([]);
-  const { setSortOption } = useSortOptionContext();
+  const [videoListResponse, setvideoListResponse] = useState<TravelVideoListResponse | null>(null);
 
-  const getTravelVideoList = async ({ filter, countryName, regionName }: useTravelVideoListProps) => {
+  const getTravelVideoList = async ({ sortField, countryName, regionName, pageNumber }: useTravelVideoListProps) => {
     let requestBody = {
-      filter,
+      sortField,
       countryName,
       regionName,
+      pageNumber,
     };
 
     if (regionName === '' || regionName === '여행 지역 검색') {
@@ -27,13 +27,12 @@ const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps
     }
 
     setLoading(true);
-    setVideoList([]);
 
     try {
       const response = await axios.get('https://api.ddarahang.site/api/v1/travelcourses', { params: requestBody });
 
       if (response) {
-        setVideoList(response.data);
+        setvideoListResponse(response.data);
       }
     } catch (error) {
       setError(error);
@@ -43,11 +42,10 @@ const useTravelVideoList = ({ countryName, regionName }: useTravelVideoListProps
   };
 
   useEffect(() => {
-    setSortOption('default');
-    getTravelVideoList({ filter: 'default', countryName, regionName });
-  }, [countryName, regionName]);
+    getTravelVideoList({ sortField: 'uploadDate', countryName, regionName, pageNumber: 0 });
+  }, []);
 
-  return { videoList, loading, error, getTravelVideoList };
+  return { videoListResponse, loading, error, getTravelVideoList, pageNumber };
 };
 
 export default useTravelVideoList;

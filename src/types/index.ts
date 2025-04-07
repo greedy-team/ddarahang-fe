@@ -23,7 +23,7 @@ export type JapaneseRegionType = '도쿄' | '오사카' | '후쿠오카' | '오�
 
 export type LocationType = '국가' | '지역';
 
-export type SortByType = 'uploadDate' | 'viewCount' | 'default';
+export type SortByType = 'uploadDate' | 'viewCount';
 
 export interface SelectOptionType {
   isCountryOption: boolean;
@@ -48,7 +48,19 @@ export interface TravelVideoInfo {
 export interface TravelCourse extends TravelVideoInfo {
   videoUrl: string;
   travelDays: number;
+  countryName: string;
+  regionName: string;
   details: Detail[];
+}
+
+export interface TravelVideoListResponse {
+  content: TravelList[];
+  totalPages: number;
+  totalElements: number;
+  number: number;
+  size: number;
+  first: boolean;
+  last: boolean;
 }
 
 export interface Detail extends Position {

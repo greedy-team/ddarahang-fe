@@ -33,13 +33,7 @@ beforeAll(() => {
 });
 
 const CustomTravelVideoList = ({ mockVideoList }: any) => {
-  return (
-    <TravelVideoList
-      videoNumberInPage={8}
-      videoList={mockVideoList}
-      currentPageNumber={1}
-    />
-  );
+  return <TravelVideoList videoList={mockVideoList} />;
 };
 
 describe('메인 페이지', () => {

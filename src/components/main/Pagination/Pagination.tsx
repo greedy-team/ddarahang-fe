@@ -9,7 +9,7 @@ interface PaginationProps {
   color: string;
   totalPageNumber: number;
   currentPageNumber: number;
-  onPageClick: (currentPage: number) => void;
+  onPageClick: (movePageNumber: number) => void;
 }
 
 const Pagination = ({ color, onPageClick, currentPageNumber, totalPageNumber }: PaginationProps) => {
