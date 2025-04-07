@@ -25,6 +25,7 @@ export const SelectedOptionContext = createContext<SelectedOptionContextProps>(d
 
 export const SelectOptionProvider = ({ children }: { children: React.ReactNode }) => {
   const savedSelectedOption = localStorage.getItem('selectedOption');
+
   const parsedSelectedOption = savedSelectedOption ? JSON.parse(savedSelectedOption) : null;
 
   const [selectedOption, setSelectedOption] = useState<SelectOptionValueProps>(

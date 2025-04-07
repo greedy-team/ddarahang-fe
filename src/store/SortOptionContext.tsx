@@ -10,7 +10,11 @@ export const SortOptionContext = createContext<SortOptionContextType | null>(nul
 
 export const SortOptionProvider = ({ children }: { children: React.ReactNode }) => {
   const savedSortOption = localStorage.getItem('sortOption');
-  const parsedSortOption = savedSortOption ? JSON.parse(savedSortOption) : null;
+  if (savedSortOption === 'default') {
+    localStorage.setItem('sortOption', JSON.stringify('uploadDate'));
+  }
+
+  const parsedSortOption = savedSortOption ? JSON.parse(savedSortOption) : 'uploadDate';
 
   const [sortOption, setSortOption] = useState<SortByType>(parsedSortOption || 'uploadDate');
 
