@@ -29,7 +29,7 @@ const useTravelVideoList = ({ countryName, regionName, pageNumber }: useTravelVi
     setLoading(true);
 
     try {
-      const response = await axios.get('https://api.ddarahang.site/api/v1/travelcourses', { params: requestBody });
+      const response = await axios.get('https://ddarahang.site/api/v1/travelcourses', { params: requestBody });
 
       if (response) {
         setvideoListResponse(response.data);

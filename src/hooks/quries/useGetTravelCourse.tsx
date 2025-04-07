@@ -12,7 +12,7 @@ const useGetTravelCourse = (videoId: number) => {
       setLoading(true);
 
       try {
-        const response = await axios.get(`https://api.ddarahang.site/api/v1/travelcourses/${videoId}`);
+        const response = await axios.get(`https://ddarahang.site/api/v1/travelcourses/${videoId}`);
 
         if (response) {
           setTravelCourse(response.data);
