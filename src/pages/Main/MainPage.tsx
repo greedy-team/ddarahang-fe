@@ -37,6 +37,11 @@ const MainPage = () => {
     localStorage.setItem('currentPageNumber', String(currentPageNumber));
   }, [currentPageNumber]);
 
+  const savedSortOption = localStorage.getItem('sortOption');
+  if (savedSortOption === 'default') {
+    localStorage.setItem('sortOption', JSON.stringify('uploadDate'));
+  }
+
   useEffect(() => {
     getTravelVideoList({
       sortField: 'uploadDate',
