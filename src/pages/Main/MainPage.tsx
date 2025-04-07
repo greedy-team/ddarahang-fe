@@ -23,19 +23,15 @@ const MainPage = () => {
 
   const { selectedOption } = useSelectOptionContext();
 
-  const { videoListResponse, loading, error, getTravelVideoList } = useTravelVideoList();
+  const { videoListResponse, loading, error, getTravelVideoList } = useTravelVideoList({
+    sortField: 'uploadDate',
+    countryName: selectedOption.countryName,
+    regionName: selectedOption.selectedOptionLabel,
+    pageNumber: currentPageNumber - 1,
+  });
 
   const videoList = videoListResponse?.content ?? [];
   const totalPages = videoListResponse?.totalPages ?? 0;
-
-  useEffect(() => {
-    getTravelVideoList({
-      sortField: 'uploadDate',
-      countryName: selectedOption.countryName,
-      regionName: selectedOption.selectedOptionLabel,
-      pageNumber: 0,
-    });
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('currentPageNumber', String(currentPageNumber));
@@ -48,16 +44,17 @@ const MainPage = () => {
       regionName: selectedOption.selectedOptionLabel,
       pageNumber: currentPageNumber - 1,
     });
-  }, [selectedOption]);
+  }, [selectedOption.countryName, selectedOption.selectedOptionLabel]);
 
-  useEffect(() => {
+  const handlePageNumber = (movePageNumber: number) => {
+    setCurrentPageNumber(movePageNumber);
     getTravelVideoList({
       sortField: sortOption,
       countryName: selectedOption.countryName,
       regionName: selectedOption.selectedOptionLabel,
-      pageNumber: currentPageNumber - 1,
+      pageNumber: movePageNumber - 1,
     });
-  }, [currentPageNumber]);
+  };
 
   const handleSubmitDropdown = (sortBy: SortByType) => {
     setSortOption(sortBy);
@@ -66,17 +63,18 @@ const MainPage = () => {
       sortField: sortBy,
       countryName: selectedOption.countryName,
       regionName: selectedOption.selectedOptionLabel,
-      pageNumber: 0,
+      pageNumber: currentPageNumber - 1,
     });
   };
 
   const handleSubmitOption = () => {
+    setSortOption('uploadDate');
     setCurrentPageNumber(1);
     getTravelVideoList({
-      sortField: 'uploadDate',
+      sortField: sortOption,
       countryName: selectedOption.countryName,
       regionName: selectedOption.selectedOptionLabel,
-      pageNumber: 0,
+      pageNumber: currentPageNumber - 1,
     });
   };
 
@@ -100,7 +98,7 @@ const MainPage = () => {
               color={colors.WHITE}
               currentPageNumber={currentPageNumber}
               totalPageNumber={totalPages}
-              onPageClick={setCurrentPageNumber}
+              onPageClick={handlePageNumber}
             />
           </Suspense>
         )}

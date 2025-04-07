@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CountryType, SortByType, TravelVideoListResponse } from '../../types';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ interface useTravelVideoListProps {
   pageNumber: number;
 }
 
-const useTravelVideoList = () => {
+const useTravelVideoList = ({ countryName, regionName, pageNumber }: useTravelVideoListProps) => {
   const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(false);
   const [videoListResponse, setvideoListResponse] = useState<TravelVideoListResponse | null>(null);
@@ -41,7 +41,11 @@ const useTravelVideoList = () => {
     }
   };
 
-  return { videoListResponse, loading, error, getTravelVideoList };
+  useEffect(() => {
+    getTravelVideoList({ sortField: 'uploadDate', countryName, regionName, pageNumber: 0 });
+  }, []);
+
+  return { videoListResponse, loading, error, getTravelVideoList, pageNumber };
 };
 
 export default useTravelVideoList;
