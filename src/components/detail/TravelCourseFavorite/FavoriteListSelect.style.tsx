@@ -44,8 +44,8 @@ export const ListWrapper = styled.div`
   padding: 0 ${size.SIZE_011};
 `;
 
-export const TravelItem = styled.div`
-  background-color: ${colors.WHITE};
+export const TravelItem = styled.div<{ $isSelected: boolean }>`
+  background-color: ${(props) => (props.$isSelected ? '#f1f1f1' : '#f9f9f9')};
   border-radius: ${size.SIZE_007};
   padding: ${size.SIZE_009};
   margin-bottom: ${size.SIZE_009};
