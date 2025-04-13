@@ -1,18 +1,18 @@
 import styled from 'styled-components';
-import { colors } from '../../../styles/Theme';
+import { colors, size } from '../../../styles/Theme';
 
 export const Container = styled.div`
-  width: 400px;
-  height: 600px;
+  width: ${size.SIZE_024};
+  height: ${size.SIZE_026};
   background-color: ${colors.WHITE};
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: ${size.SIZE_010};
+  box-shadow: 0 0 ${size.SIZE_010} rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  right: 20px;
-  top: 100px;
+  right: ${size.SIZE_010};
+  top: 6.125rem;
   z-index: 10;
 `;
 
@@ -20,38 +20,39 @@ export const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px;
-  font-size: 18px;
+  padding: ${size.SIZE_011};
+  font-size: ${size.SIZE_010};
   font-weight: bold;
 `;
 
 export const Title = styled.h2`
-  font-size: 18px;
+  font-size: ${size.SIZE_010};
+  font-weight: bold;
   margin: 0;
 `;
 
 export const CloseButton = styled.button`
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: ${size.SIZE_011};
   cursor: pointer;
 `;
 
 export const ListWrapper = styled.div`
   flex: 1;
   overflow-y: auto;
-  padding: 0 24px;
+  padding: 0 ${size.SIZE_011};
 `;
 
 export const TravelItem = styled.div`
   background-color: ${colors.WHITE};
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
+  border-radius: ${size.SIZE_007};
+  padding: ${size.SIZE_009};
+  margin-bottom: ${size.SIZE_009};
+  margin-top: ${size.SIZE_009};
   cursor: pointer;
   transition: background-color 0.2s;
-  box-shadow: 0 4.54px 13.61px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px ${size.SIZE_008} rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: ${colors.GRAY_200};
@@ -59,7 +60,7 @@ export const TravelItem = styled.div`
 `;
 
 export const TravelName = styled.div`
-  font-size: 16px;
+  font-size: ${size.SIZE_009};
   font-weight: 600;
 `;
 
@@ -74,7 +75,7 @@ export const TravelDescContainer = styled.div`
 export const TravelDesc = styled.div<{ $size: string }>`
   font-size: ${(props) => props.$size};
   color: ${colors.GREY_500};
-  margin-top: 4px;
+  margin-top: ${size.SIZE_004};
 
   &:first-child {
     margin-bottom: 3px;
@@ -82,7 +83,7 @@ export const TravelDesc = styled.div<{ $size: string }>`
 `;
 
 export const Footer = styled.div`
-  padding: 20px 24px;
+  padding: ${size.SIZE_010} ${size.SIZE_011};
   border-top: 1px solid #eee;
 `;
 
@@ -91,13 +92,13 @@ export const SaveButton = styled.button`
   background-color: ${colors.WHITE};
   color: ${colors.PRIMARY};
   border: none;
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 16px;
+  border-radius: ${size.SIZE_007};
+  padding: ${size.SIZE_007};
+  font-size: ${size.SIZE_009};
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s;
-  box-shadow: 0 4.54px 13.61px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px ${size.SIZE_008} rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: ${colors.GRAY_200};
