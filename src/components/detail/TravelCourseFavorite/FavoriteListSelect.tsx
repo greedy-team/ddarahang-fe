@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Header,
@@ -19,7 +19,13 @@ interface TravelListSelectorProps {
   onSave: () => void;
 }
 
-const FavoriteListSelect: React.FC<TravelListSelectorProps> = ({ onClose, onSave }) => {
+const FavoriteListSelect = ({ onClose, onSave }: TravelListSelectorProps) => {
+  const [selectedItem, setSelectedItem] = useState(false);
+
+  const handleSelectedItemClick = () => {
+    setSelectedItem(!selectedItem);
+  };
+
   return (
     <Container>
       <Header>
@@ -27,7 +33,10 @@ const FavoriteListSelect: React.FC<TravelListSelectorProps> = ({ onClose, onSave
         <CloseButton onClick={onClose}>×</CloseButton>
       </Header>
       <ListWrapper>
-        <TravelItem>
+        <TravelItem
+          $isSelected={selectedItem}
+          onClick={() => handleSelectedItemClick()}
+        >
           <TravelName>여행</TravelName>
           <TravelDescContainer>
             <TravelDesc $size={size.SIZE_008}>기본 여행 저장 목록입니다.</TravelDesc>
