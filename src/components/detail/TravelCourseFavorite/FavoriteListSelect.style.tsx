@@ -104,3 +104,16 @@ export const SaveButton = styled.button`
     background-color: ${colors.GRAY_200};
   }
 `;
+
+export const Toast = styled.div`
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: ${colors.BLACK};
+  color: ${colors.WHITE};
+  padding: 12px 20px;
+  border-radius: 8px;
+  z-index: 1000;
+  font-size: 14px;
+`;
