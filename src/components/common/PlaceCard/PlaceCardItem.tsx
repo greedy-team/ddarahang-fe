@@ -11,6 +11,7 @@ import {
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 import Tag from '../../detail/Tag/Tag';
 import FavoriteIcon from '/icon/favorite.svg';
+import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
 
 interface PlaceCardProps {
   placeItem: OneDayCourseType | FavoritePlaceType;
@@ -20,6 +21,7 @@ interface PlaceCardProps {
 const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
+  const { setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
 
   useEffect(() => {
     if (selectedPanel === placeItem.placeName) {
@@ -28,6 +30,10 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
       setIsSelected(false);
     }
   }, [selectedPanel]);
+
+  const handleOpenFavoriteListSelect = () => {
+    setIsFavoriteListSelectOpen(true);
+  };
 
   return (
     <PlaceCardWrapper>
@@ -42,7 +48,7 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
             type='button'
             title='찜 버튼'
             aria-label='navigation menu'
-            onClick={() => {}}
+            onClick={() => handleOpenFavoriteListSelect()}
           >
             <img
               src={FavoriteIcon}

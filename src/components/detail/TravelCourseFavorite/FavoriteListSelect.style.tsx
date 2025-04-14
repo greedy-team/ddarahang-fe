@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const Container = styled.div`
+export const Container = styled.div<{ $isVisible: boolean }>`
   width: ${size.SIZE_024};
-  height: ${size.SIZE_026};
+  height: 90%;
   background-color: ${colors.WHITE};
   border-radius: ${size.SIZE_010};
   box-shadow: 0 0 ${size.SIZE_010} rgba(0, 0, 0, 0.1);
-  display: flex;
+  display: ${(props) => (props.$isVisible ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  right: ${size.SIZE_010};
+  margin: 20px;
   top: 6.125rem;
   z-index: 10;
 `;
@@ -22,11 +22,12 @@ export const Header = styled.div`
   align-items: center;
   padding: ${size.SIZE_011};
   font-size: ${size.SIZE_010};
-  font-weight: bold;
 `;
 
 export const Title = styled.h2`
   font-size: ${size.SIZE_010};
+  color: ${colors.BLACK};
+  font-family: 'Pretendard-SemiBold';
   font-weight: bold;
   margin: 0;
 `;
@@ -84,7 +85,6 @@ export const TravelDesc = styled.div<{ $size: string }>`
 
 export const Footer = styled.div`
   padding: ${size.SIZE_010} ${size.SIZE_011};
-  border-top: 1px solid #eee;
 `;
 
 export const SaveButton = styled.button`
