@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   Container,
   Header,
@@ -13,24 +13,30 @@ import {
   TravelDescContainer,
 } from './FavoriteListSelect.style';
 import { size } from '../../../styles/Theme';
+import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
 
 interface TravelListSelectorProps {
-  onClose: () => void;
-  onSave: () => void;
+  placeCount: number;
+  onSave?: () => void;
 }
 
-const FavoriteListSelect = ({ onClose, onSave }: TravelListSelectorProps) => {
+const FavoriteListSelect = ({ onSave, placeCount }: TravelListSelectorProps) => {
   const [selectedItem, setSelectedItem] = useState(false);
+  const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
 
   const handleSelectedItemClick = () => {
     setSelectedItem(!selectedItem);
   };
 
+  const handleCloseFavoriteListSelect = () => {
+    setIsFavoriteListSelectOpen(!isFavoriteListSelectOpen);
+  };
+
   return (
-    <Container>
+    <Container $isVisible={isFavoriteListSelectOpen}>
       <Header>
         <Title>여행 목록 선택하기</Title>
-        <CloseButton onClick={onClose}>×</CloseButton>
+        <CloseButton onClick={() => handleCloseFavoriteListSelect()}>×</CloseButton>
       </Header>
       <ListWrapper>
         <TravelItem
@@ -40,7 +46,7 @@ const FavoriteListSelect = ({ onClose, onSave }: TravelListSelectorProps) => {
           <TravelName>여행</TravelName>
           <TravelDescContainer>
             <TravelDesc $size={size.SIZE_008}>기본 여행 저장 목록입니다.</TravelDesc>
-            <TravelDesc $size={size.SIZE_006}>5개의 여행장소</TravelDesc>
+            <TravelDesc $size={size.SIZE_006}>{placeCount}개의 여행장소</TravelDesc>
           </TravelDescContainer>
         </TravelItem>
       </ListWrapper>
