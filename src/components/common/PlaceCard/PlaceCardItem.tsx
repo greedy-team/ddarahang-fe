@@ -35,12 +35,20 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
     setIsFavoriteListSelectOpen(true);
   };
 
+  const handlePlaceCardClick = (placeName: string) => {
+    if (selectedPanel == placeName) {
+      setSelectedPanel('');
+    } else {
+      setSelectedPanel(placeName);
+    }
+  };
+
   return (
     <PlaceCardWrapper>
       <PlaceCircleStep>{orderInList}</PlaceCircleStep>
       <PlaceCardContainer
         $isSelected={isSelected}
-        onClick={() => setSelectedPanel(placeItem.placeName)}
+        onClick={() => handlePlaceCardClick(placeItem.placeName)}
       >
         <PlaceCardHeader>
           <PlaceName $isSelected={isSelected}>{placeItem.placeName}</PlaceName>
