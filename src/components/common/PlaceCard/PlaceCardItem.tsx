@@ -48,7 +48,10 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
             type='button'
             title='찜 버튼'
             aria-label='navigation menu'
-            onClick={() => handleOpenFavoriteListSelect()}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleOpenFavoriteListSelect();
+            }}
           >
             <img
               src={FavoriteIcon}
