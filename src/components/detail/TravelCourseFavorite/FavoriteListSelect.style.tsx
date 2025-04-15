@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const Container = styled.div<{ $isVisible: boolean }>`
+export const FavoriteListSelectContainer = styled.div<{ $isVisible: boolean }>`
   width: ${size.SIZE_024};
   height: 90%;
   background-color: ${colors.WHITE};
@@ -16,7 +16,7 @@ export const Container = styled.div<{ $isVisible: boolean }>`
   z-index: 10;
 `;
 
-export const Header = styled.div`
+export const FavoriteListSelectHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,7 +24,7 @@ export const Header = styled.div`
   font-size: ${size.SIZE_010};
 `;
 
-export const Title = styled.h2`
+export const FavoriteListSelectTitle = styled.h2`
   font-size: ${size.SIZE_010};
   color: ${colors.BLACK};
   font-family: 'Pretendard-SemiBold';
@@ -32,20 +32,20 @@ export const Title = styled.h2`
   margin: 0;
 `;
 
-export const CloseButton = styled.button`
+export const FavoriteListSelectCloseButton = styled.button`
   background: none;
   border: none;
   font-size: ${size.SIZE_011};
   cursor: pointer;
 `;
 
-export const ListWrapper = styled.div`
+export const FavoriteListSelectListWrapper = styled.div`
   flex: 1;
   overflow-y: auto;
   padding: 0 ${size.SIZE_011};
 `;
 
-export const TravelItem = styled.div<{ $isSelected: boolean }>`
+export const FavoriteListSelectItem = styled.div<{ $isSelected: boolean }>`
   background-color: ${(props) => (props.$isSelected ? '#f1f1f1' : '#f9f9f9')};
   border-radius: ${size.SIZE_007};
   padding: ${size.SIZE_009};
@@ -60,12 +60,12 @@ export const TravelItem = styled.div<{ $isSelected: boolean }>`
   }
 `;
 
-export const TravelName = styled.div`
+export const FavoriteListSelectItemName = styled.div`
   font-size: ${size.SIZE_009};
   font-weight: 600;
 `;
 
-export const TravelDescContainer = styled.div`
+export const FavoriteListSelectItemDescContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -73,7 +73,7 @@ export const TravelDescContainer = styled.div`
   width: 100%;
 `;
 
-export const TravelDesc = styled.div<{ $size: string }>`
+export const FavoriteListSelectItemDesc = styled.div<{ $size: string }>`
   font-size: ${(props) => props.$size};
   color: ${colors.GREY_500};
   margin-top: ${size.SIZE_004};
@@ -83,11 +83,11 @@ export const TravelDesc = styled.div<{ $size: string }>`
   }
 `;
 
-export const Footer = styled.div`
+export const FavoriteListSelectFooter = styled.div`
   padding: ${size.SIZE_010} ${size.SIZE_011};
 `;
 
-export const SaveButton = styled.button`
+export const FavoriteListSelectSaveButton = styled.button`
   width: 100%;
   background-color: ${colors.WHITE};
   color: ${colors.PRIMARY};
@@ -105,7 +105,7 @@ export const SaveButton = styled.button`
   }
 `;
 
-export const Toast = styled.div`
+export const FavoriteListSelectToast = styled.div`
   position: absolute;
   bottom: 50%;
   left: 50%;

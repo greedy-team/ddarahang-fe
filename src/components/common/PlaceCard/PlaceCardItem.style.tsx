@@ -23,7 +23,6 @@ export const PlaceCardContainer = styled.li<{ $isSelected: boolean }>`
   border: 1px solid ${colors.GRAY_200};
   border-radius: ${size.SIZE_006};
   box-shadow: ${size.SIZE_003} ${size.SIZE_003} ${size.SIZE_003} rgba(0, 0, 0, 0.1);
-  cursor: pointer;
   background-color: ${(props) => (props.$isSelected ? colors.GRAY_200 : 'transparent')};
 
   &:hover {

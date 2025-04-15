@@ -1,28 +1,23 @@
 import { useState } from 'react';
 import {
-  Container,
-  Header,
-  Title,
-  CloseButton,
-  ListWrapper,
-  TravelItem,
-  TravelName,
-  TravelDesc,
-  Footer,
-  SaveButton,
-  TravelDescContainer,
-  Toast,
+  FavoriteListSelectCloseButton,
+  FavoriteListSelectContainer,
+  FavoriteListSelectFooter,
+  FavoriteListSelectHeader,
+  FavoriteListSelectItem,
+  FavoriteListSelectItemDesc,
+  FavoriteListSelectItemDescContainer,
+  FavoriteListSelectItemName,
+  FavoriteListSelectListWrapper,
+  FavoriteListSelectSaveButton,
+  FavoriteListSelectToast,
 } from './FavoriteListSelect.style';
 import { size } from '../../../styles/Theme';
 import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
 
-interface TravelListSelectorProps {
-  placeCount: number;
-}
-
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
-const FavoriteListSelect = ({ placeCount }: TravelListSelectorProps) => {
+const FavoriteListSelect = () => {
   const [selectedItem, setSelectedItem] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
@@ -54,28 +49,32 @@ const FavoriteListSelect = ({ placeCount }: TravelListSelectorProps) => {
 
   return (
     <>
-      <Container $isVisible={isFavoriteListSelectOpen}>
-        {showToast && <Toast>저장되었습니다!</Toast>}
-        <Header>
-          <Title>여행 목록 선택하기</Title>
-          <CloseButton onClick={() => handleCloseFavoriteListSelect()}>×</CloseButton>
-        </Header>
-        <ListWrapper>
-          <TravelItem
+      <FavoriteListSelectContainer $isVisible={isFavoriteListSelectOpen}>
+        {showToast && <FavoriteListSelectToast>저장되었습니다!</FavoriteListSelectToast>}
+        <FavoriteListSelectHeader>
+          <FavoriteListSelectHeader>여행 목록 선택하기</FavoriteListSelectHeader>
+          <FavoriteListSelectCloseButton onClick={() => handleCloseFavoriteListSelect()}>
+            ×
+          </FavoriteListSelectCloseButton>
+        </FavoriteListSelectHeader>
+        <FavoriteListSelectListWrapper>
+          <FavoriteListSelectItem
             $isSelected={selectedItem}
             onClick={() => handleSelectedItemClick()}
           >
-            <TravelName>여행</TravelName>
-            <TravelDescContainer>
-              <TravelDesc $size={size.SIZE_008}>기본 여행 저장 목록입니다.</TravelDesc>
-              <TravelDesc $size={size.SIZE_006}>{placeCount}개의 여행장소</TravelDesc>
-            </TravelDescContainer>
-          </TravelItem>
-        </ListWrapper>
-        <Footer>
-          <SaveButton onClick={() => handleSaveFavoriteListPlace()}>해당 목록에 저장하기</SaveButton>
-        </Footer>
-      </Container>
+            <FavoriteListSelectItemName>여행</FavoriteListSelectItemName>
+            <FavoriteListSelectItemDescContainer>
+              <FavoriteListSelectItemDesc $size={size.SIZE_008}>기본 여행 저장 목록입니다.</FavoriteListSelectItemDesc>
+              <FavoriteListSelectItemDesc $size={size.SIZE_006}>0개의 여행장소</FavoriteListSelectItemDesc>
+            </FavoriteListSelectItemDescContainer>
+          </FavoriteListSelectItem>
+        </FavoriteListSelectListWrapper>
+        <FavoriteListSelectFooter>
+          <FavoriteListSelectSaveButton onClick={() => handleSaveFavoriteListPlace()}>
+            해당 목록에 저장하기
+          </FavoriteListSelectSaveButton>
+        </FavoriteListSelectFooter>
+      </FavoriteListSelectContainer>
     </>
   );
 };

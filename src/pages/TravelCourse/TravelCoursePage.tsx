@@ -136,7 +136,7 @@ const TravelCoursePage = () => {
         )}
         {!isMobile && (
           <MapContainer>
-            <FavoriteListSelect placeCount={0}></FavoriteListSelect>
+            <FavoriteListSelect />
             <Wrapper
               apiKey={apiKey}
               key={selectedTab}
