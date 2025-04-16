@@ -11,6 +11,7 @@ import {
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 import Tag from '../../detail/Tag/Tag';
 import FavoriteIcon from '/icon/favorite.svg';
+import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
 
 interface PlaceCardProps {
   placeItem: OneDayCourseType | FavoritePlaceType;
@@ -20,6 +21,7 @@ interface PlaceCardProps {
 const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
+  const { setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
 
   useEffect(() => {
     if (selectedPanel === placeItem.placeName) {
@@ -29,12 +31,24 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
     }
   }, [selectedPanel]);
 
+  const handleOpenFavoriteListSelect = () => {
+    setIsFavoriteListSelectOpen(true);
+  };
+
+  const handlePlaceCardClick = (placeName: string) => {
+    if (selectedPanel == placeName) {
+      setSelectedPanel('');
+    } else {
+      setSelectedPanel(placeName);
+    }
+  };
+
   return (
     <PlaceCardWrapper>
       <PlaceCircleStep>{orderInList}</PlaceCircleStep>
       <PlaceCardContainer
         $isSelected={isSelected}
-        onClick={() => setSelectedPanel(placeItem.placeName)}
+        onClick={() => handlePlaceCardClick(placeItem.placeName)}
       >
         <PlaceCardHeader>
           <PlaceName $isSelected={isSelected}>{placeItem.placeName}</PlaceName>
@@ -42,7 +56,10 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
             type='button'
             title='찜 버튼'
             aria-label='navigation menu'
-            onClick={() => {}}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleOpenFavoriteListSelect();
+            }}
           >
             <img
               src={FavoriteIcon}
