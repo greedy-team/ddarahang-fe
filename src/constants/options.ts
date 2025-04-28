@@ -239,6 +239,20 @@ export const VIEWTNAMOPTION: SelectOptionType[] = [
     isCountryOption: false,
     countryLabel: '베트남',
   },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/nhatrang.png',
+    locationLabel: '나트랑',
+    locationType: '도시, 베트남',
+    isCountryOption: false,
+    countryLabel: '베트남',
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/danang.jpg',
+    locationLabel: '다낭',
+    locationType: '도시, 베트남',
+    isCountryOption: false,
+    countryLabel: '베트남',
+  },
 ];
 
 export const CHINAOPTION: SelectOptionType[] = [
