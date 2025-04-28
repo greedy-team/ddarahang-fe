@@ -14,10 +14,5 @@ export default meta;
 type Story = StoryObj<typeof FavoriteListSelect>;
 
 export const Default: Story = {
-  render: () => (
-    <FavoriteListSelect
-      onClose={() => console.log('닫기 버튼 클릭')}
-      onSave={() => console.log('저장 버튼 클릭')}
-    />
-  ),
+  render: () => <FavoriteListSelect />,
 };
