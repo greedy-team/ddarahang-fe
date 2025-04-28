@@ -68,7 +68,7 @@ const TravelMapMarker = ({
     }
 
     markerInstance.addListener('click', () => {
-      if (selectedPanel == placeName) {
+      if (selectedPanel === placeName) {
         setSelectedPanel('');
         setSelectedMarker('');
         infowindow.close();
