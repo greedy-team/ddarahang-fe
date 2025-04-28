@@ -36,7 +36,7 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   };
 
   const handlePlaceCardClick = (placeName: string) => {
-    if (selectedPanel == placeName) {
+    if (selectedPanel === placeName) {
       setSelectedPanel('');
     } else {
       setSelectedPanel(placeName);
