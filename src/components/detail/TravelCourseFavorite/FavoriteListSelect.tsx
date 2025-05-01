@@ -22,6 +22,7 @@ const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 const FavoriteListSelect = () => {
   const [selectedItem, setSelectedItem] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
   const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
 
   const saveFavoritePlaceId = (placeId: string) => {
@@ -43,7 +44,15 @@ const FavoriteListSelect = () => {
   };
 
   const handleSaveFavoriteListPlace = () => {
+    if (!selectedItem) {
+      setToastMessage('목록을 선택해주세요.');
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 2000);
+      return;
+    }
+
     saveFavoritePlaceId('1');
+    setToastMessage('저장되었습니다.');
     setShowToast(true);
 
     setTimeout(() => setShowToast(false), 2000);
@@ -51,7 +60,7 @@ const FavoriteListSelect = () => {
 
   return (
     <FavoriteListSelectContainer $isVisible={isFavoriteListSelectOpen}>
-      {showToast && <FavoriteListSelectToast>저장되었습니다!</FavoriteListSelectToast>}
+      {showToast && <FavoriteListSelectToast>{toastMessage}</FavoriteListSelectToast>}
       <FavoriteListSelectHeader>
         <FavoriteListSelectTitle>여행 목록 선택하기</FavoriteListSelectTitle>
         <FavoriteListSelectCloseButton onClick={() => handleCloseFavoriteListSelect()}>×</FavoriteListSelectCloseButton>
