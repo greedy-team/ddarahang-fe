@@ -68,11 +68,17 @@ const TravelMapMarker = ({
     }
 
     markerInstance.addListener('click', () => {
-      setSelectedPanel(placeName);
-      setSelectedMarker(placeName);
-      infowindow.open({
-        anchor: markerInstance,
-      });
+      if (selectedPanel === placeName) {
+        setSelectedPanel('');
+        setSelectedMarker('');
+        infowindow.close();
+      } else {
+        setSelectedPanel(placeName);
+        setSelectedMarker(placeName);
+        infowindow.open({
+          anchor: markerInstance,
+        });
+      }
     });
 
     createRoot(markerContainer).render(

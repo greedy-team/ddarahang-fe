@@ -28,6 +28,7 @@ export const TravelCourseContainer = styled.div`
 export const MapContainer = styled.div`
   flex: 1 1 0%;
   display: flex;
+  justify-content: flex-start;
 
   @media screen {
     min-height: 15.625rem;
