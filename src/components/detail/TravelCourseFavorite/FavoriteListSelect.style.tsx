@@ -6,14 +6,23 @@ export const FavoriteListSelectContainer = styled.div<{ $isVisible: boolean }>`
   height: 90%;
   background-color: ${colors.WHITE};
   border-radius: ${size.SIZE_010};
+  display: flex;
   box-shadow: 0 0 ${size.SIZE_010} rgba(0, 0, 0, 0.1);
-  display: ${(props) => (props.$isVisible ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
   margin: 1.25rem;
   top: 6.125rem;
   z-index: 10;
+
+  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
+  visibility: ${(props) => (props.$isVisible ? 'visible' : 'hidden')};
+  transform: ${(props) => (props.$isVisible ? 'translateY(0)' : 'translateY(20px)')};
+  pointer-events: ${(props) => (props.$isVisible ? 'auto' : 'none')};
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s;
 `;
 
 export const FavoriteListSelectHeader = styled.div`
