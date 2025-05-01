@@ -64,6 +64,8 @@ export const FavoriteListSelectItem = styled.div<{ $isSelected: boolean }>`
   transition: background-color 0.2s;
   box-shadow: 0 5px ${size.SIZE_008} rgba(0, 0, 0, 0.1);
 
+  font-family: ${(props) => (props.$isSelected ? 'Pretendard-SemiBold' : '')};
+
   &:hover {
     background-color: ${colors.GRAY_200};
   }
