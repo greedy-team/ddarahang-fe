@@ -11,7 +11,7 @@ export const FavoriteListSelectContainer = styled.div<{ $isVisible: boolean }>`
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  margin: 20px;
+  margin: 1.25rem;
   top: 6.125rem;
   z-index: 10;
 `;
@@ -68,8 +68,8 @@ export const FavoriteListSelectItemName = styled.div`
 export const FavoriteListSelectItemDescContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  margin: 3px 0 0 0;
+  gap: 0.25rem;
+  margin: 0.25rem 0 0 0;
   width: 100%;
 `;
 
@@ -79,7 +79,7 @@ export const FavoriteListSelectItemDesc = styled.div<{ $size: string }>`
   margin-top: ${size.SIZE_004};
 
   &:first-child {
-    margin-bottom: 3px;
+    margin-bottom: 0.25rem;
   }
 `;
 
@@ -98,7 +98,7 @@ export const FavoriteListSelectSaveButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s;
-  box-shadow: 0 5px ${size.SIZE_008} rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem ${size.SIZE_008} rgba(0, 0, 0, 0.1);
 
   &:hover {
     background-color: ${colors.GRAY_200};
@@ -112,8 +112,8 @@ export const FavoriteListSelectToast = styled.div`
   transform: translateX(-50%);
   background-color: ${colors.BLACK};
   color: ${colors.WHITE};
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
   z-index: 1000;
-  font-size: 14px;
+  font-size: 0.875rem;
 `;
