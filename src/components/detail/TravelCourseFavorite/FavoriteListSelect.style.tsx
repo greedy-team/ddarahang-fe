@@ -55,7 +55,7 @@ export const FavoriteListSelectListWrapper = styled.div`
 `;
 
 export const FavoriteListSelectItem = styled.div<{ $isSelected: boolean }>`
-  background-color: ${(props) => (props.$isSelected ? '#f1f1f1' : '#f9f9f9')};
+  background-color: ${(props) => (props.$isSelected ? colors.GRAY_200 : colors.WHITE)};
   border-radius: ${size.SIZE_007};
   padding: ${size.SIZE_009};
   margin-bottom: ${size.SIZE_009};
