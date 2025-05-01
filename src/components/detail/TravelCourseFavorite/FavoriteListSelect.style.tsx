@@ -98,24 +98,6 @@ export const FavoriteListSelectFooter = styled.div`
   padding: ${size.SIZE_010} ${size.SIZE_011};
 `;
 
-export const FavoriteListSelectSaveButton = styled.button`
-  width: 100%;
-  background-color: ${colors.WHITE};
-  color: ${colors.PRIMARY};
-  border: none;
-  border-radius: ${size.SIZE_007};
-  padding: ${size.SIZE_007};
-  font-size: ${size.SIZE_009};
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  box-shadow: 0 0.25rem ${size.SIZE_008} rgba(0, 0, 0, 0.1);
-
-  &:hover {
-    background-color: ${colors.GRAY_200};
-  }
-`;
-
 export const FavoriteListSelectToast = styled.div`
   position: absolute;
   bottom: 50%;
