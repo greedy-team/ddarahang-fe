@@ -1,6 +1,6 @@
 import { SelectOptionType } from '../types';
 
-export const COUNTRIES = ['대한민국', '일본', '말레이시아', '베트남', '중국'];
+export const COUNTRIES = ['대한민국', '일본', '유럽', '호주', '말레이시아', '베트남', '중국', '필리핀'];
 
 export const COUNTRYOPTION: SelectOptionType[] = [
   {
@@ -14,6 +14,20 @@ export const COUNTRYOPTION: SelectOptionType[] = [
     imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/japan.jpg',
     locationLabel: '일본',
     countryLabel: '일본',
+    locationType: '국가',
+    isCountryOption: true,
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/europe.jpg',
+    locationLabel: '유럽',
+    countryLabel: '유럽',
+    locationType: '국가',
+    isCountryOption: true,
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/australia.jpg',
+    locationLabel: '호주',
+    countryLabel: '호주',
     locationType: '국가',
     isCountryOption: true,
   },
@@ -35,6 +49,13 @@ export const COUNTRYOPTION: SelectOptionType[] = [
     imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/China.png',
     locationLabel: '중국',
     countryLabel: '중국',
+    locationType: '국가',
+    isCountryOption: true,
+  },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/Philippines.jpg',
+    locationLabel: '필리핀',
+    countryLabel: '필리핀',
     locationType: '국가',
     isCountryOption: true,
   },
@@ -212,6 +233,13 @@ export const JAPANREGIONOPTION: SelectOptionType[] = [
     isCountryOption: false,
     countryLabel: '일본',
   },
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/sapporo.jpg',
+    locationLabel: '삿포로',
+    locationType: '도시, 일본',
+    isCountryOption: false,
+    countryLabel: '일본',
+  },
 ];
 
 export const MALAYSIAREGIONOPTION: SelectOptionType[] = [
@@ -255,12 +283,42 @@ export const VIEWTNAMOPTION: SelectOptionType[] = [
   },
 ];
 
+export const AUSTRALIAOPTION: SelectOptionType[] = [
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/australia.jpg',
+    locationLabel: '시드니',
+    locationType: '도시, 호주',
+    isCountryOption: false,
+    countryLabel: '호주',
+  },
+];
+
+export const EUROPEOPTION: SelectOptionType[] = [
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/croatia.jpg',
+    locationLabel: '크로아티아',
+    locationType: '도시, 유럽',
+    isCountryOption: false,
+    countryLabel: '유럽',
+  },
+];
+
 export const CHINAOPTION: SelectOptionType[] = [
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/shanghai.png',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/shanghai.jpg',
     locationLabel: '상하이',
     locationType: '도시, 중국',
     isCountryOption: false,
     countryLabel: '중국',
+  },
+];
+
+export const PHILIPPINESOPTION: SelectOptionType[] = [
+  {
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/cebu.jpg',
+    locationLabel: '세부',
+    locationType: '도시, 필리핀',
+    isCountryOption: false,
+    countryLabel: '필리핀',
   },
 ];

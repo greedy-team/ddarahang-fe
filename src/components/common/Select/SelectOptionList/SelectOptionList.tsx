@@ -14,9 +14,9 @@ interface SelectOptionListProps {
 export const SelectOptionList = ({ isOpen, setIsOpen, setCurrentPageNumber, optionListRef }: SelectOptionListProps) => {
   const { selectedOption } = useSelectOptionContext();
 
-  const options = getRegionOptionList(selectedOption);
+  const options = getRegionOptionList(selectedOption) || [];
 
-  if (!options.length) {
+  if (options.length === 0) {
     return null;
   }
 

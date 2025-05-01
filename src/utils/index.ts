@@ -6,6 +6,9 @@ import {
   MALAYSIAREGIONOPTION,
   VIEWTNAMOPTION,
   CHINAOPTION,
+  PHILIPPINESOPTION,
+  AUSTRALIAOPTION,
+  EUROPEOPTION,
 } from '../constants/options';
 import { CountryType, SortByType } from '../types';
 
@@ -21,12 +24,19 @@ export const getRegionOptionList = (selectedOption: {
   } else if (selectedOption.countryName === COUNTRIES[1]) {
     return JAPANREGIONOPTION;
   } else if (selectedOption.countryName === COUNTRIES[2]) {
-    return MALAYSIAREGIONOPTION;
+    return EUROPEOPTION;
   } else if (selectedOption.countryName === COUNTRIES[3]) {
-    return VIEWTNAMOPTION;
+    return AUSTRALIAOPTION;
   } else if (selectedOption.countryName === COUNTRIES[4]) {
+    return MALAYSIAREGIONOPTION;
+  } else if (selectedOption.countryName === COUNTRIES[5]) {
+    return VIEWTNAMOPTION;
+  } else if (selectedOption.countryName === COUNTRIES[6]) {
     return CHINAOPTION;
+  } else if (selectedOption.countryName === COUNTRIES[7]) {
+    return PHILIPPINESOPTION;
   }
+
   return [];
 };
 
