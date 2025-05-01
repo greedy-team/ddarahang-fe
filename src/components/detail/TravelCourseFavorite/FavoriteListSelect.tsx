@@ -22,12 +22,12 @@ const FavoriteListSelect = () => {
   const [showToast, setShowToast] = useState(false);
   const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
 
-  const saveFavoritePlaceId = (id: string) => {
+  const saveFavoritePlaceId = (placeId: string) => {
     const stored = localStorage.getItem(FAVORITE_STORAGE_KEY);
     const parsed: string[] = stored ? JSON.parse(stored) : [];
 
-    if (!parsed.includes(id)) {
-      const updated = [...parsed, id];
+    if (!parsed.includes(placeId)) {
+      const updated = [...parsed, placeId];
       localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(updated));
     }
   };
