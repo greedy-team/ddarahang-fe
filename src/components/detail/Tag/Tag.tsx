@@ -6,7 +6,14 @@ interface TagProps {
 }
 
 const Tag = ({ tagName }: TagProps) => {
-  return <StyledTag category={tagName}>#{tagName}</StyledTag>;
+  return (
+    <StyledTag
+      aria-label='장소 태그'
+      category={tagName}
+    >
+      #{tagName}
+    </StyledTag>
+  );
 };
 
 export default Tag;

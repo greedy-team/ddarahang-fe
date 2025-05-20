@@ -29,7 +29,6 @@ beforeAll(() => {
 
 const CustomTravelCourse = () => {
   const setSelectedTab = () => {};
-  const setSelectedPanel = () => {};
 
   return (
     <SelectedPanelProvider>
@@ -38,7 +37,6 @@ const CustomTravelCourse = () => {
         selectedTab={1}
         oneDayCourses={mockOneDayCourses}
         setSelectedTab={setSelectedTab}
-        setSelectedPanel={setSelectedPanel}
       />
     </SelectedPanelProvider>
   );

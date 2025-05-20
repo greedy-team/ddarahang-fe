@@ -16,14 +16,9 @@ beforeAll(() => {
 });
 
 const CustomTabpanel = () => {
-  const setSelectedPanel = () => {};
-
   return (
     <SelectedPanelProvider>
-      <TabPanel
-        oneDayCourse={mockOneDayCourses}
-        setSelectedPanel={setSelectedPanel}
-      />
+      <TabPanel oneDayCourse={mockOneDayCourses} />
     </SelectedPanelProvider>
   );
 };
