@@ -21,7 +21,7 @@ interface PlaceCardProps {
 const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
-  const { setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
+  const { setIsFavoriteListSelectOpen, setSelectedPlaceId } = useSelectFavoriteListContext();
 
   useEffect(() => {
     if (selectedPanel === placeItem.placeName) {
@@ -32,6 +32,7 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   }, [selectedPanel]);
 
   const handleOpenFavoriteListSelect = (placeId: number) => {
+    setSelectedPlaceId(placeId);
     setIsFavoriteListSelectOpen(true);
   };
 

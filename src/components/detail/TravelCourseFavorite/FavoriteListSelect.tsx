@@ -22,7 +22,7 @@ const FavoriteListSelect = () => {
   const [selectedItem, setSelectedItem] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen } = useSelectFavoriteListContext();
+  const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen, selectedPlaceId } = useSelectFavoriteListContext();
 
   const saveFavoritePlaceId = (placeId: string) => {
     const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
@@ -50,10 +50,12 @@ const FavoriteListSelect = () => {
       return;
     }
 
-    saveFavoritePlaceId('1');
+    if (selectedPlaceId) {
+      saveFavoritePlaceId(selectedPlaceId.toString());
+    }
+
     setToastMessage('저장되었습니다.');
     setShowToast(true);
-
     setTimeout(() => setShowToast(false), 2000);
   };
 
