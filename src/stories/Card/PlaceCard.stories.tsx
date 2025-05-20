@@ -47,6 +47,7 @@ export const Default: Story = {
       orderInday: 1,
       placeName: '광안리 해수욕장',
       address: '대한민국 어딘가',
+      placeId: 1,
       tag: '관광',
       position: {
         lat: 15.2356,

@@ -12,10 +12,16 @@ const meta: Meta<typeof FavoriteListSelect> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => {
-      const [isOpen, setIsOpen] = useState(true); // 항상 열림
+      const [isOpen, setIsOpen] = useState(true);
+      const [placeId, setPlaceId] = useState<number | null>(null);
       return (
         <SelectFavoriteListContext.Provider
-          value={{ isFavoriteListSelectOpen: isOpen, setIsFavoriteListSelectOpen: setIsOpen }}
+          value={{
+            isFavoriteListSelectOpen: isOpen,
+            setIsFavoriteListSelectOpen: setIsOpen,
+            selectedPlaceId: placeId,
+            setSelectedPlaceId: setPlaceId,
+          }}
         >
           <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
             <Story />

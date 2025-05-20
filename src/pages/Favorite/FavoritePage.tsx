@@ -10,7 +10,7 @@ import useFavoritePlaces from '../../hooks/quries/useFavoritePlaces';
 import Loading from '../../components/common/Loading/Loading';
 
 const FavoritePage = () => {
-  const { favoritePlaces, loading, error } = useFavoritePlaces();
+  const { favoritePlaces, loading } = useFavoritePlaces();
 
   const favoriteListTitle = '나만의 여행 장소 목록';
   const favoriteListDescription = '기본 여행 장소 목록';
