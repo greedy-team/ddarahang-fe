@@ -66,6 +66,7 @@ export interface TravelVideoListResponse {
 export interface Detail extends Position {
   day: number;
   orderInDay: number;
+  placeId: number;
   placeName: string;
   placeAddress: string;
   tag: TagType;
@@ -77,6 +78,7 @@ export interface Position {
 }
 
 export interface BasePlaceType {
+  placeId: number;
   placeName: string;
   address: string;
   tag: TagType;

@@ -31,7 +31,7 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
     }
   }, [selectedPanel]);
 
-  const handleOpenFavoriteListSelect = () => {
+  const handleOpenFavoriteListSelect = (placeId: number) => {
     setIsFavoriteListSelectOpen(true);
   };
 
@@ -58,7 +58,7 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
             aria-label='navigation menu'
             onClick={(e) => {
               e.stopPropagation();
-              handleOpenFavoriteListSelect();
+              handleOpenFavoriteListSelect(placeItem.placeId);
             }}
           >
             <img

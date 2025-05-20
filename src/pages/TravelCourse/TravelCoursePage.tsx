@@ -86,6 +86,7 @@ const TravelCoursePage = () => {
       .filter((course) => course.day === selectedTab)
       .map((course) => ({
         placeName: course.placeName,
+        placeId: course.placeId,
         day: course.day,
         orderInday: course.orderInDay,
         tag: course.tag,
@@ -117,7 +118,7 @@ const TravelCoursePage = () => {
             />
 
             {isMobileMapVisible && (
-              <MapContainer> 
+              <MapContainer>
                 <Wrapper
                   apiKey={apiKey}
                   key={selectedTab}

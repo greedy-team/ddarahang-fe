@@ -9,7 +9,6 @@ import {
   FavoriteListSelectItemDescContainer,
   FavoriteListSelectItemName,
   FavoriteListSelectListWrapper,
-  // FavoriteListSelectSaveButton,
   FavoriteListSelectTitle,
   FavoriteListSelectToast,
 } from './FavoriteListSelect.style';
