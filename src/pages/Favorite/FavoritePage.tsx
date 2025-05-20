@@ -6,36 +6,32 @@ import TravelMapWrapper from '../../components/common/TravelMapWrapper/TravelMap
 import FavoriteTabs from '../../components/favorite/FavoriteTabs/FavoriteTabs';
 import { TagType } from '../../types';
 import { StyledFavoritePageLayout, FavoritePlaceListSection, TitleWrapper } from './FavoritePage.style';
+import useFavoritePlaces from '../../hooks/quries/useFavoritePlaces';
+import Loading from '../../components/common/Loading/Loading';
 
 const FavoritePage = () => {
-  const courses = [
-    {
-      id: 1,
-      placeName: '쇼핑하실래요?',
-      address: '주소1',
-      tag: '쇼핑' as TagType,
-      orderInday: 1,
-      position: { lat: 37.5365, lng: 126.978 },
-      day: 1,
-    },
-    {
-      id: 2,
-      placeName: '해장국밥 맛집',
-      address: '주소1',
-      tag: '음식' as TagType,
-      orderInday: 1,
-      position: { lat: 37.5665, lng: 126.978 },
-      day: 1,
-    },
-  ];
+  const { favoritePlaces, loading, error } = useFavoritePlaces();
 
   const favoriteListTitle = '나만의 여행 장소 목록';
   const favoriteListDescription = '기본 여행 장소 목록';
 
   const [selectedTagTab, setSelectedTagTab] = useState<TagType>('전체');
 
-  const filteredCourses =
-    selectedTagTab === '전체' ? courses : courses.filter((course) => course.tag === selectedTagTab);
+  const filteredPlaces =
+    selectedTagTab === '전체' ? favoritePlaces : favoritePlaces.filter((place) => place.tag === selectedTagTab);
+
+  const mapData = favoritePlaces.map((place, index) => ({
+    placeId: index + 1,
+    placeName: place.placeName,
+    address: place.address,
+    tag: place.tag as TagType,
+    orderInday: place.orderInday,
+    position: {
+      lat: place.position.lat,
+      lng: place.position.lng,
+    },
+    day: 1,
+  }));
 
   return (
     <>
@@ -44,22 +40,25 @@ const FavoritePage = () => {
         isIconVisible={false}
         isMainHeader={false}
       />
-      <StyledFavoritePageLayout>
-        <FavoritePlaceListSection>
-          <TitleWrapper>
-            <p>{favoriteListDescription}</p>
-            <h3>{favoriteListTitle}</h3>
-          </TitleWrapper>
-          <FavoriteTabs
-            selectedTagTab={selectedTagTab}
-            setSelectedTagTab={setSelectedTagTab}
-          />
-          <TabPanel oneDayCourse={filteredCourses} />
-        </FavoritePlaceListSection>
-        <TravelMapWrapper>
-          <TravelMap oneDayCourses={courses} />
-        </TravelMapWrapper>
-      </StyledFavoritePageLayout>
+      <Loading loading={loading} />
+      {!loading && (
+        <StyledFavoritePageLayout>
+          <FavoritePlaceListSection>
+            <TitleWrapper>
+              <p>{favoriteListDescription}</p>
+              <h3>{favoriteListTitle}</h3>
+            </TitleWrapper>
+            <FavoriteTabs
+              selectedTagTab={selectedTagTab}
+              setSelectedTagTab={setSelectedTagTab}
+            />
+            <TabPanel oneDayCourse={filteredPlaces} />
+          </FavoritePlaceListSection>
+          <TravelMapWrapper>
+            <TravelMap oneDayCourses={mapData} />
+          </TravelMapWrapper>
+        </StyledFavoritePageLayout>
+      )}
     </>
   );
 };
