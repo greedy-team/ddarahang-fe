@@ -20,7 +20,6 @@ const FavoritePage = () => {
   const filteredPlaces =
     selectedTagTab === '전체' ? favoritePlaces : favoritePlaces.filter((place) => place.tag === selectedTagTab);
 
-  const mapData = favoritePlaces.map((place, index) => ({
   const mapData = filteredPlaces.map((place, index) => ({
     placeId: index + 1,
     placeName: place.placeName,
