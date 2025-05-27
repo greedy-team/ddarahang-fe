@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   FavoriteListSelectCloseButton,
   FavoriteListSelectContainer,
@@ -14,7 +14,7 @@ import {
 } from './FavoriteListSelect.style';
 import { size } from '../../../styles/Theme';
 import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
-import FavoriteListSelectSaveButton from '../../common/Button/RectangleButton/RectangleButton';
+import SaveButton from '../../common/Button/RectangleButton/RectangleButton';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
@@ -23,6 +23,7 @@ const FavoriteListSelect = () => {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen, selectedPlaceId } = useSelectFavoriteListContext();
+  const [placeCount, setPlaceCount] = useState(0);
 
   const saveFavoritePlaceId = (placeId: string) => {
     const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
@@ -59,6 +60,12 @@ const FavoriteListSelect = () => {
     setTimeout(() => setShowToast(false), 2000);
   };
 
+  useEffect(() => {
+    const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
+    const favoritePlaceIdParsed: string[] = favoritePlaceIdStore ? JSON.parse(favoritePlaceIdStore) : [];
+    setPlaceCount(favoritePlaceIdParsed.length);
+  }, [isFavoriteListSelectOpen]);
+
   return (
     <FavoriteListSelectContainer $isVisible={isFavoriteListSelectOpen}>
       {showToast && <FavoriteListSelectToast>{toastMessage}</FavoriteListSelectToast>}
@@ -74,16 +81,16 @@ const FavoriteListSelect = () => {
           <FavoriteListSelectItemName>여행</FavoriteListSelectItemName>
           <FavoriteListSelectItemDescContainer>
             <FavoriteListSelectItemDesc $size={size.SIZE_008}>기본 여행 저장 목록입니다.</FavoriteListSelectItemDesc>
-            <FavoriteListSelectItemDesc $size={size.SIZE_006}>0개의 여행장소</FavoriteListSelectItemDesc>
+            <FavoriteListSelectItemDesc $size={size.SIZE_006}>{placeCount}개의 여행장소</FavoriteListSelectItemDesc>
           </FavoriteListSelectItemDescContainer>
         </FavoriteListSelectItem>
       </FavoriteListSelectListWrapper>
       <FavoriteListSelectFooter>
-        <FavoriteListSelectSaveButton
+        <SaveButton
           text='해당 목록에 저장하기'
           onClick={() => handleSaveFavoriteListPlace()}
           variant='save'
-        ></FavoriteListSelectSaveButton>
+        ></SaveButton>
       </FavoriteListSelectFooter>
     </FavoriteListSelectContainer>
   );
