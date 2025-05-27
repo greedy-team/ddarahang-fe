@@ -27,3 +27,13 @@ export const StyledWarningMessage = styled.p`
   width: 100%;
   font-weight: 800;
 `;
+
+export const TabErrorMessage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 800;
+  font-size: ${size.SIZE_009};
+  gap: ${size.SIZE_005};
+`;

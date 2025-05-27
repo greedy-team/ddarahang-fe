@@ -21,6 +21,7 @@ const FavoritePage = () => {
     selectedTagTab === '전체' ? favoritePlaces : favoritePlaces.filter((place) => place.tag === selectedTagTab);
 
   const mapData = favoritePlaces.map((place, index) => ({
+  const mapData = filteredPlaces.map((place, index) => ({
     placeId: index + 1,
     placeName: place.placeName,
     address: place.address,
@@ -52,11 +53,16 @@ const FavoritePage = () => {
               selectedTagTab={selectedTagTab}
               setSelectedTagTab={setSelectedTagTab}
             />
-            <TabPanel oneDayCourse={filteredPlaces} />
+            <TabPanel
+              isFavorite={true}
+              oneDayCourse={mapData}
+            />
           </FavoritePlaceListSection>
-          <TravelMapWrapper>
-            <TravelMap oneDayCourses={mapData} />
-          </TravelMapWrapper>
+          {mapData.length !== 0 && (
+            <TravelMapWrapper>
+              <TravelMap oneDayCourses={mapData} />
+            </TravelMapWrapper>
+          )}
         </StyledFavoritePageLayout>
       )}
     </>
