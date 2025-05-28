@@ -17,6 +17,7 @@ import {
   NO_DATA_ERROR_MESSAGE,
 } from '../../constants/messages';
 import { useParams } from 'react-router-dom';
+import FavoriteListSelect from '../../components/detail/TravelCourseFavorite/FavoriteListSelect';
 
 const renderMap = (status: Status, courses: OneDayCourseType[]) => {
   switch (status) {
@@ -85,6 +86,7 @@ const TravelCoursePage = () => {
       .filter((course) => course.day === selectedTab)
       .map((course) => ({
         placeName: course.placeName,
+        placeId: course.placeId,
         day: course.day,
         orderInday: course.orderInDay,
         tag: course.tag,
@@ -114,8 +116,9 @@ const TravelCoursePage = () => {
               videoUrl={travelCourse.videoUrl}
               travelCourse={travelCourse}
             />
+
             {isMobileMapVisible && (
-              <MapContainer> 
+              <MapContainer>
                 <Wrapper
                   apiKey={apiKey}
                   key={selectedTab}
@@ -127,7 +130,6 @@ const TravelCoursePage = () => {
             <TravelCourse
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
-              setSelectedPanel={setSelectedPanel}
               oneDayCourses={oneDayCourses}
               totalTravelDays={travelCourse.travelDays}
             />
@@ -135,6 +137,7 @@ const TravelCoursePage = () => {
         )}
         {!isMobile && (
           <MapContainer>
+            <FavoriteListSelect />
             <Wrapper
               apiKey={apiKey}
               key={selectedTab}

@@ -19,3 +19,21 @@ export const Panels = styled.div`
     overflow-y: unset;
   }
 `;
+
+export const StyledWarningMessage = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-weight: 800;
+`;
+
+export const TabErrorMessage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 800;
+  font-size: ${size.SIZE_009};
+  gap: ${size.SIZE_005};
+`;

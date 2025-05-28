@@ -18,3 +18,15 @@ export const StyledRectangleButton = styled.button`
     box-shadow: ${size.SIZE_003} ${size.SIZE_004} ${size.SIZE_007} rgba(0, 0, 0, 0.15);
   }
 `;
+
+export const SaveButtonStyle = styled(StyledRectangleButton)`
+  width: 100%;
+  border-radius: ${size.SIZE_007};
+  padding: ${size.SIZE_007};
+  font-weight: bold;
+  box-shadow: 0 0.25rem ${size.SIZE_008} rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: ${colors.GRAY_200};
+  }
+`;
