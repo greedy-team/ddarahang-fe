@@ -1,12 +1,12 @@
 import { Panels, TabErrorMessage } from './TabPanel.style';
 import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
-import { FavoritePlaceType, OneDayCourseType } from '../../../../types';
+import { OneDayCourseType } from '../../../../types';
 import RectangleButton from '../../Button/RectangleButton/RectangleButton';
 import { useNavigate } from 'react-router-dom';
 
 interface TabPanelProps {
   isFavorite?: boolean;
-  oneDayCourse: OneDayCourseType[] | FavoritePlaceType[];
+  oneDayCourse: OneDayCourseType[];
 }
 
 const TabPanel = ({ isFavorite, oneDayCourse }: TabPanelProps) => {

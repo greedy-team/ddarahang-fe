@@ -9,9 +9,10 @@ import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants/message
 interface TravelVideoListProps {
   error?: unknown;
   videoList: TravelList[];
+  isFavoritePage: boolean;
 }
 
-const TravelVideoList = ({ error, videoList }: TravelVideoListProps) => {
+const TravelVideoList = ({ error, videoList, isFavoritePage }: TravelVideoListProps) => {
   const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const TravelVideoList = ({ error, videoList }: TravelVideoListProps) => {
     <>
       {renderErrorMessage()}
 
-      <TravelVideoListContainer>
+      <TravelVideoListContainer $isFavoritePage={isFavoritePage}>
         {videoList.map((video) => (
           <YoutubeCard
             key={video.travelCourseId}

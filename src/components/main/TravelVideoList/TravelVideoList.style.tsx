@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { size } from '../../../styles/Theme';
 
-export const TravelVideoListContainer = styled.div`
+export const TravelVideoListContainer = styled.div<{ $isFavoritePage: boolean }>`
   width: 95%;
   min-height: 45rem;
   margin-top: ${size.SIZE_006};
@@ -25,4 +25,11 @@ export const TravelVideoListContainer = styled.div`
     grid-template-columns: repeat(1, minmax(0, 2fr));
     grid-template-rows: repeat(1, auto);
   }
+
+  ${({ $isFavoritePage }) =>
+    $isFavoritePage &&
+    `
+    grid-template-columns: repeat(3, minmax(0, 2fr));
+    grid-template-rows: repeat(2, auto);
+  `}
 `;

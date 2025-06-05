@@ -8,6 +8,7 @@ import { TagType } from '../../types';
 import { StyledFavoritePageLayout, FavoritePlaceListSection, TitleWrapper } from './FavoritePage.style';
 import useFavoritePlaces from '../../hooks/quries/useFavoritePlaces';
 import Loading from '../../components/common/Loading/Loading';
+import FavoriteRecommend from '../../components/favorite/FavoriteRecommend/FavoriteRecommend';
 
 const FavoritePage = () => {
   const { favoritePlaces, loading } = useFavoritePlaces();
@@ -57,10 +58,12 @@ const FavoritePage = () => {
               oneDayCourse={mapData}
             />
           </FavoritePlaceListSection>
-          {mapData.length !== 0 && (
+          {mapData.length !== 0 ? (
             <TravelMapWrapper>
               <TravelMap oneDayCourses={mapData} />
             </TravelMapWrapper>
+          ) : (
+            <FavoriteRecommend />
           )}
         </StyledFavoritePageLayout>
       )}

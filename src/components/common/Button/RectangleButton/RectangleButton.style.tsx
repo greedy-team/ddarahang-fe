@@ -7,6 +7,7 @@ export const StyledRectangleButton = styled.button`
   padding: ${size.SIZE_006} ${size.SIZE_010};
   border: none;
   border-radius: ${size.SIZE_005};
+  white-space: nowrap;
   transition: all 0.3s ease;
   cursor: pointer;
   font-size: ${size.SIZE_009};
