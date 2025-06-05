@@ -18,18 +18,25 @@ import FavoriteListSelectSaveButton from '../../common/Button/RectangleButton/Re
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
+type FavoritePlace = {
+  placeId: number;
+  placeName: string;
+};
+
 const FavoriteListSelect = () => {
   const [selectedItem, setSelectedItem] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen, selectedPlaceId } = useSelectFavoriteListContext();
+  const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen, selectedPlace } = useSelectFavoriteListContext();
 
-  const saveFavoritePlaceId = (placeId: string) => {
-    const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
-    const favoritePlaceIdParsed: string[] = favoritePlaceIdStore ? JSON.parse(favoritePlaceIdStore) : [];
+  const saveFavoritePlaceId = (placeId: number, placeName: string) => {
+    const favoritePlaceStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
+    const favoritePlaces: FavoritePlace[] = favoritePlaceStore ? JSON.parse(favoritePlaceStore) : [];
 
-    if (!favoritePlaceIdParsed.includes(placeId)) {
-      const updated = [...favoritePlaceIdParsed, placeId];
+    const isAlreadySaved = favoritePlaces.some((place) => place.placeId === placeId);
+
+    if (!isAlreadySaved) {
+      const updated = [...favoritePlaces, { placeId, placeName }];
       localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(updated));
     }
   };
@@ -50,8 +57,8 @@ const FavoriteListSelect = () => {
       return;
     }
 
-    if (selectedPlaceId) {
-      saveFavoritePlaceId(selectedPlaceId.toString());
+    if (selectedPlace) {
+      saveFavoritePlaceId(selectedPlace?.placeId, selectedPlace?.placeName);
     }
 
     setToastMessage('저장되었습니다.');

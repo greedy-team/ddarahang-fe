@@ -1,15 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FavoritePlaceType, TagType } from '../../types';
-
-export interface FavoritePlaceResponse {
-  orderInPlace: number;
-  placeName: string;
-  placeAddress: string;
-  latitude: number;
-  longitude: number;
-  tag: string;
-}
+import { FavoritePlaceType } from '../../types';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
@@ -20,7 +11,10 @@ const useFavoritePlaces = () => {
 
   const fetchFavoritePlaces = async () => {
     const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
-    const placeIds: number[] = favoritePlaceIdStore ? JSON.parse(favoritePlaceIdStore) : [];
+
+    const placeIds: number[] = favoritePlaceIdStore
+      ? JSON.parse(favoritePlaceIdStore).map((place: { placeId: number; placeName: string }) => place.placeId)
+      : [];
 
     if (placeIds.length === 0) {
       setFavoritePlaces([]);
@@ -34,19 +28,7 @@ const useFavoritePlaces = () => {
         placeIds,
       });
 
-      const formatted: FavoritePlaceType[] = response.data.map((item: any, index: number) => ({
-        placeId: index + 1,
-        placeName: item.placeName,
-        address: item.placeAddress,
-        tag: item.tag as TagType,
-        orderInday: item.orderInPlace,
-        position: {
-          lat: item.latitude,
-          lng: item.longitude,
-        },
-      }));
-
-      setFavoritePlaces(formatted);
+      setFavoritePlaces(response.data);
     } catch (err) {
       setError(err);
     } finally {

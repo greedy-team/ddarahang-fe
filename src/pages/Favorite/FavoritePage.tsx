@@ -23,12 +23,12 @@ const FavoritePage = () => {
   const mapData = filteredPlaces.map((place, index) => ({
     placeId: index + 1,
     placeName: place.placeName,
-    address: place.address,
+    address: place.placeAddress,
     tag: place.tag as TagType,
-    orderInday: place.orderInday,
+    orderInday: place.orderInPlace,
     position: {
-      lat: place.position.lat,
-      lng: place.position.lng,
+      lat: place.latitude,
+      lng: place.longitude,
     },
     day: 1,
   }));
