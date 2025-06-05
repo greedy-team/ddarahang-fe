@@ -2,7 +2,7 @@ import { StyledFavoriteRecommend } from './FavoriteRecommend.styled';
 import useTravelVideoList from '../../../hooks/quries/useGetTravelVideoList';
 import TravelVideoList from '../../main/TravelVideoList/TravelVideoList';
 import Loading from '../../common/Loading/Loading';
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { TitleWrapper } from '../../../pages/Favorite/FavoritePage.style';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 
@@ -16,11 +16,9 @@ const FavoriteRecommend = () => {
     pageNumber: 0,
   });
 
-  useEffect(() => {}, []);
-
   const videoList = videoListResponse?.content ?? [];
 
-  if (error) return <p>에러가 발생했어요.</p>;
+  if (error) return <p>오류가 발생했어요.</p>;
 
   return (
     <StyledFavoriteRecommend>

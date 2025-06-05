@@ -101,3 +101,8 @@ export interface FavoritePlaceType {
   latitude: number;
   longitude: number;
 }
+
+export type FavoritePlace = {
+  placeId: number;
+  placeName: string;
+};

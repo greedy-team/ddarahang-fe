@@ -13,21 +13,23 @@ import Tag from '../../detail/Tag/Tag';
 import FavoriteIcon from '/icon/favorite.svg';
 import FavoriteFillIcon from '/icon/fill-heart.svg';
 import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
+import { FavoritePlace } from '../../../types';
 
 interface PlaceCardProps {
   placeItem: OneDayCourseType;
   orderInList: number;
 }
 
+const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
+
 const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
-  const { setIsFavoriteListSelectOpen, setSelectedPlace, favoritePlaces } = useSelectFavoriteListContext();
+  const { setIsFavoriteListSelectOpen, setSelectedPlace, favoritePlaces, setFavoritePlaces } =
+    useSelectFavoriteListContext();
 
-  console.log(favoritePlaces);
   const savedFavoritePlaceNames = favoritePlaces.map((place) => place.placeName);
   const isFavoritedPlace = savedFavoritePlaceNames.includes(placeItem.placeName);
-  // console.log(favoritePlaceIds, placeItem);
 
   useEffect(() => {
     if (selectedPanel === placeItem.placeName) {
@@ -38,6 +40,13 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   }, [selectedPanel]);
 
   const handleOpenFavoriteListSelect = (placeItem: OneDayCourseType) => {
+    if (isFavoritedPlace) {
+      const newFavoritePlaceList = favoritePlaces.filter((place) => place.placeName !== placeItem.placeName);
+      console.log(newFavoritePlaceList);
+      setFavoritePlaces(newFavoritePlaceList);
+      updateFavoritePlaces(newFavoritePlaceList);
+    }
+
     setSelectedPlace(placeItem);
     setIsFavoriteListSelectOpen(true);
   };
@@ -48,6 +57,10 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
     } else {
       setSelectedPanel(placeName);
     }
+  };
+
+  const updateFavoritePlaces = (newFavoritePlaces: FavoritePlace[]) => {
+    localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(newFavoritePlaces));
   };
 
   return (

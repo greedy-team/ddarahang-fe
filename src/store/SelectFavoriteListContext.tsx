@@ -10,6 +10,7 @@ interface SelectFavoriteListContextType {
     placeId: number;
     placeName: string;
   }[];
+  setFavoritePlaces: React.Dispatch<React.SetStateAction<{ placeId: number; placeName: string }[]>>;
 }
 
 export const SelectFavoriteListContext = createContext<SelectFavoriteListContextType | null>(null);
@@ -43,6 +44,7 @@ export const SelectFavoriteListProvider = ({ children }: { children: React.React
         selectedPlace,
         setSelectedPlace,
         favoritePlaces,
+        setFavoritePlaces,
       }}
     >
       {children}

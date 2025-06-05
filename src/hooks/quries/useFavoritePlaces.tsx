@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FavoritePlaceType } from '../../types';
+import { useSelectFavoriteListContext } from '../context/useSelectFavotieListContext';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
 const useFavoritePlaces = () => {
-  const [favoritePlaces, setFavoritePlaces] = useState<FavoritePlaceType[]>([]);
+  const [places, setPlaces] = useState<FavoritePlaceType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
+  const { favoritePlaces } = useSelectFavoriteListContext();
 
   const fetchFavoritePlaces = async () => {
     const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
@@ -17,7 +19,7 @@ const useFavoritePlaces = () => {
       : [];
 
     if (placeIds.length === 0) {
-      setFavoritePlaces([]);
+      setPlaces([]);
       return;
     }
 
@@ -28,7 +30,7 @@ const useFavoritePlaces = () => {
         placeIds,
       });
 
-      setFavoritePlaces(response.data);
+      setPlaces(response.data);
     } catch (err) {
       setError(err);
     } finally {
@@ -38,9 +40,9 @@ const useFavoritePlaces = () => {
 
   useEffect(() => {
     fetchFavoritePlaces();
-  }, []);
+  }, [favoritePlaces]);
 
-  return { favoritePlaces, loading, error };
+  return { favoritePlaces: places, loading, error };
 };
 
 export default useFavoritePlaces;

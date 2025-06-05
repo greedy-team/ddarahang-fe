@@ -15,13 +15,9 @@ import {
 import { size } from '../../../styles/Theme';
 import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
 import SaveButton from '../../common/Button/RectangleButton/RectangleButton';
+import { FavoritePlace } from '../../../types';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
-
-type FavoritePlace = {
-  placeId: number;
-  placeName: string;
-};
 
 const FavoriteListSelect = () => {
   const [selectedItem, setSelectedItem] = useState(false);
