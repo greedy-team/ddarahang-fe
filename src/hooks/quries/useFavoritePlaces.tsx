@@ -1,52 +1,36 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { FavoritePlaceType, TagType } from '../../types';
-
-export interface FavoritePlaceResponse {
-  orderInPlace: number;
-  placeName: string;
-  placeAddress: string;
-  latitude: number;
-  longitude: number;
-  tag: string;
-}
+import { FavoritePlaceType } from '../../types';
+import { useSelectFavoriteListContext } from '../context/useSelectFavotieListContext';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
 const useFavoritePlaces = () => {
-  const [favoritePlaces, setFavoritePlaces] = useState<FavoritePlaceType[]>([]);
+  const [places, setPlaces] = useState<FavoritePlaceType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
+  const { favoritePlaces } = useSelectFavoriteListContext();
 
   const fetchFavoritePlaces = async () => {
     const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
-    const placeIds: number[] = favoritePlaceIdStore ? JSON.parse(favoritePlaceIdStore) : [];
+
+    const placeIds: number[] = favoritePlaceIdStore
+      ? JSON.parse(favoritePlaceIdStore).map((place: { placeId: number; placeName: string }) => place.placeId)
+      : [];
 
     if (placeIds.length === 0) {
-      setFavoritePlaces([]);
+      setPlaces([]);
       return;
     }
 
     setLoading(true);
 
     try {
-      const response = await axios.post('https://ddarahang.site/api/v1/favorite', {
+      const response = await axios.post(`/api/v1/favorite`, {
         placeIds,
       });
 
-      const formatted: FavoritePlaceType[] = response.data.map((item: any, index: number) => ({
-        placeId: index + 1,
-        placeName: item.placeName,
-        address: item.placeAddress,
-        tag: item.tag as TagType,
-        orderInday: item.orderInPlace,
-        position: {
-          lat: item.latitude,
-          lng: item.longitude,
-        },
-      }));
-
-      setFavoritePlaces(formatted);
+      setPlaces(response.data);
     } catch (err) {
       setError(err);
     } finally {
@@ -56,9 +40,9 @@ const useFavoritePlaces = () => {
 
   useEffect(() => {
     fetchFavoritePlaces();
-  }, []);
+  }, [favoritePlaces]);
 
-  return { favoritePlaces, loading, error };
+  return { favoritePlaces: places, loading, error };
 };
 
 export default useFavoritePlaces;

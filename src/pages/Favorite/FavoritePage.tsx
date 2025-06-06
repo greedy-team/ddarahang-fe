@@ -8,30 +8,33 @@ import { TagType } from '../../types';
 import { StyledFavoritePageLayout, FavoritePlaceListSection, TitleWrapper } from './FavoritePage.style';
 import useFavoritePlaces from '../../hooks/quries/useFavoritePlaces';
 import Loading from '../../components/common/Loading/Loading';
+import FavoriteRecommend from '../../components/favorite/FavoriteRecommend/FavoriteRecommend';
+import ErrorLayout from '../../components/common/Error/ErrorLayout';
+import { ERROR_MESSAGE } from '../../constants/messages';
+import { transformTodefaultFormPlaces } from '../../utils';
 
 const FavoritePage = () => {
-  const { favoritePlaces, loading } = useFavoritePlaces();
+  const { favoritePlaces, loading, error } = useFavoritePlaces();
+  const [selectedTagTab, setSelectedTagTab] = useState<TagType>('전체');
 
+  /**
+   * 임의의 타이틀, 설명
+   */
   const favoriteListTitle = '나만의 여행 장소 목록';
   const favoriteListDescription = '기본 여행 장소 목록';
-
-  const [selectedTagTab, setSelectedTagTab] = useState<TagType>('전체');
 
   const filteredPlaces =
     selectedTagTab === '전체' ? favoritePlaces : favoritePlaces.filter((place) => place.tag === selectedTagTab);
 
-  const mapData = filteredPlaces.map((place, index) => ({
-    placeId: index + 1,
-    placeName: place.placeName,
-    address: place.address,
-    tag: place.tag as TagType,
-    orderInday: place.orderInday,
-    position: {
-      lat: place.position.lat,
-      lng: place.position.lng,
-    },
-    day: 1,
-  }));
+  const defaultFormPlaces = transformTodefaultFormPlaces(filteredPlaces);
+
+  if (error)
+    return (
+      <ErrorLayout
+        errorTitle={ERROR_MESSAGE}
+        errorDescription={String(error)}
+      />
+    );
 
   return (
     <>
@@ -54,13 +57,15 @@ const FavoritePage = () => {
             />
             <TabPanel
               isFavorite={true}
-              oneDayCourse={mapData}
+              oneDayCourse={defaultFormPlaces}
             />
           </FavoritePlaceListSection>
-          {mapData.length !== 0 && (
+          {defaultFormPlaces.length !== 0 ? (
             <TravelMapWrapper>
-              <TravelMap oneDayCourses={mapData} />
+              <TravelMap oneDayCourses={defaultFormPlaces} />
             </TravelMapWrapper>
+          ) : (
+            <FavoriteRecommend />
           )}
         </StyledFavoritePageLayout>
       )}

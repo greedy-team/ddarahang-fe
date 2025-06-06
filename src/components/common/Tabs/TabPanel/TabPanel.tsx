@@ -1,12 +1,13 @@
-import { Panels, TabErrorMessage } from './TabPanel.style';
+import { Panels } from './TabPanel.style';
 import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
-import { FavoritePlaceType, OneDayCourseType } from '../../../../types';
+import { OneDayCourseType } from '../../../../types';
 import RectangleButton from '../../Button/RectangleButton/RectangleButton';
 import { useNavigate } from 'react-router-dom';
+import ErrorLayout from '../../Error/ErrorLayout';
 
 interface TabPanelProps {
   isFavorite?: boolean;
-  oneDayCourse: OneDayCourseType[] | FavoritePlaceType[];
+  oneDayCourse: OneDayCourseType[];
 }
 
 const TabPanel = ({ isFavorite, oneDayCourse }: TabPanelProps) => {
@@ -15,15 +16,13 @@ const TabPanel = ({ isFavorite, oneDayCourse }: TabPanelProps) => {
   if (oneDayCourse.length === 0) {
     return (
       <>
-        <TabErrorMessage>
-          장소 리스트가 존재하지 않습니다!
-          {isFavorite && (
-            <RectangleButton
-              text='장소 추가하기'
-              onClick={() => navigate('/')}
-            />
-          )}
-        </TabErrorMessage>
+        <ErrorLayout errorTitle='장소 리스트가 존재하지 않습니다!' />
+        {isFavorite && (
+          <RectangleButton
+            text='장소 추가하기'
+            onClick={() => navigate('/')}
+          />
+        )}
       </>
     );
   }

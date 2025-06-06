@@ -1,4 +1,4 @@
-import { InlineConfig, UserConfig, defineConfig } from 'vite';
+import { InlineConfig, UserConfig, defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
 interface VitestConfigExport extends UserConfig {
@@ -6,20 +6,24 @@ interface VitestConfigExport extends UserConfig {
 }
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/tests/setup.js',
-  },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5173',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd());
+
+  return {
+    plugins: [react()],
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './src/tests/setup.js',
+    },
+    server: {
+      proxy: {
+        '/api/v1': {
+          target: env.VITE_API_BASE_URL,
+          changeOrigin: true,
+        },
       },
     },
-  },
-} as VitestConfigExport);
+  } as VitestConfigExport;
+});

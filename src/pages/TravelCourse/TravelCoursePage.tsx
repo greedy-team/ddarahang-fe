@@ -9,7 +9,6 @@ import { OneDayCourseType } from '../../types';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelectedPanel } from '../../hooks/context/useSelectedPanelContext';
 import Loading from '../../components/common/Loading/Loading';
-import { StyledErrorMessage } from '../Main/MainPage.style';
 import {
   ERROR_MESSAGE,
   LOAD_ERROR_MESSAGE,
@@ -18,6 +17,7 @@ import {
 } from '../../constants/messages';
 import { useParams } from 'react-router-dom';
 import FavoriteListSelect from '../../components/detail/TravelCourseFavorite/FavoriteListSelect';
+import ErrorLayout from '../../components/common/Error/ErrorLayout';
 
 const renderMap = (status: Status, courses: OneDayCourseType[]) => {
   switch (status) {
@@ -38,10 +38,10 @@ const renderErrorMessage = (message: string) => (
       isMainHeader={false}
     />
     <TravelCoursePageLayout>
-      <StyledErrorMessage>
-        {message}
-        <span>{ERROR_MESSAGE}</span>
-      </StyledErrorMessage>
+      <ErrorLayout
+        errorTitle={message}
+        errorDescription={ERROR_MESSAGE}
+      />
     </TravelCoursePageLayout>
   </>
 );

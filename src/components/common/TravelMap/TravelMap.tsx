@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import TravelMapMarker from '../TravelMapMarker/TravelMapMarker';
 import { MapWrapper, MapContainer } from './TravelMap.style';
-import { FavoritePlaceType, OneDayCourseType } from '../../../types';
+import { OneDayCourseType } from '../../../types';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 
 interface TravelMapProps {
-  oneDayCourses: OneDayCourseType[] | FavoritePlaceType[];
+  oneDayCourses: OneDayCourseType[];
 }
 
 const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
   const [travelMap, setTravelMap] = useState<google.maps.Map>();
-  const [markers, setMarkers] = useState<OneDayCourseType[] | FavoritePlaceType[]>(oneDayCourses);
+  const [markers, setMarkers] = useState<OneDayCourseType[]>(oneDayCourses);
   const [selectedMarker, setSelectedMarker] = useState<string>();
   const mapRef = useRef<HTMLDivElement>(null);
   const { selectedOption } = useSelectOptionContext();
