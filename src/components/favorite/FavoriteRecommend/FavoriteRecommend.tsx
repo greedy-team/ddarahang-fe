@@ -5,6 +5,9 @@ import Loading from '../../common/Loading/Loading';
 import { Suspense } from 'react';
 import { TitleWrapper } from '../../../pages/Favorite/FavoritePage.style';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
+import ErrorLayout from '../../common/Error/ErrorLayout';
+import { ERROR_MESSAGE } from '../../../constants/messages';
+import { DEFAULT_REGION_OPTION } from '../../../constants/options';
 
 const FavoriteRecommend = () => {
   const { selectedOption } = useSelectOptionContext();
@@ -18,22 +21,27 @@ const FavoriteRecommend = () => {
 
   const videoList = videoListResponse?.content ?? [];
 
-  if (error) return <p>오류가 발생했어요.</p>;
+  if (error)
+    return (
+      <ErrorLayout
+        errorTitle={ERROR_MESSAGE}
+        errorDescription={String(error)}
+      />
+    );
 
   return (
     <StyledFavoriteRecommend>
       <TitleWrapper>
         <p>
-          {selectedOption.selectedOptionLabel !== '여행 지역 검색'
+          {selectedOption.selectedOptionLabel !== DEFAULT_REGION_OPTION
             ? selectedOption.selectedOptionLabel
             : selectedOption.countryName}
           (으)로 떠나시나요?
         </p>
         <h3>
-          {' '}
-          {selectedOption.selectedOptionLabel !== '여행 지역 검색'
+          {selectedOption.selectedOptionLabel !== DEFAULT_REGION_OPTION
             ? selectedOption.selectedOptionLabel
-            : selectedOption.countryName}{' '}
+            : selectedOption.countryName}
           추천 영상
         </h3>
       </TitleWrapper>
