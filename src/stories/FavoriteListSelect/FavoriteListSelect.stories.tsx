@@ -13,14 +13,16 @@ const meta: Meta<typeof FavoriteListSelect> = {
   decorators: [
     (Story) => {
       const [isOpen, setIsOpen] = useState(true);
-      const [placeId, setPlaceId] = useState<number | null>(null);
+      const [favoritePlaces, setFavoritePlaces] = useState<any[]>([]);
       return (
         <SelectFavoriteListContext.Provider
           value={{
             isFavoriteListSelectOpen: isOpen,
             setIsFavoriteListSelectOpen: setIsOpen,
-            selectedPlaceId: placeId,
-            setSelectedPlaceId: setPlaceId,
+            selectedPlace: null,
+            setSelectedPlace: () => void {},
+            favoritePlaces,
+            setFavoritePlaces,
           }}
         >
           <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
