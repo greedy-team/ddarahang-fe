@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { OneDayCourseType } from '../types';
+import { FavoritePlaceSummaryType, OneDayCourseType } from '../types';
 
 interface SelectFavoriteListContextType {
   isFavoriteListSelectOpen: boolean;
@@ -10,7 +10,7 @@ interface SelectFavoriteListContextType {
     placeId: number;
     placeName: string;
   }[];
-  setFavoritePlaces: React.Dispatch<React.SetStateAction<{ placeId: number; placeName: string }[]>>;
+  setFavoritePlaces: React.Dispatch<React.SetStateAction<FavoritePlaceSummaryType[]>>;
 }
 
 export const SelectFavoriteListContext = createContext<SelectFavoriteListContextType | null>(null);
@@ -18,19 +18,11 @@ export const SelectFavoriteListContext = createContext<SelectFavoriteListContext
 export const SelectFavoriteListProvider = ({ children }: { children: React.ReactNode }) => {
   const [isFavoriteListSelectOpen, setIsFavoriteListSelectOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState<OneDayCourseType | null>(null);
-  const [favoritePlaces, setFavoritePlaces] = useState<
-    {
-      placeId: number;
-      placeName: string;
-    }[]
-  >([]);
+  const [favoritePlaces, setFavoritePlaces] = useState<FavoritePlaceSummaryType[]>([]);
 
   const favoritePlaceIdStore = localStorage.getItem('favoritePlaceIds');
 
-  const places: {
-    placeId: number;
-    placeName: string;
-  }[] = favoritePlaceIdStore ? JSON.parse(favoritePlaceIdStore) : [];
+  const places: FavoritePlaceSummaryType[] = favoritePlaceIdStore ? JSON.parse(favoritePlaceIdStore) : [];
 
   useEffect(() => {
     setFavoritePlaces(places);

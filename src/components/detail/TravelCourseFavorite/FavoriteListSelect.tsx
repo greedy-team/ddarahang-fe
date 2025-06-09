@@ -15,7 +15,7 @@ import {
 import { size } from '../../../styles/Theme';
 import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
 import SaveButton from '../../common/Button/RectangleButton/RectangleButton';
-import { FavoritePlace } from '../../../types';
+import { FavoritePlaceSummaryType } from '../../../types';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
@@ -28,7 +28,7 @@ const FavoriteListSelect = () => {
 
   const saveFavoritePlaceId = (placeId: number, placeName: string) => {
     const favoritePlaceStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
-    const favoritePlaces: FavoritePlace[] = favoritePlaceStore ? JSON.parse(favoritePlaceStore) : [];
+    const favoritePlaces: FavoritePlaceSummaryType[] = favoritePlaceStore ? JSON.parse(favoritePlaceStore) : [];
 
     const isAlreadySaved = favoritePlaces.some((place) => place.placeId === placeId);
 

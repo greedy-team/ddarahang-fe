@@ -102,7 +102,7 @@ export interface FavoritePlaceType {
   longitude: number;
 }
 
-export type FavoritePlace = {
+export interface FavoritePlaceSummaryType {
   placeId: number;
   placeName: string;
-};
+}
