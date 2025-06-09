@@ -13,7 +13,7 @@ import Tag from '../../detail/Tag/Tag';
 import FavoriteIcon from '/icon/favorite.svg';
 import FavoriteFillIcon from '/icon/fill-heart.svg';
 import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
-import { FavoritePlace } from '../../../types';
+import { FavoritePlaceSummaryType } from '../../../types';
 
 interface PlaceCardProps {
   placeItem: OneDayCourseType;
@@ -42,7 +42,6 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const handleOpenFavoriteListSelect = (placeItem: OneDayCourseType) => {
     if (isFavoritedPlace) {
       const newFavoritePlaceList = favoritePlaces.filter((place) => place.placeName !== placeItem.placeName);
-      console.log(newFavoritePlaceList);
       setFavoritePlaces(newFavoritePlaceList);
       updateFavoritePlaces(newFavoritePlaceList);
     }
@@ -59,7 +58,7 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
     }
   };
 
-  const updateFavoritePlaces = (newFavoritePlaces: FavoritePlace[]) => {
+  const updateFavoritePlaces = (newFavoritePlaces: FavoritePlaceSummaryType[]) => {
     localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(newFavoritePlaces));
   };
 

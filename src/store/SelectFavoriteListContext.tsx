@@ -6,10 +6,7 @@ interface SelectFavoriteListContextType {
   setIsFavoriteListSelectOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedPlace: OneDayCourseType | null;
   setSelectedPlace: React.Dispatch<React.SetStateAction<OneDayCourseType | null>>;
-  favoritePlaces: {
-    placeId: number;
-    placeName: string;
-  }[];
+  favoritePlaces: FavoritePlaceSummaryType[];
   setFavoritePlaces: React.Dispatch<React.SetStateAction<FavoritePlaceSummaryType[]>>;
 }
 
