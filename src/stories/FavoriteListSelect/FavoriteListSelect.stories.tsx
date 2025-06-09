@@ -2,6 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import FavoriteListSelect from '../../components/detail/TravelCourseFavorite/FavoriteListSelect';
 import { SelectFavoriteListContext } from '../../store/SelectFavoriteListContext';
 import { useState } from 'react';
+import { FavoritePlaceSummaryType } from '../../types';
 
 const meta: Meta<typeof FavoriteListSelect> = {
   title: 'Components/FavoriteListSelect',
@@ -13,14 +14,17 @@ const meta: Meta<typeof FavoriteListSelect> = {
   decorators: [
     (Story) => {
       const [isOpen, setIsOpen] = useState(true);
-      const [placeId, setPlaceId] = useState<number | null>(null);
+      const [favoritePlaces, setFavoritePlaces] = useState<FavoritePlaceSummaryType[]>([]);
+
       return (
         <SelectFavoriteListContext.Provider
           value={{
             isFavoriteListSelectOpen: isOpen,
             setIsFavoriteListSelectOpen: setIsOpen,
-            selectedPlaceId: placeId,
-            setSelectedPlaceId: setPlaceId,
+            selectedPlace: null,
+            setSelectedPlace: () => void {},
+            favoritePlaces,
+            setFavoritePlaces,
           }}
         >
           <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>

@@ -6,7 +6,7 @@ export const StyledFavoriteTabs = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.3rem;
   width: 100%;
   height: 3.5rem;
   padding: 0 1.25rem;

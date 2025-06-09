@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FavoritePlaceType, OneDayCourseType } from '../../../types';
+import { OneDayCourseType } from '../../../types';
 import {
   PlaceCardContainer,
   PlaceCardWrapper,
@@ -11,17 +11,25 @@ import {
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 import Tag from '../../detail/Tag/Tag';
 import FavoriteIcon from '/icon/favorite.svg';
+import FavoriteFillIcon from '/icon/fill-heart.svg';
 import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
+import { FavoritePlaceSummaryType } from '../../../types';
 
 interface PlaceCardProps {
-  placeItem: OneDayCourseType | FavoritePlaceType;
+  placeItem: OneDayCourseType;
   orderInList: number;
 }
+
+const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
 const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
-  const { setIsFavoriteListSelectOpen, setSelectedPlaceId } = useSelectFavoriteListContext();
+  const { setIsFavoriteListSelectOpen, setSelectedPlace, favoritePlaces, setFavoritePlaces } =
+    useSelectFavoriteListContext();
+
+  const savedFavoritePlaceNames = favoritePlaces.map((place) => place.placeName);
+  const isFavoritedPlace = savedFavoritePlaceNames.includes(placeItem.placeName);
 
   useEffect(() => {
     if (selectedPanel === placeItem.placeName) {
@@ -31,8 +39,14 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
     }
   }, [selectedPanel]);
 
-  const handleOpenFavoriteListSelect = (placeId: number) => {
-    setSelectedPlaceId(placeId);
+  const handleOpenFavoriteListSelect = (placeItem: OneDayCourseType) => {
+    if (isFavoritedPlace) {
+      const newFavoritePlaceList = favoritePlaces.filter((place) => place.placeName !== placeItem.placeName);
+      setFavoritePlaces(newFavoritePlaceList);
+      updateFavoritePlaces(newFavoritePlaceList);
+    }
+
+    setSelectedPlace(placeItem);
     setIsFavoriteListSelectOpen(true);
   };
 
@@ -42,6 +56,10 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
     } else {
       setSelectedPanel(placeName);
     }
+  };
+
+  const updateFavoritePlaces = (newFavoritePlaces: FavoritePlaceSummaryType[]) => {
+    localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(newFavoritePlaces));
   };
 
   return (
@@ -59,15 +77,24 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
             aria-label='navigation menu'
             onClick={(e) => {
               e.stopPropagation();
-              handleOpenFavoriteListSelect(placeItem.placeId);
+              handleOpenFavoriteListSelect(placeItem);
             }}
           >
-            <img
-              src={FavoriteIcon}
-              alt='찜 아이콘'
-              width={20}
-              height={20}
-            />
+            {isFavoritedPlace ? (
+              <img
+                src={FavoriteFillIcon}
+                alt='찜 채우기 아이콘'
+                width={20}
+                height={20}
+              />
+            ) : (
+              <img
+                src={FavoriteIcon}
+                alt='찜 아이콘'
+                width={20}
+                height={20}
+              />
+            )}
           </FavoriteButton>
         </PlaceCardHeader>
         <Tag tagName={placeItem.tag} />

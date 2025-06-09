@@ -31,6 +31,7 @@ export const StyledWarningMessage = styled.p`
 export const TabErrorMessage = styled.div`
   display: flex;
   justify-content: center;
+  height: 100vh;
   align-items: center;
   flex-direction: column;
   font-weight: 800;

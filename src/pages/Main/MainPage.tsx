@@ -96,6 +96,7 @@ const MainPage = () => {
             <TravelVideoList
               error={error}
               videoList={videoList}
+              isFavoritePage={false}
             />
             <Pagination
               color={colors.WHITE}
