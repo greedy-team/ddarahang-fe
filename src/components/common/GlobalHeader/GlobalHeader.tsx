@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import RectangleButton from '../Button/RectangleButton/RectangleButton';
 import Logo from '../Logo/Logo';
-import { GlobalHeaderWrapper } from './GlobalHeader.style';
+import { GlobalHeaderWrapper, Tab } from './GlobalHeader.style';
 
 interface GlobalHeaderProps {
   isIconVisible: boolean;
@@ -23,12 +22,7 @@ const GlobalHeader = ({ isIconVisible, isMainHeader, isMobile, setCurrentPageNum
         setCurrentPageNumber={setCurrentPageNumber}
       />
 
-      <RectangleButton
-        variant='blue'
-        text='찜한 장소'
-        onClick={() => navigate('/favorite')}
-        size='small'
-      />
+      <Tab onClick={() => navigate('/favorite')}>찜한장소</Tab>
     </GlobalHeaderWrapper>
   );
 };
