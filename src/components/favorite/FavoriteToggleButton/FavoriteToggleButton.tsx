@@ -43,8 +43,8 @@ const FavoriteToggleButton = ({ placeItem }: FavoriteToggleButtonProps) => {
         <img
           src={FavoriteFillIcon}
           alt='찜 채우기 아이콘'
-          width={20}
-          height={20}
+          width={18}
+          height={18}
         />
       ) : (
         <img

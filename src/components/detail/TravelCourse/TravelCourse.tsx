@@ -18,7 +18,10 @@ const TravelCourse = ({ oneDayCourses, totalTravelDays, selectedTab, setSelected
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
       />
-      <TabPanel oneDayCourse={oneDayCourses} />
+      <TabPanel
+        isScrollPanels={true}
+        oneDayCourse={oneDayCourses}
+      />
     </TravelCourseContainer>
   );
 };
