@@ -1,19 +1,19 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { FavoritePlaceSummaryType, OneDayCourseType } from '../types';
 
-interface SelectFavoriteListContextType {
-  isFavoriteListSelectOpen: boolean;
-  setIsFavoriteListSelectOpen: React.Dispatch<React.SetStateAction<boolean>>;
+interface AddFavoriteContextType {
+  isFavoriteModalOpen: boolean;
+  setIsFavoriteModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedPlace: OneDayCourseType | null;
   setSelectedPlace: React.Dispatch<React.SetStateAction<OneDayCourseType | null>>;
   favoritePlaces: FavoritePlaceSummaryType[];
   setFavoritePlaces: React.Dispatch<React.SetStateAction<FavoritePlaceSummaryType[]>>;
 }
 
-export const SelectFavoriteListContext = createContext<SelectFavoriteListContextType | null>(null);
+export const AddFavoriteContext = createContext<AddFavoriteContextType | null>(null);
 
-export const SelectFavoriteListProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isFavoriteListSelectOpen, setIsFavoriteListSelectOpen] = useState(false);
+export const AddFavoriteProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isFavoriteModalOpen, setIsFavoriteModalOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState<OneDayCourseType | null>(null);
   const [favoritePlaces, setFavoritePlaces] = useState<FavoritePlaceSummaryType[]>([]);
 
@@ -26,10 +26,10 @@ export const SelectFavoriteListProvider = ({ children }: { children: React.React
   }, []);
 
   return (
-    <SelectFavoriteListContext.Provider
+    <AddFavoriteContext.Provider
       value={{
-        isFavoriteListSelectOpen,
-        setIsFavoriteListSelectOpen,
+        isFavoriteModalOpen,
+        setIsFavoriteModalOpen,
         selectedPlace,
         setSelectedPlace,
         favoritePlaces,
@@ -37,6 +37,6 @@ export const SelectFavoriteListProvider = ({ children }: { children: React.React
       }}
     >
       {children}
-    </SelectFavoriteListContext.Provider>
+    </AddFavoriteContext.Provider>
   );
 };

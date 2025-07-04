@@ -13,7 +13,7 @@ import {
   FavoriteListSelectToast,
 } from './FavoriteListSelect.style';
 import { size } from '../../../styles/Theme';
-import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
+import { useAddFavoriteContext } from '../../../hooks/context/useAddFavoriteContext';
 import SaveButton from '../../common/Button/RectangleButton/RectangleButton';
 import { FavoritePlaceSummaryType } from '../../../types';
 
@@ -23,7 +23,7 @@ const FavoriteListSelect = () => {
   const [selectedItem, setSelectedItem] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
-  const { isFavoriteListSelectOpen, setIsFavoriteListSelectOpen, selectedPlace } = useSelectFavoriteListContext();
+  const { isFavoriteModalOpen, setIsFavoriteModalOpen, selectedPlace, favoritePlaces } = useAddFavoriteContext();
   const [placeCount, setPlaceCount] = useState(0);
 
   const saveFavoritePlaceId = (placeId: number, placeName: string) => {
@@ -42,8 +42,13 @@ const FavoriteListSelect = () => {
     setSelectedItem(!selectedItem);
   };
 
-  const handleCloseFavoriteListSelect = () => {
-    setIsFavoriteListSelectOpen(!isFavoriteListSelectOpen);
+  const handleCloseFavoriteModal = () => {
+    setIsFavoriteModalOpen(!isFavoriteModalOpen);
+  };
+
+  const updateFavoritePlaces = (newFavoritePlaces: FavoritePlaceSummaryType) => {
+    const newFavoritePlaceList = [...favoritePlaces, newFavoritePlaces];
+    localStorage.setItem(FAVORITE_STORAGE_KEY, JSON.stringify(newFavoritePlaceList));
   };
 
   const handleSaveFavoriteListPlace = () => {
@@ -60,6 +65,13 @@ const FavoriteListSelect = () => {
 
     setToastMessage('저장되었습니다.');
     setShowToast(true);
+
+    const newFavoritePalce = {
+      placeId: selectedPlace ? selectedPlace.placeId : 0,
+      placeName: selectedPlace ? selectedPlace.placeName : '',
+    };
+
+    updateFavoritePlaces(newFavoritePalce);
     setTimeout(() => setShowToast(false), 2000);
   };
 
@@ -67,14 +79,14 @@ const FavoriteListSelect = () => {
     const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
     const favoritePlaceIdParsed: string[] = favoritePlaceIdStore ? JSON.parse(favoritePlaceIdStore) : [];
     setPlaceCount(favoritePlaceIdParsed.length);
-  }, [isFavoriteListSelectOpen]);
+  }, [isFavoriteModalOpen]);
 
   return (
-    <FavoriteListSelectContainer $isVisible={isFavoriteListSelectOpen}>
+    <FavoriteListSelectContainer $isVisible={isFavoriteModalOpen}>
       {showToast && <FavoriteListSelectToast>{toastMessage}</FavoriteListSelectToast>}
       <FavoriteListSelectHeader>
         <FavoriteListSelectTitle>여행 목록 선택하기</FavoriteListSelectTitle>
-        <FavoriteListSelectCloseButton onClick={() => handleCloseFavoriteListSelect()}>×</FavoriteListSelectCloseButton>
+        <FavoriteListSelectCloseButton onClick={() => handleCloseFavoriteModal()}>×</FavoriteListSelectCloseButton>
       </FavoriteListSelectHeader>
       <FavoriteListSelectListWrapper>
         <FavoriteListSelectItem

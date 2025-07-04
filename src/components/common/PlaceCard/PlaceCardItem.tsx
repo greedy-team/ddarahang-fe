@@ -12,7 +12,7 @@ import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext
 import Tag from '../../detail/Tag/Tag';
 import FavoriteIcon from '/icon/favorite.svg';
 import FavoriteFillIcon from '/icon/fill-heart.svg';
-import { useSelectFavoriteListContext } from '../../../hooks/context/useSelectFavotieListContext';
+import { useAddFavoriteContext } from '../../../hooks/context/useAddFavoriteContext';
 import { FavoritePlaceSummaryType } from '../../../types';
 
 interface PlaceCardProps {
@@ -25,8 +25,8 @@ const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
-  const { setIsFavoriteListSelectOpen, setSelectedPlace, favoritePlaces, setFavoritePlaces } =
-    useSelectFavoriteListContext();
+  const { setIsFavoriteModalOpen, isFavoriteModalOpen, setSelectedPlace, favoritePlaces, setFavoritePlaces } =
+    useAddFavoriteContext();
 
   const savedFavoritePlaceNames = favoritePlaces.map((place) => place.placeName);
   const isFavoritedPlace = savedFavoritePlaceNames.includes(placeItem.placeName);
@@ -46,8 +46,9 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
       updateFavoritePlaces(newFavoritePlaceList);
     }
 
+    setSelectedPanel(placeItem.placeName);
     setSelectedPlace(placeItem);
-    setIsFavoriteListSelectOpen(true);
+    setIsFavoriteModalOpen(!isFavoriteModalOpen);
   };
 
   const handlePlaceCardClick = (placeName: string) => {

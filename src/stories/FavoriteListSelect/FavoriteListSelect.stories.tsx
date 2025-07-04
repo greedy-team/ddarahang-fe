@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import FavoriteListSelect from '../../components/detail/TravelCourseFavorite/FavoriteListSelect';
-import { SelectFavoriteListContext } from '../../store/SelectFavoriteListContext';
+import { AddFavoriteContext } from '../../store/AddFavoriteContext';
 import { useState } from 'react';
 import { FavoritePlaceSummaryType } from '../../types';
 
@@ -17,10 +17,10 @@ const meta: Meta<typeof FavoriteListSelect> = {
       const [favoritePlaces, setFavoritePlaces] = useState<FavoritePlaceSummaryType[]>([]);
 
       return (
-        <SelectFavoriteListContext.Provider
+        <AddFavoriteContext.Provider
           value={{
-            isFavoriteListSelectOpen: isOpen,
-            setIsFavoriteListSelectOpen: setIsOpen,
+            isFavoriteModalOpen: isOpen,
+            setIsFavoriteModalOpen: setIsOpen,
             selectedPlace: null,
             setSelectedPlace: () => void {},
             favoritePlaces,
@@ -30,7 +30,7 @@ const meta: Meta<typeof FavoriteListSelect> = {
           <div style={{ position: 'relative', width: '100vw', height: '100vh', overflow: 'hidden' }}>
             <Story />
           </div>
-        </SelectFavoriteListContext.Provider>
+        </AddFavoriteContext.Provider>
       );
     },
   ],

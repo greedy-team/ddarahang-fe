@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FavoritePlaceType } from '../../types';
-import { useSelectFavoriteListContext } from '../context/useSelectFavotieListContext';
+import { useAddFavoriteContext } from '../context/useAddFavoriteContext';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
@@ -9,7 +9,7 @@ const useFavoritePlaces = () => {
   const [places, setPlaces] = useState<FavoritePlaceType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>(null);
-  const { favoritePlaces } = useSelectFavoriteListContext();
+  const { favoritePlaces } = useAddFavoriteContext();
 
   const fetchFavoritePlaces = async () => {
     const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
