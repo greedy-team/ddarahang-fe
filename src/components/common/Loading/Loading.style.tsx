@@ -10,4 +10,5 @@ export const LoadingLayout = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 12;
+  background-color: rgba(93, 92, 92, 0.05);
 `;

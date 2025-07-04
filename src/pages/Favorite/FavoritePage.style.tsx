@@ -5,18 +5,16 @@ export const StyledFavoritePageLayout = styled.div`
   display: flex;
   flex-direction: row;
   width: 100vw;
-  min-height: 57.8rem;
+  height: 100vh;
 
   @media screen and (max-width: 780px) {
     gap: 0;
     height: 100vh;
-    min-height: 31.25rem;
   }
 `;
 
 export const FavoritePlaceListSection = styled.div`
-  width: 37.5rem;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1rem;

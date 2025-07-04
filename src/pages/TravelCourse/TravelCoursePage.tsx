@@ -16,7 +16,7 @@ import {
   NO_DATA_ERROR_MESSAGE,
 } from '../../constants/messages';
 import { useParams } from 'react-router-dom';
-import FavoriteListSelect from '../../components/detail/TravelCourseFavorite/FavoriteListSelect';
+import AddFavorite from '../../components/detail/AddFavoriteModal/AddFavoriteModal';
 import ErrorLayout from '../../components/common/Error/ErrorLayout';
 
 const renderMap = (status: Status, courses: OneDayCourseType[]) => {
@@ -137,7 +137,7 @@ const TravelCoursePage = () => {
         )}
         {!isMobile && (
           <MapContainer>
-            <FavoriteListSelect />
+            <AddFavorite />
             <Wrapper
               apiKey={apiKey}
               key={selectedTab}

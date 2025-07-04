@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const FavoriteListSelectContainer = styled.div<{ $isVisible: boolean }>`
+export const AddFavoriteContainer = styled.div<{ $isVisible: boolean }>`
   width: ${size.SIZE_024};
   height: 90%;
   background-color: ${colors.WHITE};
@@ -25,7 +25,7 @@ export const FavoriteListSelectContainer = styled.div<{ $isVisible: boolean }>`
     visibility 0.3s;
 `;
 
-export const FavoriteListSelectHeader = styled.div`
+export const AddFavoriteHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +33,7 @@ export const FavoriteListSelectHeader = styled.div`
   font-size: ${size.SIZE_010};
 `;
 
-export const FavoriteListSelectTitle = styled.h2`
+export const AddFavoriteTitle = styled.h2`
   font-size: ${size.SIZE_010};
   color: ${colors.BLACK};
   font-family: 'Pretendard-SemiBold';
@@ -41,20 +41,20 @@ export const FavoriteListSelectTitle = styled.h2`
   margin: 0;
 `;
 
-export const FavoriteListSelectCloseButton = styled.button`
+export const AddFavoriteCloseButton = styled.button`
   background: none;
   border: none;
   font-size: ${size.SIZE_011};
   cursor: pointer;
 `;
 
-export const FavoriteListSelectListWrapper = styled.div`
+export const AddFavoriteListWrapper = styled.div`
   flex: 1;
   overflow-y: auto;
   padding: 0 ${size.SIZE_011};
 `;
 
-export const FavoriteListSelectItem = styled.div<{ $isSelected: boolean }>`
+export const AddFavoriteItem = styled.div<{ $isSelected: boolean }>`
   background-color: ${(props) => (props.$isSelected ? colors.GRAY_200 : colors.WHITE)};
   border-radius: ${size.SIZE_007};
   padding: ${size.SIZE_009};
@@ -71,12 +71,12 @@ export const FavoriteListSelectItem = styled.div<{ $isSelected: boolean }>`
   }
 `;
 
-export const FavoriteListSelectItemName = styled.div`
+export const AddFavoriteItemName = styled.div`
   font-size: ${size.SIZE_009};
   font-weight: 600;
 `;
 
-export const FavoriteListSelectItemDescContainer = styled.div`
+export const AddFavoriteItemDescContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -84,7 +84,7 @@ export const FavoriteListSelectItemDescContainer = styled.div`
   width: 100%;
 `;
 
-export const FavoriteListSelectItemDesc = styled.div<{ $size: string }>`
+export const AddFavoriteItemDesc = styled.div<{ $size: string }>`
   font-size: ${(props) => props.$size};
   color: ${colors.GREY_500};
   margin-top: ${size.SIZE_004};
@@ -94,11 +94,11 @@ export const FavoriteListSelectItemDesc = styled.div<{ $size: string }>`
   }
 `;
 
-export const FavoriteListSelectFooter = styled.div`
+export const AddFavoriteFooter = styled.div`
   padding: ${size.SIZE_010} ${size.SIZE_011};
 `;
 
-export const FavoriteListSelectToast = styled.div`
+export const AddFavoriteToast = styled.div`
   position: absolute;
   bottom: 50%;
   left: 50%;

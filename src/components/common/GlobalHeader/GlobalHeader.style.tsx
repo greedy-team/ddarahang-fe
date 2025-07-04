@@ -25,3 +25,14 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisib
     z-index: 10;
   }
 `;
+
+export const Tab = styled.p`
+  cursor: pointer;
+  color: ${colors.GREY_600};
+
+  &:hover {
+    color: ${colors.PRIMARY};
+
+    font-weight: 800;
+  }
+`;

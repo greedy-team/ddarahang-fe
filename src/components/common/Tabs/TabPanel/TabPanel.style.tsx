@@ -1,12 +1,15 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { size } from '../../../../styles/Theme';
 
-export const Panels = styled.div`
+interface PanelsProps {
+  $isScrollPanels?: boolean;
+}
+
+export const Panels = styled.div<PanelsProps>`
   width: 100%;
-  max-height: 31.25rem;
   height: auto;
+  max-height: 70rem;
   overflow-y: auto;
-  overflow-x: hidden;
   padding: ${size.SIZE_008};
   display: flex;
   flex-direction: column;
@@ -18,6 +21,14 @@ export const Panels = styled.div`
     height: auto;
     overflow-y: unset;
   }
+
+  ${({ $isScrollPanels }) =>
+    $isScrollPanels &&
+    css`
+      max-height: 31.25rem;
+      overflow-y: auto;
+      overflow-x: hidden;
+    `}
 `;
 
 export const StyledWarningMessage = styled.p`
