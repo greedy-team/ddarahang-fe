@@ -1,12 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
-import FavoriteListSelect from '../../components/detail/TravelCourseFavorite/FavoriteListSelect';
+import AddFavorite from '../../components/detail/AddFavoriteModal/AddFavoriteModal';
 import { AddFavoriteContext } from '../../store/AddFavoriteContext';
 import { useState } from 'react';
 import { FavoritePlaceSummaryType } from '../../types';
 
-const meta: Meta<typeof FavoriteListSelect> = {
-  title: 'Components/FavoriteListSelect',
-  component: FavoriteListSelect,
+const meta: Meta<typeof AddFavorite> = {
+  title: 'Components/AddFavorite',
+  component: AddFavorite,
   parameters: {
     layout: 'padded',
   },
@@ -34,7 +34,7 @@ const meta: Meta<typeof FavoriteListSelect> = {
       );
     },
   ],
-} satisfies Meta<typeof FavoriteListSelect>;
+} satisfies Meta<typeof AddFavorite>;
 
 export default meta;
 
