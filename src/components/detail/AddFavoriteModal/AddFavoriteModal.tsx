@@ -79,8 +79,8 @@ const AddFavoriteModal = () => {
         <SaveButton
           text='해당 목록에 저장하기'
           onClick={() => handleSaveFavoritePlace()}
-          variant='save'
-        ></SaveButton>
+          size='large'
+        />
       </AddFavoriteFooter>
     </AddFavoriteContainer>
   );
