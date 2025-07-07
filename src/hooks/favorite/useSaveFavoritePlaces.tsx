@@ -16,8 +16,8 @@ export const useSaveFavoritePlaces = () => {
     saveToStorage(updated);
   };
 
-  const removeFavoritePlace = (placeName: string) => {
-    const updated = favoritePlaces.filter((place) => place.placeName !== placeName);
+  const removeFavoritePlace = (placeId: number) => {
+    const updated = favoritePlaces.filter((place) => place.placeId !== placeId);
     setFavoritePlaces(updated);
     saveToStorage(updated);
   };

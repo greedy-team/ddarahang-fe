@@ -20,7 +20,7 @@ const FavoriteToggleButton = ({ placeItem }: FavoriteToggleButtonProps) => {
     event.stopPropagation();
 
     if (isFavoritedPlace) {
-      removeFavoritePlace(placeItem.placeName);
+      removeFavoritePlace(placeItem.placeId);
 
       if (isFavoriteModalOpen) {
         setIsFavoriteModalOpen(false);
