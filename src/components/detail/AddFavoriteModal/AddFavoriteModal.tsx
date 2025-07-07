@@ -31,8 +31,9 @@ const AddFavoriteModal = () => {
       setToastMessage('목록을 선택해주세요.');
       setShowToast(true);
       setTimeout(() => setShowToast(false), 2000);
-      return;
+      return false;
     }
+    return true;
   };
 
   const successToast = () => {
@@ -42,18 +43,20 @@ const AddFavoriteModal = () => {
   };
 
   const handleSaveFavoritePlace = () => {
-    warningToast();
-
+    if (!warningToast()) {
+      return;
+    }
     if (selectedPlace) {
       const favoritePlace: FavoritePlaceSummaryType = {
         placeId: selectedPlace.placeId,
         placeName: selectedPlace.placeName,
       };
-
       addFavoritePlace(favoritePlace);
       successToast();
-      setIsFavoriteModalOpen(false);
     }
+    setTimeout(() => {
+      setIsFavoriteModalOpen(false);
+    }, 2000);
   };
 
   return (
