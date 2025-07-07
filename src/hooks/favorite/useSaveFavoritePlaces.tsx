@@ -11,6 +11,9 @@ export const useSaveFavoritePlaces = () => {
   };
 
   const addFavoritePlace = (placeItem: FavoritePlaceSummaryType) => {
+    if (favoritePlaces.some((place) => place.placeId === placeItem.placeId)) {
+      return;
+    }
     const updated = [...favoritePlaces, placeItem];
     setFavoritePlaces(updated);
     saveToStorage(updated);
