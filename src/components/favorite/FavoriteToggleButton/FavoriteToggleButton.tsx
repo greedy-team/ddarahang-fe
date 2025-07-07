@@ -14,8 +14,7 @@ const FavoriteToggleButton = ({ placeItem }: FavoriteToggleButtonProps) => {
   const { setIsFavoriteModalOpen, isFavoriteModalOpen, setSelectedPlace, favoritePlaces } = useAddFavoriteContext();
   const { removeFavoritePlace } = useSaveFavoritePlaces();
 
-  const savedFavoritePlaceNames = favoritePlaces.map((place) => place.placeName);
-  const isFavoritedPlace = savedFavoritePlaceNames.includes(placeItem.placeName);
+  const isFavoritedPlace = favoritePlaces.some((place) => place.placeId === placeItem.placeId);
 
   const handleToggleFavorite = (event: React.MouseEvent) => {
     event.stopPropagation();
