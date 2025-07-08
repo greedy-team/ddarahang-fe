@@ -56,7 +56,7 @@ const AddFavoriteModal = () => {
     }
     setTimeout(() => {
       setIsFavoriteModalOpen(false);
-    }, 2000);
+    }, 500);
   };
 
   return (
