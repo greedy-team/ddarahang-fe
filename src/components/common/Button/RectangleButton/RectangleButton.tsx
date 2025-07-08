@@ -1,18 +1,21 @@
-import { StyledRectangleButton, SaveButtonStyle } from './RectangleButton.style';
+import { StyledRectangleButton } from './RectangleButton.style';
 
 interface RectangleButtonProps {
   text?: string | null;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  variant?: 'default' | 'save';
+  variant?: 'default' | 'blue';
+  size?: 'large' | 'small';
 }
 
-const RectangleButton = ({ text, onClick, variant }: RectangleButtonProps) => {
-  const ButtonComponent = variant === 'save' ? SaveButtonStyle : StyledRectangleButton;
-
+const RectangleButton = ({ text, onClick, variant, size }: RectangleButtonProps) => {
   return (
-    <ButtonComponent onClick={onClick}>
+    <StyledRectangleButton
+      onClick={onClick}
+      $variant={variant}
+      $size={size}
+    >
       <p>{text}</p>
-    </ButtonComponent>
+    </StyledRectangleButton>
   );
 };
 

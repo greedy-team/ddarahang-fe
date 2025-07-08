@@ -20,8 +20,7 @@ const FavoritePage = () => {
   /**
    * 임의의 타이틀, 설명
    */
-  const favoriteListTitle = '나만의 여행 장소 목록';
-  const favoriteListDescription = '기본 여행 장소 목록';
+  const favoriteListTitle = '여행 장소';
 
   const filteredPlaces =
     selectedTagTab === '전체' ? favoritePlaces : favoritePlaces.filter((place) => place.tag === selectedTagTab);
@@ -48,7 +47,6 @@ const FavoritePage = () => {
         <StyledFavoritePageLayout>
           <FavoritePlaceListSection>
             <TitleWrapper>
-              <p>{favoriteListDescription}</p>
               <h3>{favoriteListTitle}</h3>
             </TitleWrapper>
             <FavoriteTabs
