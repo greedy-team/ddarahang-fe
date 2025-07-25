@@ -4,14 +4,17 @@ import { router } from './router/index';
 import { SelectOptionProvider } from './store/SelectOptionContext';
 import { SelectedPanelProvider } from './store/SelectedPanelContext';
 import { SortOptionProvider } from './store/SortOptionContext';
+import { AddFavoriteProvider } from './store/AddFavoriteContext';
 
 function App() {
   return (
     <SortOptionProvider>
       <SelectOptionProvider>
         <SelectedPanelProvider>
-          <GlobalStyle />
-          <RouterProvider router={router} />
+          <AddFavoriteProvider>
+            <GlobalStyle />
+            <RouterProvider router={router} />
+          </AddFavoriteProvider>
         </SelectedPanelProvider>
       </SelectOptionProvider>
     </SortOptionProvider>

@@ -9,7 +9,6 @@ import { OneDayCourseType } from '../../types';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelectedPanel } from '../../hooks/context/useSelectedPanelContext';
 import Loading from '../../components/common/Loading/Loading';
-import { StyledErrorMessage } from '../Main/MainPage.style';
 import {
   ERROR_MESSAGE,
   LOAD_ERROR_MESSAGE,
@@ -17,6 +16,8 @@ import {
   NO_DATA_ERROR_MESSAGE,
 } from '../../constants/messages';
 import { useParams } from 'react-router-dom';
+import AddFavorite from '../../components/detail/AddFavoriteModal/AddFavoriteModal';
+import ErrorLayout from '../../components/common/Error/ErrorLayout';
 
 const renderMap = (status: Status, courses: OneDayCourseType[]) => {
   switch (status) {
@@ -37,10 +38,10 @@ const renderErrorMessage = (message: string) => (
       isMainHeader={false}
     />
     <TravelCoursePageLayout>
-      <StyledErrorMessage>
-        {message}
-        <span>{ERROR_MESSAGE}</span>
-      </StyledErrorMessage>
+      <ErrorLayout
+        errorTitle={message}
+        errorDescription={ERROR_MESSAGE}
+      />
     </TravelCoursePageLayout>
   </>
 );
@@ -85,6 +86,7 @@ const TravelCoursePage = () => {
       .filter((course) => course.day === selectedTab)
       .map((course) => ({
         placeName: course.placeName,
+        placeId: course.placeId,
         day: course.day,
         orderInday: course.orderInDay,
         tag: course.tag,
@@ -114,8 +116,9 @@ const TravelCoursePage = () => {
               videoUrl={travelCourse.videoUrl}
               travelCourse={travelCourse}
             />
+
             {isMobileMapVisible && (
-              <MapContainer> 
+              <MapContainer>
                 <Wrapper
                   apiKey={apiKey}
                   key={selectedTab}
@@ -127,7 +130,6 @@ const TravelCoursePage = () => {
             <TravelCourse
               selectedTab={selectedTab}
               setSelectedTab={setSelectedTab}
-              setSelectedPanel={setSelectedPanel}
               oneDayCourses={oneDayCourses}
               totalTravelDays={travelCourse.travelDays}
             />
@@ -135,6 +137,7 @@ const TravelCoursePage = () => {
         )}
         {!isMobile && (
           <MapContainer>
+            <AddFavorite />
             <Wrapper
               apiKey={apiKey}
               key={selectedTab}

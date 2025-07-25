@@ -3,12 +3,13 @@ import { colors, size } from '../../../styles/Theme';
 import { TagType } from '../../../types';
 
 const backgroundColors = {
-  음식: '#FFD0BE',
+  음식: '#FFDBBF',
   관광: '#DAF7DA',
   쇼핑: '#FCE8E6',
   숙박: '#EAEAFF',
   카페: '#FFEBBD',
-  기타: '#E1E1E1',
+  기타: colors.GRAY_200,
+  전체: '',
 };
 
 export const StyledTag = styled.p<{ category: TagType }>`

@@ -13,7 +13,8 @@ interface PaginationProps {
 }
 
 const Pagination = ({ color, onPageClick, currentPageNumber, totalPageNumber }: PaginationProps) => {
-  const [currentPageGroup, setCurrentPageGroup] = useState(0);
+  const initCurrentPageGroup = Math.floor(currentPageNumber / PAGE_SIZE);
+  const [currentPageGroup, setCurrentPageGroup] = useState(initCurrentPageGroup);
 
   const startPage = currentPageGroup * PAGE_SIZE + 1;
   const endPage = Math.min(startPage + PAGE_SIZE - 1, totalPageNumber);

@@ -8,16 +8,9 @@ interface TravelCourseProps {
   totalTravelDays: number;
   selectedTab: number;
   setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
-  setSelectedPanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TravelCourse = ({
-  oneDayCourses,
-  totalTravelDays,
-  selectedTab,
-  setSelectedTab,
-  setSelectedPanel,
-}: TravelCourseProps) => {
+const TravelCourse = ({ oneDayCourses, totalTravelDays, selectedTab, setSelectedTab }: TravelCourseProps) => {
   return (
     <TravelCourseContainer>
       <Tab
@@ -26,8 +19,8 @@ const TravelCourse = ({
         setSelectedTab={setSelectedTab}
       />
       <TabPanel
+        isScrollPanels={true}
         oneDayCourse={oneDayCourses}
-        setSelectedPanel={setSelectedPanel}
       />
     </TravelCourseContainer>
   );

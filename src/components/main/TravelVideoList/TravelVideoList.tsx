@@ -3,15 +3,16 @@ import { TravelList } from '../../../types';
 import YoutubeCard from '../YoutubeCard/YoutubeCard';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { StyledContentsWrapper, StyledErrorMessage } from '../../../pages/Main/MainPage.style';
 import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants/messages';
+import ErrorLayout from '../../common/Error/ErrorLayout';
 
 interface TravelVideoListProps {
   error?: unknown;
   videoList: TravelList[];
+  isFavoritePage: boolean;
 }
 
-const TravelVideoList = ({ error, videoList }: TravelVideoListProps) => {
+const TravelVideoList = ({ error, videoList, isFavoritePage }: TravelVideoListProps) => {
   const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
   useEffect(() => {
@@ -23,23 +24,19 @@ const TravelVideoList = ({ error, videoList }: TravelVideoListProps) => {
   const renderErrorMessage = () => {
     if (error) {
       return (
-        <StyledContentsWrapper>
-          <StyledErrorMessage>
-            <p>{ERROR_MESSAGE}</p>
-            <span>{String(error)}</span>
-          </StyledErrorMessage>
-        </StyledContentsWrapper>
+        <ErrorLayout
+          errorTitle={ERROR_MESSAGE}
+          errorDescription={String(error)}
+        />
       );
     }
 
     if (showNoDataMessage) {
       return (
-        <StyledContentsWrapper>
-          <StyledErrorMessage>
-            <p>{NO_DATA_ERROR_MESSAGE}</p>
-            <span>{ERROR_MESSAGE}</span>
-          </StyledErrorMessage>
-        </StyledContentsWrapper>
+        <ErrorLayout
+          errorTitle={NO_DATA_ERROR_MESSAGE}
+          errorDescription={ERROR_MESSAGE}
+        />
       );
     }
 
@@ -50,7 +47,7 @@ const TravelVideoList = ({ error, videoList }: TravelVideoListProps) => {
     <>
       {renderErrorMessage()}
 
-      <TravelVideoListContainer>
+      <TravelVideoListContainer $isFavoritePage={isFavoritePage}>
         {videoList.map((video) => (
           <YoutubeCard
             key={video.travelCourseId}

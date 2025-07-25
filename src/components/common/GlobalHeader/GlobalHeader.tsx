@@ -1,5 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import Logo from '../Logo/Logo';
-import { GlobalHeaderWrapper } from './GlobalHeader.style';
+import { GlobalHeaderWrapper, Tab } from './GlobalHeader.style';
 
 interface GlobalHeaderProps {
   isIconVisible: boolean;
@@ -9,6 +10,8 @@ interface GlobalHeaderProps {
 }
 
 const GlobalHeader = ({ isIconVisible, isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
+  const navigate = useNavigate();
+
   return (
     <GlobalHeaderWrapper
       $isMobile={isMobile}
@@ -18,6 +21,8 @@ const GlobalHeader = ({ isIconVisible, isMainHeader, isMobile, setCurrentPageNum
         isMainHeader={isMainHeader}
         setCurrentPageNumber={setCurrentPageNumber}
       />
+
+      <Tab onClick={() => navigate('/favorite')}>찜한장소</Tab>
     </GlobalHeaderWrapper>
   );
 };

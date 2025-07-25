@@ -1,5 +1,6 @@
 import { SelectOptionType } from '../types';
 
+export const DEFAULT_REGION_OPTION = '여행 지역 검색';
 export const COUNTRIES = ['대한민국', '일본', '유럽', '호주', '말레이시아', '베트남', '중국', '필리핀'];
 
 export const COUNTRYOPTION: SelectOptionType[] = [

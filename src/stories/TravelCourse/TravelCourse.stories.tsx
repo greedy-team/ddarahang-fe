@@ -28,7 +28,6 @@ const meta = {
   },
   args: {
     setSelectedTab: action('탭을 클릭'),
-    setSelectedPanel: action('패널 클릭'),
   },
 } satisfies Meta<typeof TravelCourse>;
 
@@ -44,6 +43,7 @@ export const Default: Story = {
         orderInday: 1,
         placeName: '서울 타워',
         address: '대한민국 어딘가',
+        placeId: 1,
         tag: '관광',
         position: { lat: 37.5512, lng: 126.9882 },
       },
@@ -52,6 +52,7 @@ export const Default: Story = {
         orderInday: 2,
         placeName: '경복궁',
         address: '대한민국 어딘가',
+        placeId: 2,
         tag: '관광',
         position: { lat: 37.5796, lng: 126.977 },
       },
@@ -60,6 +61,7 @@ export const Default: Story = {
         orderInday: 1,
         placeName: '해운대',
         address: '대한민국 어딘가',
+        placeId: 3,
         tag: '관광',
         position: { lat: 35.1587, lng: 129.1603 },
       },

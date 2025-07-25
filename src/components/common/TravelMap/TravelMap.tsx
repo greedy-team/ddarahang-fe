@@ -22,7 +22,10 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
   };
 
   useEffect(() => {
-    if (!mapRef.current) return;
+    if (!mapRef.current) {
+      alert('Map container is not available');
+      return;
+    }
 
     const instance = new window.google.maps.Map(mapRef.current, {
       center: {

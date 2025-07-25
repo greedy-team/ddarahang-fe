@@ -1,36 +1,53 @@
 import { useEffect, useState } from 'react';
 import { OneDayCourseType } from '../../../types';
-import { PlaceCardContainer, PlaceCardWrapper, PlaceCircleStep, PlaceName } from './PlaceCardItem.style';
+import {
+  PlaceCardContainer,
+  PlaceCardWrapper,
+  PlaceCardHeader,
+  PlaceCircleStep,
+  PlaceName,
+} from './PlaceCardItem.style';
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 import Tag from '../../detail/Tag/Tag';
+import FavoriteToggleButton from '../../favorite/FavoriteToggleButton/FavoriteToggleButton';
 
 interface PlaceCardProps {
-  oneDayCourse: OneDayCourseType;
-  orderInDay: number;
-  setSelectedPanel: React.Dispatch<React.SetStateAction<string>>;
+  placeItem: OneDayCourseType;
+  orderInList: number;
 }
 
-const PlaceCardItem = ({ oneDayCourse, orderInDay, setSelectedPanel }: PlaceCardProps) => {
+const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
-  const { selectedPanel } = useSelectedPanel();
+  const { selectedPanel, setSelectedPanel } = useSelectedPanel();
 
   useEffect(() => {
-    if (selectedPanel === oneDayCourse.placeName) {
+    if (selectedPanel === placeItem.placeName) {
       setIsSelected(!isSelected);
     } else {
       setIsSelected(false);
     }
   }, [selectedPanel]);
 
+  const handlePlaceCardClick = (placeName: string) => {
+    if (selectedPanel === placeName) {
+      setSelectedPanel('');
+    } else {
+      setSelectedPanel(placeName);
+    }
+  };
+
   return (
     <PlaceCardWrapper>
-      <PlaceCircleStep>{orderInDay}</PlaceCircleStep>
+      <PlaceCircleStep>{orderInList}</PlaceCircleStep>
       <PlaceCardContainer
         $isSelected={isSelected}
-        onClick={() => setSelectedPanel(oneDayCourse.placeName)}
+        onClick={() => handlePlaceCardClick(placeItem.placeName)}
       >
-        <PlaceName $isSelected={isSelected}>{oneDayCourse.placeName}</PlaceName>
-        <Tag tagName={oneDayCourse.tag} />
+        <PlaceCardHeader>
+          <PlaceName $isSelected={isSelected}>{placeItem.placeName}</PlaceName>
+          <FavoriteToggleButton placeItem={placeItem} />
+        </PlaceCardHeader>
+        <Tag tagName={placeItem.tag} />
       </PlaceCardContainer>
     </PlaceCardWrapper>
   );

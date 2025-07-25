@@ -1,22 +1,42 @@
 import { Panels } from './TabPanel.style';
 import PlaceCardItem from '../../PlaceCard/PlaceCardItem';
 import { OneDayCourseType } from '../../../../types';
+import RectangleButton from '../../Button/RectangleButton/RectangleButton';
+import { useNavigate } from 'react-router-dom';
+import ErrorLayout from '../../Error/ErrorLayout';
 
 interface TabPanelProps {
+  isFavorite?: boolean;
+  isScrollPanels?: boolean;
   oneDayCourse: OneDayCourseType[];
-  setSelectedPanel: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const TabPanel = ({ oneDayCourse, setSelectedPanel }: TabPanelProps) => {
+const TabPanel = ({ isFavorite, isScrollPanels, oneDayCourse }: TabPanelProps) => {
+  const navigate = useNavigate();
+
+  if (oneDayCourse.length === 0) {
+    return (
+      <Panels $isScrollPanels={isScrollPanels}>
+        <ErrorLayout errorTitle='장소 리스트가 존재하지 않습니다!' />
+        {isFavorite && (
+          <RectangleButton
+            text='장소 추가하기'
+            onClick={() => navigate('/')}
+            size='small'
+          />
+        )}
+      </Panels>
+    );
+  }
+
   return (
-    <Panels>
+    <Panels $isScrollPanels={isScrollPanels}>
       {oneDayCourse.map((course) => {
         return (
           <PlaceCardItem
             key={course.orderInday}
-            orderInDay={course.orderInday}
-            oneDayCourse={course}
-            setSelectedPanel={setSelectedPanel}
+            orderInList={course.orderInday}
+            placeItem={course}
           />
         );
       })}
