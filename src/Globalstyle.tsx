@@ -119,6 +119,15 @@ a {
 
 /**Firefox 브라우저 
 스크롤바도 추가 해야함 */
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
 `;
 
 export default GlobalStyle;
