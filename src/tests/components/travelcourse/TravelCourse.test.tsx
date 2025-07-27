@@ -1,19 +1,12 @@
-import { screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import { SelectedPanelProvider } from '../../../store/SelectedPanelContext';
 import { mockOneDayCourses } from '../../data/mockData';
 import rtlRender from '../../Render';
 import TravelCourse from '../../../components/detail/TravelCourse/TravelCourse';
+import { AddFavoriteProvider } from '../../../store/AddFavoriteContext';
 
 beforeAll(() => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: vi.fn().mockImplementation((query) => ({
-      matches: false,
-      media: query,
-    })),
-  });
-
   global.IntersectionObserver = vi.fn(function () {
     return {
       observe: vi.fn(),
@@ -32,26 +25,28 @@ const CustomTravelCourse = () => {
 
   return (
     <SelectedPanelProvider>
-      <TravelCourse
-        totalTravelDays={3}
-        selectedTab={1}
-        oneDayCourses={mockOneDayCourses}
-        setSelectedTab={setSelectedTab}
-      />
+      <AddFavoriteProvider>
+        <TravelCourse
+          totalTravelDays={3}
+          selectedTab={1}
+          oneDayCourses={mockOneDayCourses}
+          setSelectedTab={setSelectedTab}
+        />
+      </AddFavoriteProvider>
     </SelectedPanelProvider>
   );
 };
 
-describe('여행 코스 디테일 페이지', () => {
-  it('여행 코스 목록이 렌더링 된다.', async () => {
+describe('여행 코스 디테일 페이지의 TravelCourse 컴포넌트', () => {
+  it('전체 여행일차 탭과 현재 선택된 날짜의 코스 목록을 렌더링해야 합니다.', () => {
     rtlRender(<CustomTravelCourse />);
 
-    await waitFor(() => {
-      expect(screen.getByText('1일차')).toBeInTheDocument();
-      expect(screen.getByText('2일차')).toBeInTheDocument();
-      expect(screen.getByText('3일차')).toBeInTheDocument();
-    });
+    expect(screen.getByText('1일차')).toBeInTheDocument();
+    expect(screen.getByText('2일차')).toBeInTheDocument();
+    expect(screen.getByText('3일차')).toBeInTheDocument();
 
-    screen.debug();
+    mockOneDayCourses.forEach((course) => {
+      expect(screen.getByText(course.placeName)).toBeInTheDocument();
+    });
   });
 });

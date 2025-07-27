@@ -1,50 +1,36 @@
-import { screen, waitFor } from '@testing-library/react';
-import { describe, it, expect, beforeAll, vi } from 'vitest';
+import { screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import rtlRender from '../../Render';
 import Pagination from '../../../components/main/Pagination/Pagination';
 import { colors } from '../../../styles/Theme';
 
-beforeAll(() => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: vi.fn().mockImplementation((query) => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: vi.fn(),
-      removeListener: vi.fn(),
-      addEventListener: vi.fn(),
-      removeEventListener: vi.fn(),
-      dispatchEvent: vi.fn(),
-    })),
+describe('Component: Pagination', () => {
+  it('전달된 총 페이지 수만큼 페이지 버튼을 렌더링해야 합니다.', () => {
+    rtlRender(
+      <Pagination
+        color={colors.WHITE}
+        totalPageNumber={5}
+        currentPageNumber={1}
+        onPageClick={() => {}}
+      />,
+    );
+    expect(screen.getByRole('button', { name: '1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '5' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: '6' })).not.toBeInTheDocument();
   });
-});
 
-const CustomPagination = () => {
-  const onPageClick = () => {};
-
-  return (
-    <Pagination
-      color={colors.WHITE}
-      totalPageNumber={5}
-      currentPageNumber={1}
-      onPageClick={onPageClick}
-    />
-  );
-};
-
-describe('메인페이지 페이지네이션', () => {
-  it('정렬 드롭 다운 클릭 시 조회순, 최신순 옵션이 나온다', async () => {
-    rtlRender(<CustomPagination />);
-
-    await waitFor(() => {
-      expect(screen.getByText('1')).toBeInTheDocument;
-      expect(screen.getByText('2')).toBeInTheDocument;
-      expect(screen.getByText('3')).toBeInTheDocument;
-      expect(screen.getByText('4')).toBeInTheDocument;
-      expect(screen.getByText('5')).toBeInTheDocument;
-    });
-
-    screen.debug();
+  it('페이지 버튼 클릭 시 onPageClick 함수가 올바른 페이지 번호와 함께 호출되어야 합니다.', () => {
+    const onPageClickMock = vi.fn();
+    rtlRender(
+      <Pagination
+        color={colors.WHITE}
+        totalPageNumber={5}
+        currentPageNumber={1}
+        onPageClick={onPageClickMock}
+      />,
+    );
+    const pageThreeButton = screen.getByRole('button', { name: '3' });
+    fireEvent.click(pageThreeButton);
+    expect(onPageClickMock).toHaveBeenCalledWith(3);
   });
 });
