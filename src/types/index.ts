@@ -94,6 +94,7 @@ export interface OneDayCourseType extends BasePlaceType {
 }
 
 export interface FavoritePlaceType {
+  placeId: number;
   placeName: string;
   placeAddress: string;
   tag: TagType;

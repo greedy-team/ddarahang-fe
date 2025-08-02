@@ -51,9 +51,9 @@ export const getSortedOption = (sortOption: SortByType) => {
 };
 
 export const transformTodefaultFormPlaces = (places: FavoritePlaceType[]) =>
-  places.map((place, index) => ({
+  places.map((place) => ({
     ...place,
-    placeId: index + 1,
+    placeId: place.placeId,
     address: place.placeAddress,
     orderInday: place.orderInPlace,
     position: {
