@@ -1,25 +1,43 @@
 import { TravelVideoListContainer } from './TravelVideoList.style';
-import { TravelList } from '../../../types';
 import YoutubeCard from '../YoutubeCard/YoutubeCard';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants/messages';
 import ErrorLayout from '../../common/Error/ErrorLayout';
+import useTravelVideoList from '../../../hooks/quries/useGetTravelVideoList';
+import { useSortOptionContext } from '../../../hooks/context/useSortOptionContext';
+import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
+import Pagination from '../Pagination/Pagination';
+import { colors } from '../../../styles/Theme';
+import { useState } from 'react';
 
 interface TravelVideoListProps {
   error?: unknown;
-  videoList: TravelList[];
   isFavoritePage: boolean;
 }
 
-const TravelVideoList = ({ error, videoList, isFavoritePage }: TravelVideoListProps) => {
-  const [showNoDataMessage, setShowNoDataMessage] = useState(false);
-
-  useEffect(() => {
-    setShowNoDataMessage(videoList.length === 0);
-  }, [videoList]);
-
+const TravelVideoList = ({ error, isFavoritePage }: TravelVideoListProps) => {
   const navigate = useNavigate();
+
+  const savedPageNumber = localStorage.getItem('currentPageNumber');
+  const initialPageNumber = savedPageNumber ? parseInt(savedPageNumber, 10) : 1;
+  const [currentPageNumber, setCurrentPageNumber] = useState(initialPageNumber);
+
+  const { sortOption } = useSortOptionContext();
+  const { selectedOption } = useSelectOptionContext();
+
+  const { data: videoListResponse } = useTravelVideoList({
+    sortField: sortOption,
+    countryName: selectedOption.countryName,
+    regionName: selectedOption.selectedOptionLabel,
+    pageNumber: 0,
+  });
+
+  const handlePageNumber = (movePageNumber: number) => {
+    setCurrentPageNumber(movePageNumber);
+  };
+
+  const videoList = videoListResponse.content ?? [];
+  const totalPages = videoListResponse.totalPages ?? 0;
 
   const renderErrorMessage = () => {
     if (error) {
@@ -31,7 +49,7 @@ const TravelVideoList = ({ error, videoList, isFavoritePage }: TravelVideoListPr
       );
     }
 
-    if (showNoDataMessage) {
+    if (videoList.length === 0) {
       return (
         <ErrorLayout
           errorTitle={NO_DATA_ERROR_MESSAGE}
@@ -62,6 +80,13 @@ const TravelVideoList = ({ error, videoList, isFavoritePage }: TravelVideoListPr
           />
         ))}
       </TravelVideoListContainer>
+
+      <Pagination
+        color={colors.WHITE}
+        currentPageNumber={currentPageNumber}
+        totalPageNumber={totalPages}
+        onPageClick={handlePageNumber}
+      />
     </>
   );
 };
