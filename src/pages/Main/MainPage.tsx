@@ -7,7 +7,6 @@ import { StyledMainPageLayout, StyledContentsWrapper } from './MainPage.style';
 import { SortByType } from '../../types';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 import DeferredComponent from '../../components/common/Deffered/DefferedComponent';
-
 const TravelVideoList = lazy(() => import('../../components/main/TravelVideoList/TravelVideoList'));
 
 const MainPage = () => {

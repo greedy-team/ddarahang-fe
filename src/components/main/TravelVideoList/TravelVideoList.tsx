@@ -8,7 +8,7 @@ import { useSortOptionContext } from '../../../hooks/context/useSortOptionContex
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 import Pagination from '../Pagination/Pagination';
 import { colors } from '../../../styles/Theme';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TravelVideoListProps {
   error?: unknown;
@@ -29,8 +29,13 @@ const TravelVideoList = ({ error, isFavoritePage }: TravelVideoListProps) => {
     sortField: sortOption,
     countryName: selectedOption.countryName,
     regionName: selectedOption.selectedOptionLabel,
-    pageNumber: 0,
+    pageNumber: currentPageNumber - 1,
   });
+
+  useEffect(() => {
+    setCurrentPageNumber(1);
+    localStorage.setItem('currentPageNumber', '1');
+  }, [sortOption, selectedOption]);
 
   const handlePageNumber = (movePageNumber: number) => {
     setCurrentPageNumber(movePageNumber);
