@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     , url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.ttf') format('ttf');
 
     font-style: normal;
+     font-display: swap;
   } 
 
 
@@ -15,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Ownglyph_ParkDaHyun';
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
     font-weight: normal;
+     font-display: swap;
     font-style: normal;
   }
 
@@ -23,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
   src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
+   font-display: swap;
   }
 
   @font-face {
@@ -30,6 +33,7 @@ const GlobalStyle = createGlobalStyle`
   src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
+   font-display: swap;
   }
 
   @media all and (max-width: 750px) {
