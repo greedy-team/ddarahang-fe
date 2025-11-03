@@ -26,28 +26,28 @@ export const COUNTRYOPTION: SelectOptionType[] = [
     isCountryOption: true,
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/australia.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/australia-.webp',
     locationLabel: '호주',
     countryLabel: '호주',
     locationType: '국가',
     isCountryOption: true,
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/malaysia.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/malaysia.webp',
     locationLabel: '말레이시아',
     countryLabel: '말레이시아',
     locationType: '국가',
     isCountryOption: true,
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/vietnam.png',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/vietnam.webp',
     locationLabel: '베트남',
     countryLabel: '베트남',
     locationType: '국가',
     isCountryOption: true,
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/China.png',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/China.webp',
     locationLabel: '중국',
     countryLabel: '중국',
     locationType: '국가',
@@ -113,7 +113,7 @@ export const KOREAREGIONOPTION: SelectOptionType[] = [
     countryLabel: '대한민국',
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/gyeonggi-do.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/gyeonggi.webp',
     locationLabel: '경기도',
     locationType: '지역, 대한민국',
     isCountryOption: false,
@@ -200,7 +200,7 @@ export const JAPANREGIONOPTION: SelectOptionType[] = [
     countryLabel: '일본',
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/fukuoka.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/fukuoka.webp',
     locationLabel: '후쿠오카',
     locationType: '도시, 일본',
     isCountryOption: false,
@@ -214,7 +214,7 @@ export const JAPANREGIONOPTION: SelectOptionType[] = [
     countryLabel: '일본',
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/kitakyushu.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/kitakyushu.webp',
     locationLabel: '기타큐슈',
     locationType: '도시, 일본',
     isCountryOption: false,
@@ -255,28 +255,28 @@ export const MALAYSIAREGIONOPTION: SelectOptionType[] = [
 
 export const VIEWTNAMOPTION: SelectOptionType[] = [
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/Phu_Quoc.png',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/phuQuoc.jpg',
     locationLabel: '푸꾸옥',
     locationType: '도시, 베트남',
     isCountryOption: false,
     countryLabel: '베트남',
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/hanoi.jpeg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/hanoi.webp',
     locationLabel: '하노이',
     locationType: '도시, 베트남',
     isCountryOption: false,
     countryLabel: '베트남',
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/nhatrang.png',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/nhatrang-.webp',
     locationLabel: '나트랑',
     locationType: '도시, 베트남',
     isCountryOption: false,
     countryLabel: '베트남',
   },
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/danang.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/danang.webp',
     locationLabel: '다낭',
     locationType: '도시, 베트남',
     isCountryOption: false,
@@ -286,7 +286,7 @@ export const VIEWTNAMOPTION: SelectOptionType[] = [
 
 export const AUSTRALIAOPTION: SelectOptionType[] = [
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/australia.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/australia-.webp',
     locationLabel: '시드니',
     locationType: '도시, 호주',
     isCountryOption: false,
@@ -306,7 +306,7 @@ export const EUROPEOPTION: SelectOptionType[] = [
 
 export const CHINAOPTION: SelectOptionType[] = [
   {
-    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/shanghai.jpg',
+    imgUrl: 'https://ddarahang-bucket.s3.ap-northeast-2.amazonaws.com/image/shanghai.webp',
     locationLabel: '상하이',
     locationType: '도시, 중국',
     isCountryOption: false,
