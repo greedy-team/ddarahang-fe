@@ -8,7 +8,7 @@ import { useSortOptionContext } from '../../../hooks/context/useSortOptionContex
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 import Pagination from '../Pagination/Pagination';
 import { colors } from '../../../styles/Theme';
-import { useEffect, useState } from 'react';
+import { startTransition, useEffect, useState } from 'react';
 
 interface TravelVideoListProps {
   error?: unknown;
@@ -34,11 +34,13 @@ const TravelVideoList = ({ error, isFavoritePage }: TravelVideoListProps) => {
 
   useEffect(() => {
     setCurrentPageNumber(1);
-    localStorage.setItem('currentPageNumber', '1');
-  }, [sortOption, selectedOption]);
+  }, [selectedOption.countryName, selectedOption.selectedOptionLabel, sortOption]);
 
   const handlePageNumber = (movePageNumber: number) => {
-    setCurrentPageNumber(movePageNumber);
+    startTransition(() => {
+      setCurrentPageNumber(movePageNumber);
+      localStorage.setItem('currentPageNumber', String(movePageNumber));
+    });
   };
 
   const videoList = videoListResponse.content ?? [];
