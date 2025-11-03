@@ -2,7 +2,6 @@ import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import TravelVideoList from '../../../components/main/TravelVideoList/TravelVideoList';
 import rtlRender from '../../Render';
-import { videoList } from '../../data/mockData';
 
 beforeAll(() => {
   Object.defineProperty(window, 'matchMedia', {
@@ -32,19 +31,14 @@ beforeAll(() => {
   }) as unknown as typeof IntersectionObserver;
 });
 
-const CustomTravelVideoList = ({ mockVideoList }: any) => {
-  return (
-    <TravelVideoList
-      videoList={mockVideoList}
-      isFavoritePage={false}
-    />
-  );
+const CustomTravelVideoList = () => {
+  return <TravelVideoList isFavoritePage={false} />;
 };
 
 describe('메인 페이지', () => {
   describe('셀렉 박스 테스트 ', () => {
     it('사용자가 선택한 지역의 데이터가 없는 경우 안내 문구가 나온다.', async () => {
-      rtlRender(<CustomTravelVideoList mockVideoList={videoList} />);
+      rtlRender(<CustomTravelVideoList />);
 
       await waitFor(() => {
         expect(screen.getByText('서울 여행 코스 추천, 데이트 코스')).toBeInTheDocument();

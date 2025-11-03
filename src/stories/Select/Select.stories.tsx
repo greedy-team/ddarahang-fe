@@ -19,6 +19,5 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     onSubmitOption: action('정렬 기준 변경'),
-    setCurrentPageNumber: action('페이지 번호 설정'),
   },
 };

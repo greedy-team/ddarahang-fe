@@ -10,12 +10,7 @@ const meta = {
   },
   tags: ['autodocs'],
 
-  argTypes: {
-    setCurrentPageNumber: {
-      action: 'setCurrentPageNumber',
-      description: '페이지 번호를 설정하는 함수',
-    },
-  },
+  argTypes: {},
 } satisfies Meta<typeof Header>;
 
 export default meta;
@@ -25,6 +20,5 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     onSubmitOption: () => {},
-    setCurrentPageNumber: () => {},
   },
 };

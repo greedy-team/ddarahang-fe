@@ -56,7 +56,7 @@ const TravelCoursePage = () => {
   const [isMobileMapVisible, setIsMobileMapVisible] = useState(false);
 
   const { setSelectedPanel } = useSelectedPanel();
-  const { travelCourse, loading, error } = useGetTravelCourse(Number(param.id));
+  const { data: travelCourse, error, isLoading: loading } = useGetTravelCourse(Number(param.id));
 
   useEffect(() => {
     const handleResize = () => {
