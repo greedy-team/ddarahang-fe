@@ -1,21 +1,19 @@
 import { TravelVideoListContainer } from './TravelVideoList.style';
 import YoutubeCard from '../YoutubeCard/YoutubeCard';
 import { useNavigate } from 'react-router-dom';
-import { ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../../constants/messages';
-import ErrorLayout from '../../common/Error/ErrorLayout';
+
 import useTravelVideoList from '../../../hooks/quries/useGetTravelVideoList';
 import { useSortOptionContext } from '../../../hooks/context/useSortOptionContext';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
 import Pagination from '../Pagination/Pagination';
 import { colors } from '../../../styles/Theme';
-import { startTransition, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TravelVideoListProps {
-  error?: unknown;
   isFavoritePage: boolean;
 }
 
-const TravelVideoList = ({ error, isFavoritePage }: TravelVideoListProps) => {
+const TravelVideoList = ({ isFavoritePage }: TravelVideoListProps) => {
   const navigate = useNavigate();
 
   const savedPageNumber = localStorage.getItem('currentPageNumber');
@@ -37,41 +35,15 @@ const TravelVideoList = ({ error, isFavoritePage }: TravelVideoListProps) => {
   }, [selectedOption.countryName, selectedOption.selectedOptionLabel, sortOption]);
 
   const handlePageNumber = (movePageNumber: number) => {
-    startTransition(() => {
-      setCurrentPageNumber(movePageNumber);
-      localStorage.setItem('currentPageNumber', String(movePageNumber));
-    });
+    setCurrentPageNumber(movePageNumber);
+    localStorage.setItem('currentPageNumber', String(movePageNumber));
   };
 
   const videoList = videoListResponse.content ?? [];
   const totalPages = videoListResponse.totalPages ?? 0;
 
-  const renderErrorMessage = () => {
-    if (error) {
-      return (
-        <ErrorLayout
-          errorTitle={ERROR_MESSAGE}
-          errorDescription={String(error)}
-        />
-      );
-    }
-
-    if (videoList.length === 0) {
-      return (
-        <ErrorLayout
-          errorTitle={NO_DATA_ERROR_MESSAGE}
-          errorDescription={ERROR_MESSAGE}
-        />
-      );
-    }
-
-    return null;
-  };
-
   return (
     <>
-      {renderErrorMessage()}
-
       <TravelVideoListContainer $isFavoritePage={isFavoritePage}>
         {videoList.map((video) => (
           <YoutubeCard

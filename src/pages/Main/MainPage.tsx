@@ -1,4 +1,4 @@
-import { Suspense, lazy, startTransition } from 'react';
+import { Suspense, lazy } from 'react';
 import Footer from '../../components/main/Footer/Footer';
 import Header from '../../components/main/Header/Header';
 import SortDropdown from '../../components/main/SortDropdown/SortDropdown';
@@ -7,21 +7,18 @@ import { SortByType } from '../../types';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 import DeferredComponent from '../../components/common/Deferred/DeferredComponent';
 import Loading from '../../components/common/Loading/Loading';
+
 const TravelVideoList = lazy(() => import('../../components/main/TravelVideoList/TravelVideoList'));
 
 const MainPage = () => {
   const { setSortOption } = useSortOptionContext();
 
   const handleSubmitDropdown = (sortBy: SortByType) => {
-    startTransition(() => {
-      setSortOption(sortBy);
-    });
+    setSortOption(sortBy);
   };
 
   const handleSubmitOption = () => {
-    startTransition(() => {
-      setSortOption('uploadDate');
-    });
+    setSortOption('uploadDate');
   };
 
   return (
