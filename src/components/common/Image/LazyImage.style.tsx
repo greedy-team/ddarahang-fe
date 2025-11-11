@@ -15,8 +15,8 @@ export const StyledLazyImage = styled.img<LazyImageProps>`
   height: ${(props) => props.$height || 'auto'};
   aspect-ratio: ${(props) => props.$aspectRatio || 'auto'};
   border-radius: ${(props) => props.$borderRadius || '0px'};
-  transition: opacity 0.5s ease-in-out;
-  opacity: ${(props) => (props.$isLoaded ? 1 : 0.2)};
+  transition: opacity 0ms ease;
+  opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
 
   ${(props) =>
     props.$shouldShowSkeleton &&

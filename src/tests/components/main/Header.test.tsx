@@ -33,14 +33,8 @@ beforeAll(() => {
 
 const CustomHeader = () => {
   const onSubmitOption = () => {};
-  const setCurrentPageNumber = () => {};
 
-  return (
-    <Header
-      onSubmitOption={onSubmitOption}
-      setCurrentPageNumber={setCurrentPageNumber}
-    />
-  );
+  return <Header onSubmitOption={onSubmitOption} />;
 };
 
 describe('메인페이지 헤더 컴포넌트', () => {

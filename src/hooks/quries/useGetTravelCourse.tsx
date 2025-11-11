@@ -1,33 +1,19 @@
-import { useEffect, useState } from 'react';
-import { TravelCourse } from '../../types';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { TravelCourse } from '../../types';
+
+const fetchTravelCourse = async (videoId: number): Promise<TravelCourse> => {
+  const { data } = await axios.get(`/api/v1/travelcourses/${videoId}`);
+  return data;
+};
 
 const useGetTravelCourse = (videoId: number) => {
-  const [error, setError] = useState<unknown>(null);
-  const [loading, setLoading] = useState(false);
-  const [travelCourse, setTravelCourse] = useState<TravelCourse>();
-
-  useEffect(() => {
-    const getTravelCourse = async () => {
-      setLoading(true);
-
-      try {
-        const response = await axios.get(`/api/v1/travelcourses/${videoId}`);
-
-        if (response) {
-          setTravelCourse(response.data);
-        }
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getTravelCourse();
-  }, []);
-
-  return { travelCourse, loading, error };
+  return useSuspenseQuery<TravelCourse>({
+    queryKey: ['travelCourse', videoId],
+    queryFn: () => fetchTravelCourse(videoId),
+    staleTime: 1000 * 60 * 2,
+    gcTime: 1000 * 60 * 10,
+  });
 };
 
 export default useGetTravelCourse;

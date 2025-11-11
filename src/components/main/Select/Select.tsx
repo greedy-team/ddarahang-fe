@@ -6,10 +6,9 @@ import { SelectOptionList } from '../../common/Select/SelectOptionList/SelectOpt
 
 interface SelectProps {
   onSubmitOption: () => void;
-  setCurrentPageNumber: (currentPageNumber: number) => void;
 }
 
-const Select = ({ onSubmitOption, setCurrentPageNumber }: SelectProps) => {
+const Select = ({ onSubmitOption }: SelectProps) => {
   const optionListRef = useRef<HTMLUListElement>(null);
   const countryTabRef = useRef<HTMLDivElement>(null);
   const regionTabRef = useRef<HTMLDivElement>(null);
@@ -32,7 +31,6 @@ const Select = ({ onSubmitOption, setCurrentPageNumber }: SelectProps) => {
       <SelectOptionList
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        setCurrentPageNumber={setCurrentPageNumber}
         optionListRef={optionListRef}
       />
     </SelectContainer>

@@ -1,48 +1,48 @@
-import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { useAddFavoriteContext } from '../context/useAddFavoriteContext';
+
 import axios from 'axios';
 import { FavoritePlaceType } from '../../types';
-import { useAddFavoriteContext } from '../context/useAddFavoriteContext';
 
 const FAVORITE_STORAGE_KEY = 'favoritePlaceIds';
 
-const useFavoritePlaces = () => {
-  const [places, setPlaces] = useState<FavoritePlaceType[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<unknown>(null);
+export async function fetchFavoritePlaces(): Promise<FavoritePlaceType[]> {
+  const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
+
+  const placeIds: number[] = favoritePlaceIdStore
+    ? JSON.parse(favoritePlaceIdStore).map((place: { placeId: number; placeName: string }) => place.placeId)
+    : [];
+
+  if (placeIds.length === 0) {
+    return [];
+  }
+
+  const response = await axios.post(`/api/v1/favorite`, { placeIds });
+  return response.data;
+}
+
+function useFavoritePlaces() {
   const { favoritePlaces } = useAddFavoriteContext();
 
-  const fetchFavoritePlaces = async () => {
-    const favoritePlaceIdStore = localStorage.getItem(FAVORITE_STORAGE_KEY);
+  const {
+    data: places = [],
+    isLoading: loading,
+    isError,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ['favoritePlaces', favoritePlaces],
+    queryFn: fetchFavoritePlaces,
+    staleTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: false,
+  });
 
-    const placeIds: number[] = favoritePlaceIdStore
-      ? JSON.parse(favoritePlaceIdStore).map((place: { placeId: number; placeName: string }) => place.placeId)
-      : [];
-
-    if (placeIds.length === 0) {
-      setPlaces([]);
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const response = await axios.post(`/api/v1/favorite`, {
-        placeIds,
-      });
-
-      setPlaces(response.data);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
+  return {
+    favoritePlaces: places,
+    loading,
+    error: isError ? error : null,
+    refetch,
   };
-
-  useEffect(() => {
-    fetchFavoritePlaces();
-  }, [favoritePlaces]);
-
-  return { favoritePlaces: places, loading, error };
-};
+}
 
 export default useFavoritePlaces;

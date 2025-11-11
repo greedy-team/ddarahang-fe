@@ -40,7 +40,6 @@ export const Default: Story = {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         optionListRef={optionListRef}
-        setCurrentPageNumber={() => {}}
       />
     );
   },
