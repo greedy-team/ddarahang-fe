@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors } from '../../../styles/Theme';
 
 interface LazyImageProps {
@@ -7,23 +7,33 @@ interface LazyImageProps {
   $aspectRatio?: string;
   $borderRadius?: string;
   $isLoaded?: boolean;
-  $shouldShowSkeleton?: boolean;
 }
 
 export const StyledLazyImage = styled.img<LazyImageProps>`
-  width: ${(props) => props.$width || '100%'};
-  height: ${(props) => props.$height || 'auto'};
-  aspect-ratio: ${(props) => props.$aspectRatio || 'auto'};
-  border-radius: ${(props) => props.$borderRadius || '0px'};
-  transition: opacity 0ms ease;
-  opacity: ${(props) => (props.$isLoaded ? 1 : 0)};
+  width: ${({ $width }) => $width || '100%'};
+  height: ${({ $height }) => $height || 'auto'};
+  aspect-ratio: ${({ $aspectRatio }) => $aspectRatio || 'auto'};
+  border-radius: ${({ $borderRadius }) => $borderRadius || '0px'};
+  object-fit: cover;
 
-  ${(props) =>
-    props.$shouldShowSkeleton &&
-    `
-    background-color: ${colors.GRAY_200};
-    background-image: linear-gradient(90deg, ${colors.GRAY_200} 25%, ${colors.GRAY_300} 50%, ${colors.GRAY_200} 75%);
-    background-size: 468px 100%;
-    animation: skeleton-shimmer 1.5s ease-in-out infinite;
-  `}
+  opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0.2)};
+  transition: opacity 0.4s ease;
+
+  ${({ $isLoaded }) =>
+    !$isLoaded &&
+    css`
+      background-color: ${colors.GRAY_200};
+      background-image: linear-gradient(90deg, ${colors.GRAY_200} 25%, ${colors.GRAY_300} 50%, ${colors.GRAY_200} 75%);
+      background-size: 400% 100%;
+      animation: skeleton-shimmer 1.2s ease-in-out infinite;
+    `}
+
+  @keyframes skeleton-shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
 `;

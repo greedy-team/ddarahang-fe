@@ -10,7 +10,7 @@ interface UseTravelVideoListProps {
   pageNumber: number;
 }
 
-async function fetchTravelVideoList({
+export async function fetchTravelVideoList({
   sortField,
   countryName,
   regionName,
