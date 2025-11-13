@@ -28,11 +28,13 @@ const Select = ({ onSubmitOption }: SelectProps) => {
         countryTabRef={countryTabRef}
         regionTabRef={regionTabRef}
       />
-      <SelectOptionList
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        optionListRef={optionListRef}
-      />
+      {isOpen && (
+        <SelectOptionList
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          optionListRef={optionListRef}
+        />
+      )}
     </SelectContainer>
   );
 };

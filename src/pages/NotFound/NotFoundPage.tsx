@@ -7,7 +7,7 @@ const NotFoundPage = () => {
   return (
     <Container>
       <img
-        src='/Logo.jpeg'
+        src='/Logo.webp'
         alt='로고'
         width={100}
         height={100}
