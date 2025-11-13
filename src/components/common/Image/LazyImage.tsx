@@ -12,19 +12,8 @@ interface LazyImageProps {
   useSkeleton?: boolean;
 }
 
-const LazyImage = ({
-  src,
-  alt,
-  placeholder,
-  width,
-  height,
-  ratio,
-  borderRadius = '0px',
-  useSkeleton = true,
-}: LazyImageProps) => {
+const LazyImage = ({ src, alt, placeholder, width, height, ratio, borderRadius = '0px' }: LazyImageProps) => {
   const { imgRef, isLoaded, isInView } = useLazyLoadImage();
-
-  const shouldShowSkeleton = useSkeleton && !placeholder && !isLoaded;
 
   return (
     <StyledLazyImage
@@ -36,7 +25,6 @@ const LazyImage = ({
       $aspectRatio={ratio}
       $borderRadius={borderRadius}
       $isLoaded={isLoaded}
-      $shouldShowSkeleton={shouldShowSkeleton}
     />
   );
 };
