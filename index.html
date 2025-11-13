@@ -1,6 +1,44 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link
+      rel="preconnect"
+      href="https://img.youtube.com"
+    />
+    <link
+      rel="dns-prefetch"
+      href="https://img.youtube.com"
+    />
+
+    <link
+      rel="preload"
+      as="font"
+      href="/fonts/Pretendard-Regular.woff2"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/fonts/Pretendard-SemiBold.woff2"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/fonts/Pretendard-Bold.woff2"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/fonts/Ownglyph_ParkDaHyun.woff2"
+      type="font/woff2"
+      crossorigin
+    />
+
     <meta charset="UTF-8" />
     <!--네이버 소유 확인-->
     <meta
@@ -14,28 +52,29 @@
     <link
       rel="icon"
       type="image/svg+xml"
-      href="/Logo.jpeg"
+      href="/Logo.webp"
     />
 
     <link
-      rel="preload"
-      as="image"
-      href="https://img.youtube.com/vi/HQAGjgFG_fI/maxresdefault.jpg"
-      fetchpriority="high"
-    />
-
-    <link
-      rel="preconnect"
-      href="https://img.youtube.com"
-    />
-    <link
-      rel="dns-prefetch"
-      href="https://img.youtube.com"
+      rel="stylesheet"
+      href="/styles.css"
     />
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-V0DWCWWFRY"
+      src="/app.js"
+      defer
     ></script>
+
+    <script>
+      if (import.meta.env.MODE === 'development') {
+        window['ga-disable-G-V0DWCWWFRY'] = true;
+      }
+    </script>
+    <script
+      src="https://www.googletagmanager.com/gtag/js?id=G-V0DWCWWFRY"
+      defer
+      onload="window.dataLayerReady = true"
+    />
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -53,10 +92,7 @@
       name="description"
       content="따라행은 유튜브의 여행 브이로그를 모아서, 영상에서 유튜버 분들이 실제로 방문한 여행 코스를 지도와 함께 제공 하는 서비스입니다."
     />
-    <meta
-      http-equiv="refresh"
-      content="https://ddarahang.site"
-    />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
@@ -79,7 +115,7 @@
     />
     <meta
       property="og:image"
-      content="./icon/Logo.jpeg"
+      content="./icon/Logo.webp"
     />
     <title>따라행</title>
   </head>

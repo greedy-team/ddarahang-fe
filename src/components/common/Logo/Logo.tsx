@@ -25,7 +25,7 @@ const Logo = ({ isMainHeader, setCurrentPageNumber }: LogoProps) => {
   return (
     <StyledLogo onClick={handleLogoClick}>
       <img
-        src='/icon/Logo.jpeg'
+        src='/icon/Logo.webp'
         alt='로고'
         width={55}
         height={50}
