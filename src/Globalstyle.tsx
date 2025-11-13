@@ -3,38 +3,36 @@ import { colors, size } from './styles/Theme';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff')
-    , url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.ttf') format('ttf');
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-    font-style: normal;
-     font-display: swap;
-  } 
-
-
-  @font-face {
-    font-family: 'Ownglyph_ParkDaHyun';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2411-3@1.0/Ownglyph_ParkDaHyun.woff2') format('woff2');
-    font-weight: normal;
-     font-display: swap;
-    font-style: normal;
-  }
-
-  @font-face {
-  font-family: 'Pretendard-SemiBold';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
-   font-display: swap;
-  }
+  font-display: swap;
+}
 
-  @font-face {
-  font-family: 'Pretendard-Bold';
-  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
-  font-weight: 600;
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
-   font-display: swap;
-  }
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Ownglyph_ParkDaHyun';
+  src: url('/fonts/Ownglyph_ParkDaHyun.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
   @media all and (max-width: 750px) {
   html {
