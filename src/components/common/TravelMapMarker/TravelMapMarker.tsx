@@ -5,6 +5,16 @@ import { Position } from '../../../types';
 import { useSelectedPanel } from '../../../hooks/context/useSelectedPanelContext';
 import TravelMapInfoWindow from '../TravelMapInfoWindow/TravelMapInfoWindow';
 
+interface TravelMapMarkerProps {
+  orderInday: number;
+  travelMap: google.maps.Map | null;
+  position: Position;
+  placeName: string;
+  address: string;
+  selectedMarker: string | undefined;
+  setSelectedMarker: React.Dispatch<React.SetStateAction<string | undefined>>;
+}
+
 const TravelMapMarker = ({
   orderInday,
   travelMap,
@@ -13,15 +23,7 @@ const TravelMapMarker = ({
   address,
   selectedMarker,
   setSelectedMarker,
-}: {
-  orderInday: number;
-  travelMap: google.maps.Map | null;
-  position: Position;
-  placeName: string;
-  address: string;
-  selectedMarker: string | undefined;
-  setSelectedMarker: React.Dispatch<React.SetStateAction<string | undefined>>;
-}) => {
+}: TravelMapMarkerProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
 
@@ -38,6 +40,7 @@ const TravelMapMarker = ({
   useEffect(() => {
     if (!travelMap) return;
     const markerContainer = document.createElement('div');
+
     const markerInstance = new google.maps.marker.AdvancedMarkerElement({
       position,
       map: travelMap,

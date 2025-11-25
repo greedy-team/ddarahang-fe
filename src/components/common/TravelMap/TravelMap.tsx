@@ -29,8 +29,8 @@ const TravelMap = ({ oneDayCourses }: TravelMapProps) => {
 
     const instance = new window.google.maps.Map(mapRef.current, {
       center: {
-        lat: markers[Math.floor(markers.length / 2)].position.lat,
-        lng: markers[Math.floor(markers.length / 2)].position.lng,
+        lat: markers[Math.floor(markers.length / 2)].position?.lat,
+        lng: markers[Math.floor(markers.length / 2)].position?.lng,
       },
       zoom: 15,
       restriction: {
