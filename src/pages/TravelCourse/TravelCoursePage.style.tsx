@@ -4,8 +4,9 @@ import { size } from '../../styles/Theme';
 export const TravelCoursePageLayout = styled.div`
   display: flex;
   justify-content: center;
-  width: 100vw;
-  min-height: 57.8rem;
+  width: 100%;
+  height: 100vh;
+  /* min-height: 57.8rem; */
 
   @media screen and (max-width: 780px) {
     gap: 0;
@@ -14,8 +15,20 @@ export const TravelCoursePageLayout = styled.div`
   }
 `;
 
+export const PageLayout = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+
+  @media screen and (max-width: 780px) {
+    gap: ${size.SIZE_002};
+    padding: ${size.SIZE_004} 0;
+  }
+`;
+
 export const TravelCourseContainer = styled.div`
-  width: 37.5rem;
+  width: 29rem;
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_010};

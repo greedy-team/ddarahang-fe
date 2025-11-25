@@ -11,7 +11,7 @@ import Loading from '../../components/common/Loading/Loading';
 import FavoriteRecommend from '../../components/favorite/FavoriteRecommend/FavoriteRecommend';
 import ErrorLayout from '../../components/common/Error/ErrorLayout';
 import { ERROR_MESSAGE } from '../../constants/messages';
-import { transformTodefaultFormPlaces } from '../../utils';
+import { adaptPlace } from '../../utils/adaptPlace';
 
 const FavoritePage = () => {
   const { favoritePlaces, loading, error } = useFavoritePlaces();
@@ -25,7 +25,7 @@ const FavoritePage = () => {
   const filteredPlaces =
     selectedTagTab === '전체' ? favoritePlaces : favoritePlaces.filter((place) => place.tag === selectedTagTab);
 
-  const defaultFormPlaces = transformTodefaultFormPlaces(filteredPlaces);
+  const defaultFormPlaces = adaptPlace(filteredPlaces);
 
   if (error)
     return (

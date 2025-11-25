@@ -1,8 +1,8 @@
 import { Dispatch, RefObject, SetStateAction } from 'react';
 import { useSelectOptionContext } from '../../../../hooks/context/useSelectOptionContext';
-import { getRegionOptionList } from '../../../../utils';
 import { SelectOptionListContainer, MobileTitle } from './SelectOptionList.style';
 import SelectOption from '../SelectItem/SelectOption';
+import { getRegionOptionList } from '../../../../utils/option';
 
 interface SelectOptionListProps {
   isOpen: boolean;
