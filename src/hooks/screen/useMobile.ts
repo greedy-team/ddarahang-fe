@@ -14,12 +14,14 @@ function useMobile(breakpoint: number = 780) {
 
     handleResize();
 
+    return () => window.removeEventListener('resize', handleResize);
+  }, [breakpoint]);
+
+  useEffect(() => {
     if (!isMobile) {
       setIsMobileMapVisible(false);
     }
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [breakpoint]);
+  }, [isMobile]);
 
   return {
     isMobile,
