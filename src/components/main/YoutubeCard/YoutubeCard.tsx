@@ -9,14 +9,17 @@ interface YoutubeCardProps {
   creator: string;
   uploadDate: string;
   viewCount: number;
-  onClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const YoutubeCard = ({ imgUrl, title, creator, uploadDate, viewCount, onClick }: YoutubeCardProps) => {
   const simpleViewCount = parseFloat((viewCount / MIN_VIEW).toFixed(1)) + '만회';
 
   return (
-    <YoutubeCardContainer onClick={onClick}>
+    <YoutubeCardContainer
+      as='button'
+      onClick={onClick}
+    >
       <LazyImage
         width='100%'
         ratio='16/9'

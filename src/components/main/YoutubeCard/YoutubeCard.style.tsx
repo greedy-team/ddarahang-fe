@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const YoutubeCardContainer = styled.div`
+export const YoutubeCardContainer = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: transparent;
   max-width: 25rem;
   height: 22.2rem;
   margin: ${size.SIZE_007};
