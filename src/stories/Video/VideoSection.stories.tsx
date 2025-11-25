@@ -33,7 +33,6 @@ export const Default: Story = {
   args: {
     videoUrl: 'https://www.youtube.com/watch?v=LTFAaPdvzTk',
     isMobileMapVisible: false,
-    isMobile: false,
     setIsMobileMapVisible: () => {},
     travelCourse: {
       videoUrl: 'https://www.youtube.com/watch?v=LTFAaPdvzTk',
