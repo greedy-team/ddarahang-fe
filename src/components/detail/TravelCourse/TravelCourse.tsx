@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Tab from '../../common/Tabs/Tab/Tab';
 import TabPanel from '../../common/Tabs/TabPanel/TabPanel';
 import { TravelCourseContainer, TravelCourseLayout } from './TravelCourse.style';
-import { adaptTravelCourse } from '../../../utils/adpatTravelCourse';
+import { adaptTravelCourse } from '../../../utils/adaptTravelCourse';
 import type { TravelCourse } from '../../../types';
 import TravelMapWrapper from '../../common/TravelMapWrapper/TravelMapWrapper';
 import TravelMap from '../../common/TravelMap/TravelMap';
