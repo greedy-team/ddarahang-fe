@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test('사용자 전체 여행 시나리오 테스트', async ({ page }) => {
-  await page.goto('http://localhost:5173/');
+  await page.goto('/', { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: '여행 지역 서울' }).click();
   await page.getByRole('option', { name: '지역 대표 사진 대구 도시, 대한민국' }).click();
   await page
