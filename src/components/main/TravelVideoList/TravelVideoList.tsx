@@ -60,12 +60,14 @@ const TravelVideoList = ({ isFavoritePage }: TravelVideoListProps) => {
         ))}
       </TravelVideoListContainer>
 
-      <Pagination
-        color={colors.WHITE}
-        currentPageNumber={currentPageNumber}
-        totalPageNumber={totalPages}
-        onPageClick={handlePageNumber}
-      />
+      {!isFavoritePage && (
+        <Pagination
+          color={colors.WHITE}
+          currentPageNumber={currentPageNumber}
+          totalPageNumber={totalPages}
+          onPageClick={handlePageNumber}
+        />
+      )}
     </>
   );
 };

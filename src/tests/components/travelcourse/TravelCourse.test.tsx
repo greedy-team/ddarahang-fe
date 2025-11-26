@@ -1,7 +1,7 @@
 import { screen, waitFor } from '@testing-library/react';
 import { describe, it, expect, beforeAll, vi } from 'vitest';
 import { SelectedPanelProvider } from '../../../store/SelectedPanelContext';
-import { mockOneDayCourses } from '../../data/mockData';
+import { mockTravelCourse } from '../../data/mockData';
 import rtlRender from '../../Render';
 import TravelCourse from '../../../components/detail/TravelCourse/TravelCourse';
 
@@ -28,15 +28,11 @@ beforeAll(() => {
 });
 
 const CustomTravelCourse = () => {
-  const setSelectedTab = () => {};
-
   return (
     <SelectedPanelProvider>
       <TravelCourse
+        travelCourse={mockTravelCourse}
         totalTravelDays={3}
-        selectedTab={1}
-        oneDayCourses={mockOneDayCourses}
-        setSelectedTab={setSelectedTab}
       />
     </SelectedPanelProvider>
   );

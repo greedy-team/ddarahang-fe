@@ -10,7 +10,7 @@ import {
   AUSTRALIAOPTION,
   EUROPEOPTION,
 } from '../constants/options';
-import { CountryType, FavoritePlaceType, SortByType } from '../types';
+import { CountryType, SortByType } from '../types';
 
 export const getRegionOptionList = (selectedOption: {
   isCountryOption: boolean;
@@ -49,16 +49,3 @@ export const getSortedOption = (sortOption: SortByType) => {
   }
   return '정렬 옵션';
 };
-
-export const transformTodefaultFormPlaces = (places: FavoritePlaceType[]) =>
-  places.map((place) => ({
-    ...place,
-    placeId: place.placeId,
-    address: place.placeAddress,
-    orderInday: place.orderInPlace,
-    position: {
-      lat: place.latitude,
-      lng: place.longitude,
-    },
-    day: 1,
-  }));

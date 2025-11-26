@@ -7,9 +7,9 @@ interface PanelsProps {
 
 export const Panels = styled.div<PanelsProps>`
   width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 70rem;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   padding: ${size.SIZE_008};
   display: flex;
   flex-direction: column;

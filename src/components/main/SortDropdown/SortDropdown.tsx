@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Dropdown } from '../../common/Dropdown/Dropdown/Dropdown';
 import { DropdownWrapper } from './SortDropdown.style';
 import { SortByType } from '../../../types';
-import { getSortedOption } from '../../../utils';
 import { useSortOptionContext } from '../../../hooks/context/useSortOptionContext';
 import useDetectClose from '../../../hooks/select/useDetectClose';
+import { getSortedOption } from '../../../utils/option';
 
 interface SortDropdownProps {
   onSubmitDropdown: (sortBy: SortByType) => void;

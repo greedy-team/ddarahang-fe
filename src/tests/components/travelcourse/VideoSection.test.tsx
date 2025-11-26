@@ -19,7 +19,6 @@ const CustomVideoSection = ({ mockTravelCourse }: { mockTravelCourse: TravelCour
   return (
     <VideoSection
       isMobileMapVisible={false}
-      isMobile={false}
       setIsMobileMapVisible={() => {}}
       videoUrl={mockTravelCourse.videoUrl}
       travelCourse={mockTravelCourse}

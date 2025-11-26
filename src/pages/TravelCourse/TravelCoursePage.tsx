@@ -1,153 +1,48 @@
-import { Status, Wrapper } from '@googlemaps/react-wrapper';
-import TravelMap from '../../components/common/TravelMap/TravelMap';
-import { MapContainer, TravelCourseContainer, TravelCoursePageLayout } from './TravelCoursePage.style';
+import { PageLayout, TravelCoursePageLayout } from './TravelCoursePage.style';
 import GlobalHeader from '../../components/common/GlobalHeader/GlobalHeader';
 import TravelCourse from '../../components/detail/TravelCourse/TravelCourse';
-import VideoSection from '../../components/detail/Video/VideoSection';
 import useGetTravelCourse from '../../hooks/quries/useGetTravelCourse';
-import { OneDayCourseType } from '../../types';
-import { useEffect, useMemo, useState } from 'react';
-import { useSelectedPanel } from '../../hooks/context/useSelectedPanelContext';
 import Loading from '../../components/common/Loading/Loading';
-import {
-  ERROR_MESSAGE,
-  LOAD_ERROR_MESSAGE,
-  MAP_LOAD_ERROR_MESSAGE,
-  NO_DATA_ERROR_MESSAGE,
-} from '../../constants/messages';
+import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants/messages';
 import { useParams } from 'react-router-dom';
-import AddFavorite from '../../components/detail/AddFavoriteModal/AddFavoriteModal';
 import ErrorLayout from '../../components/common/Error/ErrorLayout';
-
-const renderMap = (status: Status, courses: OneDayCourseType[]) => {
-  switch (status) {
-    case Status.LOADING:
-      return renderErrorMessage(MAP_LOAD_ERROR_MESSAGE);
-    case Status.FAILURE:
-      return renderErrorMessage(LOAD_ERROR_MESSAGE);
-    case Status.SUCCESS:
-      return <TravelMap oneDayCourses={courses} />;
-  }
-};
+import useMobile from '../../hooks/screen/useMobile';
 
 const renderErrorMessage = (message: string) => (
-  <>
-    <GlobalHeader
-      isMobile={window.innerWidth <= 780}
-      isIconVisible={false}
-      isMainHeader={false}
+  <TravelCoursePageLayout>
+    <ErrorLayout
+      errorTitle={message}
+      errorDescription={ERROR_MESSAGE}
     />
-    <TravelCoursePageLayout>
-      <ErrorLayout
-        errorTitle={message}
-        errorDescription={ERROR_MESSAGE}
-      />
-    </TravelCoursePageLayout>
-  </>
+  </TravelCoursePageLayout>
 );
 
 const TravelCoursePage = () => {
   const param = useParams();
-  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY_DEV;
-  const [selectedTab, setSelectedTab] = useState(1);
-  const [showNoDataMessage, setShowNoDataMessage] = useState(false);
 
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 780);
-  const [isMobileMapVisible, setIsMobileMapVisible] = useState(false);
-
-  const { setSelectedPanel } = useSelectedPanel();
   const { data: travelCourse, error, isLoading: loading } = useGetTravelCourse(Number(param.id));
 
-  useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth <= 780;
-      setIsMobile(mobile);
+  const { isMobile } = useMobile();
 
-      if (!mobile) {
-        setIsMobileMapVisible(false);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (!loading) {
-      setShowNoDataMessage(!travelCourse);
-    }
-  }, [loading, travelCourse]);
-
-  const oneDayCourses = useMemo(() => {
-    if (!travelCourse) return [];
-
-    setSelectedPanel('');
-    return travelCourse.details
-      .filter((course) => course.day === selectedTab)
-      .map((course) => ({
-        placeName: course.placeName,
-        placeId: course.placeId,
-        day: course.day,
-        orderInday: course.orderInDay,
-        tag: course.tag,
-        position: { lat: course.lat, lng: course.lng },
-        address: course.placeAddress,
-      }));
-  }, [selectedTab, travelCourse]);
-
-  if (loading) return <Loading loading={loading} />;
-  if (showNoDataMessage) return renderErrorMessage(NO_DATA_ERROR_MESSAGE);
+  if (loading) return <Loading />;
   if (error) return renderErrorMessage(LOAD_ERROR_MESSAGE);
+  if (travelCourse === null || travelCourse.details.length === 0) return renderErrorMessage(NO_DATA_ERROR_MESSAGE);
 
   return (
-    <>
+    <PageLayout>
       <GlobalHeader
         isMobile={isMobile}
         isIconVisible={false}
         isMainHeader={false}
       />
-      <TravelCoursePageLayout>
-        {travelCourse && (
-          <TravelCourseContainer>
-            <VideoSection
-              isMobileMapVisible={isMobileMapVisible}
-              isMobile={isMobile}
-              setIsMobileMapVisible={setIsMobileMapVisible}
-              videoUrl={travelCourse.videoUrl}
-              travelCourse={travelCourse}
-            />
 
-            {isMobileMapVisible && (
-              <MapContainer>
-                <Wrapper
-                  apiKey={apiKey}
-                  key={selectedTab}
-                  render={(status) => renderMap(status, oneDayCourses)}
-                  libraries={['marker']}
-                />
-              </MapContainer>
-            )}
-            <TravelCourse
-              selectedTab={selectedTab}
-              setSelectedTab={setSelectedTab}
-              oneDayCourses={oneDayCourses}
-              totalTravelDays={travelCourse.travelDays}
-            />
-          </TravelCourseContainer>
-        )}
-        {!isMobile && (
-          <MapContainer>
-            <AddFavorite />
-            <Wrapper
-              apiKey={apiKey}
-              key={selectedTab}
-              render={(status) => renderMap(status, oneDayCourses)}
-              libraries={['marker']}
-            />
-          </MapContainer>
-        )}
+      <TravelCoursePageLayout>
+        <TravelCourse
+          travelCourse={travelCourse}
+          totalTravelDays={travelCourse.travelDays}
+        />
       </TravelCoursePageLayout>
-    </>
+    </PageLayout>
   );
 };
 

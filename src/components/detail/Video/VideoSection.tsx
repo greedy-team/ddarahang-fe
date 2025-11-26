@@ -18,18 +18,19 @@ import { size, colors } from '../../../styles/Theme';
 import { TravelCourse } from '../../../types';
 import { useNavigate } from 'react-router-dom';
 import { MIN_VIEW } from '../../../constants/size';
+import useMobile from '../../../hooks/screen/useMobile';
 
 interface VideoProps {
   videoUrl: string;
   travelCourse: TravelCourse | null;
-  setIsMobileMapVisible: React.Dispatch<React.SetStateAction<boolean>>;
   isMobileMapVisible: boolean;
-  isMobile: boolean;
+  setIsMobileMapVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible, isMobileMapVisible }: VideoProps) => {
+const VideoSection = ({ videoUrl, travelCourse, isMobileMapVisible, setIsMobileMapVisible }: VideoProps) => {
   if (!travelCourse) return [];
   const route = useNavigate();
+  const { isMobile } = useMobile();
 
   const simpleViewCount = parseFloat((travelCourse.viewCount / MIN_VIEW).toFixed(1)) + '만회';
 
@@ -37,7 +38,7 @@ const VideoSection = ({ videoUrl, travelCourse, isMobile, setIsMobileMapVisible,
     setIsMobileMapVisible(!isMobileMapVisible);
   };
 
-  const videoId = videoUrl.match(/v=([^&]+)/)?.[1];
+  const videoId = videoUrl?.match(/v=([^&]+)/)?.[1] ?? [];
 
   return (
     <VideoSectionContainer>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
 export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisible: boolean }>`
-  width: 100%;
+  width: 100vw;
   height: ${size.SIZE_018};
   padding: ${size.SIZE_001} ${size.SIZE_016};
   display: flex;
