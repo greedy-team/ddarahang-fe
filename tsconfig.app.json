@@ -22,5 +22,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/tests/vitest.config.ts", "src/constants/number.ts"]
+  "include": ["src", "src/tests/vitest.config.ts", "src/constants/number.ts"],
+  "exclude": ["src/tests", "src/stories", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.ts", "**/*.stories.tsx"]
 }

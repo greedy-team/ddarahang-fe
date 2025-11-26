@@ -25,3 +25,7 @@ dist-ssr
 
 *storybook.log
 .env
+
+# Test Results
+/playwright-report/
+/test-results/
