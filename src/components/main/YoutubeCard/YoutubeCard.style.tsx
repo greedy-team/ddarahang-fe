@@ -2,9 +2,6 @@ import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
 export const YoutubeCardContainer = styled.button`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   background: transparent;
   max-width: 25rem;
   height: 22.2rem;
@@ -14,6 +11,7 @@ export const YoutubeCardContainer = styled.button`
   border: 1px solid ${colors.GRAY_200};
   box-shadow: ${size.SIZE_001} ${size.SIZE_005} ${size.SIZE_005} rgba(0, 0, 0, 0.1);
   transition: all 0.5s;
+  text-align: left;
 
   &:hover {
     cursor: pointer;
@@ -21,10 +19,12 @@ export const YoutubeCardContainer = styled.button`
   }
 `;
 
+export const Spacing = styled.div`
+  height: ${size.SIZE_008};
+`;
+
 export const YoutubeTitle = styled.h2`
   font-size: 1.125rem;
-  padding-top: ${size.SIZE_006};
-  padding-bottom: ${size.SIZE_003};
   overflow-wrap: break-word;
   line-height: 1.4;
   display: -webkit-box;
