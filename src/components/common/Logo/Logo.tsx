@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { StyledLogo } from './Logo.style';
 import { useSelectOptionContext } from '../../../hooks/context/useSelectOptionContext';
+import LogoText from '../../../assets/logo-text.svg';
+import LogoImage from '../../../assets/logo-image.webp';
 
 interface LogoProps {
   isMainHeader: boolean;
@@ -25,12 +27,17 @@ const Logo = ({ isMainHeader, setCurrentPageNumber }: LogoProps) => {
   return (
     <StyledLogo onClick={handleLogoClick}>
       <img
-        src='/icon/Logo.webp'
-        alt='로고'
+        src={LogoImage}
+        alt='따라행 로고'
         width={55}
         height={50}
       />
-      따라행
+      <img
+        src={LogoText}
+        alt='따라행 로고 텍스트'
+        width={60}
+        height={25}
+      />
     </StyledLogo>
   );
 };
