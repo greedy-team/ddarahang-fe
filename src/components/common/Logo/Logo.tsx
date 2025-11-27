@@ -5,11 +5,11 @@ import LogoText from '../../../assets/logo-text.svg';
 import LogoImage from '../../../assets/logo-image.webp';
 
 interface LogoProps {
-  isMainHeader: boolean;
+  isMainHeader?: boolean;
   setCurrentPageNumber?: (currentPageNumber: number) => void;
 }
 
-const Logo = ({ isMainHeader, setCurrentPageNumber }: LogoProps) => {
+const Logo = ({ isMainHeader = true, setCurrentPageNumber }: LogoProps) => {
   const route = useNavigate();
   const { setSelectedOption } = useSelectOptionContext();
 

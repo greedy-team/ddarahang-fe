@@ -3,20 +3,16 @@ import Logo from '../Logo/Logo';
 import { GlobalHeaderWrapper, Tab } from './GlobalHeader.style';
 
 interface GlobalHeaderProps {
-  isIconVisible: boolean;
-  isMainHeader: boolean;
+  isMainHeader?: boolean;
   isMobile: boolean;
   setCurrentPageNumber?: (currentPageNumber: number) => void;
 }
 
-const GlobalHeader = ({ isIconVisible, isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
+const GlobalHeader = ({ isMainHeader, isMobile, setCurrentPageNumber }: GlobalHeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <GlobalHeaderWrapper
-      $isMobile={isMobile}
-      $isIconVisible={isIconVisible}
-    >
+    <GlobalHeaderWrapper $isMobile={isMobile}>
       <Logo
         isMainHeader={isMainHeader}
         setCurrentPageNumber={setCurrentPageNumber}

@@ -15,18 +15,6 @@ export const TravelCoursePageLayout = styled.div`
   }
 `;
 
-export const PageLayout = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  flex-direction: column;
-
-  @media screen and (max-width: 780px) {
-    gap: ${size.SIZE_002};
-    padding: ${size.SIZE_004} 0;
-  }
-`;
-
 export const TravelCourseContainer = styled.div`
   width: 29rem;
   display: flex;

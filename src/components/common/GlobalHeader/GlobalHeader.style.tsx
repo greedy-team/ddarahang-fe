@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisible: boolean }>`
+export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean }>`
   width: 100vw;
   height: ${size.SIZE_018};
   padding: ${size.SIZE_001} ${size.SIZE_016};
@@ -9,12 +9,6 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean; $isIconVisib
   align-items: center;
   justify-content: space-between;
   background-color: ${colors.WHITE};
-
-  ${({ $isIconVisible }) =>
-    !$isIconVisible &&
-    `
-      border-bottom: 2px solid  ${colors.GRAY_200};  
-    `}
 
   @media screen and (max-width: 780px) {
     height: ${size.SIZE_016};
