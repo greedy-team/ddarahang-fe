@@ -5,8 +5,7 @@ export const TravelCoursePageLayout = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100vh;
-  /* min-height: 57.8rem; */
+  min-height: 100dvh;
 
   @media screen and (max-width: 780px) {
     gap: 0;
@@ -20,6 +19,9 @@ export const TravelCourseContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_010};
+  padding-bottom: 0;
+
+  overflow-y: auto;
 
   @media screen and (max-width: 780px) {
     gap: 0;

@@ -11,12 +11,12 @@ interface TabPanelProps {
   oneDayCourse: OneDayCourseType[];
 }
 
-const TabPanel = ({ isFavorite, isScrollPanels, oneDayCourse }: TabPanelProps) => {
+const TabPanel = ({ isFavorite, oneDayCourse }: TabPanelProps) => {
   const navigate = useNavigate();
 
   if (oneDayCourse.length === 0) {
     return (
-      <Panels $isScrollPanels={isScrollPanels}>
+      <Panels>
         <ErrorLayout errorTitle='장소 리스트가 존재하지 않습니다!' />
         {isFavorite && (
           <RectangleButton
@@ -30,7 +30,7 @@ const TabPanel = ({ isFavorite, isScrollPanels, oneDayCourse }: TabPanelProps) =
   }
 
   return (
-    <Panels $isScrollPanels={isScrollPanels}>
+    <Panels>
       {oneDayCourse.map((course) => {
         return (
           <PlaceCardItem

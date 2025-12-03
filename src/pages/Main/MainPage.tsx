@@ -7,7 +7,6 @@ import { SortByType } from '../../types';
 import { useSortOptionContext } from '../../hooks/context/useSortOptionContext';
 import DeferredComponent from '../../components/common/Deferred/DeferredComponent';
 import Loading from '../../components/common/Loading/Loading';
-import PageLayout from '../../components/layout/PageLayout';
 
 const TravelVideoList = lazy(() => import('../../components/main/TravelVideoList/TravelVideoList'));
 

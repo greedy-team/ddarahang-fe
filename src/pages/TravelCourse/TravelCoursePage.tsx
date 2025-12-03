@@ -5,7 +5,6 @@ import Loading from '../../components/common/Loading/Loading';
 import { ERROR_MESSAGE, LOAD_ERROR_MESSAGE, NO_DATA_ERROR_MESSAGE } from '../../constants/messages';
 import { useParams } from 'react-router-dom';
 import ErrorLayout from '../../components/common/Error/ErrorLayout';
-import PageLayout from '../../components/layout/PageLayout';
 
 const renderErrorMessage = (message: string) => (
   <TravelCoursePageLayout>

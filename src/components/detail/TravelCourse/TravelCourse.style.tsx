@@ -23,6 +23,7 @@ export const TravelCourseContainer = styled.div`
 export const TravelCourseLayout = styled.div`
   width: 29rem;
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
   gap: ${size.SIZE_010};
 
