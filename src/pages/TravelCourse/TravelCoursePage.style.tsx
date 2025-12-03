@@ -9,8 +9,7 @@ export const TravelCoursePageLayout = styled.div`
 
   @media screen and (max-width: 780px) {
     gap: 0;
-    height: 100vh;
-    min-height: 31.25rem;
+    min-height: 100dvh;
   }
 `;
 
@@ -20,20 +19,10 @@ export const TravelCourseContainer = styled.div`
   flex-direction: column;
   gap: ${size.SIZE_010};
   padding-bottom: 0;
-
   overflow-y: auto;
 
   @media screen and (max-width: 780px) {
     gap: 0;
-  }
-`;
-
-export const MapContainer = styled.div`
-  flex: 1 1 0%;
-  display: flex;
-  justify-content: flex-start;
-
-  @media screen {
-    min-height: 15.625rem;
+    overflow-y: visible;
   }
 `;

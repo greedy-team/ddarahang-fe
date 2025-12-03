@@ -9,6 +9,7 @@ export const MapContainer = styled.div`
   min-height: 0;
 
   @media screen {
+    max-height: 100px;
     min-height: 15.625rem;
   }
 `;
