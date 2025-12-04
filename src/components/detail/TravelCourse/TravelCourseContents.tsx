@@ -5,7 +5,7 @@ import TabPanel from '../../common/Tabs/TabPanel/TabPanel';
 import TravelMap from '../../common/TravelMap/TravelMap';
 import TravelMapWrapper from '../../common/TravelMapWrapper/TravelMapWrapper';
 import VideoSection from '../Video/VideoSection';
-import { TravelCourseLayout, TravelCourseContainer } from './TravelCourse.style';
+import { TravelCourseLayout, TravelCourseContainer, VideoAndMapSection } from './TravelCourse.style';
 
 interface TravelCourseContentsProps {
   setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
@@ -22,22 +22,24 @@ const TravelCourseContents = ({
   oneDayCourses,
   selectedTab,
 }: TravelCourseContentsProps) => {
-  const { isMobileMapVisible, setIsMobileMapVisible } = useMobile();
+  const { isMobileMapVisible, setIsMobileMapVisible, isMobile } = useMobile();
 
   return (
     <TravelCourseLayout>
-      <VideoSection
-        isMobileMapVisible={isMobileMapVisible}
-        setIsMobileMapVisible={setIsMobileMapVisible}
-        videoUrl={travelCourse.videoUrl}
-        travelCourse={travelCourse}
-      />
+      <VideoAndMapSection $isVisible={isMobileMapVisible}>
+        <VideoSection
+          isMobileMapVisible={isMobileMapVisible}
+          setIsMobileMapVisible={setIsMobileMapVisible}
+          videoUrl={travelCourse.videoUrl}
+          travelCourse={travelCourse}
+        />
 
-      {isMobileMapVisible && (
-        <TravelMapWrapper key={selectedTab}>
-          <TravelMap oneDayCourses={oneDayCourses} />
-        </TravelMapWrapper>
-      )}
+        {isMobileMapVisible && isMobile && (
+          <TravelMapWrapper key={selectedTab}>
+            <TravelMap oneDayCourses={oneDayCourses} />
+          </TravelMapWrapper>
+        )}
+      </VideoAndMapSection>
 
       <TravelCourseContainer>
         <Tab

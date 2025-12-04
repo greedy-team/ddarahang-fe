@@ -76,7 +76,7 @@ const VideoSection = ({ videoUrl, travelCourse, isMobileMapVisible, setIsMobileM
         )}
       </VideoSectionHeader>
 
-      <VideoContainer $isMobileMapVisible={isMobileMapVisible}>
+      <VideoContainer>
         <VideoWrapper>
           <Iframe
             data-testid='video-player'

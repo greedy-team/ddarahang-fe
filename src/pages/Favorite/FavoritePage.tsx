@@ -11,10 +11,12 @@ import FavoriteRecommend from '../../components/favorite/FavoriteRecommend/Favor
 import ErrorLayout from '../../components/common/Error/ErrorLayout';
 import { ERROR_MESSAGE } from '../../constants/messages';
 import { adaptPlace } from '../../utils/adaptPlace';
+import useMobile from '../../hooks/screen/useMobile';
 
 const FavoritePage = () => {
-  const { favoritePlaces, loading, error } = useFavoritePlaces();
+  const { favoritePlaces, error, loading } = useFavoritePlaces();
   const [selectedTagTab, setSelectedTagTab] = useState<TagType>('전체');
+  const { isMobile } = useMobile();
 
   /**
    * 임의의 타이틀, 설명
@@ -34,33 +36,40 @@ const FavoritePage = () => {
       />
     );
 
+  if (loading) return <Loading />;
+
   return (
     <>
-      <Loading loading={loading} />
-      {!loading && (
-        <StyledFavoritePageLayout>
-          <FavoritePlaceListSection>
+      <StyledFavoritePageLayout>
+        <FavoritePlaceListSection>
+          {!isMobile ? (
             <TitleWrapper>
               <h3>{favoriteListTitle}</h3>
             </TitleWrapper>
-            <FavoriteTabs
-              selectedTagTab={selectedTagTab}
-              setSelectedTagTab={setSelectedTagTab}
-            />
-            <TabPanel
-              isFavorite={true}
-              oneDayCourse={defaultFormPlaces}
-            />
-          </FavoritePlaceListSection>
-          {defaultFormPlaces.length !== 0 ? (
+          ) : (
             <TravelMapWrapper>
               <TravelMap oneDayCourses={defaultFormPlaces} />
             </TravelMapWrapper>
-          ) : (
-            <FavoriteRecommend />
           )}
-        </StyledFavoritePageLayout>
-      )}
+
+          <FavoriteTabs
+            selectedTagTab={selectedTagTab}
+            setSelectedTagTab={setSelectedTagTab}
+          />
+
+          <TabPanel
+            isFavorite={true}
+            oneDayCourse={defaultFormPlaces}
+          />
+        </FavoritePlaceListSection>
+        {defaultFormPlaces.length !== 0
+          ? !isMobile && (
+              <TravelMapWrapper>
+                <TravelMap oneDayCourses={defaultFormPlaces} />
+              </TravelMapWrapper>
+            )
+          : !isMobile && <FavoriteRecommend />}
+      </StyledFavoritePageLayout>
     </>
   );
 };

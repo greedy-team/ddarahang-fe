@@ -29,8 +29,8 @@ export const VideoSectionTitle = styled.div`
   gap: ${size.SIZE_006};
 `;
 
-export const VideoContainer = styled.div<{ $isMobileMapVisible: boolean }>`
-  display: ${({ $isMobileMapVisible }) => ($isMobileMapVisible ? 'none' : 'flex')};
+export const VideoContainer = styled.div`
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
