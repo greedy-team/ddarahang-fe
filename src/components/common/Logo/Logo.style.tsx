@@ -3,7 +3,7 @@ import { colors, size } from '../../../styles/Theme';
 
 export const StyledLogo = styled.button`
   color: ${colors.PRIMARY};
-  font-family: 'Ownglyph_ParkDaHyun';
+  font-family: var(--font-logo);
   font-size: ${size.SIZE_012};
   font-weight: 700;
   background-color: transparent;

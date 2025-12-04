@@ -3,7 +3,7 @@ import { colors, size } from './styles/Theme';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Regular';
   src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 @font-face {
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-SemiBold';
   src: url('/fonts/Pretendard-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 @font-face {
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Bold';
   src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
@@ -40,6 +40,8 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  
+
 *{
     margin: 0;
     padding: 0;
@@ -54,7 +56,8 @@ const GlobalStyle = createGlobalStyle`
     vertical-align: baseline;
     line-height: 1;
     font-size: 100%;
-      overflow-x: hidden;
+    overflow-x: hidden;
+    --font-logo: 'Ownglyph_ParkDaHyun';
   } 
 
 h1,

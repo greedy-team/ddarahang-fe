@@ -6,6 +6,7 @@ export const VideoSectionContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  padding-bottom: ${size.SIZE_003};
 `;
 
 export const VideoSectionHeader = styled.div`

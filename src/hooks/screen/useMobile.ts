@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-function useMobile(breakpoint: number = 780) {
+function useMobile(breakpoint: number = 900) {
   const [isMobileMapVisible, setIsMobileMapVisible] = useState(false);
 
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= breakpoint);

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import GlobalHeader from '../../components/common/GlobalHeader/GlobalHeader';
 import TabPanel from '../../components/common/Tabs/TabPanel/TabPanel';
 import TravelMap from '../../components/common/TravelMap/TravelMap';
 import TravelMapWrapper from '../../components/common/TravelMapWrapper/TravelMapWrapper';
@@ -37,11 +36,6 @@ const FavoritePage = () => {
 
   return (
     <>
-      <GlobalHeader
-        isMobile={false}
-        isIconVisible={false}
-        isMainHeader={false}
-      />
       <Loading loading={loading} />
       {!loading && (
         <StyledFavoritePageLayout>

@@ -1,28 +1,34 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
+export const FavoriteOverlay = styled.div<{ $isVisible: boolean }>`
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: flex-end;
+
+  opacity: ${(p) => (p.$isVisible ? 1 : 0)};
+  pointer-events: ${(p) => (p.$isVisible ? 'auto' : 'none')};
+
+  transition: opacity 0.25s ease;
+`;
+
 export const AddFavoriteContainer = styled.div<{ $isVisible: boolean }>`
   width: ${size.SIZE_024};
-  height: 90%;
-  background-color: ${colors.WHITE};
-  border-radius: ${size.SIZE_010};
+  height: 100vh;
+  background: ${colors.WHITE};
+
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+
   display: flex;
-  box-shadow: 0 0 ${size.SIZE_010} rgba(0, 0, 0, 0.1);
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
-  margin: 1.25rem;
-  top: 6.125rem;
-  z-index: 10;
 
-  opacity: ${(props) => (props.$isVisible ? 1 : 0)};
-  visibility: ${(props) => (props.$isVisible ? 'visible' : 'hidden')};
-  transform: ${(props) => (props.$isVisible ? 'translateY(0)' : 'translateY(20px)')};
-  pointer-events: ${(props) => (props.$isVisible ? 'auto' : 'none')};
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
-    visibility 0.3s;
+  transform: translateX(${(p) => (p.$isVisible ? '0' : '100%')});
+  transition: transform 0.25s ease;
+
+  position: relative;
 `;
 
 export const AddFavoriteHeader = styled.div`

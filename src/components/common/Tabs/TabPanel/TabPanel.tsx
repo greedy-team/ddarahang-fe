@@ -8,15 +8,16 @@ import ErrorLayout from '../../Error/ErrorLayout';
 interface TabPanelProps {
   isFavorite?: boolean;
   isScrollPanels?: boolean;
+  setIsMobileMapVisible?: (isVisible: boolean) => void;
   oneDayCourse: OneDayCourseType[];
 }
 
-const TabPanel = ({ isFavorite, isScrollPanels, oneDayCourse }: TabPanelProps) => {
+const TabPanel = ({ isFavorite, oneDayCourse, setIsMobileMapVisible }: TabPanelProps) => {
   const navigate = useNavigate();
 
   if (oneDayCourse.length === 0) {
     return (
-      <Panels $isScrollPanels={isScrollPanels}>
+      <Panels>
         <ErrorLayout errorTitle='장소 리스트가 존재하지 않습니다!' />
         {isFavorite && (
           <RectangleButton
@@ -30,13 +31,14 @@ const TabPanel = ({ isFavorite, isScrollPanels, oneDayCourse }: TabPanelProps) =
   }
 
   return (
-    <Panels $isScrollPanels={isScrollPanels}>
+    <Panels $isScrollPanels={true}>
       {oneDayCourse.map((course) => {
         return (
           <PlaceCardItem
             key={course.orderInday}
             orderInList={course.orderInday}
             placeItem={course}
+            setIsMobileMapVisible={setIsMobileMapVisible}
           />
         );
       })}

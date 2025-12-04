@@ -14,6 +14,8 @@ export const TabContainer = styled.div`
 export const TabList = styled.ul`
   display: flex;
   flex-direction: row;
+  padding: 0;
+  margin: 0;
   justify-content: center;
   align-items: center;
   width: 100%;

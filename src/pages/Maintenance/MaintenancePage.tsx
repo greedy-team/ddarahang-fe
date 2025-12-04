@@ -7,7 +7,7 @@ const MaintenancePage = () => {
   return (
     <Container>
       <img
-        src='/Logo.webp'
+        src='/logo-image.webp'
         alt='로고'
         width={100}
         height={100}
