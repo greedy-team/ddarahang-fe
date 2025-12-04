@@ -5,14 +5,14 @@ import RectangleButton from '../../common/Button/RectangleButton/RectangleButton
 import { FavoriteListItem, FavoriteTitle, FavoriteToast } from './FavoriteBottomSheet.style';
 import { useSaveFavoritePlaces } from '../../../hooks/favorite/useSaveFavoritePlaces';
 import { FavoritePlaceSummaryType } from '../../../types';
+import useToast from '../../../hooks/favorite/useToast';
 
 const FavoriteBottomSheet = () => {
   const [selectedList, setSelectedList] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
 
   const { isFavoriteModalOpen, setIsFavoriteModalOpen, selectedPlace, favoritePlaces } = useAddFavoriteContext();
   const { addFavoritePlace } = useSaveFavoritePlaces();
+  const { showToast, toastMessage, successToast, warningToast } = useToast(selectedList);
 
   const handleSaveFavoritePlace = () => {
     if (!warningToast()) return;
@@ -29,22 +29,6 @@ const FavoriteBottomSheet = () => {
     setTimeout(() => {
       setIsFavoriteModalOpen(false);
     }, 500);
-  };
-
-  const warningToast = () => {
-    if (!selectedList) {
-      setToastMessage('목록을 선택해주세요.');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 2000);
-      return false;
-    }
-    return true;
-  };
-
-  const successToast = () => {
-    setToastMessage('저장되었습니다.');
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 2000);
   };
 
   return (

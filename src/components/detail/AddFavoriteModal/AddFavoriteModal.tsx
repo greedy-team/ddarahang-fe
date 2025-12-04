@@ -20,29 +20,14 @@ import { useAddFavoriteContext } from '../../../hooks/context/useAddFavoriteCont
 import SaveButton from '../../common/Button/RectangleButton/RectangleButton';
 import { FavoritePlaceSummaryType } from '../../../types';
 import { useSaveFavoritePlaces } from '../../../hooks/favorite/useSaveFavoritePlaces';
+import useToast from '../../../hooks/favorite/useToast';
 
 const AddFavoriteModal = () => {
   const [selectedItem, setSelectedItem] = useState(false);
-  const [showToast, setShowToast] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
   const { isFavoriteModalOpen, setIsFavoriteModalOpen, selectedPlace, favoritePlaces } = useAddFavoriteContext();
   const { addFavoritePlace } = useSaveFavoritePlaces();
 
-  const warningToast = () => {
-    if (!selectedItem) {
-      setToastMessage('목록을 선택해주세요.');
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 2000);
-      return false;
-    }
-    return true;
-  };
-
-  const successToast = () => {
-    setToastMessage('저장되었습니다.');
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 2000);
-  };
+  const { showToast, toastMessage, successToast, warningToast } = useToast(selectedItem);
 
   const handleSaveFavoritePlace = () => {
     if (!warningToast()) return;
