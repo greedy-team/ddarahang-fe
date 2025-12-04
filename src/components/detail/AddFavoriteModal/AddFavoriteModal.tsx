@@ -13,6 +13,7 @@ import {
   AddFavoriteTitle,
   AddFavoriteToast,
   FavoriteOverlay,
+  StyledTitle,
 } from './AddFavoriteModal.style';
 import { size } from '../../../styles/Theme';
 import { useAddFavoriteContext } from '../../../hooks/context/useAddFavoriteContext';
@@ -74,7 +75,10 @@ const AddFavoriteModal = () => {
         {showToast && <AddFavoriteToast>{toastMessage}</AddFavoriteToast>}
 
         <AddFavoriteHeader>
-          <AddFavoriteTitle>{selectedPlace?.placeName} 목록에 저장</AddFavoriteTitle>
+          <AddFavoriteTitle>
+            <StyledTitle>{selectedPlace?.placeName}</StyledTitle>
+            목록에 저장
+          </AddFavoriteTitle>
           <AddFavoriteCloseButton onClick={() => setIsFavoriteModalOpen(false)}>×</AddFavoriteCloseButton>
         </AddFavoriteHeader>
 

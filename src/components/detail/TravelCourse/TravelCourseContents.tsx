@@ -22,7 +22,7 @@ const TravelCourseContents = ({
   oneDayCourses,
   selectedTab,
 }: TravelCourseContentsProps) => {
-  const { isMobileMapVisible, setIsMobileMapVisible } = useMobile();
+  const { isMobileMapVisible, setIsMobileMapVisible, isMobile } = useMobile();
 
   return (
     <TravelCourseLayout>
@@ -33,7 +33,7 @@ const TravelCourseContents = ({
         travelCourse={travelCourse}
       />
 
-      {isMobileMapVisible && (
+      {isMobileMapVisible && isMobile && (
         <TravelMapWrapper key={selectedTab}>
           <TravelMap oneDayCourses={oneDayCourses} />
         </TravelMapWrapper>

@@ -6,6 +6,7 @@ import AddFavoriteModal from '../AddFavoriteModal/AddFavoriteModal';
 import useMobile from '../../../hooks/screen/useMobile';
 import { adaptTravelCourse } from '../../../utils/adaptTravelCourse';
 import TravelCourseContents from './TravelCourseContents';
+import FavoriteBottomSheet from '../FavoriteBottomSheet/FavoriteBottomSheet';
 
 interface TravelCourseProps {
   travelCourse: TravelCourse;
@@ -28,11 +29,13 @@ const TravelCourse = ({ travelCourse, totalTravelDays }: TravelCourseProps) => {
         totalTravelDays={totalTravelDays}
       />
 
-      {!isMobile && (
+      {!isMobile ? (
         <TravelMapWrapper key={selectedTab}>
           <AddFavoriteModal />
           <TravelMap oneDayCourses={oneDayCourses} />
         </TravelMapWrapper>
+      ) : (
+        <FavoriteBottomSheet />
       )}
     </>
   );
