@@ -13,7 +13,7 @@ export const TravelCourseContainer = styled.div`
     font-family: 'Pretendard-SemiBold';
   }
 
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 900px) {
     max-height: 100vh;
     padding: 0;
     max-height: none;
@@ -27,7 +27,8 @@ export const TravelCourseLayout = styled.div`
   flex-direction: column;
   gap: ${size.SIZE_010};
 
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 900px) {
+    width: 100%;
     gap: 0;
   }
 `;

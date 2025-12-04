@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, size } from '../../../styles/Theme';
 
-export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean }>`
+export const GlobalHeaderWrapper = styled.div`
   width: 100vw;
   height: ${size.SIZE_018};
   padding: ${size.SIZE_001} ${size.SIZE_016};
@@ -13,7 +13,6 @@ export const GlobalHeaderWrapper = styled.div<{ $isMobile: boolean }>`
   @media screen and (max-width: 780px) {
     height: ${size.SIZE_016};
     padding: ${size.SIZE_001} ${size.SIZE_008};
-    ${({ $isMobile }) => $isMobile && 'display: none;'};
     position: sticky;
     top: 0;
     z-index: 10;
