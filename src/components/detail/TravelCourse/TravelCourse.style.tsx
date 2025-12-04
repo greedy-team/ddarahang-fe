@@ -5,18 +5,11 @@ export const TravelCourseContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${size.SIZE_006};
-  padding: ${size.SIZE_008} 0px;
 
   h3 {
     font-size: ${size.SIZE_010};
     padding-left: ${size.SIZE_010};
     font-family: 'Pretendard-SemiBold';
-  }
-
-  @media screen and (max-width: 900px) {
-    max-height: 100vh;
-    padding: 0;
-    max-height: none;
   }
 `;
 

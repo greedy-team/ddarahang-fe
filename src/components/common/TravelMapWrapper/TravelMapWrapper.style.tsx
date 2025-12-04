@@ -8,6 +8,6 @@ export const MapContainer = styled.div`
 
   @media (max-width: ${MOBILE_MAP_BREAKPOINT}) {
     flex: none;
-    height: 15rem;
+    height: 20rem;
   }
 `;

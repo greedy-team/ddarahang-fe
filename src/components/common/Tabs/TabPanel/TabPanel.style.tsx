@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { size } from '../../../../styles/Theme';
+import { MOBILE_MAP_BREAKPOINT } from '../../../../constants/size';
 
 interface PanelsProps {
   $isScrollPanels?: boolean;
@@ -14,10 +15,8 @@ export const Panels = styled.div<PanelsProps>`
   align-items: center;
   gap: ${size.SIZE_011};
 
-  @media screen and (max-width: 780px) {
-    max-height: unset;
-    height: auto;
-    overflow-y: unset;
+  @media screen and (max-width: ${MOBILE_MAP_BREAKPOINT}px) {
+    max-height: 20rem;
   }
 `;
 

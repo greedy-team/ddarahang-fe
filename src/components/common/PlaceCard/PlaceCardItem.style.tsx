@@ -11,10 +11,22 @@ export const FavoriteButton = styled.button`
   pointer-events: auto;
 `;
 
+export const PlaceCardWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80%;
+  gap: ${size.SIZE_010};
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+    gap: ${size.SIZE_006};
+  }
+`;
+
 export const PlaceCardContainer = styled.li<{ $isSelected: boolean }>`
-  min-width: ${size.SIZE_021};
+  min-width: ${size.SIZE_010};
   width: 100%;
-  height: 4.5rem;
   padding: ${size.SIZE_006} ${size.SIZE_010};
   display: flex;
   justify-content: space-between;
@@ -47,14 +59,6 @@ export const PlaceName = styled.span<{ $isSelected: boolean }>`
   max-width: 90%;
   font-weight: ${(props) => (props.$isSelected ? 600 : 'normal')};
   font-family: ${(props) => (props.$isSelected ? "'Pretendard-SemiBold', sans-serif" : 'inherit')};
-`;
-
-export const PlaceCardWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 80%;
-  gap: ${size.SIZE_010};
 `;
 
 export const PlaceCircleStep = styled.div`

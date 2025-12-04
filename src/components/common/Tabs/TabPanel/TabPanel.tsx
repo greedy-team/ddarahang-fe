@@ -8,7 +8,7 @@ import ErrorLayout from '../../Error/ErrorLayout';
 interface TabPanelProps {
   isFavorite?: boolean;
   isScrollPanels?: boolean;
-  setIsMobileMapVisible: (isVisible: boolean) => void;
+  setIsMobileMapVisible?: (isVisible: boolean) => void;
   oneDayCourse: OneDayCourseType[];
 }
 
@@ -31,7 +31,7 @@ const TabPanel = ({ isFavorite, oneDayCourse, setIsMobileMapVisible }: TabPanelP
   }
 
   return (
-    <Panels>
+    <Panels $isScrollPanels={true}>
       {oneDayCourse.map((course) => {
         return (
           <PlaceCardItem
