@@ -14,9 +14,10 @@ import FavoriteToggleButton from '../../favorite/FavoriteToggleButton/FavoriteTo
 interface PlaceCardProps {
   placeItem: OneDayCourseType;
   orderInList: number;
+  setIsMobileMapVisible: (isVisible: boolean) => void;
 }
 
-const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
+const PlaceCardItem = ({ placeItem, orderInList, setIsMobileMapVisible }: PlaceCardProps) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedPanel, setSelectedPanel } = useSelectedPanel();
 
@@ -33,6 +34,7 @@ const PlaceCardItem = ({ placeItem, orderInList }: PlaceCardProps) => {
       setSelectedPanel('');
     } else {
       setSelectedPanel(placeName);
+      setIsMobileMapVisible(true);
     }
   };
 

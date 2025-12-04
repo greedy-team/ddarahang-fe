@@ -8,10 +8,11 @@ import ErrorLayout from '../../Error/ErrorLayout';
 interface TabPanelProps {
   isFavorite?: boolean;
   isScrollPanels?: boolean;
+  setIsMobileMapVisible: (isVisible: boolean) => void;
   oneDayCourse: OneDayCourseType[];
 }
 
-const TabPanel = ({ isFavorite, oneDayCourse }: TabPanelProps) => {
+const TabPanel = ({ isFavorite, oneDayCourse, setIsMobileMapVisible }: TabPanelProps) => {
   const navigate = useNavigate();
 
   if (oneDayCourse.length === 0) {
@@ -37,6 +38,7 @@ const TabPanel = ({ isFavorite, oneDayCourse }: TabPanelProps) => {
             key={course.orderInday}
             orderInList={course.orderInday}
             placeItem={course}
+            setIsMobileMapVisible={setIsMobileMapVisible}
           />
         );
       })}

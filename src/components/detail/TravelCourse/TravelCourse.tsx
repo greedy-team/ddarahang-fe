@@ -29,12 +29,10 @@ const TravelCourse = ({ travelCourse, totalTravelDays }: TravelCourseProps) => {
       />
 
       {!isMobile && (
-        <>
-          <TravelMapWrapper key={selectedTab}>
-            <AddFavoriteModal />
-            <TravelMap oneDayCourses={oneDayCourses} />
-          </TravelMapWrapper>
-        </>
+        <TravelMapWrapper key={selectedTab}>
+          <AddFavoriteModal />
+          <TravelMap oneDayCourses={oneDayCourses} />
+        </TravelMapWrapper>
       )}
     </>
   );

@@ -34,7 +34,7 @@ const VideoSection = ({ videoUrl, travelCourse, isMobileMapVisible, setIsMobileM
 
   const simpleViewCount = parseFloat((travelCourse.viewCount / MIN_VIEW).toFixed(1)) + '만회';
 
-  const handleClickMapIcon = () => {
+  const handleClickMapIcon: () => void = () => {
     setIsMobileMapVisible(!isMobileMapVisible);
   };
 

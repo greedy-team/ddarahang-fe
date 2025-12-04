@@ -5,7 +5,7 @@ import TabPanel from '../../common/Tabs/TabPanel/TabPanel';
 import TravelMap from '../../common/TravelMap/TravelMap';
 import TravelMapWrapper from '../../common/TravelMapWrapper/TravelMapWrapper';
 import VideoSection from '../Video/VideoSection';
-import { TravelCourseContainer, TravelCourseLayout } from './TravelCourse.style';
+import { TravelCourseLayout, TravelCourseContainer } from './TravelCourse.style';
 
 interface TravelCourseContentsProps {
   setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
@@ -46,6 +46,7 @@ const TravelCourseContents = ({
           setSelectedTab={setSelectedTab}
         />
         <TabPanel
+          setIsMobileMapVisible={setIsMobileMapVisible}
           isScrollPanels={true}
           oneDayCourse={oneDayCourses}
         />
