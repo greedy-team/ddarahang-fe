@@ -1,6 +1,6 @@
-import { colors, size } from '../../../styles/Theme';
-import { LoadingLayout } from './Loading.style';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { LoadingLayout } from './Loading.style';
+import { colors, size } from '../../../styles/Theme';
 
 const Loading = ({ loading }: any) => {
   if (!loading) return null;

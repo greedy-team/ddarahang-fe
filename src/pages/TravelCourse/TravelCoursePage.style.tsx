@@ -1,49 +1,17 @@
 import { styled } from 'styled-components';
-import { size } from '../../styles/Theme';
+import { MOBILE_MAP_BREAKPOINT } from '../../constants/size';
 
 export const TravelCoursePageLayout = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
-  /* min-height: 57.8rem; */
+  width: 100vw;
+  min-height: 100dvh;
 
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: ${MOBILE_MAP_BREAKPOINT}) {
+    width: 100%;
+    display: block;
+    min-height: 100dvh;
     gap: 0;
-    height: 100vh;
-    min-height: 31.25rem;
-  }
-`;
-
-export const PageLayout = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100vh;
-  flex-direction: column;
-
-  @media screen and (max-width: 780px) {
-    gap: ${size.SIZE_002};
-    padding: ${size.SIZE_004} 0;
-  }
-`;
-
-export const TravelCourseContainer = styled.div`
-  width: 29rem;
-  display: flex;
-  flex-direction: column;
-  gap: ${size.SIZE_010};
-
-  @media screen and (max-width: 780px) {
-    gap: 0;
-  }
-`;
-
-export const MapContainer = styled.div`
-  flex: 1 1 0%;
-  display: flex;
-  justify-content: flex-start;
-
-  @media screen {
-    min-height: 15.625rem;
+    /* overflow-x: hidden; */
   }
 `;

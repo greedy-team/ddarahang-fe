@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { size } from '../../../../styles/Theme';
+import { MOBILE_MAP_BREAKPOINT } from '../../../../constants/size';
 
 interface PanelsProps {
   $isScrollPanels?: boolean;
@@ -8,27 +9,15 @@ interface PanelsProps {
 export const Panels = styled.div<PanelsProps>`
   width: 100%;
   height: 100%;
-  max-height: 70rem;
-  /* overflow-y: auto; */
   padding: ${size.SIZE_008};
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: ${size.SIZE_011};
 
-  @media screen and (max-width: 780px) {
-    max-height: unset;
-    height: auto;
-    overflow-y: unset;
+  @media screen and (max-width: ${MOBILE_MAP_BREAKPOINT}px) {
+    max-height: 20rem;
   }
-
-  ${({ $isScrollPanels }) =>
-    $isScrollPanels &&
-    css`
-      max-height: 31.25rem;
-      overflow-y: auto;
-      overflow-x: hidden;
-    `}
 `;
 
 export const StyledWarningMessage = styled.p`
