@@ -14,8 +14,13 @@ export const FavoriteOverlay = styled.div<{ $isVisible: boolean }>`
   transition: opacity 0.25s ease;
 `;
 
+export const StyledTitle = styled.span`
+  color: ${colors.PRIMARY};
+  padding-right: 4px;
+`;
+
 export const AddFavoriteContainer = styled.div<{ $isVisible: boolean }>`
-  width: ${size.SIZE_024};
+  width: ${size.SIZE_025};
   height: 100vh;
   background: ${colors.WHITE};
 
@@ -39,11 +44,10 @@ export const AddFavoriteHeader = styled.div`
   font-size: ${size.SIZE_010};
 `;
 
-export const AddFavoriteTitle = styled.h2`
+export const AddFavoriteTitle = styled.h3`
   font-size: ${size.SIZE_010};
   color: ${colors.BLACK};
   font-family: 'Pretendard-SemiBold';
-  font-weight: bold;
   margin: 0;
 `;
 
