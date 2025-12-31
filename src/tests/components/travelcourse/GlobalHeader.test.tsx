@@ -16,9 +16,7 @@ beforeAll(() => {
 const CustomGlobalHeader = () => {
   return (
     <GlobalHeader
-      isMobile={false}
       isMainHeader={false}
-      isIconVisible={true}
       setCurrentPageNumber={() => {}}
     />
   );

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors, size } from '../../styles/Theme';
+import { MOBILE_MAP_BREAKPOINT } from '../../constants/size';
 
 export const StyledFavoritePageLayout = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ export const StyledFavoritePageLayout = styled.div`
   width: 100vw;
   height: 100vh;
 
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: ${MOBILE_MAP_BREAKPOINT}px) {
     gap: 0;
     height: 100vh;
   }
@@ -18,6 +19,12 @@ export const FavoritePlaceListSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media screen and (max-width: ${MOBILE_MAP_BREAKPOINT}px) {
+    gap: 0;
+    height: 100vh;
+    width: 100%;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -26,7 +33,7 @@ export const TitleWrapper = styled.div`
   justify-content: center;
   padding-top: ${size.SIZE_010};
   padding-left: ${size.SIZE_012};
-  gap: 1rem;
+  padding-bottom: ${size.SIZE_006};
 
   h3 {
     font-family: 'Pretendard-SemiBold';

@@ -12,6 +12,5 @@ export const TravelCoursePageLayout = styled.div`
     display: block;
     min-height: 100dvh;
     gap: 0;
-    /* overflow-x: hidden; */
   }
 `;
